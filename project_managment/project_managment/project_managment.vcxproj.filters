@@ -44,14 +44,41 @@
     <ClCompile Include="LoginWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GenerujRaport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EdycjaZadan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EdycjaRaportow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="GenerujRaport.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EdycjaZadan.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EdycjaRaportow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LoginWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="GenerujRaport.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="EdycjaZadan.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="EdycjaRaportow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

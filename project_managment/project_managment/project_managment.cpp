@@ -2,6 +2,8 @@
 #include <QList>
 #include <QLineEdit>
 #include <QListWidgetItem>
+#include <qmessagebox.h>
+
 
 project_managment::project_managment(QWidget *parent)
     : QWidget(parent)
@@ -42,4 +44,12 @@ void project_managment::search_for_string(QString search_str)
 void project_managment::lineEdit_search_returnPressed()
 {
     search_for_string(ui.lineEdit_search->text());
+    QMessageBox::information(this, "Login", "correct");
 }
+/*
+void project_managment::on_pushButton_search_clicked()
+{
+    QMessageBox::information(this, "Login", "correct");
+    search_for_string(ui.lineEdit_search->text());
+}
+*/
