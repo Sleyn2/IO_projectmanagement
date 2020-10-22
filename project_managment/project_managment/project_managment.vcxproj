@@ -87,10 +87,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="project_managment.qrc" />
+    <QtUic Include="LoginWindow.ui" />
     <QtUic Include="project_managment.ui" />
     <QtMoc Include="project_managment.h" />
+    <ClCompile Include="LoginWindow.cpp" />
     <ClCompile Include="project_managment.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="LoginWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
