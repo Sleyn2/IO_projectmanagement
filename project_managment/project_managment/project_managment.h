@@ -13,6 +13,8 @@ private slots:
     void on_pushButton_1_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
+    void search_for_string(QString search_str);
+    void lineEdit_search_returnPressed();
 private:
     Ui::project_managmentClass ui;
 };

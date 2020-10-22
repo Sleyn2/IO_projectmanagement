@@ -118,7 +118,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Twoje_projekty">
        <widget class="QWidget" name="widget" native="true">
@@ -130,6 +130,70 @@
           <height>721</height>
          </rect>
         </property>
+        <widget class="QWidget" name="">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>140</y>
+           <width>221</width>
+           <height>301</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLineEdit" name="lineEdit_search"/>
+          </item>
+          <item>
+           <widget class="QListWidget" name="ProjectList">
+            <item>
+             <property name="text">
+              <string>Projekt glowny</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>test</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>wyszukiwarka</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>mnozenie macierzy</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>nakladanie winiety</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>nakladanie filtra czarnego</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>grafika1</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>grafika2</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>poboczny</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </widget>
        <widget class="QLabel" name="label">
         <property name="geometry">
@@ -213,6 +277,22 @@
     <hint type="destinationlabel">
      <x>154</x>
      <y>759</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_search</sender>
+   <signal>returnPressed()</signal>
+   <receiver>ProjectList</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>444</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>446</x>
+     <y>190</y>
     </hint>
    </hints>
   </connection>
