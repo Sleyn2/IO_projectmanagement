@@ -91,12 +91,14 @@
     <QtUic Include="EdycjaZadan.ui" />
     <QtUic Include="GenerujRaport.ui" />
     <QtUic Include="LoginWindow.ui" />
+    <QtUic Include="NowaWiadomo.ui" />
     <QtUic Include="project_managment.ui" />
     <QtMoc Include="project_managment.h" />
     <ClCompile Include="EdycjaRaportow.cpp" />
     <ClCompile Include="EdycjaZadan.cpp" />
     <ClCompile Include="GenerujRaport.cpp" />
     <ClCompile Include="LoginWindow.cpp" />
+    <ClCompile Include="NowaWiadomo.cpp" />
     <ClCompile Include="project_managment.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -111,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EdycjaRaportow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="NowaWiadomo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
