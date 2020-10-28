@@ -143,7 +143,7 @@
        <string notr="true">background-color: rgb(170, 170, 255);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Twoje_projekty">
        <widget class="QWidget" name="widget" native="true">
@@ -180,51 +180,6 @@
             <property name="selectionRectVisible">
              <bool>false</bool>
             </property>
-            <item>
-             <property name="text">
-              <string>Projekt glowny</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>test</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>wyszukiwarka</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>mnozenie macierzy</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>nakladanie winiety</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>nakladanie filtra czarnego</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>grafika1</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>grafika2</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>poboczny</string>
-             </property>
-            </item>
            </widget>
           </item>
          </layout>

@@ -4,11 +4,16 @@
 #include <QListWidgetItem>
 #include <qmessagebox.h>
 
-
 project_managment::project_managment(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
+    
+    //Œcie¿ka z danymi do listy projektów, do zmiany po pod³¹czeniu DB
+    QDir myPath("C:/Program Files/");
+    myPath.setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
+    availableProjectList = myPath.entryList();
+    ui.ProjectList->addItems(availableProjectList);
 }
 // Zmiana miêdzy widokami w StackedWidget
 void project_managment::on_pushButton_1_clicked()
@@ -39,17 +44,12 @@ void project_managment::search_for_string(QString search_str)
         }
     }
 }
+
 //Wyszukiwanie przy zmianie tekstu 
-// NIE DZIALA - Sleyn
-void project_managment::lineEdit_search_returnPressed()
+//Skonfigurowane do wczytywania i filtrowania listy folderów z lini 13 
+void project_managment::on_lineEdit_search_textChanged(const QString& arg1)
 {
-    search_for_string(ui.lineEdit_search->text());
-    QMessageBox::information(this, "Login", "correct");
+    QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
+    ui.ProjectList->clear();
+    ui.ProjectList->addItems(availableProjectList.filter(regExp));
 }
-/*
-void project_managment::on_pushButton_search_clicked()
-{
-    QMessageBox::information(this, "Login", "correct");
-    search_for_string(ui.lineEdit_search->text());
-}
-*/
