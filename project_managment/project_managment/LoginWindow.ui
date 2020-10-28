@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>476</width>
-    <height>473</height>
+    <width>593</width>
+    <height>378</height>
    </rect>
   </property>
   <property name="font">
@@ -23,7 +23,7 @@
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Loginpage">
       <layout class="QGridLayout" name="gridLayout_3">
@@ -71,7 +71,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_login_2">
+             <widget class="QPushButton" name="pushButton_register">
               <property name="text">
                <string>Zarejestruj się</string>
               </property>
@@ -86,25 +86,15 @@
      </widget>
      <widget class="QWidget" name="Registerpage">
       <layout class="QGridLayout" name="gridLayout_4">
+       <item row="2" column="1" rowspan="2" colspan="4">
+        <widget class="QLineEdit" name="lineEdit_username_4"/>
+       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Imię</string>
          </property>
         </widget>
-       </item>
-       <item row="0" column="1" colspan="4">
-        <widget class="QLineEdit" name="lineEdit_username_2"/>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Nazwisko</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="4">
-        <widget class="QLineEdit" name="lineEdit_username_3"/>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_5">
@@ -113,8 +103,27 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1" rowspan="2" colspan="4">
-        <widget class="QLineEdit" name="lineEdit_username_4"/>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Nazwisko</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" colspan="4">
+        <widget class="QLineEdit" name="lineEdit_username_5"/>
+       </item>
+       <item row="0" column="1" colspan="4">
+        <widget class="QLineEdit" name="lineEdit_username_2"/>
+       </item>
+       <item row="7" column="1" colspan="4">
+        <widget class="QListWidget" name="listWidget"/>
+       </item>
+       <item row="6" column="1" colspan="4">
+        <widget class="QLineEdit" name="lineEdit_username_6"/>
+       </item>
+       <item row="1" column="1" colspan="4">
+        <widget class="QLineEdit" name="lineEdit_username_3"/>
        </item>
        <item row="3" column="0" rowspan="2">
         <widget class="QLabel" name="label_6">
@@ -123,8 +132,12 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1" colspan="4">
-        <widget class="QLineEdit" name="lineEdit_username_5"/>
+       <item row="5" column="0" rowspan="2">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Powtórz hasło</string>
+         </property>
+        </widget>
        </item>
        <item row="7" column="0">
         <widget class="QLabel" name="label_8">
@@ -133,30 +146,17 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="1" colspan="4">
-        <widget class="QListWidget" name="listWidget"/>
-       </item>
-       <item row="5" column="0" rowspan="2">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Powtórz hasło</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1" colspan="4">
-        <widget class="QLineEdit" name="lineEdit_username_6"/>
-       </item>
-       <item row="8" column="0" colspan="2">
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>Zarejestruj się</string>
-         </property>
-        </widget>
-       </item>
        <item row="8" column="2" colspan="3">
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="pushButton_cancel">
          <property name="text">
           <string>Anuluj</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="2">
+        <widget class="QPushButton" name="pushButton_register_2">
+         <property name="text">
+          <string>Zarejestruj się</string>
          </property>
         </widget>
        </item>
