@@ -34,9 +34,11 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="C:\Program Files\libpqxx\master_x64\libpqxx_ALL.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="C:\Program Files\libpqxx\master_x64\libpqxx_ALL.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -47,12 +49,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>msvc2019_64</QtInstall>
+    <QtInstall>5.15.1</QtInstall>
     <QtModules>core;gui;widgets;sql</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
-    <QtInstall>msvc2019_64</QtInstall>
+    <QtInstall>5.15.1</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
@@ -94,10 +96,13 @@
     <QtUic Include="wiadomosci_okno.ui" />
     <QtUic Include="project_managment.ui" />
     <QtMoc Include="project_managment.h" />
+    <ClCompile Include="kontroler.cpp" />
+    <ClCompile Include="model.cpp" />
     <ClCompile Include="raport_edycja_okno.cpp" />
     <ClCompile Include="edycja_zadanie_okno.cpp" />
     <ClCompile Include="raport_tworz_okno.cpp" />
     <ClCompile Include="logowanie_okno.cpp" />
+    <ClCompile Include="tabele.cpp" />
     <ClCompile Include="wiadomosci_okno.cpp" />
     <ClCompile Include="project_managment.cpp" />
     <ClCompile Include="main.cpp" />
@@ -116,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="wiadomosci_okno.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="klasy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

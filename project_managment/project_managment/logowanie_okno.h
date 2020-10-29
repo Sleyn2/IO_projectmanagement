@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include "ui_logowanie_okno.h"
+#include <pqxx/pqxx>
 
 class logowanie_okno : public QWidget
 {

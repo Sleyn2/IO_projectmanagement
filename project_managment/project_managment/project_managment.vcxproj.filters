@@ -56,6 +56,15 @@
     <ClCompile Include="logowanie_okno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tabele.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="kontroler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="logowanie_okno.h">
@@ -90,5 +99,10 @@
     <QtUic Include="raport_tworz_okno.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="klasy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
