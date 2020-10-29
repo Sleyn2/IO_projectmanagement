@@ -41,53 +41,53 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LoginWindow.cpp">
+    <ClCompile Include="wiadomosci_okno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GenerujRaport.cpp">
+    <ClCompile Include="edycja_zadanie_okno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EdycjaZadan.cpp">
+    <ClCompile Include="raport_edycja_okno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EdycjaRaportow.cpp">
+    <ClCompile Include="raport_tworz_okno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NowaWiadomo.cpp">
+    <ClCompile Include="logowanie_okno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="LoginWindow.h">
+    <QtMoc Include="logowanie_okno.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="GenerujRaport.h">
+    <QtMoc Include="wiadomosci_okno.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="EdycjaZadan.h">
+    <QtMoc Include="edycja_zadanie_okno.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="EdycjaRaportow.h">
+    <QtMoc Include="raport_edycja_okno.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="NowaWiadomo.h">
+    <QtMoc Include="raport_tworz_okno.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="LoginWindow.ui">
+    <QtUic Include="logowanie_okno.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="GenerujRaport.ui">
+    <QtUic Include="wiadomosci_okno.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="EdycjaZadan.ui">
+    <QtUic Include="edycja_zadanie_okno.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="EdycjaRaportow.ui">
+    <QtUic Include="raport_edycja_okno.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="NowaWiadomo.ui">
+    <QtUic Include="raport_tworz_okno.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

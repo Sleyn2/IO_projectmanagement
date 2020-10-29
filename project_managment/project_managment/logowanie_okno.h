@@ -1,15 +1,15 @@
 #pragma once
 
 #include <QWidget>
-#include "ui_LoginWindow.h"
+#include "ui_logowanie_okno.h"
 
-class LoginWindow : public QWidget
+class logowanie_okno : public QWidget
 {
 	Q_OBJECT
 
 public:
-	LoginWindow(QWidget *parent = Q_NULLPTR);
-	~LoginWindow();
+	logowanie_okno(QWidget *parent = Q_NULLPTR);
+	~logowanie_okno();
 private slots:
 	void on_pushButton_login_clicked();
 	void on_pushButton_register_clicked();
@@ -17,5 +17,5 @@ private slots:
 	void on_pushButton_cancel_clicked();
 
 private:
-	Ui::LoginWindow ui;
+	Ui::logowanie_okno ui;
 };

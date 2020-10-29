@@ -1,21 +1,21 @@
-#include "LoginWindow.h"
+#include "logowanie_okno.h"
 #include <qmessagebox.h>
 #include <QLineEdit>
 #include <qstring.h>
 
 
 
-LoginWindow::LoginWindow(QWidget *parent)
+logowanie_okno::logowanie_okno(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 }
 
-LoginWindow::~LoginWindow()
+logowanie_okno::~logowanie_okno()
 {
 }
 
-void LoginWindow::on_pushButton_login_clicked()
+void logowanie_okno::on_pushButton_login_clicked()
 {
     QString username = ui.lineEdit_username->text();
     QString password = ui.lineEdit_password->text();
@@ -32,18 +32,18 @@ void LoginWindow::on_pushButton_login_clicked()
     
 }
 
-void LoginWindow::on_pushButton_register_clicked()
+void logowanie_okno::on_pushButton_register_clicked()
 {
     ui.stackedWidget->setCurrentIndex(1);
 }
 
-void LoginWindow::on_pushButton_register_2_clicked()
+void logowanie_okno::on_pushButton_register_2_clicked()
 {
     //TODO 
     //Dodawanie u¿ytkownika do bazy danych
 }
 
-void LoginWindow::on_pushButton_cancel_clicked()
+void logowanie_okno::on_pushButton_cancel_clicked()
 {
     ui.stackedWidget->setCurrentIndex(0);
 }

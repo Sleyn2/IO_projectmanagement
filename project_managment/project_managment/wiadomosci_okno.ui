@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>NowaWiadomo</class>
- <widget class="QWidget" name="NowaWiadomo">
+ <class>wiadomosci_okno</class>
+ <widget class="QWidget" name="wiadomosci_okno">
   <property name="geometry">
    <rect>
     <x>0</x>

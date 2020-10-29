@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>EdycjaZadan</class>
- <widget class="QWidget" name="EdycjaZadan">
+ <class>edycja_zadanie_okno</class>
+ <widget class="QWidget" name="edycja_zadanie_okno">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -97,7 +97,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>

@@ -1,12 +1,12 @@
 #include "project_managment.h"
-#include "LoginWindow.h"
+#include "logowanie_okno.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     
-    LoginWindow login;
+    logowanie_okno login;
     login.show();
 
     project_managment w;

@@ -87,35 +87,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="project_managment.qrc" />
-    <QtUic Include="EdycjaRaportow.ui" />
-    <QtUic Include="EdycjaZadan.ui" />
-    <QtUic Include="GenerujRaport.ui" />
-    <QtUic Include="LoginWindow.ui" />
-    <QtUic Include="NowaWiadomo.ui" />
+    <QtUic Include="raport_edycja_okno.ui" />
+    <QtUic Include="edycja_zadanie_okno.ui" />
+    <QtUic Include="raport_tworz_okno.ui" />
+    <QtUic Include="logowanie_okno.ui" />
+    <QtUic Include="wiadomosci_okno.ui" />
     <QtUic Include="project_managment.ui" />
     <QtMoc Include="project_managment.h" />
-    <ClCompile Include="EdycjaRaportow.cpp" />
-    <ClCompile Include="EdycjaZadan.cpp" />
-    <ClCompile Include="GenerujRaport.cpp" />
-    <ClCompile Include="LoginWindow.cpp" />
-    <ClCompile Include="NowaWiadomo.cpp" />
+    <ClCompile Include="raport_edycja_okno.cpp" />
+    <ClCompile Include="edycja_zadanie_okno.cpp" />
+    <ClCompile Include="raport_tworz_okno.cpp" />
+    <ClCompile Include="logowanie_okno.cpp" />
+    <ClCompile Include="wiadomosci_okno.cpp" />
     <ClCompile Include="project_managment.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="LoginWindow.h" />
+    <QtMoc Include="logowanie_okno.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="GenerujRaport.h" />
+    <QtMoc Include="raport_tworz_okno.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="EdycjaZadan.h" />
+    <QtMoc Include="edycja_zadanie_okno.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="EdycjaRaportow.h" />
+    <QtMoc Include="raport_edycja_okno.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="NowaWiadomo.h" />
+    <QtMoc Include="wiadomosci_okno.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

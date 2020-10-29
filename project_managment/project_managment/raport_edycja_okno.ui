@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>EdycjaRaportow</class>
- <widget class="QWidget" name="EdycjaRaportow">
+ <class>raport_edycja_okno</class>
+ <widget class="QWidget" name="raport_edycja_okno">
   <property name="geometry">
    <rect>
     <x>0</x>
