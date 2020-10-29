@@ -24,8 +24,9 @@ void logowanie_okno::on_pushButton_login_clicked()
     
     if (logowanie.logowanie(username.toStdString(), password.toStdString()))
     {
+        //TODO
+        //przejscie do bastepnego okna
 
-        //tutaj bêdzie logowanie
         QMessageBox::information(this, "Login", "correct");
     }
     else
@@ -42,8 +43,22 @@ void logowanie_okno::on_pushButton_register_clicked()
 
 void logowanie_okno::on_pushButton_register_2_clicked()
 {
-    //TODO 
-    //Dodawanie u¿ytkownika do bazy danych
+  
+    Fun_okno_logowania rejestracja;
+    QString imie = ui.lineEdit_imie->text();
+    QString nazwisko = ui.lineEdit_nazwisko->text();
+    QString login = ui.lineEdit_login->text();
+    QString haslo = ui.lineEdit_haslo->text();
+    QString powtorz_haslo = ui.lineEdit_powtorz_haslo->text();
+
+    //TODO
+    //Sprawdzanie poprawnosci danych i wyswietlanie komunikatow
+    if (haslo == powtorz_haslo)
+    {
+       if ( rejestracja.rejestracja(imie.toStdString(), nazwisko.toStdString(), login.toStdString(), haslo.toStdString()));
+        ui.stackedWidget->setCurrentIndex(0);
+    }
+
 }
 
 void logowanie_okno::on_pushButton_cancel_clicked()
