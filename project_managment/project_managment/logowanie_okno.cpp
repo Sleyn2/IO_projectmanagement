@@ -47,11 +47,11 @@ void logowanie_okno::on_pushButton_register_2_clicked()
 {
   
     Fun_okno_logowania rejestracja;
-    QString imie = ui.lineEdit_imie->text();
-    QString nazwisko = ui.lineEdit_nazwisko->text();
-    QString login = ui.lineEdit_login->text();
-    QString haslo = ui.lineEdit_haslo->text();
-    QString powtorz_haslo = ui.lineEdit_powtorz_haslo->text();
+    QString imie = ui.lineEdit_1_imie->text();
+    QString nazwisko = ui.lineEdit_2_nazwisko->text();
+    QString login = ui.lineEdit_3_login->text();
+    QString haslo = ui.lineEdit_4_haslo->text();
+    QString powtorz_haslo = ui.lineEdit_5_powtorz_haslo->text();
 
     //TODO
     //Sprawdzanie poprawnosci danych i wyswietlanie komunikatow
