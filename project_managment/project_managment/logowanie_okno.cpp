@@ -24,10 +24,12 @@ void logowanie_okno::on_pushButton_login_clicked()
     
     if (logowanie.logowanie(username.toStdString(), password.toStdString()))
     {
-        //TODO
-        //przejscie do bastepnego okna
-
-        QMessageBox::information(this, "Login", "correct");
+        string msg = "zalogowano jako " + username.toStdString();
+        char temp2[35];
+        strcpy(temp2, msg.c_str());
+        QMessageBox::information(this, "Login", temp2);
+        this->hidden->show();
+        this->close();
     }
     else
     {
@@ -64,4 +66,10 @@ void logowanie_okno::on_pushButton_register_2_clicked()
 void logowanie_okno::on_pushButton_cancel_clicked()
 {
     ui.stackedWidget->setCurrentIndex(0);
+}
+
+
+void logowanie_okno::setwindow(project_managment* newhidden)
+{
+    this->hidden = newhidden;
 }
