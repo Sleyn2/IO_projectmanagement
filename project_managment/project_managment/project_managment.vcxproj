@@ -96,8 +96,10 @@
     <QtUic Include="wiadomosci_okno.ui" />
     <QtUic Include="project_managment.ui" />
     <QtMoc Include="project_managment.h" />
-    <ClCompile Include="kontroler.cpp" />
-    <ClCompile Include="model.cpp" />
+    <ClCompile Include="Fun-okno_logowania.cpp" />
+    <ClCompile Include="Fun_projekty.cpp" />
+    <ClCompile Include="Modyfikator_bazy.cpp" />
+    <ClCompile Include="Pobieranie_bazy.cpp" />
     <ClCompile Include="raport_edycja_okno.cpp" />
     <ClCompile Include="edycja_zadanie_okno.cpp" />
     <ClCompile Include="raport_tworz_okno.cpp" />

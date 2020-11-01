@@ -33,19 +33,36 @@ public:
     string pobierz_login();
     string pobierz_haslo();
     string pobierz_id_pracownika();
-    string pobierz_czy_administator();
+};
+
+class Projekt
+{
+private:
+    string id_projektu, nazwa, opis, data_rozpoczecia, data_zakonczenia, id_projektu_nadrzednego, status, zadanie;
+public:
+    Projekt(string id_p, string n, string o, string data_r, string data_z, string z, string id_p_n, string s);
+    string pobierz_id_projektu();
+    string pobierz_nazwa();
+    string pobierz_id_projektu_nadrzednego();
+    string pobierz_id_opis();
+    string pobierz_data_rozpoczecia();
+    string pobierz_data_zakonczenia();
+    string pobierz_status();
+    string pobierz_zadanie();
 };
 
 class Pobieranie_bazy
 {
 public:
     vector<Pracownik> pobierz_pracownik(string zapytanie);
+    vector<Projekt> pobierz_projekt(string zapytanie);
 };
 
 class Modyfikator_bazy
 {
 public:
-    bool aktualizuj(Prosba prosba);
+    bool aktualizuj_prosbe(Prosba *prosba);
+    bool aktualizuj_projekt(Projekt *Projekt);
 };
 
 class Fun_okno_logowania

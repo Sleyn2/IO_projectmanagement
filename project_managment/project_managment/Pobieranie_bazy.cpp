@@ -24,16 +24,21 @@ vector<Pracownik> Pobieranie_bazy::pobierz_pracownik(string zapytanie)
     }
 }
 
-bool Modyfikator_bazy::aktualizuj(Prosba prosba)
+vector<Projekt> Pobieranie_bazy::pobierz_projekt(string zapytanie)
 {
+    vector<Projekt> projekty;
     connection C("dbname = test user = postgres password = postgres \
       hostaddr = 127.0.0.1 port = 5432");
     if (C.is_open()) {
         work W{ C };
-        W.exec0("insert into Prosby_o_dodanie (Imie, Nazwisko, Login, Haslo) values ('" + to_string(prosba.pobierz_imie()) + "', '"
-            + to_string(prosba.pobierz_nazwisko()) + "', '" + to_string(prosba.pobierz_login()) + "', '" + to_string(prosba.pobierz_haslo()) + "');");
-        W.commit();
-        return true;
+        result R{ W.exec(zapytanie) };
+
+        for (auto wiersz : R)
+        {
+            Projekt projekt(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]), to_string(wiersz[5]),
+                to_string(wiersz[6]), to_string(wiersz[7]));
+            projekty.push_back(projekt);
+        }
+        return projekty;
     }
-    else return false;
 }

@@ -59,10 +59,16 @@
     <ClCompile Include="tabele.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="model.cpp">
+    <ClCompile Include="Modyfikator_bazy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="kontroler.cpp">
+    <ClCompile Include="Pobieranie_bazy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fun-okno_logowania.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fun_projekty.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -18,14 +18,14 @@ bool Fun_okno_logowania::logowanie(string login, string haslo)
         else
             return false;
     }
-    else 
+    else
         return false;
 }
 
 bool Fun_okno_logowania::rejestracja(string imie, string nazwisko, string login, string haslo)
 {
     Modyfikator_bazy m;
-    Prosba prosba(imie, nazwisko, login, haslo);
-    m.aktualizuj(prosba);
+    Prosba* prosba = new Prosba(imie, nazwisko, login, haslo);
+    m.aktualizuj_prosbe(prosba);
     return true;
 }
