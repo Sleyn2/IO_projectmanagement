@@ -70,5 +70,23 @@ class Fun_okno_logowania
 public:
     bool logowanie(string login, string haslo);
     bool rejestracja(string imie, string nazwisko, string login, string haslo);
+    void zapisz_dane_logowania(Pracownik pracownik);
 
+};
+
+class Dane_zalogowanego_pracownika
+{
+private:
+    string imie, nazwisko, login, haslo, czy_administator, id_pracownika;
+    static Dane_zalogowanego_pracownika* w_instancja;
+    Dane_zalogowanego_pracownika(string id_p, string i, string n, string l, string h, string czy_a);
+public:
+    string pobierz_imie();
+    string pobierz_nazwisko();
+    string pobierz_login();
+    string pobierz_haslo();
+    string pobierz_id_pracownika();
+    string pobierz_czy_administator();
+    static Dane_zalogowanego_pracownika* instancja();
+    static Dane_zalogowanego_pracownika* utworz_instancje(string id_p, string i, string n, string l, string h, string czy_a);
 };
