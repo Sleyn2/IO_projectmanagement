@@ -43,3 +43,12 @@ string Projekt::pobierz_data_rozpoczecia() { return this->data_rozpoczecia; }
 string Projekt::pobierz_data_zakonczenia() { return this->data_zakonczenia; }
 string Projekt::pobierz_status() { return this->status; }
 string Projekt::pobierz_zadanie() { return this->zadanie; }
+
+
+Przypisanie_do_projektow::Przypisanie_do_projektow(string id_prac, string id_proj) :
+    id_pracownika(id_prac), id_projektu(id_proj)
+{
+}
+
+string Przypisanie_do_projektow::pobierz_id_pracownika() { return this->id_pracownika; }
+string Przypisanie_do_projektow::pobierz_id_projektu() { return this->id_projektu; }

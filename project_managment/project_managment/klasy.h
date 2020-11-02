@@ -2,6 +2,7 @@
 #include <iostream>
 #include <pqxx/pqxx>
 #include <vector>
+#include <QtWidgets/QWidget>
 
 using namespace std;
 using namespace pqxx;
@@ -51,11 +52,23 @@ public:
     string pobierz_zadanie();
 };
 
+class Przypisanie_do_projektow
+{
+private:
+    string id_pracownika, id_projektu;
+public:
+    Przypisanie_do_projektow(string id_prac, string id_proj);
+    string pobierz_id_pracownika();
+    string pobierz_id_projektu();
+};
+
+
 class Pobieranie_bazy
 {
 public:
     vector<Pracownik> pobierz_pracownik(string zapytanie);
     vector<Projekt> pobierz_projekt(string zapytanie);
+    vector<Przypisanie_do_projektow> pobierz_Przypisanie_do_projetkow(string zapytanie);
 };
 
 class Modyfikator_bazy
@@ -68,10 +81,16 @@ public:
 class Fun_okno_logowania
 {
 public:
-    bool logowanie(string login, string haslo);
-    bool rejestracja(string imie, string nazwisko, string login, string haslo);
-    void zapisz_dane_logowania(Pracownik pracownik);
+    static bool logowanie(string login, string haslo);
+    static bool rejestracja(string imie, string nazwisko, string login, string haslo);
+    static void zapisz_dane_logowania(Pracownik pracownik);
 
+};
+
+class Fun_projekty
+{
+public:
+    static QStringList pobierz_liste_projektow();
 };
 
 class Dane_zalogowanego_pracownika

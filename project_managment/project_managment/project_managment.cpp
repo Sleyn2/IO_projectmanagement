@@ -3,16 +3,13 @@
 #include <QLineEdit>
 #include <QListWidgetItem>
 #include <qmessagebox.h>
+#include "klasy.h"
 
 project_managment::project_managment(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
-    
-    //Œcie¿ka z danymi do listy projektów, do zmiany po pod³¹czeniu DB
-    QDir myPath("C:/Program Files/");
-    myPath.setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
-    availableProjectList = myPath.entryList();
+    availableProjectList = Fun_projekty::pobierz_liste_projektow();
     ui.ProjectList->addItems(availableProjectList);
 }
 // Zmiana miêdzy widokami w StackedWidget

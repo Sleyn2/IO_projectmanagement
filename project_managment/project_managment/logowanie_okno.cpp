@@ -18,11 +18,10 @@ logowanie_okno::~logowanie_okno()
 
 void logowanie_okno::on_pushButton_login_clicked()
 {
-    Fun_okno_logowania logowanie;
     QString username = ui.lineEdit_username->text();
     QString password = ui.lineEdit_password->text();
     
-    if (logowanie.logowanie(username.toStdString(), password.toStdString()))
+    if (Fun_okno_logowania::logowanie(username.toStdString(), password.toStdString()))
     {
         string msg = "zalogowano jako " + username.toStdString();
         char temp2[35];
@@ -45,8 +44,6 @@ void logowanie_okno::on_pushButton_register_clicked()
 
 void logowanie_okno::on_pushButton_register_2_clicked()
 {
-  
-    Fun_okno_logowania rejestracja;
     QString imie = ui.lineEdit_1_imie->text();
     QString nazwisko = ui.lineEdit_2_nazwisko->text();
     QString login = ui.lineEdit_3_login->text();
@@ -57,7 +54,7 @@ void logowanie_okno::on_pushButton_register_2_clicked()
     //Sprawdzanie poprawnosci danych i wyswietlanie komunikatow
     if (haslo == powtorz_haslo)
     {
-       if ( rejestracja.rejestracja(imie.toStdString(), nazwisko.toStdString(), login.toStdString(), haslo.toStdString()));
+       if (Fun_okno_logowania::rejestracja(imie.toStdString(), nazwisko.toStdString(), login.toStdString(), haslo.toStdString()));
         ui.stackedWidget->setCurrentIndex(0);
     }
 

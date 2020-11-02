@@ -9,7 +9,7 @@ using namespace pqxx;
 
 bool Modyfikator_bazy::aktualizuj_prosbe(Prosba* prosba)
 {
-    connection C("dbname = test user = postgres password = postgres \
+    connection C("dbname = test2 user = postgres password = postgres \
       hostaddr = 127.0.0.1 port = 5432");
     if (C.is_open()) {
         work W{ C };

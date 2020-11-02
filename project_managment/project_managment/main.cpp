@@ -8,7 +8,6 @@ int main(int argc, char *argv[])
 
     project_managment w;
     logowanie_okno login;
-
     login.show();
     login.setwindow(&w);
 

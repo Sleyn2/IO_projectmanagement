@@ -6,6 +6,13 @@
 using namespace std;
 using namespace pqxx;
 
+
+void Fun_okno_logowania::zapisz_dane_logowania(Pracownik pracownik)
+{
+    Dane_zalogowanego_pracownika::instancja()->utworz_instancje(pracownik.pobierz_id_pracownika(), pracownik.pobierz_imie(), pracownik.pobierz_nazwisko(), pracownik.pobierz_login(),
+        pracownik.pobierz_haslo(), pracownik.pobierz_czy_administator());
+}
+
 bool Fun_okno_logowania::logowanie(string login, string haslo)
 {
     Pobieranie_bazy p;
@@ -32,13 +39,6 @@ bool Fun_okno_logowania::rejestracja(string imie, string nazwisko, string login,
     m.aktualizuj_prosbe(prosba);
     return true;
 }
-
-void Fun_okno_logowania::zapisz_dane_logowania(Pracownik pracownik)
-{
-    Dane_zalogowanego_pracownika::instancja()->utworz_instancje(pracownik.pobierz_id_pracownika(), pracownik.pobierz_imie(), pracownik.pobierz_nazwisko(), pracownik.pobierz_login(),
-        pracownik.pobierz_haslo(), pracownik.pobierz_czy_administator());
-}
-
 
 Dane_zalogowanego_pracownika* Dane_zalogowanego_pracownika::w_instancja = nullptr;
 
