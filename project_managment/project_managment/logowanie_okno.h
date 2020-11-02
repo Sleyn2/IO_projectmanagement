@@ -1,7 +1,8 @@
 #pragma once
 #include "project_managment.h"
-#include <QWidget>
 #include "ui_logowanie_okno.h"
+#include "klasy.h"
+#include <QWidget>
 #include <pqxx/pqxx>
 
 class logowanie_okno : public QWidget
@@ -12,6 +13,7 @@ public:
 	logowanie_okno(QWidget *parent = Q_NULLPTR);
 	~logowanie_okno();
 	void setwindow(project_managment* newhidden);
+
 private slots:
 	void on_pushButton_login_clicked();
 	void on_pushButton_register_clicked();
