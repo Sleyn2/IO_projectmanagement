@@ -45,7 +45,7 @@ public:
     string pobierz_id_projektu();
     string pobierz_nazwa();
     string pobierz_id_projektu_nadrzednego();
-    string pobierz_id_opis();
+    string pobierz_opis();
     string pobierz_data_rozpoczecia();
     string pobierz_data_zakonczenia();
     string pobierz_status();
@@ -66,16 +66,16 @@ public:
 class Pobieranie_bazy
 {
 public:
-    vector<Pracownik> pobierz_pracownik(string zapytanie);
-    vector<Projekt> pobierz_projekt(string zapytanie);
-    vector<Przypisanie_do_projektow> pobierz_Przypisanie_do_projetkow(string zapytanie);
+   static vector<Pracownik> pobierz_pracownik(string zapytanie);
+   static vector<Projekt> pobierz_projekt(string zapytanie);
+   static vector<Przypisanie_do_projektow> pobierz_Przypisanie_do_projetkow(string zapytanie);
 };
 
 class Modyfikator_bazy
 {
 public:
-    bool aktualizuj_prosbe(Prosba *prosba);
-    bool aktualizuj_projekt(Projekt *Projekt);
+   static bool aktualizuj_prosbe(Prosba *prosba);
+   static bool aktualizuj_projekt(Projekt *Projekt);
 };
 
 class Fun_okno_logowania
@@ -91,6 +91,7 @@ class Fun_projekty
 {
 public:
     static QStringList pobierz_liste_projektow();
+    static QString Fun_projekty::pobierz_opis_projektu(std::string nazwa);
 };
 
 class Dane_zalogowanego_pracownika

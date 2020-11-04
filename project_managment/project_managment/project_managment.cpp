@@ -11,6 +11,10 @@ project_managment::project_managment(QWidget *parent)
     ui.setupUi(this);
     availableProjectList = Fun_projekty::pobierz_liste_projektow();
     ui.ProjectList->addItems(availableProjectList);
+
+    //TO DO
+    //Do poni¿szej funkcji nale¿y przekazaæ nazwê wybranego projektu w wyszukiwarce
+    ui.textBrowserOpisProjektu->setText(Fun_projekty::pobierz_opis_projektu("Alarm z czujnikiem ruchu"));
 }
 // Zmiana miêdzy widokami w StackedWidget
 void project_managment::on_pushButton_1_clicked()

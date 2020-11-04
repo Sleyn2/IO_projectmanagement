@@ -15,9 +15,8 @@ void Fun_okno_logowania::zapisz_dane_logowania(Pracownik pracownik)
 
 bool Fun_okno_logowania::logowanie(string login, string haslo)
 {
-    Pobieranie_bazy p;
     vector <Pracownik> pracownik;
-    pracownik = p.pobierz_pracownik("select *from Pracownicy where login = '" + login + "'");
+    pracownik = Pobieranie_bazy::pobierz_pracownik("select *from Pracownicy where login = '" + login + "'");
     if (!pracownik.empty())
     {
         if (to_string(pracownik[0].pobierz_login()) == login && to_string(pracownik[0].pobierz_haslo()) == haslo)
@@ -34,9 +33,8 @@ bool Fun_okno_logowania::logowanie(string login, string haslo)
 
 bool Fun_okno_logowania::rejestracja(string imie, string nazwisko, string login, string haslo)
 {
-    Modyfikator_bazy m;
     Prosba* prosba = new Prosba(imie, nazwisko, login, haslo);
-    m.aktualizuj_prosbe(prosba);
+    Modyfikator_bazy::aktualizuj_prosbe(prosba);
     return true;
 }
 

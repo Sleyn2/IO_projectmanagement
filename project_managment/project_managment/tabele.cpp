@@ -38,7 +38,7 @@ Projekt::Projekt(string id_p, string n, string o, string data_r, string data_z, 
 string Projekt::pobierz_id_projektu() { return this->id_projektu; }
 string Projekt::pobierz_nazwa() { return this->nazwa; }
 string Projekt::pobierz_id_projektu_nadrzednego() { return this->id_projektu_nadrzednego; }
-string Projekt::pobierz_id_opis() { return this->opis; }
+string Projekt::pobierz_opis() { return this->opis; }
 string Projekt::pobierz_data_rozpoczecia() { return this->data_rozpoczecia; }
 string Projekt::pobierz_data_zakonczenia() { return this->data_zakonczenia; }
 string Projekt::pobierz_status() { return this->status; }
