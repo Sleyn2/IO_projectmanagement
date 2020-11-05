@@ -2,6 +2,7 @@
 #include <QList>
 #include <QLineEdit>
 #include <QListWidgetItem>
+#include <Qstring>
 #include <qmessagebox.h>
 #include "klasy.h"
 
@@ -9,11 +10,7 @@ project_managment::project_managment(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
-
-
-    //TO DO
-    //Do poni¿szej funkcji nale¿y przekazaæ nazwê wybranego projektu w wyszukiwarce
-    ui.textBrowserOpisProjektu->setText(Fun_projekty::pobierz_opis_projektu("Alarm z czujnikiem ruchu"));
+    ui.Opcje_projektu->setCurrentIndex(2);
 }
 // Zmiana miêdzy widokami w StackedWidget
 void project_managment::on_pushButton_1_clicked()
@@ -60,14 +57,14 @@ void project_managment::on_lineEdit_search_textChanged(const QString& arg1)
     ui.ProjectList->addItems(availableProjectList.filter(regExp));
 }
 
-void project_managment::on_ProjectList_ItemClicked(QListWidgetItem* item)
+void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
 {
-    for (int i = 0; i < ui.ProjectList->count(); i++)
-    {
-        if (ui.ProjectList->item(i) == item)
-        {
-            QMessageBox::information(this, "Login", "item nr: " + i);
-        }
-    }
+    QString nazwa = item->text();
 
+    if (true)
+    {
+    }
+    ui.textBrowserOpisProjektu_2->setText(Fun_projekty::pobierz_opis_projektu(nazwa.toStdString()));
+    ui.Opcje_projektu->setCurrentIndex(1);
+    ui.label_6->setText(nazwa);
 }
