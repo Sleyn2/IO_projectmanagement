@@ -5,6 +5,7 @@
 #include <QDir>
 #include <QDebug>
 #include <QRegExp>
+#include "projekty_zadania_okno.h"
 
 class project_managment : public QWidget
 {
@@ -12,17 +13,24 @@ class project_managment : public QWidget
 
 public:
     project_managment(QWidget *parent = Q_NULLPTR);
-    void odswiez();
+    void odswiezProjekty();
+    void odswiezZadania();
     void ustaw_admin();
     void ustaw_user();
+    void ustaw_okno_tworzenia(Projekty_zadania_okno* temp);
+
 private slots:
     void on_pushButton_1_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
-    void search_for_string(QString search_str);
+    void on_pushButton_utworzProjekt_clicked();
+    void on_pushButton_utworzZadanie_clicked();
     void on_lineEdit_search_textChanged(const QString &arg1);
+    void onlineEdit_search_task_textChanged(const QString& arg1);
     void on_ProjectList_itemClicked(QListWidgetItem* item);
 private:
     Ui::project_managmentClass ui;
+    Projekty_zadania_okno* tworzenie_zadan_projektow;
     QStringList availableProjectList;
+    QStringList availableTaskList;
 };

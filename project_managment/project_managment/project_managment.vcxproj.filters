@@ -71,6 +71,9 @@
     <ClCompile Include="Fun_projekty.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="projekty_zadania_okno.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="logowanie_okno.h">
@@ -88,6 +91,9 @@
     <QtMoc Include="raport_tworz_okno.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="projekty_zadania_okno.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="logowanie_okno.ui">
@@ -103,6 +109,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="raport_tworz_okno.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="projekty_zadania_okno.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

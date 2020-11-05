@@ -27,7 +27,7 @@ void logowanie_okno::on_pushButton_login_clicked()
         char temp2[35];
         strcpy(temp2, msg.c_str());
         QMessageBox::information(this, "Login", temp2);
-        this->hidden->odswiez();
+        this->hidden->odswiezProjekty();
         this->hidden->show();
         this->close();
     }

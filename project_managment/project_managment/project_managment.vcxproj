@@ -89,6 +89,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="project_managment.qrc" />
+    <QtUic Include="projekty_zadania_okno.ui" />
     <QtUic Include="raport_edycja_okno.ui" />
     <QtUic Include="edycja_zadanie_okno.ui" />
     <QtUic Include="raport_tworz_okno.ui" />
@@ -100,6 +101,7 @@
     <ClCompile Include="Fun_projekty.cpp" />
     <ClCompile Include="Modyfikator_bazy.cpp" />
     <ClCompile Include="Pobieranie_bazy.cpp" />
+    <ClCompile Include="projekty_zadania_okno.cpp" />
     <ClCompile Include="raport_edycja_okno.cpp" />
     <ClCompile Include="edycja_zadanie_okno.cpp" />
     <ClCompile Include="raport_tworz_okno.cpp" />
@@ -126,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="klasy.h" />
+    <QtMoc Include="projekty_zadania_okno.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

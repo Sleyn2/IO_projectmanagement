@@ -27,34 +27,44 @@ void project_managment::on_pushButton_3_clicked()
 {
     ui.stackedWidget->setCurrentIndex(2);
 }
-//Wyszukiwarka w ekranie projektów
-void project_managment::search_for_string(QString search_str)
-{ 
-    QList<QListWidgetItem*> my_found_items;
 
-    for (int i = 0; i < ui.ProjectList->count(); i++)
-    {
-        QListWidgetItem* current = ui.ProjectList->item(i);
-        if (current->text().contains(search_str))
-        {
-            my_found_items.append(current);
-        }
-    }
+void project_managment::on_pushButton_utworzProjekt_clicked()
+{
+    this->tworzenie_zadan_projektow->ustaw_tryb(true);
+    this->tworzenie_zadan_projektow->show();
 }
 
-void project_managment::odswiez()
+void project_managment::on_pushButton_utworzZadanie_clicked()
+{
+    this->tworzenie_zadan_projektow->ustaw_tryb(false);
+    this->tworzenie_zadan_projektow->show();
+}
+
+void project_managment::odswiezProjekty()
 {
     availableProjectList = Fun_projekty::pobierz_liste_projektow();
     ui.ProjectList->addItems(availableProjectList);
 }
 
+void project_managment::odswiezZadania()
+{
+    availableTaskList = Fun_projekty::pobierz_liste_zadan();
+    ui.listWidget_zadania->addItems(availableTaskList);
+}
+
 //Wyszukiwanie przy zmianie tekstu 
-//Skonfigurowane do wczytywania i filtrowania listy folderów z lini 13 
 void project_managment::on_lineEdit_search_textChanged(const QString& arg1)
 {
     QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
     ui.ProjectList->clear();
     ui.ProjectList->addItems(availableProjectList.filter(regExp));
+}
+
+void project_managment::onlineEdit_search_task_textChanged(const QString& arg1)
+{
+    QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
+    ui.listWidget_zadania->clear();    
+    ui.listWidget_zadania->addItems(availableTaskList.filter(regExp));
 }
 
 void project_managment::ustaw_user()
@@ -88,5 +98,10 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
     {
         ustaw_user();
     }
+    this->odswiezZadania();
+}
 
+void project_managment::ustaw_okno_tworzenia(Projekty_zadania_okno* temp)
+{
+    this->tworzenie_zadan_projektow = temp;
 }

@@ -183,7 +183,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_16">
+           <widget class="QPushButton" name="pushButton_utworzProjekt">
             <property name="font">
              <font>
               <pointsize>12</pointsize>
@@ -441,10 +441,10 @@ p, li { white-space: pre-wrap; }
          <widget class="QListWidget" name="listWidget_2">
           <property name="geometry">
            <rect>
-            <x>20</x>
+            <x>30</x>
             <y>400</y>
-            <width>256</width>
-            <height>192</height>
+            <width>300</width>
+            <height>200</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -499,8 +499,8 @@ p, li { white-space: pre-wrap; }
          <widget class="QPushButton" name="pushButton_9">
           <property name="geometry">
            <rect>
-            <x>20</x>
-            <y>600</y>
+            <x>30</x>
+            <y>610</y>
             <width>161</width>
             <height>41</height>
            </rect>
@@ -580,16 +580,16 @@ p, li { white-space: pre-wrap; }
            <string notr="true">background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
-           <string>Zakończ zadanie</string>
+           <string>Nowe zadanie</string>
           </property>
          </widget>
          <widget class="QListWidget" name="listWidget_3">
           <property name="geometry">
            <rect>
-            <x>330</x>
+            <x>380</x>
             <y>400</y>
-            <width>331</width>
-            <height>191</height>
+            <width>300</width>
+            <height>220</height>
            </rect>
           </property>
           <property name="styleSheet">
