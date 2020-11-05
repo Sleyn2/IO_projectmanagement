@@ -52,6 +52,7 @@ Dane_zalogowanego_pracownika* Dane_zalogowanego_pracownika::instancja()
 }
 
 
+
 string Dane_zalogowanego_pracownika::pobierz_imie() { return this->imie; }
 string Dane_zalogowanego_pracownika::pobierz_nazwisko() { return this->nazwisko; }
 string Dane_zalogowanego_pracownika::pobierz_login() { return this->login; }
@@ -59,7 +60,9 @@ string Dane_zalogowanego_pracownika::pobierz_haslo() { return this->haslo; }
 string Dane_zalogowanego_pracownika::pobierz_id_pracownika() { return this->id_pracownika; }
 string Dane_zalogowanego_pracownika::pobierz_czy_administator() { return this->czy_administator; }
 string Dane_zalogowanego_pracownika::pobierz_nazwe_projektu() { return this->nazwa_projektu; }
+string Dane_zalogowanego_pracownika::pobierz_nazwe_zadania() { return this->nazwa_zadania; }
 void Dane_zalogowanego_pracownika::ustaw_nazwe_projektu(string id_proj) { this->nazwa_projektu = id_proj; }
+void Dane_zalogowanego_pracownika::ustaw_nazwe_zadania(string id_zad) { this->nazwa_zadania = id_zad; }
 
 
 Dane_zalogowanego_pracownika* Dane_zalogowanego_pracownika::utworz_instancje(string id_p, string i, string n, string l, string h, string czy_a)

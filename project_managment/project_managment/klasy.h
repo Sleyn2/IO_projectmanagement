@@ -99,13 +99,14 @@ public:
     static QStringList pobierz_liste_zadan();
     static bool utworz_projekt(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
     static bool utworz_zadanie(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
+    static bool dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik);
 };
 
 class Dane_zalogowanego_pracownika
 {
 private:
     string imie, nazwisko, login, haslo, czy_administator, id_pracownika;
-    string nazwa_projektu;
+    string nazwa_projektu, nazwa_zadania;
     static Dane_zalogowanego_pracownika* w_instancja;
     Dane_zalogowanego_pracownika(string id_p, string i, string n, string l, string h, string czy_a);
 public:
@@ -116,7 +117,9 @@ public:
     string pobierz_id_pracownika();
     string pobierz_czy_administator();
     string pobierz_nazwe_projektu();
+    string pobierz_nazwe_zadania();
     void ustaw_nazwe_projektu(string id_proj);
+    void ustaw_nazwe_zadania(string id_zad);
     static Dane_zalogowanego_pracownika* instancja();
     static Dane_zalogowanego_pracownika* utworz_instancje(string id_p, string i, string n, string l, string h, string czy_a);
 };

@@ -89,3 +89,14 @@ bool Fun_projekty::utworz_zadanie(string nazwa, string opis, string data_rozpocz
 		return true;
 	}
 }
+
+bool Fun_projekty::dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik)
+{
+	vector<Projekt> id_projektu;
+	id_projektu = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
+		Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
+
+	Przypisanie_do_projektow* przypisanie = new Przypisanie_do_projektow(id_pracownika, id_projektu[0].pobierz_id_projektu(), kierownik);
+	Modyfikator_bazy::aktualizuj_przyp_do_proj(przypisanie);
+	return true;
+}
