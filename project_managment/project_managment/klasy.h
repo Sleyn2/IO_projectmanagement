@@ -97,6 +97,8 @@ public:
     static QString pobierz_opis_projektu(string nazwa);
     static bool czy_kierownik ();
     static QStringList pobierz_liste_zadan();
+    static bool utworz_projekt(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
+    static bool utworz_zadanie(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
 };
 
 class Dane_zalogowanego_pracownika

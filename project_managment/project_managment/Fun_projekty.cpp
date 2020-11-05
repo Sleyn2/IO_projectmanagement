@@ -59,3 +59,33 @@ bool Fun_projekty::czy_kierownik()
 	if (przypisania[0].pobierz_kierownik() == "1") return true;
 	else return false;
 }
+
+bool Fun_projekty::utworz_projekt(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status)
+{
+	vector<Projekt> czy_sa_projekty;
+	czy_sa_projekty = Pobieranie_bazy::pobierz_projekt("select * from Projekt where Nazwa = " + nazwa + ";");
+	if (!czy_sa_projekty.empty()) return false;
+	else
+	{
+		Projekt* projekt = new Projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "false", "null", status);
+		Modyfikator_bazy::aktualizuj_projekt(projekt);
+		return true;
+	}
+}
+
+bool Fun_projekty::utworz_zadanie(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status)
+{
+	vector<Projekt> czy_sa_projekty;
+	czy_sa_projekty = Pobieranie_bazy::pobierz_projekt("select * from Projekt where Nazwa = " + nazwa + ";");
+	if (!czy_sa_projekty.empty()) return false;
+	else
+	{
+		vector<Projekt> projekt;
+		projekt = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
+			Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
+
+		Projekt* zadanie = new Projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "true", projekt[0].pobierz_id_projektu(), status);
+		Modyfikator_bazy::aktualizuj_projekt(zadanie);
+		return true;
+	}
+}
