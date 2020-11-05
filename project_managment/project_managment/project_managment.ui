@@ -198,10 +198,10 @@
          <widget class="QTextBrowser" name="textBrowserOpisProjektu_1">
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>70</y>
-            <width>281</width>
-            <height>231</height>
+            <x>30</x>
+            <y>50</y>
+            <width>300</width>
+            <height>250</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -219,7 +219,7 @@ p, li { white-space: pre-wrap; }
           <property name="geometry">
            <rect>
             <x>100</x>
-            <y>20</y>
+            <y>10</y>
             <width>550</width>
             <height>30</height>
            </rect>
@@ -239,10 +239,10 @@ p, li { white-space: pre-wrap; }
          <widget class="QTextBrowser" name="textBrowser_2">
           <property name="geometry">
            <rect>
-            <x>320</x>
-            <y>70</y>
-            <width>331</width>
-            <height>231</height>
+            <x>380</x>
+            <y>50</y>
+            <width>300</width>
+            <height>250</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -260,15 +260,15 @@ p, li { white-space: pre-wrap; }
          <widget class="QPushButton" name="pushButton">
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>320</y>
-            <width>151</width>
-            <height>41</height>
+            <x>30</x>
+            <y>315</y>
+            <width>140</width>
+            <height>40</height>
            </rect>
           </property>
           <property name="font">
            <font>
-            <pointsize>14</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -336,10 +336,10 @@ p, li { white-space: pre-wrap; }
          <widget class="QPushButton" name="pushButton_7">
           <property name="geometry">
            <rect>
-            <x>320</x>
-            <y>320</y>
-            <width>151</width>
-            <height>41</height>
+            <x>380</x>
+            <y>315</y>
+            <width>140</width>
+            <height>40</height>
            </rect>
           </property>
           <property name="font">
@@ -359,15 +359,15 @@ p, li { white-space: pre-wrap; }
          <widget class="QPushButton" name="pushButton_10">
           <property name="geometry">
            <rect>
-            <x>330</x>
-            <y>310</y>
-            <width>151</width>
-            <height>41</height>
+            <x>380</x>
+            <y>315</y>
+            <width>140</width>
+            <height>40</height>
            </rect>
           </property>
           <property name="font">
            <font>
-            <pointsize>14</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -396,10 +396,10 @@ p, li { white-space: pre-wrap; }
          <widget class="QTextBrowser" name="textBrowser_3">
           <property name="geometry">
            <rect>
-            <x>330</x>
-            <y>60</y>
-            <width>331</width>
-            <height>231</height>
+            <x>380</x>
+            <y>50</y>
+            <width>300</width>
+            <height>250</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -417,7 +417,7 @@ p, li { white-space: pre-wrap; }
           <property name="geometry">
            <rect>
             <x>100</x>
-            <y>20</y>
+            <y>10</y>
             <width>550</width>
             <height>30</height>
            </rect>
@@ -437,15 +437,15 @@ p, li { white-space: pre-wrap; }
          <widget class="QPushButton" name="pushButton_8">
           <property name="geometry">
            <rect>
-            <x>20</x>
-            <y>310</y>
-            <width>151</width>
-            <height>41</height>
+            <x>30</x>
+            <y>315</y>
+            <width>150</width>
+            <height>40</height>
            </rect>
           </property>
           <property name="font">
            <font>
-            <pointsize>14</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -497,11 +497,18 @@ p, li { white-space: pre-wrap; }
          <widget class="QTextBrowser" name="textBrowserOpisProjektu_2">
           <property name="geometry">
            <rect>
-            <x>20</x>
-            <y>60</y>
-            <width>281</width>
-            <height>231</height>
+            <x>30</x>
+            <y>50</y>
+            <width>300</width>
+            <height>250</height>
            </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -510,22 +517,22 @@ p, li { white-space: pre-wrap; }
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:15pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Opis wybranego projektu &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
          <widget class="QPushButton" name="pushButton_11">
           <property name="geometry">
            <rect>
-            <x>510</x>
-            <y>310</y>
-            <width>151</width>
+            <x>540</x>
+            <y>315</y>
+            <width>140</width>
             <height>41</height>
            </rect>
           </property>
           <property name="font">
            <font>
-            <pointsize>14</pointsize>
+            <pointsize>12</pointsize>
            </font>
           </property>
           <property name="styleSheet">

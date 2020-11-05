@@ -14,7 +14,7 @@ public:
     project_managment(QWidget *parent = Q_NULLPTR);
     void odswiez();
     void ustaw_admin(QString nazwa);
-    void ustaw_user();
+    void ustaw_user(QString nazwa);
 private slots:
     void on_pushButton_1_clicked();
     void on_pushButton_2_clicked();

@@ -57,14 +57,32 @@ void project_managment::on_lineEdit_search_textChanged(const QString& arg1)
     ui.ProjectList->addItems(availableProjectList.filter(regExp));
 }
 
+void project_managment::ustaw_user(QString nazwa)
+{
+    ui.Opcje_projektu->setCurrentIndex(0);
+    ui.textBrowserOpisProjektu_1->setText(Fun_projekty::pobierz_opis_projektu(nazwa.toStdString()));
+    ui.label_6->setText(nazwa);
+}
+
+void project_managment::ustaw_admin(QString nazwa)
+{
+    ui.Opcje_projektu->setCurrentIndex(1);
+    ui.textBrowserOpisProjektu_2->setText(Fun_projekty::pobierz_opis_projektu(nazwa.toStdString()));
+    ui.label_6->setText(nazwa);
+}
+
 void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
 {
     QString nazwa = item->text();
+    Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_projektu(nazwa.toStdString());
 
-    if (true)
+    if (Fun_projekty::czy_kierownik(nazwa.toStdString()))
     {
+        ustaw_admin(nazwa);
     }
-    ui.textBrowserOpisProjektu_2->setText(Fun_projekty::pobierz_opis_projektu(nazwa.toStdString()));
-    ui.Opcje_projektu->setCurrentIndex(1);
-    ui.label_6->setText(nazwa);
+    else
+    {
+        ustaw_user(nazwa);
+    }
+
 }
