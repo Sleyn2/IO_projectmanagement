@@ -95,7 +95,7 @@ class Fun_projekty
 public:
     static QStringList pobierz_liste_projektow();
     static QString pobierz_opis_projektu(string nazwa);
-    static bool czy_kierownik (string nazwa);
+    static bool czy_kierownik ();
 };
 
 class Dane_zalogowanego_pracownika

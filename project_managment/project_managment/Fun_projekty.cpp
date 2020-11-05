@@ -29,11 +29,16 @@ QString Fun_projekty::pobierz_opis_projektu(std::string nazwa)
 	else return QString::fromStdString("Nie wybrano projektu");
 }
 
-bool Fun_projekty::czy_kierownik(string nazwa)
+bool Fun_projekty::czy_kierownik()
 {
 	vector<Przypisanie_do_projektow> przypisania;
+	vector<Projekt> projekt;
+	projekt = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" + 
+		Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
+
 	przypisania = Pobieranie_bazy::pobierz_Przypisanie_do_projetkow("select * from Przypisanie_do_projektow where Id_pracownika = '" 
-		+ Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "' and Id_projektu = '" + nazwa + "';" );
+		+ Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "' and Id_projektu = '" + projekt[0].pobierz_id_projektu() + "';" );
+
 	if (przypisania[0].pobierz_kierownik() == "true") return true;
 	else return false;
 }
