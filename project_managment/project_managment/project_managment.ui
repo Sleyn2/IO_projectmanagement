@@ -158,8 +158,8 @@
         <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>10</y>
+           <x>11</x>
+           <y>11</y>
            <width>231</width>
            <height>651</height>
           </rect>
@@ -182,6 +182,21 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_16">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string>Nowy projekt</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </widget>
@@ -199,9 +214,9 @@
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>50</y>
+            <y>80</y>
             <width>300</width>
-            <height>250</height>
+            <height>220</height>
            </rect>
           </property>
           <property name="font">
@@ -245,9 +260,9 @@ p, li { white-space: pre-wrap; }
           <property name="geometry">
            <rect>
             <x>380</x>
-            <y>50</y>
+            <y>80</y>
             <width>300</width>
-            <height>250</height>
+            <height>220</height>
            </rect>
           </property>
           <property name="font">
@@ -364,6 +379,42 @@ p, li { white-space: pre-wrap; }
            <string>Stwórz podprojekt</string>
           </property>
          </widget>
+         <widget class="QLabel" name="label_10">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>45</y>
+            <width>170</width>
+            <height>30</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>członkowie zespołu:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_11">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>45</y>
+            <width>170</width>
+            <height>30</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>członkowie zespołu:</string>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="Admin_page">
          <widget class="QPushButton" name="pushButton_10">
@@ -401,26 +452,6 @@ p, li { white-space: pre-wrap; }
           </property>
           <property name="uniformItemSizes">
            <bool>false</bool>
-          </property>
-         </widget>
-         <widget class="QTextBrowser" name="textBrowser_3">
-          <property name="geometry">
-           <rect>
-            <x>380</x>
-            <y>50</y>
-            <width>300</width>
-            <height>250</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-          <property name="html">
-           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Lista zadań w projekcie&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_6">
@@ -508,9 +539,9 @@ p, li { white-space: pre-wrap; }
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>50</y>
+            <y>80</y>
             <width>300</width>
-            <height>250</height>
+            <height>220</height>
            </rect>
           </property>
           <property name="font">
@@ -569,6 +600,73 @@ p, li { white-space: pre-wrap; }
             <string>Lista raportów</string>
            </property>
           </item>
+         </widget>
+         <widget class="QListWidget" name="listWidget_zadania">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>110</y>
+            <width>300</width>
+            <height>190</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_search_task">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>80</y>
+            <width>300</width>
+            <height>25</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_12">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>45</y>
+            <width>171</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Lista zadań:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_13">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>45</y>
+            <width>171</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Opis projektu:</string>
+          </property>
          </widget>
         </widget>
         <widget class="QWidget" name="blank_page"/>
