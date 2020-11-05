@@ -35,3 +35,17 @@ bool Modyfikator_bazy::aktualizuj_projekt(Projekt *projekt)
     }
     else return false;
 }
+
+bool Modyfikator_bazy::aktualizuj_przyp_do_proj(Przypisanie_do_projektow *przypisanie)
+{
+    connection C("dbname = test user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
+    if (C.is_open()) {
+        work W{ C };
+        W.exec0("insert into Przypisanie_do_projektow values (" + przypisanie->pobierz_id_pracownika() + ", "
+            + przypisanie->pobierz_id_projektu() + ");");
+        W.commit();
+        return true;
+    }
+    else return false;
+}

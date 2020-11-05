@@ -60,3 +60,4 @@ vector<Przypisanie_do_projektow> Pobieranie_bazy::pobierz_Przypisanie_do_projetk
         return przypisanie_do_dzialow;
     }
 }
+

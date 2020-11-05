@@ -63,12 +63,14 @@ public:
 };
 
 
+
 class Pobieranie_bazy
 {
 public:
    static vector<Pracownik> pobierz_pracownik(string zapytanie);
    static vector<Projekt> pobierz_projekt(string zapytanie);
    static vector<Przypisanie_do_projektow> pobierz_Przypisanie_do_projetkow(string zapytanie);
+   static vector<Przypisanie_do_projektow> pobierz_przypisanie_do_projektow(string zapytanie);
 };
 
 class Modyfikator_bazy
@@ -76,6 +78,7 @@ class Modyfikator_bazy
 public:
    static bool aktualizuj_prosbe(Prosba *prosba);
    static bool aktualizuj_projekt(Projekt *Projekt);
+   static bool aktualizuj_przyp_do_proj(Przypisanie_do_projektow *przypisanie);
 };
 
 class Fun_okno_logowania
