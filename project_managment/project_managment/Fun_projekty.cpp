@@ -6,8 +6,8 @@ QStringList Fun_projekty::pobierz_liste_projektow()
 	vector<Projekt>projekty;
 	QStringList lista;
 	// instancja jest nullptr i nie wiem czemu :(
-	//string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika();
-	string id = "2";
+	string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika();
+	//string id = "2";
 	projekty = Pobieranie_bazy::pobierz_projekt("select * from projekt where Id_projektu in ( select Id_projektu from Przypisanie_do_projektow where Id_pracownika= "+ id +")");
 
 	for (auto i = projekty.begin(); i != projekty.end(); ++i)
