@@ -47,5 +47,4 @@ void Projekty_zadania_okno::on_pushButton_add_clicked()
 		else
 			QMessageBox::information(this, "Zadanie", "Zadanie o takiej nazwie ju¿ istnieje");
 	}
-	
 }

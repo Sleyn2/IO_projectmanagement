@@ -34,7 +34,7 @@ void project_managment::on_pushButton_utworzProjekt_clicked()
     this->tworzenie_zadan_projektow->show();
 }
 
-void project_managment::on_pushButton_utworzZadanie_clicked()
+void project_managment::on_pushButton_utworz_zadanie_clicked()
 {
     this->tworzenie_zadan_projektow->ustaw_tryb(false);
     this->tworzenie_zadan_projektow->show();
