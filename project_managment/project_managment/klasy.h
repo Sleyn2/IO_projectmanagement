@@ -96,6 +96,7 @@ public:
     static QStringList pobierz_liste_projektow();
     static QString pobierz_opis_projektu(string nazwa);
     static bool czy_kierownik ();
+    static QStringList pobierz_liste_zadan();
 };
 
 class Dane_zalogowanego_pracownika
