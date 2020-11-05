@@ -27,10 +27,8 @@ void logowanie_okno::on_pushButton_login_clicked()
         char temp2[35];
         strcpy(temp2, msg.c_str());
         QMessageBox::information(this, "Login", temp2);
-
-        project_managment w;
-        w.show();
-
+        this->hidden->odswiez();
+        this->hidden->show();
         this->close();
     }
     else
@@ -68,3 +66,8 @@ void logowanie_okno::on_pushButton_cancel_clicked()
     ui.stackedWidget->setCurrentIndex(0);
 }
 
+
+void logowanie_okno::setwindow(project_managment* newhidden)
+{
+    this->hidden = newhidden;
+}
