@@ -32,10 +32,7 @@ void Projekty_zadania_okno::on_pushButton_add_clicked()
 	QString start_date = ui.dateEdit_start->text();
 	QString finish_date = ui.dateEdit_finish->text();
 	QString opis = ui.textEdit_opis->toPlainText();
-
-	QMessageBox::information(this, "Projekt", start_date);
-
-	/*
+	
 	if (this->projekt)
 	{
 		if(Fun_projekty::utworz_projekt(nazwa.toStdString(), opis.toStdString(), start_date.toStdString(), finish_date.toStdString(), status.toStdString()))
@@ -50,5 +47,5 @@ void Projekty_zadania_okno::on_pushButton_add_clicked()
 		else
 			QMessageBox::information(this, "Zadanie", "Zadanie o takiej nazwie ju¿ istnieje");
 	}
-	*/
+	
 }
