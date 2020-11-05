@@ -54,7 +54,7 @@ vector<Przypisanie_do_projektow> Pobieranie_bazy::pobierz_Przypisanie_do_projetk
 
         for (auto wiersz : R)
         {
-            Przypisanie_do_projektow przypisanie(to_string(wiersz[0]), to_string(wiersz[1]));
+            Przypisanie_do_projektow przypisanie(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[1]));
             przypisanie_do_dzialow.push_back(przypisanie);
         }
         return przypisanie_do_dzialow;

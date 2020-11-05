@@ -55,11 +55,12 @@ public:
 class Przypisanie_do_projektow
 {
 private:
-    string id_pracownika, id_projektu;
+    string id_pracownika, id_projektu, kierownik;
 public:
-    Przypisanie_do_projektow(string id_prac, string id_proj);
+    Przypisanie_do_projektow(string id_prac, string id_proj, string kier);
     string pobierz_id_pracownika();
     string pobierz_id_projektu();
+    string pobierz_kierownik();
 };
 
 
@@ -70,7 +71,6 @@ public:
    static vector<Pracownik> pobierz_pracownik(string zapytanie);
    static vector<Projekt> pobierz_projekt(string zapytanie);
    static vector<Przypisanie_do_projektow> pobierz_Przypisanie_do_projetkow(string zapytanie);
-   static vector<Przypisanie_do_projektow> pobierz_przypisanie_do_projektow(string zapytanie);
 };
 
 class Modyfikator_bazy
@@ -94,13 +94,15 @@ class Fun_projekty
 {
 public:
     static QStringList pobierz_liste_projektow();
-    static QString Fun_projekty::pobierz_opis_projektu(std::string nazwa);
+    static QString pobierz_opis_projektu(string nazwa);
+    static bool czy_kierownik (string nazwa);
 };
 
 class Dane_zalogowanego_pracownika
 {
 private:
     string imie, nazwisko, login, haslo, czy_administator, id_pracownika;
+    string nazwa_projektu;
     static Dane_zalogowanego_pracownika* w_instancja;
     Dane_zalogowanego_pracownika(string id_p, string i, string n, string l, string h, string czy_a);
 public:
@@ -110,6 +112,8 @@ public:
     string pobierz_haslo();
     string pobierz_id_pracownika();
     string pobierz_czy_administator();
+    string pobierz_nazwe_projektu();
+    void ustaw_nazwe_projektu(string id_proj);
     static Dane_zalogowanego_pracownika* instancja();
     static Dane_zalogowanego_pracownika* utworz_instancje(string id_p, string i, string n, string l, string h, string czy_a);
 };

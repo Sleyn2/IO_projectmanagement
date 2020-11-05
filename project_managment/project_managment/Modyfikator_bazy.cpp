@@ -43,7 +43,7 @@ bool Modyfikator_bazy::aktualizuj_przyp_do_proj(Przypisanie_do_projektow *przypi
     if (C.is_open()) {
         work W{ C };
         W.exec0("insert into Przypisanie_do_projektow values (" + przypisanie->pobierz_id_pracownika() + ", "
-            + przypisanie->pobierz_id_projektu() + ");");
+            + przypisanie->pobierz_id_projektu() + ", " + przypisanie->pobierz_kierownik()+ ");");
         W.commit();
         return true;
     }

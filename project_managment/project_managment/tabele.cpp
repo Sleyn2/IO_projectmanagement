@@ -45,10 +45,11 @@ string Projekt::pobierz_status() { return this->status; }
 string Projekt::pobierz_zadanie() { return this->zadanie; }
 
 
-Przypisanie_do_projektow::Przypisanie_do_projektow(string id_prac, string id_proj) :
-    id_pracownika(id_prac), id_projektu(id_proj)
+Przypisanie_do_projektow::Przypisanie_do_projektow(string id_prac, string id_proj, string kier) :
+    id_pracownika(id_prac), id_projektu(id_proj), kierownik(kier)
 {
 }
 
 string Przypisanie_do_projektow::pobierz_id_pracownika() { return this->id_pracownika; }
 string Przypisanie_do_projektow::pobierz_id_projektu() { return this->id_projektu; }
+string Przypisanie_do_projektow::pobierz_kierownik() { return this->kierownik; }
