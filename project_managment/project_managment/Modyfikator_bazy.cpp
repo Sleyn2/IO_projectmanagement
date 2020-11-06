@@ -67,3 +67,18 @@ bool Modyfikator_bazy::usun_zadanie(string zadanie)
     }
     else return false;
 }
+
+bool Modyfikator_bazy::zaktualizuj_zadanie(Projekt *zadanie)
+{
+    connection C("dbname = test user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
+    if (C.is_open()) {
+        work W{ C };
+        W.exec0("update Projekt set Nazwa = '" + zadanie->pobierz_nazwa() + "', Opis = '" + zadanie->pobierz_opis() + "', Data_rozpoczecia = '" +
+            zadanie->pobierz_data_rozpoczecia() + "', Data_zakonczenia = '" + zadanie->pobierz_data_zakonczenia() + "', status= '"
+            + zadanie->pobierz_status() + "' where Nazwa = " + zadanie->pobierz_nazwa() + ";");
+        W.commit();
+        return true;
+    }
+    else return false;
+}

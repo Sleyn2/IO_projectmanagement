@@ -80,6 +80,7 @@ public:
    static bool dodaj_projekt(Projekt *Projekt);
    static bool dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie);
    static bool usun_zadanie(string zadanie);
+   static bool zaktualizuj_zadanie (Projekt* zadanie);
 };
 
 class Fun_okno_logowania
@@ -103,6 +104,7 @@ public:
     static bool dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik);
     static bool usun_zadanie(string nazwa_zadania);
     static Projekt pobierz_dane_zadania();
+    static bool zaktualizuj_zadanie(string nazwa, string opis, string data_r, string data_z, string status);
 };
 
 class Dane_zalogowanego_pracownika
