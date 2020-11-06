@@ -87,6 +87,7 @@ bool Fun_projekty::utworz_zadanie(string nazwa, string opis, string data_rozpocz
 		Projekt* zadanie = new Projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "true", projekt[0].pobierz_id_projektu(), status);
 		Modyfikator_bazy::dodaj_projekt(zadanie);
 		return true;
+		//TODO usuwanie wskoaünika
 	}
 }
 
