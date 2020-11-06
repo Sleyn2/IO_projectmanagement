@@ -68,17 +68,17 @@
       <widget class="QComboBox" name="comboBox_status">
        <item>
         <property name="text">
-         <string>Otwarte</string>
+         <string>Rozpoczety</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Zawieszone</string>
+         <string>Zawieszony</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Zamknięte</string>
+         <string>Zamknięty</string>
         </property>
        </item>
       </widget>
