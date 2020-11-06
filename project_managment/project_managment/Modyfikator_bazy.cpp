@@ -76,7 +76,7 @@ bool Modyfikator_bazy::zaktualizuj_zadanie(Projekt *zadanie)
         work W{ C };
         W.exec0("update Projekt set Nazwa = '" + zadanie->pobierz_nazwa() + "', Opis = '" + zadanie->pobierz_opis() + "', Data_rozpoczecia = '" +
             zadanie->pobierz_data_rozpoczecia() + "', Data_zakonczenia = '" + zadanie->pobierz_data_zakonczenia() + "', status= '"
-            + zadanie->pobierz_status() + "' where Nazwa = " + zadanie->pobierz_nazwa() + ";");
+            + zadanie->pobierz_status() + "' where Nazwa = '" + zadanie->pobierz_nazwa() + "';");
         W.commit();
         return true;
     }
