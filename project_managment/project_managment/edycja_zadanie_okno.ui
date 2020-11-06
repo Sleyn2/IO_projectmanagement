@@ -49,9 +49,6 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="comboBox"/>
-     </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_9">
        <property name="font">
@@ -84,6 +81,18 @@
          <string>Zamknięte</string>
         </property>
        </item>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Przejdź do edycji użytkowników</string>
+       </property>
       </widget>
      </item>
     </layout>

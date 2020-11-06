@@ -10,9 +10,20 @@ edycja_zadanie_okno::~edycja_zadanie_okno()
 {
 }
 
-void wczytaj_dane()
+void edycja_zadanie_okno::wczytaj_dane()
 {
+	QString nazwa = QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania());
+	
+	
+	
+	
+	
+	ui.lineEdit_nazwa->setText(nazwa);
+}
 
+void edycja_zadanie_okno::on_pushButton_clicked()
+{
+	this->dodaj_nowych_uzytkownikow.show();
 }
 
 void edycja_zadanie_okno::on_pushButton_anuluj_clicked()
@@ -33,5 +44,5 @@ void edycja_zadanie_okno::on_pushButton_potwierdz_clicked()
 
 void edycja_zadanie_okno::on_pushButton_usun_clicked()
 {
-	//TODO usuñ zaznaczone zadanie
+	//Fun_projekty::usun_zadanie();
 }

@@ -25,7 +25,7 @@ private slots:
     void on_pushButton_1_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
-    void on_pushButton_pushButton_edytuj_zadanie_clicked();
+    void on_pushButton_edytuj_zadanie_clicked();
     void on_pushButton_utworzProjekt_clicked();
     void on_pushButton_utworz_zadanie_clicked();
     void on_lineEdit_search_textChanged(const QString &arg1);

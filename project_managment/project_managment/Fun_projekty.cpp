@@ -104,6 +104,7 @@ bool Fun_projekty::dodaj_przypisanie_do_projektu(string id_pracownika, string ki
 bool Fun_projekty::usun_zadanie(string nazwa_zadania)
 {
 	Modyfikator_bazy::usun_zadanie(nazwa_zadania);
+	return true;
 }
 
 Projekt Fun_projekty::pobierz_dane_zadania()
@@ -111,4 +112,11 @@ Projekt Fun_projekty::pobierz_dane_zadania()
 	vector<Projekt> projekt = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() +"';");
 
 	return projekt[0];
+}
+
+bool Fun_projekty::zaktualizuj_zadanie(string nazwa, string opis, string data_r, string data_z, string status)
+{
+	Projekt* zadanie = new Projekt("1", nazwa, opis, data_r, data_z, "true", "null", status);
+	Modyfikator_bazy::zaktualizuj_zadanie(zadanie);
+	return true;
 }
