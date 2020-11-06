@@ -49,3 +49,21 @@ bool Modyfikator_bazy::aktualizuj_przyp_do_proj(Przypisanie_do_projektow *przypi
     }
     else return false;
 }
+
+bool Modyfikator_bazy::usun_zadanie(string zadanie)
+{
+    connection C("dbname = test user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
+    if (C.is_open()) {
+        work W{ C };
+
+        vector<Projekt> id_zadania;
+        id_zadania = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
+            Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() + "';");
+        W.exec0("delete from Projekt where id_projektu = " + id_zadania[0].pobierz_id_projektu() + ";");
+        W.exec0("delete from Przypisanie_do_projektu where id_projektu = " + id_zadania[0].pobierz_id_projektu() + ";");
+        W.commit();
+        return true;
+    }
+    else return false;
+}
