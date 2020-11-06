@@ -33,13 +33,13 @@ void edycja_zadanie_okno::on_pushButton_anuluj_clicked()
 
 void edycja_zadanie_okno::on_pushButton_potwierdz_clicked()
 {
-	//TODO zapisz zmienione zadanie
-
 	QString nazwa = ui.lineEdit_nazwa->text();
 	QString status = ui.comboBox_status->currentText();
 	QString start_date = ui.dateEdit_start->text();
 	QString finish_date = ui.dateEdit_finish->text();
 	QString opis = ui.textEdit_opis->toPlainText();
+	
+	Fun_projekty::zaktualizuj_zadanie(nazwa.toStdString(), opis.toStdString(), start_date.toStdString(), finish_date.toStdString(), status.toStdString());
 }
 
 void edycja_zadanie_okno::on_pushButton_usun_clicked()

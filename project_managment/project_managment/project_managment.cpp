@@ -43,6 +43,7 @@ void project_managment::on_pushButton_utworz_zadanie_clicked()
 void project_managment::on_pushButton_edytuj_zadanie_clicked()
 {
     this->edytowanie_zadan->show();
+    this->edytowanie_zadan->wczytaj_dane();
 }
 
 void project_managment::odswiezProjekty()
