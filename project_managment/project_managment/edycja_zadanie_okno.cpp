@@ -10,6 +10,11 @@ edycja_zadanie_okno::~edycja_zadanie_okno()
 {
 }
 
+void wczytaj_dane()
+{
+
+}
+
 void edycja_zadanie_okno::on_pushButton_anuluj_clicked()
 {
 	this->close();

@@ -417,7 +417,7 @@ p, li { white-space: pre-wrap; }
          </widget>
         </widget>
         <widget class="QWidget" name="Admin_page">
-         <widget class="QPushButton" name="pushButton_10">
+         <widget class="QPushButton" name="pushButton_edytuj_zadanie">
           <property name="geometry">
            <rect>
             <x>380</x>

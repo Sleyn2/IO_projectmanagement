@@ -7,7 +7,7 @@ using namespace std;
 using namespace pqxx;
 
 
-bool Modyfikator_bazy::aktualizuj_prosbe(Prosba* prosba)
+bool Modyfikator_bazy::dodaj_prosbe(Prosba* prosba)
 {
     connection C("dbname = test user = postgres password = postgres \
       hostaddr = 127.0.0.1 port = 5432");
@@ -21,7 +21,7 @@ bool Modyfikator_bazy::aktualizuj_prosbe(Prosba* prosba)
     else return false;
 }
 
-bool Modyfikator_bazy::aktualizuj_projekt(Projekt *projekt)
+bool Modyfikator_bazy::dodaj_projekt(Projekt *projekt)
 {
     connection C("dbname = test user = postgres password = postgres \
       hostaddr = 127.0.0.1 port = 5432");
@@ -36,7 +36,7 @@ bool Modyfikator_bazy::aktualizuj_projekt(Projekt *projekt)
     else return false;
 }
 
-bool Modyfikator_bazy::aktualizuj_przyp_do_proj(Przypisanie_do_projektow *przypisanie)
+bool Modyfikator_bazy::dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie)
 {
     connection C("dbname = test user = postgres password = postgres \
       hostaddr = 127.0.0.1 port = 5432");

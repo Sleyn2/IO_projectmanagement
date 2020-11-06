@@ -34,7 +34,7 @@ bool Fun_okno_logowania::logowanie(string login, string haslo)
 bool Fun_okno_logowania::rejestracja(string imie, string nazwisko, string login, string haslo)
 {
     Prosba* prosba = new Prosba(imie, nazwisko, login, haslo);
-    Modyfikator_bazy::aktualizuj_prosbe(prosba);
+    Modyfikator_bazy::dodaj_prosbe(prosba);
     return true;
 }
 

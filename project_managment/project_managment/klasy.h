@@ -76,9 +76,9 @@ public:
 class Modyfikator_bazy
 {
 public:
-   static bool aktualizuj_prosbe(Prosba *prosba);
-   static bool aktualizuj_projekt(Projekt *Projekt);
-   static bool aktualizuj_przyp_do_proj(Przypisanie_do_projektow *przypisanie);
+   static bool dodaj_prosbe(Prosba *prosba);
+   static bool dodaj_projekt(Projekt *Projekt);
+   static bool dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie);
    static bool usun_zadanie(string zadanie);
 };
 

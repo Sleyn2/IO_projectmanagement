@@ -10,6 +10,7 @@ class edycja_zadanie_okno : public QWidget
 public:
 	edycja_zadanie_okno(QWidget *parent = Q_NULLPTR);
 	~edycja_zadanie_okno();
+	void wczytaj_dane();
 private slots:
 	void on_pushButton_anuluj_clicked();
 	void on_pushButton_potwierdz_clicked();

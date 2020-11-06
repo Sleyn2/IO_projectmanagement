@@ -68,7 +68,7 @@ bool Fun_projekty::utworz_projekt(string nazwa, string opis, string data_rozpocz
 	else
 	{
 		Projekt* projekt = new Projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "false", "null", status);
-		Modyfikator_bazy::aktualizuj_projekt(projekt);
+		Modyfikator_bazy::dodaj_projekt(projekt);
 		return true;
 	}
 }
@@ -85,7 +85,7 @@ bool Fun_projekty::utworz_zadanie(string nazwa, string opis, string data_rozpocz
 			Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
 
 		Projekt* zadanie = new Projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "true", projekt[0].pobierz_id_projektu(), status);
-		Modyfikator_bazy::aktualizuj_projekt(zadanie);
+		Modyfikator_bazy::dodaj_projekt(zadanie);
 		return true;
 	}
 }
@@ -97,7 +97,7 @@ bool Fun_projekty::dodaj_przypisanie_do_projektu(string id_pracownika, string ki
 		Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
 
 	Przypisanie_do_projektow* przypisanie = new Przypisanie_do_projektow(id_pracownika, id_projektu[0].pobierz_id_projektu(), kierownik);
-	Modyfikator_bazy::aktualizuj_przyp_do_proj(przypisanie);
+	Modyfikator_bazy::dodaj_przyp_do_proj(przypisanie);
 	return true;
 }
 

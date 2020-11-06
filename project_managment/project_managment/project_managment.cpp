@@ -40,6 +40,11 @@ void project_managment::on_pushButton_utworz_zadanie_clicked()
     this->tworzenie_zadan_projektow->show();
 }
 
+void project_managment::on_pushButton_pushButton_edytuj_zadanie_clicked()
+{
+    this->edytowanie_zadan->show();
+}
+
 void project_managment::odswiezProjekty()
 {
     availableProjectList = Fun_projekty::pobierz_liste_projektow();
@@ -102,7 +107,18 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
     this->odswiezZadania();
 }
 
+void project_managment::on_listWidget_zadania_itemClicked(QListWidgetItem* item)
+{
+    QString nazwa = item->text();
+    Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania(nazwa.toStdString());
+}
+
 void project_managment::ustaw_okno_tworzenia(Projekty_zadania_okno* temp)
 {
     this->tworzenie_zadan_projektow = temp;
+}
+
+void project_managment::ustaw_okno_edycji(edycja_zadanie_okno* temp)
+{
+    this->edytowanie_zadan = temp;
 }
