@@ -14,7 +14,6 @@ private slots:
 	void on_pushButton_anuluj_clicked();
 	void on_pushButton_potwierdz_clicked();
 	void on_pushButton_usun_clicked();
-	void on_pushButton_zakoncz_zadanie_clicked();
 
 private:
 	Ui::edycja_zadanie_okno ui;

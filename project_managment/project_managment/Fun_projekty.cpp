@@ -25,7 +25,7 @@ QStringList Fun_projekty::pobierz_liste_zadan()
 Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
 
 	projekty = Pobieranie_bazy::pobierz_projekt("select * from Projekt where Id_projektu_nadrzednego = " 
-		+ projekt[0].pobierz_id_projektu() + " and Zadanie = true;");
+		+ projekt[0].pobierz_id_projektu() + ";");
 
 	for (auto i = projekty.begin(); i != projekty.end(); ++i)
 	{

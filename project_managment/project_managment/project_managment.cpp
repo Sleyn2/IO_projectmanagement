@@ -48,6 +48,7 @@ void project_managment::odswiezProjekty()
 
 void project_managment::odswiezZadania()
 {
+    ui.listWidget_zadania->clear();
     availableTaskList = Fun_projekty::pobierz_liste_zadan();
     ui.listWidget_zadania->addItems(availableTaskList);
 }

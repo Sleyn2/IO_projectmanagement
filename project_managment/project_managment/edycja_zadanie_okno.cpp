@@ -30,8 +30,3 @@ void edycja_zadanie_okno::on_pushButton_usun_clicked()
 {
 	//TODO usuñ zaznaczone zadanie
 }
-
-void edycja_zadanie_okno::on_pushButton_zakoncz_zadanie_clicked()
-{
-	//TODO zakoñczenie tutaj czy w combobox???? ~ Mateusz
-}

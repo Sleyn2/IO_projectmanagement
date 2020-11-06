@@ -210,18 +210,6 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_zakoncz_zadanie">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Zakończ</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="pushButton_potwierdz">
          <property name="font">
           <font>
