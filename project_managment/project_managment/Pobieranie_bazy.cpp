@@ -12,15 +12,28 @@ vector<Pracownik> Pobieranie_bazy::pobierz_pracownik(string zapytanie)
     connection C("dbname = test user = postgres password = postgres \
       hostaddr = 127.0.0.1 port = 5432");
     if (C.is_open()) {
-        work W{ C };
-        result R{ W.exec(zapytanie) };
-
-        for (auto wiersz : R)
+        try
         {
-            Pracownik pracownik(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]), to_string(wiersz[5]));
-            pracownicy.push_back(pracownik);
+            work W{ C };
+            result R{ W.exec(zapytanie) };
+            for (auto wiersz : R)
+            {
+                Pracownik pracownik(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]), to_string(wiersz[5]));
+                pracownicy.push_back(pracownik);
+                return pracownicy;
+            }
         }
-        return pracownicy;
+            catch (exception e)
+            {
+                Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+                Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+            }
+            Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
     }
 }
 
@@ -30,16 +43,30 @@ vector<Projekt> Pobieranie_bazy::pobierz_projekt(string zapytanie)
     connection C("dbname = test user = postgres password = postgres \
       hostaddr = 127.0.0.1 port = 5432");
     if (C.is_open()) {
-        work W{ C };
-        result R{ W.exec(zapytanie) };
-
-        for (auto wiersz : R)
+        try
         {
-            Projekt projekt(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]), to_string(wiersz[5]),
-                to_string(wiersz[6]), to_string(wiersz[7]));
-            projekty.push_back(projekt);
+            work W{ C };
+            result R{ W.exec(zapytanie) };
+
+            for (auto wiersz : R)
+            {
+                Projekt projekt(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]), to_string(wiersz[5]),
+                    to_string(wiersz[6]), to_string(wiersz[7]));
+                projekty.push_back(projekt);
+            }
+            return projekty;
         }
-        return projekty;
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+        }
+        Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
     }
 }
 
@@ -49,15 +76,29 @@ vector<Przypisanie_do_projektow> Pobieranie_bazy::pobierz_Przypisanie_do_projetk
     connection C("dbname = test user = postgres password = postgres \
       hostaddr = 127.0.0.1 port = 5432");
     if (C.is_open()) {
-        work W{ C };
-        result R{ W.exec(zapytanie) };
-
-        for (auto wiersz : R)
+        try
         {
-            Przypisanie_do_projektow przypisanie(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[1]));
-            przypisanie_do_dzialow.push_back(przypisanie);
+            work W{ C };
+            result R{ W.exec(zapytanie) };
+
+            for (auto wiersz : R)
+            {
+                Przypisanie_do_projektow przypisanie(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[1]));
+                przypisanie_do_dzialow.push_back(przypisanie);
+            }
+            return przypisanie_do_dzialow;
         }
-        return przypisanie_do_dzialow;
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+        }
+        Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
     }
 }
 

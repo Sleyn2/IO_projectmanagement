@@ -111,9 +111,10 @@ class Dane_zalogowanego_pracownika
 {
 private:
     string imie, nazwisko, login, haslo, czy_administator, id_pracownika;
-    string nazwa_projektu, nazwa_zadania;
+    string nazwa_projektu, nazwa_zadania, wyjatek;
+    bool czy_blad;
     static Dane_zalogowanego_pracownika* w_instancja;
-    Dane_zalogowanego_pracownika(string id_p, string i, string n, string l, string h, string czy_a);
+    Dane_zalogowanego_pracownika();
 public:
     string pobierz_imie();
     string pobierz_nazwisko();
@@ -123,8 +124,12 @@ public:
     string pobierz_czy_administator();
     string pobierz_nazwe_projektu();
     string pobierz_nazwe_zadania();
+    string pobierz_wyjatek();
+    bool pobierz_czy_blad();
     void ustaw_nazwe_projektu(string id_proj);
     void ustaw_nazwe_zadania(string id_zad);
+    void ustaw_wyjatek(string wyjatek);
+    void ustaw_dane_logowanie(string im, string na, string lo, string ha, string czy_ad, string id_pr);
+    void ustaw_czy_blad(bool blad);
     static Dane_zalogowanego_pracownika* instancja();
-    static Dane_zalogowanego_pracownika* utworz_instancje(string id_p, string i, string n, string l, string h, string czy_a);
 };

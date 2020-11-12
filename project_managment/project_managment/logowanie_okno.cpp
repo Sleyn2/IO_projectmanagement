@@ -50,13 +50,15 @@ void logowanie_okno::on_pushButton_register_2_clicked()
     QString login = ui.lineEdit_3_login->text();
     QString haslo = ui.lineEdit_4_haslo->text();
     QString powtorz_haslo = ui.lineEdit_5_powtorz_haslo->text();
+    Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("fd");
 
-    //TODO
-    //Sprawdzanie poprawnosci danych i wyswietlanie komunikatow
     if (haslo == powtorz_haslo)
     {
-       if (Fun_okno_logowania::rejestracja(imie.toStdString(), nazwisko.toStdString(), login.toStdString(), haslo.toStdString()));
+       if (Fun_okno_logowania::rejestracja(imie.toStdString(), nazwisko.toStdString(), login.toStdString(), haslo.toStdString()))
         ui.stackedWidget->setCurrentIndex(0);
+       else
+      QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+       
     }
 
 }

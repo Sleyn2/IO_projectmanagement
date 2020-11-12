@@ -9,8 +9,8 @@ using namespace pqxx;
 
 void Fun_okno_logowania::zapisz_dane_logowania(Pracownik pracownik)
 {
-    Dane_zalogowanego_pracownika::instancja()->utworz_instancje(pracownik.pobierz_id_pracownika(), pracownik.pobierz_imie(), pracownik.pobierz_nazwisko(), pracownik.pobierz_login(),
-        pracownik.pobierz_haslo(), pracownik.pobierz_czy_administator());
+    Dane_zalogowanego_pracownika::instancja()->ustaw_dane_logowanie(pracownik.pobierz_imie(), pracownik.pobierz_nazwisko(), pracownik.pobierz_login(),
+        pracownik.pobierz_haslo(), pracownik.pobierz_czy_administator(), pracownik.pobierz_id_pracownika());
 }
 
 bool Fun_okno_logowania::logowanie(string login, string haslo)
@@ -34,21 +34,20 @@ bool Fun_okno_logowania::logowanie(string login, string haslo)
 bool Fun_okno_logowania::rejestracja(string imie, string nazwisko, string login, string haslo)
 {
     Prosba* prosba = new Prosba(imie, nazwisko, login, haslo);
-    Modyfikator_bazy::dodaj_prosbe(prosba);
-    return true;
+    if (Modyfikator_bazy::dodaj_prosbe(prosba)) return true;
+    return false;
 }
 
 Dane_zalogowanego_pracownika* Dane_zalogowanego_pracownika::w_instancja = nullptr;
 
-Dane_zalogowanego_pracownika::Dane_zalogowanego_pracownika(string id_p, string i, string n, string l, string h, string czy_a) :
-    id_pracownika(id_p), imie(i), nazwisko(n), login(l), haslo(h), czy_administator(czy_a)
-{}
+Dane_zalogowanego_pracownika::Dane_zalogowanego_pracownika() {}
 
 
 Dane_zalogowanego_pracownika* Dane_zalogowanego_pracownika::instancja()
 {
-    if (instancja) return w_instancja;
-    else return nullptr;
+    if (!w_instancja)
+        w_instancja = new Dane_zalogowanego_pracownika();
+    return w_instancja;
 }
 
 
@@ -61,13 +60,19 @@ string Dane_zalogowanego_pracownika::pobierz_id_pracownika() { return this->id_p
 string Dane_zalogowanego_pracownika::pobierz_czy_administator() { return this->czy_administator; }
 string Dane_zalogowanego_pracownika::pobierz_nazwe_projektu() { return this->nazwa_projektu; }
 string Dane_zalogowanego_pracownika::pobierz_nazwe_zadania() { return this->nazwa_zadania; }
+string Dane_zalogowanego_pracownika::pobierz_wyjatek() { return this->wyjatek; }
+bool Dane_zalogowanego_pracownika::pobierz_czy_blad() { return this->czy_blad; }
+
+void Dane_zalogowanego_pracownika::ustaw_wyjatek(string wyjatek) { this->wyjatek = wyjatek; }
 void Dane_zalogowanego_pracownika::ustaw_nazwe_projektu(string id_proj) { this->nazwa_projektu = id_proj; }
 void Dane_zalogowanego_pracownika::ustaw_nazwe_zadania(string id_zad) { this->nazwa_zadania = id_zad; }
-
-
-Dane_zalogowanego_pracownika* Dane_zalogowanego_pracownika::utworz_instancje(string id_p, string i, string n, string l, string h, string czy_a)
+void Dane_zalogowanego_pracownika::ustaw_czy_blad(bool blad) { this->czy_blad = blad; }
+void Dane_zalogowanego_pracownika::ustaw_dane_logowanie(string im, string na, string lo, string ha, string czy_ad, string id_pr)
 {
-    if (!w_instancja)
-        w_instancja = new Dane_zalogowanego_pracownika(id_p, i, n, l, h, czy_a);
-    return w_instancja;
+    this->imie = im;
+    this->nazwisko = na;
+    this->haslo = ha;
+    this->login = lo;
+    this->id_pracownika = id_pr;
+    this->czy_administator = czy_ad;
 }
