@@ -53,10 +53,9 @@ bool Fun_projekty::czy_kierownik()
 	projekt = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" + 
 		Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
 
-	przypisania = Pobieranie_bazy::pobierz_Przypisanie_do_projetkow("select * from Przypisanie_do_projektow where Id_pracownika = " 
+	przypisania = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from Przypisanie_do_projektow where Id_pracownika = " 
 		+ Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + " and Id_projektu = " + projekt[0].pobierz_id_projektu() + ";" );
-	string s = przypisania[0].pobierz_kierownik();
-	if (przypisania[0].pobierz_kierownik() == "1") return true;
+	if (przypisania[0].pobierz_kierownik() == "t") return true;
 	else return false;
 }
 

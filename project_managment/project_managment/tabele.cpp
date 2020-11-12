@@ -20,8 +20,8 @@ string Pracownik::pobierz_id_pracownika() { return this->id_pracownika; }
 string Pracownik::pobierz_czy_administator() { return this->czy_administator;  }
 
 
-Prosba::Prosba(string i, string n, string l, string h) :
-    imie(i), nazwisko(n), login(l), haslo(h)
+Prosba::Prosba(string i, string n, string l, string h, string id_pr) :
+    imie(i), nazwisko(n), login(l), haslo(h), id_pracownika(id_pr)
 {
 
 }

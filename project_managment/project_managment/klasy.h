@@ -28,7 +28,7 @@ private:
     string imie, nazwisko, login, haslo, id_pracownika;
 
 public:
-    Prosba(string i, string n, string l, string h);
+    Prosba(string i, string n, string l, string h, string id_pr);
     string pobierz_imie();
     string pobierz_nazwisko();
     string pobierz_login();
@@ -116,7 +116,12 @@ class Pobieranie_bazy
 public:
    static vector<Pracownik> pobierz_pracownik(string zapytanie);
    static vector<Projekt> pobierz_projekt(string zapytanie);
-   static vector<Przypisanie_do_projektow> pobierz_Przypisanie_do_projetkow(string zapytanie);
+   static vector<Przypisanie_do_projektow> pobierz_Przypisanie_do_projektow(string zapytanie);
+   static vector<Prosba> pobierz_prosby(string zapytanie);
+   static vector<Dzial> pobierz_dzial(string zapytanie);
+   static vector<Przypisanie_do_dzialow> pobierz_przypisanie_do_dzialow(string zapytanie);
+   static vector<Raport> pobierz_raport(string zapytanie);
+   static vector<Wiadomosc> pobierz_wiadomosc(string zapytanie);
 };
 
 class Modyfikator_bazy
