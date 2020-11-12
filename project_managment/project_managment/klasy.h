@@ -63,6 +63,52 @@ public:
     string pobierz_kierownik();
 };
 
+class Wiadomosc
+{
+private:
+    string id_odbiorcy, data_wyslania, tresc, id_nadawcy, temat;
+public:
+    Wiadomosc(string id_od, string data_wy, string tr, string id_nad, string t);
+    string pobierz_id_odbiorcy();
+    string pobierz_tresc();
+    string pobierz_data_wyslania();
+    string pobierz_id_nadawcy();
+    string pobierz_temat();
+};
+
+class Raport
+{
+private:
+    string id_raportu, opis, status, id_projektu;
+public:
+    Raport(string id_r, string o, string s, string id_p);
+    string pobierz_id_raportu();
+    string pobierz_opis();
+    string pobierz_status();
+    string pobierz_id_projektu();
+};
+
+class Przypisanie_do_dzialow
+{
+private:
+    string id_pracownika, id_dzialu;
+public:
+    Przypisanie_do_dzialow(string id_p, string id_d);
+    string pobierz_id_pracownika();
+    string pobierz_id_dzialu();
+};
+
+class Dzial
+{
+private:
+    string id_dzialu, adres, nazwa;
+public:
+    Dzial(string id_d, string adr, string naz);
+    string pobierz_id_dzialu();
+    string pobierz_adres();
+    string pobierz_nazwa();
+};
+
 
 
 class Pobieranie_bazy

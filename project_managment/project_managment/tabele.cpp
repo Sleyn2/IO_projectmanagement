@@ -53,3 +53,39 @@ Przypisanie_do_projektow::Przypisanie_do_projektow(string id_prac, string id_pro
 string Przypisanie_do_projektow::pobierz_id_pracownika() { return this->id_pracownika; }
 string Przypisanie_do_projektow::pobierz_id_projektu() { return this->id_projektu; }
 string Przypisanie_do_projektow::pobierz_kierownik() { return this->kierownik; }
+
+
+Wiadomosc::Wiadomosc(string id_od, string data_wy, string tr, string id_nad, string t) :
+    id_odbiorcy(id_od), data_wyslania(data_wy), tresc(tr), id_nadawcy(id_nad), temat(t)
+{}
+
+string Wiadomosc::pobierz_id_odbiorcy() { return this->id_odbiorcy; }
+string Wiadomosc::pobierz_tresc() { return this->tresc; }
+string Wiadomosc::pobierz_data_wyslania() { return this->data_wyslania; }
+string Wiadomosc::pobierz_id_nadawcy() { return this->id_nadawcy; }
+string Wiadomosc::pobierz_temat() { return this->temat; }
+
+
+Raport::Raport(string id_r, string o, string s, string id_p):
+    id_projektu(id_p), id_raportu(id_r), status(s), opis(o)
+{}
+
+string Raport::pobierz_id_raportu() { return this->id_raportu; }
+string Raport::pobierz_opis() { return this->opis; }
+string Raport::pobierz_status() { return this->status; }
+string Raport::pobierz_id_projektu() { return this->id_projektu; }
+
+Przypisanie_do_dzialow::Przypisanie_do_dzialow(string id_p, string id_d):
+    id_pracownika(id_p), id_dzialu(id_d)
+{}
+
+string Przypisanie_do_dzialow::pobierz_id_pracownika() { return this->id_pracownika; }
+string Przypisanie_do_dzialow::pobierz_id_dzialu() { return this->id_dzialu; }
+
+Dzial::Dzial(string id_d, string adr, string naz):
+    id_dzialu(id_d), adres(adr), nazwa(naz)
+{}
+
+string Dzial::pobierz_id_dzialu() { return this->id_dzialu; }
+string Dzial::pobierz_adres() { return this->adres; }
+string Dzial::pobierz_nazwa() { return this->nazwa; }
