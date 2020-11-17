@@ -92,9 +92,9 @@ bool Fun_projekty::utworz_zadanie(string nazwa, string opis, string data_rozpocz
 			Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
 
 		Projekt* zadanie = new Projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "true", projekt[0].pobierz_id_projektu(), status);
-		Modyfikator_bazy::dodaj_projekt(zadanie);
-		return true;
-		//TODO usuwanie wskoaünika
+		if (Modyfikator_bazy::dodaj_projekt(zadanie)) return true;
+		return false;
+		delete zadanie;
 	}
 }
 

@@ -38,13 +38,13 @@ void Projekty_zadania_okno::on_pushButton_add_clicked()
 		if(Fun_projekty::utworz_projekt(nazwa.toStdString(), opis.toStdString(), start_date.toStdString(), finish_date.toStdString(), status.toStdString()))
 			QMessageBox::information(this, "Projekt", "Dodano projekt");
 		else
-			QMessageBox::information(this, "Projekt", "Projekt o takiej nazwie ju¿ istnieje");
+			QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
 	}
 	else
 	{
 		if (Fun_projekty::utworz_zadanie(nazwa.toStdString(), opis.toStdString(), start_date.toStdString(), finish_date.toStdString(), status.toStdString()))
 			QMessageBox::information(this, "Zadanie", "Dodano zadanie");
 		else
-			QMessageBox::information(this, "Zadanie", "Zadanie o takiej nazwie ju¿ istnieje");
+			QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
 	}
 }
