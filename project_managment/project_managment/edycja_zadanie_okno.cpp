@@ -31,8 +31,9 @@ void edycja_zadanie_okno::wczytaj_dane()
 		ui.comboBox_status->setCurrentIndex(2);
 }
 
-void edycja_zadanie_okno::on_pushButton_clicked()
+void edycja_zadanie_okno::on_pushButton_users_clicked()
 {
+	this->dodaj_nowych_uzytkownikow.wczytajUzytkownikow();
 	this->dodaj_nowych_uzytkownikow.show();
 }
 

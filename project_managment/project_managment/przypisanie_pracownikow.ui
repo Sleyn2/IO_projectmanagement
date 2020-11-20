@@ -38,7 +38,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="lineEdit_all"/>
          </item>
          <item>
           <widget class="QListWidget" name="listWidget_all"/>
@@ -109,10 +109,10 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_2"/>
+          <widget class="QLineEdit" name="lineEdit_current"/>
          </item>
          <item>
-          <widget class="QListWidget" name="listWidget_2"/>
+          <widget class="QListWidget" name="listWidget_current"/>
          </item>
         </layout>
        </item>

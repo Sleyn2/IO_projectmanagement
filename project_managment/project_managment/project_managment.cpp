@@ -11,6 +11,7 @@ project_managment::project_managment(QWidget *parent)
 {
     ui.setupUi(this);
     ui.Opcje_projektu->setCurrentIndex(2);
+    Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("");
 }
 // Zmiana miêdzy widokami w StackedWidget
 void project_managment::on_pushButton_1_clicked()
@@ -42,20 +43,28 @@ void project_managment::on_pushButton_utworz_zadanie_clicked()
 
 void project_managment::on_pushButton_edytuj_zadanie_clicked()
 {
-    this->edytowanie_zadan->show();
-    this->edytowanie_zadan->wczytaj_dane();
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() != "")
+    {
+        this->edytowanie_zadan->show();
+        this->edytowanie_zadan->wczytaj_dane();
+    }
 }
 
 void project_managment::odswiezProjekty()
 {
+    ui.ProjectList->clear();
+    availableProjectList.clear();
     availableProjectList = Fun_projekty::pobierz_liste_projektow();
+    availableProjectList.sort();
     ui.ProjectList->addItems(availableProjectList);
 }
 
 void project_managment::odswiezZadania()
 {
     ui.listWidget_zadania->clear();
+    availableTaskList.clear();
     availableTaskList = Fun_projekty::pobierz_liste_zadan();
+    availableTaskList.sort();
     ui.listWidget_zadania->addItems(availableTaskList);
 }
 
@@ -67,7 +76,7 @@ void project_managment::on_lineEdit_search_textChanged(const QString& arg1)
     ui.ProjectList->addItems(availableProjectList.filter(regExp));
 }
 
-void project_managment::onlineEdit_search_task_textChanged(const QString& arg1)
+void project_managment::on_lineEdit_search_task_textChanged(const QString& arg1)
 {
     QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
     ui.listWidget_zadania->clear();    
