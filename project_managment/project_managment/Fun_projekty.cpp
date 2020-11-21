@@ -98,14 +98,12 @@ bool Fun_projekty::utworz_zadanie(string nazwa, string opis, string data_rozpocz
 	}
 }
 
-bool dodaj_przypisanie_do_projektu(string imie, string nazwisko, string kierownik)
+static bool dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik)
 {
 	vector<Projekt> id_projektu = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
 		Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
 
-	vector<Pracownik> pracownik = Pobieranie_bazy::pobierz_pracownik("select *from Pracownicy where Imie = '" + imie + "' and Nazwisko = '" + nazwisko + "'");
-
-	Przypisanie_do_projektow* przypisanie = new Przypisanie_do_projektow(pracownik[0].pobierz_id_pracownika(), id_projektu[0].pobierz_id_projektu(), kierownik);
+	Przypisanie_do_projektow* przypisanie = new Przypisanie_do_projektow(id_pracownika, id_projektu[0].pobierz_id_projektu(), kierownik);
 	if (Modyfikator_bazy::dodaj_przyp_do_proj(przypisanie))
 	{
 		delete przypisanie;
@@ -154,7 +152,7 @@ QStringList Fun_projekty::pobierz_liste_pracownikow()
 
 	for (auto i = pracownicy.begin(); i != pracownicy.end(); ++i)
 	{
-		lista.append(QString::fromStdString(i->pobierz_imie()+ " " + i->pobierz_nazwisko()));
+		lista.append(QString::fromStdString(i->pobierz_id_pracownika()+ ". " + i->pobierz_imie()+ " " + i->pobierz_nazwisko()));
 	}
 	if (lista.empty()) lista.append(QString::fromStdString("Brak pracownikow"));
 	else return lista;
@@ -170,7 +168,7 @@ QStringList Fun_projekty::pobierz_liste_pracownikow_w_projekcie(string id_projek
 	vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + i->pobierz_id_pracownika() + "");
 	QStringList lista;
 
-	lista.append(QString::fromStdString(pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko()));
+	lista.append(QString::fromStdString(pracownik[0].pobierz_id_pracownika() + ". " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko()));
 	}
 	if (lista.empty()) lista.append(QString::fromStdString("Brak pracownikow"));
 	else return lista;
