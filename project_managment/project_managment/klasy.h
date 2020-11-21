@@ -152,7 +152,7 @@ public:
     static QStringList pobierz_liste_zadan();
     static bool utworz_projekt(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
     static bool utworz_zadanie(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
-    static bool dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik);
+    static bool dodaj_przypisanie_do_projektu(string imie, string nazwisko, string kierownik);
     static QStringList pobierz_liste_pracownikow();
     static QStringList pobierz_liste_pracownikow_w_projekcie(string id_projektu);
     static bool usun_zadanie(string nazwa_zadania);

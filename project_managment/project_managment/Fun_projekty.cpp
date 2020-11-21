@@ -98,13 +98,14 @@ bool Fun_projekty::utworz_zadanie(string nazwa, string opis, string data_rozpocz
 	}
 }
 
-bool Fun_projekty::dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik)
+bool dodaj_przypisanie_do_projektu(string imie, string nazwisko, string kierownik)
 {
-	vector<Projekt> id_projektu;
-	id_projektu = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
+	vector<Projekt> id_projektu = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
 		Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
 
-	Przypisanie_do_projektow* przypisanie = new Przypisanie_do_projektow(id_pracownika, id_projektu[0].pobierz_id_projektu(), kierownik);
+	vector<Pracownik> pracownik = Pobieranie_bazy::pobierz_pracownik("select *from Pracownicy where Imie = '" + imie + "' and Nazwisko = '" + nazwisko + "'");
+
+	Przypisanie_do_projektow* przypisanie = new Przypisanie_do_projektow(pracownik[0].pobierz_id_pracownika(), id_projektu[0].pobierz_id_projektu(), kierownik);
 	if (Modyfikator_bazy::dodaj_przyp_do_proj(przypisanie))
 	{
 		delete przypisanie;
