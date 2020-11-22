@@ -20,7 +20,6 @@ private slots:
 	void on_pushButton_register_2_clicked();
 	void on_pushButton_cancel_clicked();
 
-
 private:
 	project_managment *hidden;
 	Ui::logowanie_okno ui;
