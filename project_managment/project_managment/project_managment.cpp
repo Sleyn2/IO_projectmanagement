@@ -112,13 +112,11 @@ void project_managment::odswiezWiadomosci(bool send)
     ui.listWidget_wiadomosci->clear();
     messageList.clear();
 
-    Fun_wiadomosci::pobierz_wiadomosci(send);
-    if(Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+    messageList = Fun_wiadomosci::pobierz_wiadomosci(send);
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
-        messageList = Fun_wiadomosci::pobierz_wiadomosci(send);
-
-    ui.listWidget_wiadomosci->addItems(messageList);
+        ui.listWidget_wiadomosci->addItems(messageList);
 
 }
 
@@ -188,9 +186,15 @@ void project_managment::on_pushButton_wyslane_clicked()
 }
 void project_managment::on_pushButton_nowaWiadomosc_clicked()
 {
+    this->tworzenie_wiadomosci->ustawTryb(0);
     this->tworzenie_wiadomosci->show();
+}
+void project_managment::on_listWidget_wiadomosci_itemClicked(QListWidgetItem* item)
+{
+    this->message = item->text();
 }
 void project_managment::on_pushButton_usunWiadomosc_clicked()
 {
-
+    
+    //Fun_wiadomosci::usun_wiadomosc();
 }

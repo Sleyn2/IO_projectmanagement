@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>345</width>
-    <height>256</height>
+    <width>395</width>
+    <height>297</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,47 +17,28 @@
    <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QSplitter" name="splitter">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Id. Imię i nazwisko</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBox"/>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSplitter" name="splitter_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <widget class="QLabel" name="label_6">
-        <property name="font">
-         <font>
-          <family>MS Shell Dlg 2</family>
-          <pointsize>12</pointsize>
-          <weight>50</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Tytuł</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_Title"/>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QLabel" name="label_5">
+   <item row="0" column="0">
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="write">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0" colspan="3">
+        <widget class="QSplitter" name="splitter">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Id. Imię i nazwisko</string>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="comboBox"/>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_6">
          <property name="font">
           <font>
            <family>MS Shell Dlg 2</family>
@@ -68,42 +49,66 @@
           </font>
          </property>
          <property name="text">
-          <string>Treść</string>
+          <string>Tytuł</string>
          </property>
         </widget>
        </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+       <item row="1" column="1" colspan="2">
+        <widget class="QLineEdit" name="lineEdit_Title"/>
+       </item>
+       <item row="2" column="0" colspan="3">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="font">
+            <font>
+             <family>MS Shell Dlg 2</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Treść</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>273</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0" colspan="3">
+        <widget class="QTextEdit" name="textEdit"/>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QPushButton" name="pushButton_send">
+         <property name="text">
+          <string>Wyślij</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>273</width>
-           <height>20</height>
-          </size>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QPushButton" name="pushButton_cancel">
+         <property name="text">
+          <string>Anuluj</string>
          </property>
-        </spacer>
+        </widget>
        </item>
       </layout>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QTextEdit" name="textEdit"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QPushButton" name="pushButton_send">
-     <property name="text">
-      <string>Wyślij</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="pushButton_cancel">
-     <property name="text">
-      <string>Anuluj</string>
-     </property>
+     </widget>
+     <widget class="QWidget" name="read"/>
     </widget>
    </item>
   </layout>

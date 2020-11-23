@@ -42,6 +42,7 @@ private slots:
     void on_pushButton_wyslane_clicked();
     void on_pushButton_nowaWiadomosc_clicked();
     void on_pushButton_usunWiadomosc_clicked();
+    void on_listWidget_wiadomosci_itemClicked(QListWidgetItem* item);
 
 private:
     Ui::project_managmentClass ui;
@@ -49,6 +50,7 @@ private:
     edycja_zadanie_okno* edytowanie_zadan;
     wiadomosci_okno* tworzenie_wiadomosci;
     QStringList availableProjectList, availableTaskList, messageList;
+    QString message;
     void odswiezZadania();
     void odswiezWiadomosci(bool odebrane);
 };
