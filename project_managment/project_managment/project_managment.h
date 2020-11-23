@@ -52,5 +52,6 @@ private:
     QStringList availableProjectList, availableTaskList, messageList;
     QString message;
     void odswiezZadania();
-    void odswiezWiadomosci(bool odebrane);
+    void odswiezWiadomosci();
+    bool wyslane;
 };

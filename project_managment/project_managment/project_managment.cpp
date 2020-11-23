@@ -107,12 +107,12 @@ void project_managment::odswiezZadania()
     ui.listWidget_zadania->addItems(availableTaskList);
 }
 
-void project_managment::odswiezWiadomosci(bool send)
+void project_managment::odswiezWiadomosci()
 {
     ui.listWidget_wiadomosci->clear();
     messageList.clear();
 
-    messageList = Fun_wiadomosci::pobierz_wiadomosci(send);
+    messageList = Fun_wiadomosci::pobierz_wiadomosci(this->wyslane);
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
@@ -178,11 +178,14 @@ void project_managment::on_listWidget_zadania_itemClicked(QListWidgetItem* item)
 
 void project_managment::on_pushButton_odebrane_clicked()
 {
-    this->odswiezWiadomosci(false);
+    this->wyslane = false;
+    this->odswiezWiadomosci();
+    
 }
 void project_managment::on_pushButton_wyslane_clicked()
 {
-    this->odswiezWiadomosci(true);
+    this->wyslane = true;
+    this->odswiezWiadomosci();
 }
 void project_managment::on_pushButton_nowaWiadomosc_clicked()
 {
@@ -195,6 +198,20 @@ void project_managment::on_listWidget_wiadomosci_itemClicked(QListWidgetItem* it
 }
 void project_managment::on_pushButton_usunWiadomosc_clicked()
 {
-    
-    //Fun_wiadomosci::usun_wiadomosc();
+    istringstream ss(this->message.toStdString());
+    string tytul, nadawca, data;
+    ss >> tytul >> nadawca >> data;
+    //if(this->wyslane)
+        //Fun_wiadomosci::usun_wiadomosc();
+}
+// usuwanie spacji
+void removeDupWord(string str)
+{
+    istringstream ss(str);
+    string word;
+    while (ss >> word)
+    {
+        // print the read word
+        cout << word << "\n";
+    }
 }
