@@ -10,7 +10,7 @@ project_managment::project_managment(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
-    ui.Opcje_projektu->setCurrentIndex(2);
+    ui.Opcje_projektu->setCurrentIndex(3);
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("");
     
 }
@@ -23,6 +23,7 @@ void project_managment::on_pushButton_1_clicked()
 void project_managment::on_pushButton_2_clicked()
 {
     ui.stackedWidget->setCurrentIndex(1);
+    this->odswiezWiadomosci(false);
 }
 
 void project_managment::on_pushButton_3_clicked()
@@ -106,16 +107,16 @@ void project_managment::odswiezZadania()
     ui.listWidget_zadania->addItems(availableTaskList);
 }
 
-void project_managment::odswiezWiadomosci(bool odebrane)
+void project_managment::odswiezWiadomosci(bool send)
 {
     ui.listWidget_wiadomosci->clear();
     messageList.clear();
 
-    Fun_wiadomosci::pobierz_wiadomosci();
+    Fun_wiadomosci::pobierz_wiadomosci(send);
     if(Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
-        messageList = Fun_wiadomosci::pobierz_wiadomosci();
+        messageList = Fun_wiadomosci::pobierz_wiadomosci(send);
 
     ui.listWidget_wiadomosci->addItems(messageList);
 
@@ -179,11 +180,11 @@ void project_managment::on_listWidget_zadania_itemClicked(QListWidgetItem* item)
 
 void project_managment::on_pushButton_odebrane_clicked()
 {
-
+    this->odswiezWiadomosci(false);
 }
 void project_managment::on_pushButton_wyslane_clicked()
 {
-    this->odswiezWiadomosci(false);
+    this->odswiezWiadomosci(true);
 }
 void project_managment::on_pushButton_nowaWiadomosc_clicked()
 {

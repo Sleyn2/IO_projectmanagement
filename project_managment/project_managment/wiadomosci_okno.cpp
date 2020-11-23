@@ -9,3 +9,6 @@ wiadomosci_okno::wiadomosci_okno(QWidget *parent)
 wiadomosci_okno::~wiadomosci_okno()
 {
 }
+
+
+//ui.textEdit_opis->toPlainText();

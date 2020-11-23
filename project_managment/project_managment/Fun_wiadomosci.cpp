@@ -15,7 +15,6 @@ bool Fun_wiadomosci::usun_wiadomosc(string id_odb, string data_wys)
 
 QStringList Fun_wiadomosci::pobierz_wiadomosci(bool send)
 {
-	bool send = 1;
 	if (send)
 	{
 		vector<Wiadomosc>wiadomosci = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Id_nadawcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
