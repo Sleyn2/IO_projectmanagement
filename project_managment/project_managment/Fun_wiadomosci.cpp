@@ -7,15 +7,17 @@ bool Fun_wiadomosci::dodaj_wiadomosc(string id_odb, string data_wys, string tres
 	else return false;
 }
 
-bool Fun_wiadomosci::usun_wiadomosc(string id_odb, string data_wys)
+bool Fun_wiadomosci::usun_wiadomosc(string imie, string nazwisko, string data_wys)
 {
-	if (Modyfikator_bazy::usun_wiadomosc(id_odb, data_wys, Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika())) return true;
+	vector<Pracownik> pracownik = Pobieranie_bazy::pobierz_pracownik("select *from Pracownicy where Imie = '" + imie + "' and Nazwisko = '" + nazwisko + "'");
+	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return false;
+	if (Modyfikator_bazy::usun_wiadomosc(pracownik[0].pobierz_id_pracownika(), data_wys, Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika())) return true;
 	else return false;
 }
 
-QStringList Fun_wiadomosci::pobierz_wiadomosci(bool send)
+QStringList Fun_wiadomosci::pobierz_wiadomosci(bool wysylanie)
 {
-	if (send)
+	if (wysylanie)
 	{
 		vector<Wiadomosc>wiadomosci = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Id_nadawcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");	
 		QStringList lista;
