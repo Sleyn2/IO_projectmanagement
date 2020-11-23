@@ -7,6 +7,7 @@ QStringList Fun_projekty::pobierz_liste_projektow()
 	QStringList lista;
 	string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika();
 	projekty = Pobieranie_bazy::pobierz_projekt("select * from projekt where Zadanie = false and Id_projektu in ( select Id_projektu from Przypisanie_do_projektow where Id_pracownika= "+ id +")");
+	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
 
 	for (auto i = projekty.begin(); i != projekty.end(); ++i)
 	{
@@ -23,6 +24,7 @@ QStringList Fun_projekty::pobierz_liste_zadan()
 
 	projekt = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
 	Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
+	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
 
 	projekty = Pobieranie_bazy::pobierz_projekt("select * from Projekt where Id_projektu_nadrzednego = " 
 		+ projekt[0].pobierz_id_projektu() + ";");
@@ -149,6 +151,7 @@ QStringList Fun_projekty::pobierz_liste_pracownikow()
 {
 	vector<Pracownik>pracownicy = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy");
 	QStringList lista;
+	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
 
 	for (auto i = pracownicy.begin(); i != pracownicy.end(); ++i)
 	{
@@ -166,6 +169,7 @@ QStringList Fun_projekty::pobierz_liste_pracownikow_w_projekcie(string id_projek
 {
 	vector<Przypisanie_do_projektow>przypisania = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from Przypisanie_do_projektow where Id_projektu = " + id_projektu + "");
 	QStringList lista;
+	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
 
 	for (auto i = przypisania.begin(); i != przypisania.end(); ++i)
 	{

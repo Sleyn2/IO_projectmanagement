@@ -26,9 +26,10 @@ vector<Pracownik> Pobieranie_bazy::pobierz_pracownik(string zapytanie)
             {
                 Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
                 Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+                return pracownicy;
             }
-            return pracownicy;
             Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
+            return pracownicy;        
     }
     else
     {
@@ -60,6 +61,7 @@ vector<Projekt> Pobieranie_bazy::pobierz_projekt(string zapytanie)
         {
             Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
             Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+            return projekty;
         }
         Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
         return projekty;
@@ -93,6 +95,7 @@ vector<Przypisanie_do_projektow> Pobieranie_bazy::pobierz_Przypisanie_do_projekt
         {
             Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
             Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+            return przypisanie_do_projektow;
         }
         Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
         return przypisanie_do_projektow;
@@ -127,6 +130,7 @@ vector<Prosba> Pobieranie_bazy::pobierz_prosby(string zapytanie)
         {
             Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
             Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+            return prosby;
         }
         Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
         return prosby;
@@ -161,6 +165,7 @@ vector<Dzial> Pobieranie_bazy::pobierz_dzial(string zapytanie)
         {
             Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
             Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+            return dzialy;
         }
         Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
         return dzialy;
@@ -195,6 +200,7 @@ vector<Przypisanie_do_dzialow> Pobieranie_bazy::pobierz_przypisanie_do_dzialow(s
         {
             Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
             Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+            return przypisania;
         }
         Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
         return przypisania;
@@ -229,6 +235,7 @@ vector<Raport> Pobieranie_bazy::pobierz_raport(string zapytanie)
         {
             Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
             Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+            return raporty;
         }
         Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
         return raporty;
@@ -263,6 +270,7 @@ vector<Wiadomosc> Pobieranie_bazy::pobierz_wiadomosc(string zapytanie)
         {
             Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
             Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+            return wiadomosci;
         }
         Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
         return wiadomosci;
