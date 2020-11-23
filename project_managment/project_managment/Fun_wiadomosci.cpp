@@ -15,6 +15,7 @@ bool Fun_wiadomosci::usun_wiadomosc(string id_odb, string data_wys)
 
 QStringList Fun_wiadomosci::pobierz_wiadomosci(bool send)
 {
+	bool send = 1;
 	if (send)
 	{
 		vector<Wiadomosc>wiadomosci = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Id_nadawcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
@@ -22,8 +23,6 @@ QStringList Fun_wiadomosci::pobierz_wiadomosci(bool send)
 		vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
 		for (auto i = wiadomosci.begin(); i != wiadomosci.end(); ++i)
 		{
-			QStringList lista;
-
 			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
 		}
 		if (lista.empty())
@@ -40,8 +39,6 @@ QStringList Fun_wiadomosci::pobierz_wiadomosci(bool send)
 		vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
 		for (auto i = wiadomosci.begin(); i != wiadomosci.end(); ++i)
 		{
-			QStringList lista;
-
 			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
 		}
 		if (lista.empty())

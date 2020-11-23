@@ -154,7 +154,11 @@ QStringList Fun_projekty::pobierz_liste_pracownikow()
 	{
 		lista.append(QString::fromStdString(i->pobierz_id_pracownika()+ ". " + i->pobierz_imie()+ " " + i->pobierz_nazwisko()));
 	}
-	if (lista.empty()) lista.append(QString::fromStdString("Brak pracownikow"));
+	if (lista.empty())
+	{
+		lista.append(QString::fromStdString("Brak pracownikow"));
+		return lista;
+	}
 	else return lista;
 }
 
@@ -166,10 +170,13 @@ QStringList Fun_projekty::pobierz_liste_pracownikow_w_projekcie(string id_projek
 	for (auto i = przypisania.begin(); i != przypisania.end(); ++i)
 	{
 	vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + i->pobierz_id_pracownika() + "");
-	QStringList lista;
 
 	lista.append(QString::fromStdString(pracownik[0].pobierz_id_pracownika() + ". " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko()));
 	}
-	if (lista.empty()) lista.append(QString::fromStdString("Brak pracownikow"));
+	if (lista.empty())
+	{
+		lista.append(QString::fromStdString("Brak pracownikow"));
+		return lista;
+	}
 	else return lista;
 }
