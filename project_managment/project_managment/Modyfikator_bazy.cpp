@@ -182,3 +182,56 @@ bool Modyfikator_bazy::zaktualizuj_zadanie(Projekt *zadanie)
         return false;
     }
 }
+
+bool Modyfikator_bazy::dodaj_wiadomosc(Wiadomosc* wiadomosc) 
+{
+    connection C("dbname = test user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("update Wiadomosci set Id_odbiorcy = " + wiadomosc->pobierz_id_odbiorcy() + ", Data_wyslania = '" + wiadomosc->pobierz_data_wyslania() + "', Tresc = '" +
+                wiadomosc->pobierz_tresc() + "', Id_nadawcy = " + wiadomosc->pobierz_id_nadawcy() + ", Temat = '" + wiadomosc->pobierz_temat() + "';");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
+bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_nad, string tem)
+{
+    connection C("dbname = test user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("delete from Wiadomosci where Id_odbiorcy = " + id_odb + " and Data_wyslania = '" + data_wys + "' and Id_nadawacy = " + id_nad + " and Temat = '" + tem + "';");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}

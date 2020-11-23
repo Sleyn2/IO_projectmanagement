@@ -130,6 +130,8 @@ public:
    static bool dodaj_prosbe(Prosba *prosba);
    static bool dodaj_projekt(Projekt *Projekt);
    static bool dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie);
+   static bool dodaj_wiadomosc(Wiadomosc* wiadomosc);
+   static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad, string tem);
    static bool usun_zadanie(string zadanie);
    static bool zaktualizuj_zadanie (Projekt* zadanie);
    static bool aktualizuj_pracownika(Pracownik* prac);
