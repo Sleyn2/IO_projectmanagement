@@ -13,18 +13,43 @@ bool Fun_wiadomosci::usun_wiadomosc(string id_odb, string data_wys)
 	else return false;
 }
 
-QStringList Fun_wiadomosci::pobierz_wiadomosci()
+QStringList Fun_wiadomosci::pobierz_wiadomosci(bool send)
 {
-	vector<Wiadomosc>wiadomosci = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Id_nadawcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika()+  "");
-	QStringList lista;
-
-	for (auto i = wiadomosci.begin(); i != wiadomosci.end(); ++i)
+	if (send)
 	{
+		vector<Wiadomosc>wiadomosci = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Id_nadawcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
 		QStringList lista;
-		vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + i->pobierz_id_nadawcy() + "");
+		vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
+		for (auto i = wiadomosci.begin(); i != wiadomosci.end(); ++i)
+		{
+			QStringList lista;
 
-		lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_imie()+ " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
+			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
+		}
+		if (lista.empty())
+		{
+			lista.append(QString::fromStdString("Brak wiadomosci"));
+			return lista;
+		}
+		else return lista;
 	}
-	if (lista.empty()) lista.append(QString::fromStdString("Brak wiadomosc"));
-	else return lista;
+	else
+	{
+		vector<Wiadomosc>wiadomosci = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Id_odbiorcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
+		QStringList lista;
+		vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
+		for (auto i = wiadomosci.begin(); i != wiadomosci.end(); ++i)
+		{
+			QStringList lista;
+
+			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
+		}
+		if (lista.empty())
+		{
+			lista.append(QString::fromStdString("Brak wiadomosci"));
+			return lista;
+		}
+		else return lista;
+	}
+		
 }

@@ -55,7 +55,7 @@ string Przypisanie_do_projektow::pobierz_id_projektu() { return this->id_projekt
 string Przypisanie_do_projektow::pobierz_kierownik() { return this->kierownik; }
 
 
-Wiadomosc::Wiadomosc(string id_od, string data_wy, string tr, string id_nad, string t) :
+Wiadomosc::Wiadomosc(string id_od, string data_wy, string tr, string t, string id_nad) :
     id_odbiorcy(id_od), data_wyslania(data_wy), tresc(tr), id_nadawcy(id_nad), temat(t)
 {}
 
