@@ -28,8 +28,16 @@ void project_managment::on_pushButton_2_clicked()
 void project_managment::on_pushButton_3_clicked()
 {
     ui.stackedWidget->setCurrentIndex(2);
+} 
+// Ustawianie okien do wyœwietlenia
+void project_managment::ustaw_okna(Projekty_zadania_okno* temp,
+                                             edycja_zadanie_okno* temp2,
+                                             wiadomosci_okno* temp3)
+{
+    this->edytowanie_zadan = temp2;
+    this->tworzenie_wiadomosci = temp3;
+    this->tworzenie_zadan_projektow = temp;
 }
-
 void project_managment::on_pushButton_ustaw1_clicked()
 {
     ui.stackedWidget_ustawienia->setCurrentIndex(1);
@@ -98,6 +106,21 @@ void project_managment::odswiezZadania()
     ui.listWidget_zadania->addItems(availableTaskList);
 }
 
+void project_managment::odswiezWiadomosci(bool odebrane)
+{
+    ui.listWidget_wiadomosci->clear();
+    messageList.clear();
+
+    Fun_wiadomosci::pobierz_wiadomosci();
+    if(Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+        QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    else
+        messageList = Fun_wiadomosci::pobierz_wiadomosci();
+
+    ui.listWidget_wiadomosci->addItems(messageList);
+
+}
+
 //Wyszukiwanie przy zmianie tekstu 
 void project_managment::on_lineEdit_search_textChanged(const QString& arg1)
 {
@@ -146,19 +169,27 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
     }
     this->odswiezZadania();
 }
-
 void project_managment::on_listWidget_zadania_itemClicked(QListWidgetItem* item)
 {
     QString nazwa = item->text();
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania(nazwa.toStdString());
 }
 
-void project_managment::ustaw_okno_tworzenia(Projekty_zadania_okno* temp)
-{
-    this->tworzenie_zadan_projektow = temp;
-}
+//Wiadomosci
 
-void project_managment::ustaw_okno_edycji(edycja_zadanie_okno* temp)
+void project_managment::on_pushButton_odebrane_clicked()
 {
-    this->edytowanie_zadan = temp;
+
+}
+void project_managment::on_pushButton_wyslane_clicked()
+{
+    this->odswiezWiadomosci(false);
+}
+void project_managment::on_pushButton_nowaWiadomosc_clicked()
+{
+    this->tworzenie_wiadomosci->show();
+}
+void project_managment::on_pushButton_usunWiadomosc_clicked()
+{
+
 }

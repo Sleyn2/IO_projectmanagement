@@ -143,7 +143,7 @@
        <string notr="true">background-color: rgb(170, 170, 255);</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Twoje_projekty">
        <widget class="QWidget" name="widget" native="true">
@@ -760,7 +760,7 @@ border-color: rgb(0, 0, 0);
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);</string>
         </property>
-        <widget class="QPushButton" name="pushButton_12">
+        <widget class="QPushButton" name="pushButton_odebrane">
          <property name="geometry">
           <rect>
            <x>20</x>
@@ -778,7 +778,7 @@ border-color: rgb(0, 0, 0);
           <string>Odebrane</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_13">
+        <widget class="QPushButton" name="pushButton_wyslane">
          <property name="geometry">
           <rect>
            <x>20</x>
@@ -796,7 +796,7 @@ border-color: rgb(0, 0, 0);
           <string>Wysłane</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_14">
+        <widget class="QPushButton" name="pushButton_nowaWiadomosc">
          <property name="geometry">
           <rect>
            <x>20</x>
@@ -827,7 +827,7 @@ Wiadomość</string>
           <bool>false</bool>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_15">
+        <widget class="QPushButton" name="pushButton_usunWiadomosc">
          <property name="geometry">
           <rect>
            <x>20</x>
@@ -859,7 +859,7 @@ Wiadomość</string>
          </property>
         </widget>
        </widget>
-       <widget class="QListView" name="listView">
+       <widget class="QListWidget" name="listWidget_wiadomosci">
         <property name="geometry">
          <rect>
           <x>210</x>
@@ -895,6 +895,9 @@ Wiadomość</string>
             <width>211</width>
             <height>22</height>
            </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_30">
@@ -1010,6 +1013,9 @@ Wiadomość</string>
             <pointsize>12</pointsize>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
           <property name="text">
            <string>edytuj informacje</string>
           </property>
@@ -1069,6 +1075,9 @@ Wiadomość</string>
            <font>
             <pointsize>12</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
           </property>
           <property name="text">
            <string>zmień hasło</string>
