@@ -23,7 +23,8 @@ void project_managment::on_pushButton_1_clicked()
 void project_managment::on_pushButton_2_clicked()
 {
     ui.stackedWidget->setCurrentIndex(1);
-    this->odswiezWiadomosci(false);
+    this->wyslane = false;
+    this->odswiezWiadomosci();
 }
 
 void project_managment::on_pushButton_3_clicked()
