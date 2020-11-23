@@ -25,6 +25,9 @@ private slots:
     void on_pushButton_1_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
+    void on_pushButton_ustaw1_clicked();
+    void on_pushButton_anuluj_clicked();
+    void on_pushButton_zapisz_clicked();
     void on_pushButton_edytuj_zadanie_clicked();
     void on_pushButton_utworzProjekt_clicked();
     void on_pushButton_utworz_zadanie_clicked();

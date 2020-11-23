@@ -36,6 +36,40 @@ bool Modyfikator_bazy::dodaj_prosbe(Prosba* prosba)
     }
 }
 
+bool Modyfikator_bazy::aktualizuj_pracownika(Pracownik* prac)
+{
+    connection C("dbname = test user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
+    if (C.is_open()) {
+
+        try
+        {
+            work W{ C };
+
+            W.exec0("update pracownicy set imie = '" + to_string(prac->pobierz_imie()) +
+                "', id_pracownika = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() +
+                "', nazwisko = '" + to_string(prac->pobierz_nazwisko()) +
+                "', login = '" + to_string(prac->pobierz_login()) +
+                "', haslo = '" + to_string(prac->pobierz_haslo()) +
+                "', administrator = '" + to_string(prac->pobierz_czy_administator()) +
+                "' where id_pracownika = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "';");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
 bool Modyfikator_bazy::dodaj_projekt(Projekt *projekt)
 {
     connection C("dbname = test user = postgres password = postgres \

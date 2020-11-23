@@ -12,6 +12,7 @@ project_managment::project_managment(QWidget *parent)
     ui.setupUi(this);
     ui.Opcje_projektu->setCurrentIndex(2);
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("");
+    
 }
 // Zmiana miêdzy widokami w StackedWidget
 void project_managment::on_pushButton_1_clicked()
@@ -27,6 +28,35 @@ void project_managment::on_pushButton_2_clicked()
 void project_managment::on_pushButton_3_clicked()
 {
     ui.stackedWidget->setCurrentIndex(2);
+}
+
+void project_managment::on_pushButton_ustaw1_clicked()
+{
+    ui.stackedWidget_ustawienia->setCurrentIndex(1);
+}
+
+void project_managment::on_pushButton_anuluj_clicked()
+{
+    ui.stackedWidget_ustawienia->setCurrentIndex(0);
+}
+
+void project_managment::on_pushButton_zapisz_clicked()
+{
+    string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika();
+    string imie = ui.lineEdit_imie->text().toLocal8Bit().constData();
+    string nazw = ui.lineEdit_nazw->text().toLocal8Bit().constData();
+    string login = ui.lineEdit_login->text().toLocal8Bit().constData();
+    string haslo = Dane_zalogowanego_pracownika::instancja()->pobierz_haslo();
+    string adm = Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator();
+    
+    
+    Fun_ustawienia::edycja_danych_uzytkownika(id, imie, nazw, login, haslo, adm);
+
+    ui.label_27->setText(QString::fromStdString(imie + " " + nazw));
+
+    ui.label_35->setText(QString::fromStdString(login));
+
+    ui.stackedWidget_ustawienia->setCurrentIndex(0);
 }
 
 void project_managment::on_pushButton_utworzProjekt_clicked()
