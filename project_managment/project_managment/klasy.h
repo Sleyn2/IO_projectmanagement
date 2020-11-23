@@ -131,7 +131,7 @@ public:
    static bool dodaj_projekt(Projekt *Projekt);
    static bool dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie);
    static bool dodaj_wiadomosc(Wiadomosc* wiadomosc);
-   static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad, string tem);
+   static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad);
    static bool usun_zadanie(string zadanie);
    static bool zaktualizuj_zadanie (Projekt* zadanie);
    static bool aktualizuj_pracownika(Pracownik* prac);
@@ -167,6 +167,14 @@ class Fun_ustawienia
 {
 public:
     static bool edycja_danych_uzytkownika(string id_pracownika, string imie, string nazwisko, string login, string haslo, string czy_admin);
+};
+
+class Fun_wiadomosci
+{
+public:
+    static bool dodaj_wiadomosc(string id_odb, string data_wys, string tresc, string temat);
+    static bool usun_wiadomosc(string id_odb, string data_wys);
+    static QStringList pobierz_wiadomosci();
 };
 
 class Dane_zalogowanego_pracownika

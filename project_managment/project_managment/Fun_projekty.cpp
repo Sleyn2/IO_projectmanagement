@@ -98,7 +98,7 @@ bool Fun_projekty::utworz_zadanie(string nazwa, string opis, string data_rozpocz
 	}
 }
 
-static bool dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik)
+bool Fun_projekty::dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik)
 {
 	vector<Projekt> id_projektu = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
 		Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");

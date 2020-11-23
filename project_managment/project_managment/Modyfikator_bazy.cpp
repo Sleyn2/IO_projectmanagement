@@ -210,7 +210,7 @@ bool Modyfikator_bazy::dodaj_wiadomosc(Wiadomosc* wiadomosc)
     }
 }
 
-bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_nad, string tem)
+bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_nad)
 {
     connection C("dbname = test user = postgres password = postgres \
       hostaddr = 127.0.0.1 port = 5432");
@@ -218,7 +218,7 @@ bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_
         try
         {
             work W{ C };
-            W.exec0("delete from Wiadomosci where Id_odbiorcy = " + id_odb + " and Data_wyslania = '" + data_wys + "' and Id_nadawacy = " + id_nad + " and Temat = '" + tem + "';");
+            W.exec0("delete from Wiadomosci where Id_odbiorcy = " + id_odb + " and Data_wyslania = '" + data_wys + "' and Id_nadawacy = " + id_nad + ";");
             W.commit();
         }
         catch (exception e)

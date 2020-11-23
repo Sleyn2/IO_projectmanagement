@@ -80,6 +80,9 @@
     <ClCompile Include="Fun_ustawienia.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Fun_wiadomosci.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="logowanie_okno.h">

@@ -101,6 +101,7 @@
     <ClCompile Include="Fun-okno_logowania.cpp" />
     <ClCompile Include="Fun_projekty.cpp" />
     <ClCompile Include="Fun_ustawienia.cpp" />
+    <ClCompile Include="Fun_wiadomosci.cpp" />
     <ClCompile Include="Modyfikator_bazy.cpp" />
     <ClCompile Include="Pobieranie_bazy.cpp" />
     <ClCompile Include="projekty_zadania_okno.cpp" />
