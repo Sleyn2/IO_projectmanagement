@@ -191,8 +191,9 @@ bool Modyfikator_bazy::dodaj_wiadomosc(Wiadomosc* wiadomosc)
         try
         {
             work W{ C };
-            W.exec0("update Wiadomosci set Id_odbiorcy = " + wiadomosc->pobierz_id_odbiorcy() + ", Data_wyslania = '" + wiadomosc->pobierz_data_wyslania() + "', Tresc = '" +
-                wiadomosc->pobierz_tresc() + "', Id_nadawcy = " + wiadomosc->pobierz_id_nadawcy() + ", Temat = '" + wiadomosc->pobierz_temat() + "';");
+            W.exec0("insert into Wiadomosci (Id_odbiorcy, Data_wyslania, Tresc, Temat, Id_nadawcy) values (" + 
+                wiadomosc->pobierz_id_odbiorcy() + ", '" + wiadomosc->pobierz_data_wyslania() + "', '" +
+                wiadomosc->pobierz_tresc() + "', '" + wiadomosc->pobierz_temat() + "', " + wiadomosc->pobierz_id_nadawcy() + ");");
             W.commit();
         }
         catch (exception e)

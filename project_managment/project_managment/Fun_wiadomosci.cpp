@@ -25,7 +25,7 @@ QStringList Fun_wiadomosci::pobierz_wiadomosci(bool wysylanie)
 		vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
 		for (auto i = wiadomosci.begin(); i != wiadomosci.end(); ++i)
 		{
-			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
+			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_id_pracownika() + ". " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
 		}
 		if (lista.empty())
 		{
@@ -42,7 +42,7 @@ QStringList Fun_wiadomosci::pobierz_wiadomosci(bool wysylanie)
 		vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
 		for (auto i = wiadomosci.begin(); i != wiadomosci.end(); ++i)
 		{
-			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
+			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_id_pracownika() + ". " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
 		}
 		if (lista.empty())
 		{
