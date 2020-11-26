@@ -223,7 +223,7 @@ void project_managment::on_listWidget_wiadomosci_itemDoubleClicked(QListWidgetIt
 {
     this->tworzenie_wiadomosci->ustawTryb(1);
     this->tworzenie_wiadomosci->ustawWiadomosc(item->text());
-    this->show();
+    this->tworzenie_wiadomosci->show();
 }
 void project_managment::on_pushButton_usunWiadomosc_clicked()
 {

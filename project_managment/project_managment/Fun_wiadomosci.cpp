@@ -87,3 +87,23 @@ string seperacja_stringa_od_kropki(string str)
 	}
 	return slowo;
 }
+QString Fun_wiadomosci::pobierz_tresc(string id_pracownika, string data_wyslania, bool czy_wyslana_wiadomosc)
+{
+	vector<Wiadomosc> wiadomosc;
+	if (czy_wyslana_wiadomosc)
+	{
+		wiadomosc = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Data_wyslania = '" + data_wyslania +
+			"' and Id_nadawcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + " and Id_odbiorcy = " +
+			id_pracownika + "");
+	}
+
+	else
+	{
+		wiadomosc = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Data_wyslania = '" + data_wyslania +
+			"' and Id_odbiorcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + " and Id_nadawcy = " +
+			id_pracownika + "");
+	}
+	QString tresc;
+	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return tresc;
+	else return QString::fromStdString(wiadomosc[0].pobierz_tresc());
+}

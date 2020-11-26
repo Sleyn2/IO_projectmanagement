@@ -191,7 +191,7 @@
        <item row="2" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QPushButton" name="pushButton_send_2">
+          <widget class="QPushButton" name="pushButton_answer">
            <property name="text">
             <string>Odpowiedz</string>
            </property>
