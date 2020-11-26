@@ -190,10 +190,11 @@ bool Modyfikator_bazy::dodaj_wiadomosc(Wiadomosc* wiadomosc)
     if (C.is_open()) {
         try
         {
+            string s = wiadomosc->pobierz_id_nadawcy();
             work W{ C };
             W.exec0("insert into Wiadomosci (Id_odbiorcy, Data_wyslania, Tresc, Temat, Id_nadawcy) values (" + 
                 wiadomosc->pobierz_id_odbiorcy() + ", '" + wiadomosc->pobierz_data_wyslania() + "', '" +
-                wiadomosc->pobierz_tresc() + "', '" + wiadomosc->pobierz_temat() + "', " + wiadomosc->pobierz_id_nadawcy() + ");");
+                wiadomosc->pobierz_tresc() + "', '" + wiadomosc->pobierz_temat()+ "', " + wiadomosc->pobierz_id_nadawcy()+  ");");
             W.commit();
         }
         catch (exception e)
