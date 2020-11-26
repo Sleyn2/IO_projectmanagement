@@ -16,6 +16,10 @@ void wiadomosci_okno::ustawTryb(int i)
 	ui.stackedWidget->setCurrentIndex(i);
 	if (i == 0)
 		this->odswiezListe();
+	else if (i == 1)
+	{
+
+	}
 }
 void wiadomosci_okno::ustawWiadomosc(QString temp)
 {
@@ -44,6 +48,14 @@ void wiadomosci_okno::on_pushButton_send_clicked()
 void wiadomosci_okno::on_pushButton_cancel_clicked()
 {
 	this->close();
+}
+void wiadomosci_okno::on_pushButton_cancel2_clicked()
+{
+	this->close();
+}
+void wiadomosci_okno::on_pushButton_answer_clicked()
+{
+	//TODO odpowiedü z kopiπ tematu + Re: 
 }
 void wiadomosci_okno::odswiezListe()
 {
