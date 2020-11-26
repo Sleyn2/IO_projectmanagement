@@ -71,3 +71,19 @@ vector<string> podzial_stringa_na_slowa(string str)
 	}
 	return slowa;
 }
+
+string seperacja_stringa_od_kropki(string str)
+{
+	string slowo = "";
+	for (auto x : str)
+	{
+		if (x == '.')
+		{
+			return slowo;
+		}
+		else {
+			slowo = slowo + x;
+		}
+	}
+	return slowo;
+}

@@ -8,6 +8,7 @@ using namespace std;
 using namespace pqxx;
 
 vector<string> podzial_stringa_na_slowa(string str);
+string seperacja_stringa_od_kropki(string str);
 
 class Pracownik
 {
