@@ -23,10 +23,6 @@ void logowanie_okno::on_pushButton_login_clicked()
     
     if (Fun_okno_logowania::logowanie(username.toStdString(), password.toStdString()))
     {
-        string msg = "zalogowano jako " + username.toStdString();
-        char temp2[35];
-        strcpy(temp2, msg.c_str());
-        QMessageBox::information(this, "Login", temp2);
         this->hidden->odswiezProjekty();
         this->hidden->show();
         this->close();

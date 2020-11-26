@@ -10,7 +10,7 @@ project_managment::project_managment(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
-    ui.Opcje_projektu->setCurrentIndex(3);
+    ui.Opcje_projektu->setCurrentIndex(2);
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("");
     
 }

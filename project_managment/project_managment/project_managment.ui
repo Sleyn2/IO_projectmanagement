@@ -104,25 +104,6 @@
         <string>Ustawienia</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>300</y>
-         <width>251</width>
-         <height>61</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>16</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Mój profil</string>
-       </property>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -143,7 +124,7 @@
        <string notr="true">background-color: rgb(170, 170, 255);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Twoje_projekty">
        <widget class="QWidget" name="widget" native="true">
@@ -1464,7 +1445,6 @@ Wiadomość</string>
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="Moj_profil"/>
      </widget>
     </item>
    </layout>
