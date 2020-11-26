@@ -43,7 +43,7 @@ private slots:
     void on_pushButton_nowaWiadomosc_clicked();
     void on_pushButton_usunWiadomosc_clicked();
     void on_listWidget_wiadomosci_itemClicked(QListWidgetItem* item);
-
+    void on_listWidget_wiadomosci_itemDoubleClicked(QListWidgetItem* item);
 private:
     Ui::project_managmentClass ui;
     Projekty_zadania_okno* tworzenie_zadan_projektow;

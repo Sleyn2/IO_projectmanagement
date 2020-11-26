@@ -219,6 +219,12 @@ void project_managment::on_listWidget_wiadomosci_itemClicked(QListWidgetItem* it
 {
     this->message = item->text();
 }
+void project_managment::on_listWidget_wiadomosci_itemDoubleClicked(QListWidgetItem* item)
+{
+    this->tworzenie_wiadomosci->ustawTryb(1);
+    this->tworzenie_wiadomosci->ustawWiadomosc(item->text());
+    this->show();
+}
 void project_managment::on_pushButton_usunWiadomosc_clicked()
 {
     istringstream ss(this->message.toStdString());
@@ -226,15 +232,4 @@ void project_managment::on_pushButton_usunWiadomosc_clicked()
     ss >> tytul >> nadawca >> data;
     //if(this->wyslane)
         // if (Fun_wiadomosci::usun_wiadomosc());
-}
-// usuwanie spacji
-void removeDupWord(string str)
-{
-    istringstream ss(str);
-    string word;
-    while (ss >> word)
-    {
-        // print the read word
-        cout << word << "\n";
-    }
 }
