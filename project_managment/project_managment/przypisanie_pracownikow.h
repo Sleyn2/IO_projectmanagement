@@ -19,7 +19,6 @@ private slots:
 	void on_pushButton_anuluj_clicked();
 	void on_pushButton_dodaj_clicked();
 	void on_pushButton_usun_clicked();
-	void odswiezListy(bool add);
 	void on_lineEdit_current_textChanged(const QString& arg1);
 	void on_lineEdit_all_textChanged(const QString& arg1);
 	void on_listWidget_all_itemClicked(QListWidgetItem* item);
@@ -32,4 +31,6 @@ private:
 	QListWidgetItem* taskUser;
 	bool if_id = false;
 	int id;
+	void odswiezListy(bool add);
+
 };

@@ -15,11 +15,13 @@ public:
 private slots:
 	void on_pushButton_send_clicked();
 	void on_pushButton_cancel_clicked();
-	void on_pushButton_cancel2_clicked();
+	void on_pushButton_cancel_2_clicked();
 	void on_pushButton_answer_clicked();
 private:
 	Ui::wiadomosci_okno ui;
 	QStringList users;
 	QString messageInfo;
+	string msgTopic;
 	void odswiezListe();
+
 };
