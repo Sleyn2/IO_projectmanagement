@@ -95,8 +95,13 @@ void project_managment::odswiezProjekty()
     ui.ProjectList->clear();
     availableProjectList.clear();
     availableProjectList = Fun_projekty::pobierz_liste_projektow();
-    availableProjectList.sort();
-    ui.ProjectList->addItems(availableProjectList);
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+        QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    else
+    {
+        availableProjectList.sort();
+        ui.ProjectList->addItems(availableProjectList);
+    }
 }
 
 void project_managment::odswiezZadania()
@@ -104,8 +109,13 @@ void project_managment::odswiezZadania()
     ui.listWidget_zadania->clear();
     availableTaskList.clear();
     availableTaskList = Fun_projekty::pobierz_liste_zadan();
-    availableTaskList.sort();
-    ui.listWidget_zadania->addItems(availableTaskList);
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+        QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    else
+    {
+        availableTaskList.sort();
+        ui.listWidget_zadania->addItems(availableTaskList);
+    }
 }
 
 void project_managment::odswiezWiadomosci()
@@ -140,18 +150,30 @@ void project_managment::ustaw_user()
 {
     string nazwa = Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu();
     ui.Opcje_projektu->setCurrentIndex(0);
-    ui.textBrowserOpisProjektu_1->setText(Fun_projekty::pobierz_opis_projektu(Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu()));
-    QString nazwaQT = QString::fromStdString(nazwa);
-    ui.label_4->setText(nazwaQT);
+    QString opis = Fun_projekty::pobierz_opis_projektu(Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu());
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+        QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    else
+    {
+        ui.textBrowserOpisProjektu_1->setText(opis);
+        QString nazwaQT = QString::fromStdString(nazwa);
+        ui.label_4->setText(nazwaQT);
+    }
 }
 
 void project_managment::ustaw_admin()
 {
     string nazwa = Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu();
     ui.Opcje_projektu->setCurrentIndex(1);
-    ui.textBrowserOpisProjektu_2->setText(Fun_projekty::pobierz_opis_projektu(nazwa));
-    QString nazwaQT = QString::fromStdString(nazwa);
-    ui.label_6->setText(nazwaQT);
+    QString opis = Fun_projekty::pobierz_opis_projektu(nazwa);
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) 
+    QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    else
+    {
+        ui.textBrowserOpisProjektu_2->setText(opis);
+        QString nazwaQT = QString::fromStdString(nazwa);
+        ui.label_6->setText(nazwaQT);
+    }
 }
 
 void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
@@ -203,7 +225,7 @@ void project_managment::on_pushButton_usunWiadomosc_clicked()
     string tytul, nadawca, data;
     ss >> tytul >> nadawca >> data;
     //if(this->wyslane)
-        //Fun_wiadomosci::usun_wiadomosc();
+        // if (Fun_wiadomosci::usun_wiadomosc());
 }
 // usuwanie spacji
 void removeDupWord(string str)

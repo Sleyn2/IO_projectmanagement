@@ -53,3 +53,21 @@ QStringList Fun_wiadomosci::pobierz_wiadomosci(bool wysylanie)
 	}
 		
 }
+
+vector<string> podzial_stringa_na_slowa(string str)
+{
+	vector<string> slowa;
+	string slowo = "";
+	for (auto x : str)
+	{
+		if (x == ' ')
+		{
+			slowa.push_back(slowo);
+			slowo = "";
+		}
+		else {
+			slowo = slowo + x;
+		}
+	}
+	return slowa;
+}

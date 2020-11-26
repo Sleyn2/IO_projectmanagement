@@ -7,6 +7,8 @@
 using namespace std;
 using namespace pqxx;
 
+vector<string> podzial_stringa_na_slowa(string str);
+
 class Pracownik
 {
 private:
