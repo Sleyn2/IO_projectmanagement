@@ -11,14 +11,28 @@ wiadomosci_okno::wiadomosci_okno(QWidget *parent)
 wiadomosci_okno::~wiadomosci_okno()
 {
 }
-void wiadomosci_okno::ustawTryb(int i)
+void wiadomosci_okno::ustawTryb(int i, bool czy_wyslana)
 {
 	ui.stackedWidget->setCurrentIndex(i);
 	if (i == 0)
 		this->odswiezListe();
 	else if (i == 1)
 	{
-
+		vector<string> text = podzial_stringa_na_slowa(messageInfo.toStdString());
+		
+		//QString tresc = Fun_wiadomosci::pobierz_tresc(id, text[3], czy_wyslana);
+		ui.topic_label->setText(QString::fromStdString(text[0]));
+		//ui.textBrowser->setPlainText(tresc);
+		if (czy_wyslana)
+		{
+			ui.writer_label->setText(QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_imie() + Dane_zalogowanego_pracownika::instancja()->pobierz_nazwisko()));
+			ui.reciver_label->setText(QString::fromStdString(text[2] + text[3]));
+		}
+		else
+		{
+			ui.reciver_label->setText(QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_imie() + Dane_zalogowanego_pracownika::instancja()->pobierz_nazwisko()));
+			ui.writer_label->setText(QString::fromStdString(text[2] + text[3]));
+		}
 	}
 }
 void wiadomosci_okno::ustawWiadomosc(QString temp)
@@ -41,7 +55,7 @@ void wiadomosci_okno::on_pushButton_send_clicked()
 		return;
 	}
 	vector<string> name = podzial_stringa_na_slowa(adresat.toStdString());
-	if (Fun_wiadomosci::dodaj_wiadomosc(name[0], QDateTime::currentDateTime().toString().toStdString(), wiadomosc.toStdString(), tytul.toStdString())){}
+	if (Fun_wiadomosci::dodaj_wiadomosc(seperacja_stringa_od_kropki(name[0]), QDateTime::currentDateTime().toString().toStdString(), wiadomosc.toStdString(), tytul.toStdString())){}
 	else
 		QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
 }

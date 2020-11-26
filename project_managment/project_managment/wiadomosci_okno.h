@@ -10,7 +10,7 @@ class wiadomosci_okno : public QWidget
 public:
 	wiadomosci_okno(QWidget *parent = Q_NULLPTR);
 	~wiadomosci_okno();
-	void ustawTryb(int i);
+	void ustawTryb(int i, bool czy_wyslana);
 	void ustawWiadomosc(QString temp);
 private slots:
 	void on_pushButton_send_clicked();

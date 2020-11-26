@@ -212,7 +212,7 @@ void project_managment::on_pushButton_wyslane_clicked()
 }
 void project_managment::on_pushButton_nowaWiadomosc_clicked()
 {
-    this->tworzenie_wiadomosci->ustawTryb(0);
+    this->tworzenie_wiadomosci->ustawTryb(0, false);
     this->tworzenie_wiadomosci->show();
 }
 void project_managment::on_listWidget_wiadomosci_itemClicked(QListWidgetItem* item)
@@ -221,8 +221,8 @@ void project_managment::on_listWidget_wiadomosci_itemClicked(QListWidgetItem* it
 }
 void project_managment::on_listWidget_wiadomosci_itemDoubleClicked(QListWidgetItem* item)
 {
-    this->tworzenie_wiadomosci->ustawTryb(1);
     this->tworzenie_wiadomosci->ustawWiadomosc(item->text());
+    this->tworzenie_wiadomosci->ustawTryb(1, this->wyslane);
     this->tworzenie_wiadomosci->show();
 }
 void project_managment::on_pushButton_usunWiadomosc_clicked()
