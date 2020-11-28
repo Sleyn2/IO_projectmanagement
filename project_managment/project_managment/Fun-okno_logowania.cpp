@@ -61,6 +61,20 @@ string Dane_zalogowanego_pracownika::pobierz_czy_administator() { return this->c
 string Dane_zalogowanego_pracownika::pobierz_nazwe_projektu() { return this->nazwa_projektu; }
 string Dane_zalogowanego_pracownika::pobierz_nazwe_zadania() { return this->nazwa_zadania; }
 string Dane_zalogowanego_pracownika::pobierz_wyjatek() { return this->wyjatek; }
+
+std::vector<Dzial> Dane_zalogowanego_pracownika::pobierz_dzialy()
+{
+    string zapytanie = "select d.id_dzialu_firmy, d.nazwa, d.adres from dzialy_w_firmie as d\
+                       join przypisanie_do_dzialow as p\
+                       on d.id_dzialu_firmy = p.id_dzialu_firmy where p.id_pracownika = " +
+                       Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + ";";
+
+    std::vector<Dzial>dzialy = Pobieranie_bazy::pobierz_dzial(zapytanie);
+
+    return dzialy;
+
+}
+
 bool Dane_zalogowanego_pracownika::pobierz_czy_blad() { return this->czy_blad; }
 
 void Dane_zalogowanego_pracownika::ustaw_wyjatek(string wyjatek) { this->wyjatek = wyjatek; }

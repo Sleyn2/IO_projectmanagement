@@ -104,7 +104,7 @@ public:
 class Dzial
 {
 private:
-    string id_dzialu, adres, nazwa;
+    string id_dzialu, nazwa, adres;
 public:
     Dzial(string id_d, string adr, string naz);
     string pobierz_id_dzialu();
@@ -199,6 +199,7 @@ public:
     string pobierz_nazwe_projektu();
     string pobierz_nazwe_zadania();
     string pobierz_wyjatek();
+    std::vector<Dzial> pobierz_dzialy();
     bool pobierz_czy_blad();
     void ustaw_nazwe_projektu(string id_proj);
     void ustaw_nazwe_zadania(string id_zad);

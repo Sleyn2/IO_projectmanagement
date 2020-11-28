@@ -82,7 +82,7 @@ Przypisanie_do_dzialow::Przypisanie_do_dzialow(string id_p, string id_d):
 string Przypisanie_do_dzialow::pobierz_id_pracownika() { return this->id_pracownika; }
 string Przypisanie_do_dzialow::pobierz_id_dzialu() { return this->id_dzialu; }
 
-Dzial::Dzial(string id_d, string adr, string naz):
+Dzial::Dzial(string id_d, string naz, string adr):
     id_dzialu(id_d), adres(adr), nazwa(naz)
 {}
 

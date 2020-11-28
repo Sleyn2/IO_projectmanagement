@@ -9,15 +9,23 @@
 project_managment::project_managment(QWidget *parent)
     : QWidget(parent)
 {
+
     ui.setupUi(this);
     ui.Opcje_projektu->setCurrentIndex(2);
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("");
+
+    ui.label->setText("Ustawienia");
+
+    
+
     
 }
 // Zmiana miêdzy widokami w StackedWidget
 void project_managment::on_pushButton_1_clicked()
 {
     ui.stackedWidget->setCurrentIndex(0);
+
+    ui.label->setText("Twoje projekty i zadania");
 }
 
 void project_managment::on_pushButton_2_clicked()
@@ -25,11 +33,55 @@ void project_managment::on_pushButton_2_clicked()
     ui.stackedWidget->setCurrentIndex(1);
     this->wyslane = false;
     this->odswiezWiadomosci();
+
+    ui.label->setText("Wiadomoœci");
 }
 
 void project_managment::on_pushButton_3_clicked()
 {
     ui.stackedWidget->setCurrentIndex(2);
+    ui.label->setText("Ustawienia");
+
+    string imieNazw = Dane_zalogowanego_pracownika::instancja()->pobierz_imie() + " " + Dane_zalogowanego_pracownika::instancja()->pobierz_nazwisko();
+    ui.label_27->setText(QString::fromStdString(imieNazw));
+
+    string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika();
+    ui.label_29->setText(QString::fromStdString(id));
+
+    string czy_adm = Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator();
+
+    if (czy_adm == "0")
+    {
+        ui.label_32->setText("nie");
+        ui.label_42->setText("nie");
+    }
+    else if (czy_adm == "1")
+    {
+        ui.label_32->setText("tak");
+        ui.label_42->setText("nie");
+    }
+    else
+    {
+        ui.label_32->setText("tak");
+        ui.label_42->setText("tak");
+    }
+
+
+
+    string login = Dane_zalogowanego_pracownika::instancja()->pobierz_login();
+    ui.label_35->setText(QString::fromStdString(login));
+
+    std::vector<Dzial> dzialy = Dane_zalogowanego_pracownika::instancja()->pobierz_dzialy();
+
+    for (int i = 0; i < dzialy.size(); i++)
+    {
+        ui.comboBox->addItem(QString::fromStdString(dzialy[i].pobierz_nazwa()));
+    }
+    
+
+
+
+
 } 
 // Ustawianie okien do wyœwietlenia
 void project_managment::ustaw_okna(Projekty_zadania_okno* temp,

@@ -1,0 +1,23 @@
+<UI version="4.0" >
+ <class>zmiana_hasla_okno</class>
+ <widget class="QWidget" name="zmiana_hasla_okno" >
+  <property name="objectName" >
+   <string notr="true">zmiana_hasla_okno</string>
+  </property>
+  <property name="geometry" >
+   <rect>
+	<x>0</x>
+	<y>0</y>
+	<width>400</width>
+	<height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>zmiana_hasla_okno</string>
+  </property>
+ </widget>
+ <layoutDefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <resources/>
+ <connections/>
+</UI>
