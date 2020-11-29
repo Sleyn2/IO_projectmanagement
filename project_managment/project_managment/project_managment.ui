@@ -1434,6 +1434,9 @@ Wiadomość</string>
         </widget>
        </widget>
        <widget class="QGroupBox" name="groupBox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>30</x>
@@ -1450,7 +1453,7 @@ Wiadomość</string>
         <property name="title">
          <string>Ustawienia administratora systemu</string>
         </property>
-        <widget class="QLineEdit" name="lineEdit_search_3">
+        <widget class="QLineEdit" name="lineEdit_search_settings">
          <property name="geometry">
           <rect>
            <x>10</x>

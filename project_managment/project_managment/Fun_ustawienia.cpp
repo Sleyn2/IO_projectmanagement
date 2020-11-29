@@ -63,3 +63,36 @@ bool Fun_ustawienia::usun_z_dzialu_po_nazwie(string id_pracownika, string nazwa_
 	}
 
 }
+
+QStringList Fun_ustawienia::pobierz_liste_pracownikow()
+{
+	vector<Pracownik>pracownicy = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy");
+	QStringList lista;
+	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
+
+	for (auto i = pracownicy.begin(); i != pracownicy.end(); ++i)
+	{
+		lista.append(QString::fromStdString(i->pobierz_imie() + " " + i->pobierz_nazwisko() + " (" + i->pobierz_login() + ")"));
+	}
+	if (lista.empty())
+	{
+		lista.append(QString::fromStdString("Brak pracownikow"));
+		return lista;
+	}
+	else return lista;
+}
+
+string Fun_ustawienia::czy_admin_po_loginie(string login)
+{
+	vector<Pracownik> prac = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" +
+		login + "';");
+
+	if (prac.size() == 1)
+	{
+		return prac[0].pobierz_czy_administator();
+	}
+	else
+	{
+		return "blad";
+	}
+}

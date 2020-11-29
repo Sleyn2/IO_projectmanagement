@@ -174,6 +174,8 @@ public:
     static bool edycja_danych_uzytkownika(string id_pracownika, string imie, string nazwisko, string login, string haslo, string czy_admin);
     static bool dodaj_do_dzialu_po_nazwie(string id_pracownika, string nazwa_dzial);
     static bool usun_z_dzialu_po_nazwie(string id_pracownika, string nazwa_dzial);
+    static QStringList pobierz_liste_pracownikow();
+    static string czy_admin_po_loginie(string login);
 };
 
 class Fun_wiadomosci

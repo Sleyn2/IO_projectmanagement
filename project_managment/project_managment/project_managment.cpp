@@ -40,11 +40,9 @@ void project_managment::on_pushButton_2_clicked()
 void project_managment::on_pushButton_3_clicked()
 {
     this->odswiezUstawienia_przeglad();
-
-
+    this->odswiezUstawienia_admin();
 
     ui.stackedWidget->setCurrentIndex(2);
-
 
 } 
 // Ustawianie okien do wyœwietlenia
@@ -123,6 +121,31 @@ void project_managment::odswiezUstawienia_edycja()
     }
 }
 
+void project_managment::odswiezUstawienia_admin()
+{
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator() == "2")
+    {
+
+        ui.lineEdit_search_settings->setText(QString::fromStdString(""));
+        ui.userList->clear();
+
+        this->odswiezListeUzytkownikow();
+
+        vector<Pracownik> pracownicy = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy;");
+
+        for (int i = 0; i < pracownicy.size(); i++)
+        {
+            ui.userList->addItem(QString::fromStdString(pracownicy[i].pobierz_imie() + " " + pracownicy[i].pobierz_nazwisko() + " (" + pracownicy[i].pobierz_login() + ")"));
+        }
+
+        ui.groupBox_2->setEnabled(false);
+
+        ui.lineEdit_nazwa_dzialu->clear();
+        ui.lineEdit_adres_dzialu->clear();
+    }
+
+}
+
 void project_managment::on_pushButton_ustaw1_clicked()
 {
     this->odswiezUstawienia_edycja();
@@ -189,6 +212,44 @@ void project_managment::on_pushButton_ustaw2_clicked()
     this->zmien_haslo->show();
 }
 
+void project_managment::on_userList_itemClicked(QListWidgetItem* item)
+{
+    ui.groupBox_2->setEnabled(true);
+
+    string text = item->text().toUtf8().constData();
+    string login = "";
+
+    for (int i = 0; i < text.size(); i++)
+    {
+        if (text[i] == '(')
+        {
+            for (int j = i + 1; j < text.size()-1; j++)
+            {
+                login = login + text[j];
+            }
+            break;
+        }
+    }
+
+    string czy_adm = Fun_ustawienia::czy_admin_po_loginie(login);
+
+    if (czy_adm == "0")
+    {
+        ui.checkBox_tworzenie_proj->setChecked(false);
+        ui.checkBox_admin->setChecked(false);
+    }
+    else if (czy_adm == "1")
+    {
+        ui.checkBox_tworzenie_proj->setChecked(true);
+        ui.checkBox_admin->setChecked(false);
+    }
+    else if (czy_adm == "2")
+    {
+        ui.checkBox_tworzenie_proj->setChecked(true);
+        ui.checkBox_admin->setChecked(true);
+    }
+}
+
 void project_managment::on_pushButton_dodaj_clicked()
 {
     string dzial = ui.comboBox_dzialy->currentText().toUtf8().constData();
@@ -248,6 +309,20 @@ void project_managment::odswiezZadania()
     }
 }
 
+void project_managment::odswiezListeUzytkownikow()
+{
+    ui.userList->clear();
+    availableUsersList.clear();
+    availableUsersList = Fun_ustawienia::pobierz_liste_pracownikow();
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+        QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    else
+    {
+        availableUsersList.sort();
+        ui.userList->addItems(availableUsersList);
+    }
+}
+
 void project_managment::odswiezWiadomosci()
 {
     ui.listWidget_wiadomosci->clear();
@@ -274,6 +349,13 @@ void project_managment::on_lineEdit_search_task_textChanged(const QString& arg1)
     QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
     ui.listWidget_zadania->clear();    
     ui.listWidget_zadania->addItems(availableTaskList.filter(regExp));
+}
+
+void project_managment::on_lineEdit_search_settings_textChanged(const QString& arg1)
+{
+    QRegExp regExp(arg1, Qt::CaseInsensitive, QRegExp::Wildcard);
+    ui.userList->clear();
+    ui.userList->addItems(availableUsersList.filter(regExp));
 }
 
 void project_managment::ustaw_user()

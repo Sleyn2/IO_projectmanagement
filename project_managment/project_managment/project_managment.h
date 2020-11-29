@@ -36,6 +36,8 @@ private slots:
     void on_pushButton_usun_clicked();
     void on_pushButton_ustaw2_clicked();
     void on_pushButton_dodaj_clicked();
+    void on_lineEdit_search_settings_textChanged(const QString& arg1);
+    void on_userList_itemClicked(QListWidgetItem* item);
     //Projekty i zadania
     void on_pushButton_edytuj_zadanie_clicked();
     void on_pushButton_utworzProjekt_clicked();
@@ -57,11 +59,13 @@ private:
     edycja_zadanie_okno* edytowanie_zadan;
     wiadomosci_okno* tworzenie_wiadomosci;
     zmien_haslo_okno* zmien_haslo;
-    QStringList availableProjectList, availableTaskList, messageList;
+    QStringList availableProjectList, availableTaskList, messageList, availableUsersList;
     QString message;
     void odswiezZadania();
     void odswiezWiadomosci();
     void odswiezUstawienia_przeglad();
     void odswiezUstawienia_edycja();
+    void odswiezUstawienia_admin();
+    void odswiezListeUzytkownikow();
     bool wyslane;
 };
