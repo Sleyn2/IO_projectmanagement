@@ -88,7 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="zmiana_hasla_okno.cpp" />
+    <ClCompile Include="zmien_haslo_okno.cpp" />
     <QtRcc Include="project_managment.qrc" />
     <QtUic Include="projekty_zadania_okno.ui" />
     <QtUic Include="przypisanie_pracownikow.ui" />
@@ -115,7 +115,7 @@
     <ClCompile Include="wiadomosci_okno.cpp" />
     <ClCompile Include="project_managment.cpp" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="zmiana_hasla_okno.ui" />
+    <QtUic Include="zmien_haslo_okno.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="logowanie_okno.h" />
@@ -134,7 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="klasy.h" />
-    <QtMoc Include="zmiana_hasla_okno.h" />
+    <QtMoc Include="zmien_haslo_okno.h" />
     <QtMoc Include="przypisanie_pracownikow.h" />
     <QtMoc Include="projekty_zadania_okno.h" />
   </ItemGroup>

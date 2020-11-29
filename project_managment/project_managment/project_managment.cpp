@@ -77,20 +77,26 @@ void project_managment::on_pushButton_3_clicked()
     {
         ui.comboBox->addItem(QString::fromStdString(dzialy[i].pobierz_nazwa()));
     }
-    
 
+    dzialy.clear();
 
+    dzialy = Pobieranie_bazy::pobierz_dzial("select * from dzialy_w_firmie;");
 
+    for (int i = 0; i < dzialy.size(); i++)
+    {
+        ui.comboBox_dzialy->addItem(QString::fromStdString(dzialy[i].pobierz_nazwa()));
+    }
 
 } 
 // Ustawianie okien do wyœwietlenia
 void project_managment::ustaw_okna(Projekty_zadania_okno* temp,
                                              edycja_zadanie_okno* temp2,
-                                             wiadomosci_okno* temp3)
+                                             wiadomosci_okno* temp3, zmien_haslo_okno* temp4)
 {
     this->edytowanie_zadan = temp2;
     this->tworzenie_wiadomosci = temp3;
     this->tworzenie_zadan_projektow = temp;
+    this->zmien_haslo = temp4;
 }
 void project_managment::on_pushButton_ustaw1_clicked()
 {
@@ -284,4 +290,9 @@ void project_managment::on_pushButton_usunWiadomosc_clicked()
     ss >> tytul >> nadawca >> data;
     //if(this->wyslane)
         // if (Fun_wiadomosci::usun_wiadomosc());
+}
+
+void project_managment::on_pushButton_ustaw2_clicked()
+{
+    this->zmien_haslo->show();
 }

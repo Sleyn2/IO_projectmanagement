@@ -865,7 +865,7 @@ Wiadomość</string>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page_przeglad">
          <widget class="QComboBox" name="comboBox">
@@ -1180,10 +1180,18 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>280</x>
-            <y>120</y>
+            <y>111</y>
             <width>211</width>
-            <height>22</height>
+            <height>31</height>
            </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_nazw">
@@ -1344,6 +1352,48 @@ Wiadomość</string>
           </property>
           <property name="text">
            <string>anuluj</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_dodaj">
+          <property name="geometry">
+           <rect>
+            <x>510</x>
+            <y>110</y>
+            <width>81</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+          <property name="text">
+           <string>dodaj</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_usun">
+          <property name="geometry">
+           <rect>
+            <x>610</x>
+            <y>110</y>
+            <width>81</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+          <property name="text">
+           <string>usuń</string>
           </property>
          </widget>
         </widget>

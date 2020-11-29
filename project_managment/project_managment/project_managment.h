@@ -8,6 +8,8 @@
 #include "projekty_zadania_okno.h"
 #include "edycja_zadanie_okno.h"
 #include "wiadomosci_okno.h"
+#include "zmien_haslo_okno.h"
+
 
 class project_managment : public QWidget
 {
@@ -20,15 +22,17 @@ public:
     void ustaw_user();
     void ustaw_okna(Projekty_zadania_okno* temp, 
                               edycja_zadanie_okno* temp2, 
-                              wiadomosci_okno* temp3);
+                              wiadomosci_okno* temp3, zmien_haslo_okno* temp4);
 private slots:
     void on_pushButton_1_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
 
+    //Ustawienia
     void on_pushButton_ustaw1_clicked();
     void on_pushButton_anuluj_clicked();
     void on_pushButton_zapisz_clicked();
+    void on_pushButton_ustaw2_clicked();
     //Projekty i zadania
     void on_pushButton_edytuj_zadanie_clicked();
     void on_pushButton_utworzProjekt_clicked();
@@ -49,6 +53,7 @@ private:
     Projekty_zadania_okno* tworzenie_zadan_projektow;
     edycja_zadanie_okno* edytowanie_zadan;
     wiadomosci_okno* tworzenie_wiadomosci;
+    zmien_haslo_okno* zmien_haslo;
     QStringList availableProjectList, availableTaskList, messageList;
     QString message;
     void odswiezZadania();

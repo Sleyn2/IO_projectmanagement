@@ -83,7 +83,7 @@
     <ClCompile Include="Fun_wiadomosci.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="zmiana_hasla_okno.cpp">
+    <ClCompile Include="zmien_haslo_okno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -109,7 +109,7 @@
     <QtMoc Include="przypisanie_pracownikow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="zmiana_hasla_okno.h">
+    <QtMoc Include="zmien_haslo_okno.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -135,7 +135,7 @@
     <QtUic Include="przypisanie_pracownikow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="zmiana_hasla_okno.ui">
+    <QtUic Include="zmien_haslo_okno.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
