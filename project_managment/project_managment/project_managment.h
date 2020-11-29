@@ -32,7 +32,10 @@ private slots:
     void on_pushButton_ustaw1_clicked();
     void on_pushButton_anuluj_clicked();
     void on_pushButton_zapisz_clicked();
+    void on_pushButton_zapisz_2_clicked();
+    void on_pushButton_usun_clicked();
     void on_pushButton_ustaw2_clicked();
+    void on_pushButton_dodaj_clicked();
     //Projekty i zadania
     void on_pushButton_edytuj_zadanie_clicked();
     void on_pushButton_utworzProjekt_clicked();
@@ -58,5 +61,7 @@ private:
     QString message;
     void odswiezZadania();
     void odswiezWiadomosci();
+    void odswiezUstawienia_przeglad();
+    void odswiezUstawienia_edycja();
     bool wyslane;
 };

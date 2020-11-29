@@ -124,6 +124,64 @@ bool Modyfikator_bazy::dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie
     }
 }
 
+bool Modyfikator_bazy::dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie)
+{
+    connection C("dbname = test user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
+    if (C.is_open()) {
+        try
+        {
+            string id_d = przypisanie->pobierz_id_dzialu();
+            string id_p = przypisanie->pobierz_id_pracownika();
+
+            work W{ C };
+            W.exec0("insert into przypisanie_do_dzialow values (" +
+                    id_p + ", " + id_d + ");");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
+bool Modyfikator_bazy::usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie)
+{
+    connection C("dbname = test user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
+    if (C.is_open()) {
+        try
+        {
+            string id_d = przypisanie->pobierz_id_dzialu();
+            string id_p = przypisanie->pobierz_id_pracownika();
+
+            work W{ C };
+            W.exec0("delete from przypisanie_do_dzialow where id_pracownika = '" +
+                    id_p + "' and id_dzialu_firmy = '" + id_d + "';");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
 bool Modyfikator_bazy::usun_zadanie(string zadanie)
 {
     connection C("dbname = test user = postgres password = postgres \

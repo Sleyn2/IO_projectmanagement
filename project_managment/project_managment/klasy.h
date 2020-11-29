@@ -133,6 +133,8 @@ public:
    static bool dodaj_prosbe(Prosba *prosba);
    static bool dodaj_projekt(Projekt *Projekt);
    static bool dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie);
+   static bool dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
+   static bool usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
    static bool dodaj_wiadomosc(Wiadomosc* wiadomosc);
    static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad);
    static bool usun_zadanie(string zadanie);
@@ -170,6 +172,8 @@ class Fun_ustawienia
 {
 public:
     static bool edycja_danych_uzytkownika(string id_pracownika, string imie, string nazwisko, string login, string haslo, string czy_admin);
+    static bool dodaj_do_dzialu_po_nazwie(string id_pracownika, string nazwa_dzial);
+    static bool usun_z_dzialu_po_nazwie(string id_pracownika, string nazwa_dzial);
 };
 
 class Fun_wiadomosci

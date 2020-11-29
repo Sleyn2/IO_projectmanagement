@@ -39,7 +39,27 @@ void project_managment::on_pushButton_2_clicked()
 
 void project_managment::on_pushButton_3_clicked()
 {
+    this->odswiezUstawienia_przeglad();
+
+
+
     ui.stackedWidget->setCurrentIndex(2);
+
+
+} 
+// Ustawianie okien do wyœwietlenia
+void project_managment::ustaw_okna(Projekty_zadania_okno* temp,
+                                             edycja_zadanie_okno* temp2,
+                                             wiadomosci_okno* temp3, zmien_haslo_okno* temp4)
+{
+    this->edytowanie_zadan = temp2;
+    this->tworzenie_wiadomosci = temp3;
+    this->tworzenie_zadan_projektow = temp;
+    this->zmien_haslo = temp4;
+}
+//ustawienia
+void project_managment::odswiezUstawienia_przeglad()
+{
     ui.label->setText("Ustawienia");
 
     string imieNazw = Dane_zalogowanego_pracownika::instancja()->pobierz_imie() + " " + Dane_zalogowanego_pracownika::instancja()->pobierz_nazwisko();
@@ -54,16 +74,22 @@ void project_managment::on_pushButton_3_clicked()
     {
         ui.label_32->setText("nie");
         ui.label_42->setText("nie");
+
+        ui.groupBox->setEnabled(false);
     }
     else if (czy_adm == "1")
     {
         ui.label_32->setText("tak");
         ui.label_42->setText("nie");
+
+        ui.groupBox->setEnabled(false);
     }
     else
     {
         ui.label_32->setText("tak");
         ui.label_42->setText("tak");
+
+        ui.groupBox->setEnabled(true);
     }
 
 
@@ -71,40 +97,43 @@ void project_managment::on_pushButton_3_clicked()
     string login = Dane_zalogowanego_pracownika::instancja()->pobierz_login();
     ui.label_35->setText(QString::fromStdString(login));
 
+    ui.comboBox->clear();
+
     std::vector<Dzial> dzialy = Dane_zalogowanego_pracownika::instancja()->pobierz_dzialy();
 
     for (int i = 0; i < dzialy.size(); i++)
     {
         ui.comboBox->addItem(QString::fromStdString(dzialy[i].pobierz_nazwa()));
     }
+}
 
-    dzialy.clear();
+void project_managment::odswiezUstawienia_edycja()
+{
+    ui.lineEdit_imie->setText(QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_imie()));
+    ui.lineEdit_nazw->setText(QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_nazwisko()));
+    ui.lineEdit_login->setText(QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_login()));
 
-    dzialy = Pobieranie_bazy::pobierz_dzial("select * from dzialy_w_firmie;");
+    std::vector<Dzial> dzialy = Pobieranie_bazy::pobierz_dzial("select * from dzialy_w_firmie");
+
+    ui.comboBox_dzialy->clear();
 
     for (int i = 0; i < dzialy.size(); i++)
     {
         ui.comboBox_dzialy->addItem(QString::fromStdString(dzialy[i].pobierz_nazwa()));
     }
-
-} 
-// Ustawianie okien do wyœwietlenia
-void project_managment::ustaw_okna(Projekty_zadania_okno* temp,
-                                             edycja_zadanie_okno* temp2,
-                                             wiadomosci_okno* temp3, zmien_haslo_okno* temp4)
-{
-    this->edytowanie_zadan = temp2;
-    this->tworzenie_wiadomosci = temp3;
-    this->tworzenie_zadan_projektow = temp;
-    this->zmien_haslo = temp4;
 }
+
 void project_managment::on_pushButton_ustaw1_clicked()
 {
+    this->odswiezUstawienia_edycja();
+
     ui.stackedWidget_ustawienia->setCurrentIndex(1);
 }
 
 void project_managment::on_pushButton_anuluj_clicked()
 {
+    this->odswiezUstawienia_przeglad();
+
     ui.stackedWidget_ustawienia->setCurrentIndex(0);
 }
 
@@ -117,14 +146,57 @@ void project_managment::on_pushButton_zapisz_clicked()
     string haslo = Dane_zalogowanego_pracownika::instancja()->pobierz_haslo();
     string adm = Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator();
     
-    
-    Fun_ustawienia::edycja_danych_uzytkownika(id, imie, nazw, login, haslo, adm);
+    if (imie != "" && nazw != "" && login != "")
+    {
+        if (Fun_ustawienia::edycja_danych_uzytkownika(id, imie, nazw, login, haslo, adm))
+        {
+            
+            this->odswiezUstawienia_przeglad();
 
-    ui.label_27->setText(QString::fromStdString(imie + " " + nazw));
+            ui.stackedWidget_ustawienia->setCurrentIndex(0);
+        }
+    }
+    else
+    {
+        QMessageBox msg;
+        msg.setWindowTitle(QString::fromStdString("niepoprawne dane"));
+        msg.setText(QString::fromStdString("niepoprawne dane"));
 
-    ui.label_35->setText(QString::fromStdString(login));
+        msg.exec();
+
+    }
+}
+
+void project_managment::on_pushButton_zapisz_2_clicked()
+{
+    this->odswiezUstawienia_przeglad();
 
     ui.stackedWidget_ustawienia->setCurrentIndex(0);
+}
+
+void project_managment::on_pushButton_usun_clicked()
+{
+    string dzial = ui.comboBox_dzialy->currentText().toUtf8().constData();
+
+    if (dzial != "")
+    {
+        Fun_ustawienia::usun_z_dzialu_po_nazwie(Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika(), dzial);
+    }
+}
+
+void project_managment::on_pushButton_ustaw2_clicked()
+{
+    this->zmien_haslo->show();
+}
+
+void project_managment::on_pushButton_dodaj_clicked()
+{
+    string dzial = ui.comboBox_dzialy->currentText().toUtf8().constData();
+
+    if (dzial != "")
+    {
+        Fun_ustawienia::dodaj_do_dzialu_po_nazwie(Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika(), dzial);
+    }
 }
 
 void project_managment::on_pushButton_utworzProjekt_clicked()
@@ -292,7 +364,3 @@ void project_managment::on_pushButton_usunWiadomosc_clicked()
         // if (Fun_wiadomosci::usun_wiadomosc());
 }
 
-void project_managment::on_pushButton_ustaw2_clicked()
-{
-    this->zmien_haslo->show();
-}

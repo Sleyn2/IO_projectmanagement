@@ -865,7 +865,7 @@ Wiadomość</string>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page_przeglad">
          <widget class="QComboBox" name="comboBox">
@@ -1158,8 +1158,8 @@ Wiadomość</string>
          <widget class="QLabel" name="label_34">
           <property name="geometry">
            <rect>
-            <x>40</x>
-            <y>100</y>
+            <x>500</x>
+            <y>30</y>
             <width>231</width>
             <height>51</height>
            </rect>
@@ -1179,8 +1179,8 @@ Wiadomość</string>
          <widget class="QComboBox" name="comboBox_dzialy">
           <property name="geometry">
            <rect>
-            <x>280</x>
-            <y>111</y>
+            <x>520</x>
+            <y>90</y>
             <width>211</width>
             <height>31</height>
            </rect>
@@ -1197,8 +1197,8 @@ Wiadomość</string>
          <widget class="QLabel" name="label_nazw">
           <property name="geometry">
            <rect>
-            <x>70</x>
-            <y>60</y>
+            <x>60</x>
+            <y>90</y>
             <width>201</width>
             <height>51</height>
            </rect>
@@ -1218,8 +1218,8 @@ Wiadomość</string>
          <widget class="QLabel" name="label_imie">
           <property name="geometry">
            <rect>
-            <x>70</x>
-            <y>20</y>
+            <x>60</x>
+            <y>50</y>
             <width>201</width>
             <height>51</height>
            </rect>
@@ -1239,8 +1239,8 @@ Wiadomość</string>
          <widget class="QLineEdit" name="lineEdit_imie">
           <property name="geometry">
            <rect>
-            <x>280</x>
-            <y>30</y>
+            <x>270</x>
+            <y>60</y>
             <width>141</width>
             <height>31</height>
            </rect>
@@ -1251,14 +1251,14 @@ Wiadomość</string>
            </font>
           </property>
           <property name="text">
-           <string>Imię</string>
+           <string/>
           </property>
          </widget>
          <widget class="QLineEdit" name="lineEdit_nazw">
           <property name="geometry">
            <rect>
-            <x>280</x>
-            <y>70</y>
+            <x>270</x>
+            <y>100</y>
             <width>141</width>
             <height>31</height>
            </rect>
@@ -1269,14 +1269,14 @@ Wiadomość</string>
            </font>
           </property>
           <property name="text">
-           <string>Nazwisko</string>
+           <string/>
           </property>
          </widget>
          <widget class="QLabel" name="label_38">
           <property name="geometry">
            <rect>
-            <x>70</x>
-            <y>150</y>
+            <x>60</x>
+            <y>130</y>
             <width>201</width>
             <height>41</height>
            </rect>
@@ -1296,8 +1296,8 @@ Wiadomość</string>
          <widget class="QLineEdit" name="lineEdit_login">
           <property name="geometry">
            <rect>
-            <x>280</x>
-            <y>160</y>
+            <x>270</x>
+            <y>140</y>
             <width>141</width>
             <height>31</height>
            </rect>
@@ -1308,15 +1308,15 @@ Wiadomość</string>
            </font>
           </property>
           <property name="text">
-           <string>jakis_login</string>
+           <string/>
           </property>
          </widget>
          <widget class="QPushButton" name="pushButton_zapisz">
           <property name="geometry">
            <rect>
-            <x>200</x>
-            <y>220</y>
-            <width>191</width>
+            <x>310</x>
+            <y>200</y>
+            <width>101</width>
             <height>41</height>
            </rect>
           </property>
@@ -1336,9 +1336,9 @@ Wiadomość</string>
          <widget class="QPushButton" name="pushButton_anuluj">
           <property name="geometry">
            <rect>
-            <x>550</x>
-            <y>220</y>
-            <width>191</width>
+            <x>200</x>
+            <y>200</y>
+            <width>101</width>
             <height>41</height>
            </rect>
           </property>
@@ -1357,8 +1357,8 @@ Wiadomość</string>
          <widget class="QPushButton" name="pushButton_dodaj">
           <property name="geometry">
            <rect>
-            <x>510</x>
-            <y>110</y>
+            <x>540</x>
+            <y>150</y>
             <width>81</width>
             <height>41</height>
            </rect>
@@ -1378,8 +1378,8 @@ Wiadomość</string>
          <widget class="QPushButton" name="pushButton_usun">
           <property name="geometry">
            <rect>
-            <x>610</x>
-            <y>110</y>
+            <x>640</x>
+            <y>150</y>
             <width>81</width>
             <height>41</height>
            </rect>
@@ -1394,6 +1394,41 @@ Wiadomość</string>
           </property>
           <property name="text">
            <string>usuń</string>
+          </property>
+         </widget>
+         <widget class="Line" name="line">
+          <property name="geometry">
+           <rect>
+            <x>460</x>
+            <y>10</y>
+            <width>20</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_zapisz_2">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>210</y>
+            <width>181</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);
+</string>
+          </property>
+          <property name="text">
+           <string>zapisz</string>
           </property>
          </widget>
         </widget>
