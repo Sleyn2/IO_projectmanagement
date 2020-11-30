@@ -179,6 +179,7 @@ public:
     static string Fun_ustawienia::imie_nazwisko_po_loginie(string login);
     static string wyluskaj_login(string text);
     static bool nadawanie_uprawnien(string login, string czy_adm);
+    static void odswiez_zalogowanego();
 };
 
 class Fun_wiadomosci

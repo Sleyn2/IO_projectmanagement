@@ -47,12 +47,12 @@ bool Modyfikator_bazy::aktualizuj_pracownika(Pracownik* prac)
             work W{ C };
 
             W.exec0("update pracownicy set imie = '" + to_string(prac->pobierz_imie()) +
-                "', id_pracownika = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() +
+                "', id_pracownika = '" + to_string(prac->pobierz_id_pracownika()) +
                 "', nazwisko = '" + to_string(prac->pobierz_nazwisko()) +
                 "', login = '" + to_string(prac->pobierz_login()) +
                 "', haslo = '" + to_string(prac->pobierz_haslo()) +
                 "', administrator = '" + to_string(prac->pobierz_czy_administator()) +
-                "' where id_pracownika = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "';");
+                "' where id_pracownika = '" + to_string(prac->pobierz_id_pracownika()) + "';");
             W.commit();
         }
         catch (exception e)
