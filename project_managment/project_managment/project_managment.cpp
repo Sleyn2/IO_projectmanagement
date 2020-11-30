@@ -124,6 +124,8 @@ void project_managment::odswiezUstawienia_edycja()
 
 void project_managment::odswiezUstawienia_admin()
 {
+    Fun_ustawienia::odswiez_zalogowanego();
+
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator() == "2")
     {
 
@@ -250,28 +252,45 @@ void project_managment::on_pushButton_dodaj_clicked()
 
 void project_managment::on_pushButton_zapisz_prawa_clicked()
 {
-    int uprawnienia = 0;
-
-    if (ui.checkBox_tworzenie_proj->isChecked())
+    Fun_ustawienia::odswiez_zalogowanego();
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator() == "2")
     {
-        uprawnienia++;
-    }
-    if (ui.checkBox_admin->isChecked())
-    {
-        uprawnienia++;
-    }
 
-    if (!ui.checkBox_tworzenie_proj->isChecked() && ui.checkBox_admin->isChecked())
-    {
-        QMessageBox msg;
-        msg.setWindowTitle("Blad");
-        msg.setText("Administrator musi posiadac prawo do tworzenia projektow.");
+        string uprawnienia = "0";
 
-        msg.exec();
+        if (ui.checkBox_admin->isChecked())
+        {
+            uprawnienia = "2";
+        }
+        else if (ui.checkBox_tworzenie_proj->isChecked())
+        {
+            uprawnienia = "1";
+        }
+
+
+        if (!ui.checkBox_tworzenie_proj->isChecked() && ui.checkBox_admin->isChecked())
+        {
+            QMessageBox msg;
+            msg.setWindowTitle("Blad");
+            msg.setText("Administrator musi posiadac prawo do tworzenia projektow.");
+
+            msg.exec();
+        }
+        else
+        {
+            string text = ui.userList->currentItem()->text().toUtf8().constData();
+            string login = Fun_ustawienia::wyluskaj_login(text);
+
+            Fun_ustawienia::nadawanie_uprawnien(login, uprawnienia);
+        }
     }
     else
     {
+        QMessageBox msg;
+        msg.setWindowTitle(QString::fromStdString("Brak uprawnien"));
+        msg.setText(QString::fromStdString("Nie masz uprawnien administratora."));
 
+        msg.exec();
     }
 
 

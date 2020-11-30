@@ -6,8 +6,10 @@ bool Fun_ustawienia::edycja_danych_uzytkownika(string id_pracownika, string imie
 
 	if (Modyfikator_bazy::aktualizuj_pracownika(&prac))
 	{
-		Dane_zalogowanego_pracownika::instancja()->ustaw_dane_logowanie(imie, nazwisko, login, haslo, czy_admin, id_pracownika);
-
+		if (id_pracownika == Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika())
+		{
+			Dane_zalogowanego_pracownika::instancja()->ustaw_dane_logowanie(imie, nazwisko, login, haslo, czy_admin, id_pracownika);
+		}
 
 		return true;
 	}
@@ -137,7 +139,36 @@ string Fun_ustawienia::wyluskaj_login(string text)
 	return login;
 }
 
-static bool nadawanie_uprawnien(string login, string czy_adm)
+bool Fun_ustawienia::nadawanie_uprawnien(string login, string czy_adm)
 {
-	return true;
+	std::vector<Pracownik> prac = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" +
+		login + "';");
+
+	if (prac.size() == 1)
+	{
+		Fun_ustawienia::edycja_danych_uzytkownika(prac[0].pobierz_id_pracownika(), prac[0].pobierz_imie(), prac[0].pobierz_nazwisko(),
+			prac[0].pobierz_login(), prac[0].pobierz_haslo(), czy_adm);
+
+		/*Dane_zalogowanego_pracownika::instancja()->ustaw_dane_logowanie(prac[0].pobierz_id_pracownika(), prac[0].pobierz_imie(), prac[0].pobierz_nazwisko(),
+			prac[0].pobierz_login(), prac[0].pobierz_haslo(), czy_adm);*/
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+}
+
+void Fun_ustawienia::odswiez_zalogowanego()
+{
+	std::vector<Pracownik> prac = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where id_pracownika = '" +
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "';");
+
+	if (prac.size() == 1)
+	{
+		Dane_zalogowanego_pracownika::instancja()->ustaw_dane_logowanie(prac[0].pobierz_imie(), prac[0].pobierz_nazwisko(),
+			prac[0].pobierz_login(), prac[0].pobierz_haslo(), prac[0].pobierz_czy_administator(), prac[0].pobierz_id_pracownika());
+	}
 }
