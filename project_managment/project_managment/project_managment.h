@@ -38,6 +38,8 @@ private slots:
     void on_pushButton_dodaj_clicked();
     void on_lineEdit_search_settings_textChanged(const QString& arg1);
     void on_userList_itemClicked(QListWidgetItem* item);
+    void on_pushButton_zapisz_prawa_clicked();
+    
     //Projekty i zadania
     void on_pushButton_edytuj_zadanie_clicked();
     void on_pushButton_utworzProjekt_clicked();

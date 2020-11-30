@@ -103,6 +103,7 @@ void project_managment::odswiezUstawienia_przeglad()
     {
         ui.comboBox->addItem(QString::fromStdString(dzialy[i].pobierz_nazwa()));
     }
+
 }
 
 void project_managment::odswiezUstawienia_edycja()
@@ -131,17 +132,11 @@ void project_managment::odswiezUstawienia_admin()
 
         this->odswiezListeUzytkownikow();
 
-        vector<Pracownik> pracownicy = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy;");
-
-        for (int i = 0; i < pracownicy.size(); i++)
-        {
-            ui.userList->addItem(QString::fromStdString(pracownicy[i].pobierz_imie() + " " + pracownicy[i].pobierz_nazwisko() + " (" + pracownicy[i].pobierz_login() + ")"));
-        }
-
         ui.groupBox_2->setEnabled(false);
 
         ui.lineEdit_nazwa_dzialu->clear();
         ui.lineEdit_adres_dzialu->clear();
+        ui.label_prawa->clear();
     }
 
 }
@@ -217,19 +212,8 @@ void project_managment::on_userList_itemClicked(QListWidgetItem* item)
     ui.groupBox_2->setEnabled(true);
 
     string text = item->text().toUtf8().constData();
-    string login = "";
-
-    for (int i = 0; i < text.size(); i++)
-    {
-        if (text[i] == '(')
-        {
-            for (int j = i + 1; j < text.size()-1; j++)
-            {
-                login = login + text[j];
-            }
-            break;
-        }
-    }
+    
+    string login = Fun_ustawienia::wyluskaj_login(text);
 
     string czy_adm = Fun_ustawienia::czy_admin_po_loginie(login);
 
@@ -248,6 +232,10 @@ void project_managment::on_userList_itemClicked(QListWidgetItem* item)
         ui.checkBox_tworzenie_proj->setChecked(true);
         ui.checkBox_admin->setChecked(true);
     }
+
+    string imie_nazw = Fun_ustawienia::imie_nazwisko_po_loginie(login);
+
+    ui.label_prawa->setText(QString::fromStdString(imie_nazw));
 }
 
 void project_managment::on_pushButton_dodaj_clicked()
@@ -259,6 +247,37 @@ void project_managment::on_pushButton_dodaj_clicked()
         Fun_ustawienia::dodaj_do_dzialu_po_nazwie(Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika(), dzial);
     }
 }
+
+void project_managment::on_pushButton_zapisz_prawa_clicked()
+{
+    int uprawnienia = 0;
+
+    if (ui.checkBox_tworzenie_proj->isChecked())
+    {
+        uprawnienia++;
+    }
+    if (ui.checkBox_admin->isChecked())
+    {
+        uprawnienia++;
+    }
+
+    if (!ui.checkBox_tworzenie_proj->isChecked() && ui.checkBox_admin->isChecked())
+    {
+        QMessageBox msg;
+        msg.setWindowTitle("Blad");
+        msg.setText("Administrator musi posiadac prawo do tworzenia projektow.");
+
+        msg.exec();
+    }
+    else
+    {
+
+    }
+
+
+}
+
+
 
 void project_managment::on_pushButton_utworzProjekt_clicked()
 {

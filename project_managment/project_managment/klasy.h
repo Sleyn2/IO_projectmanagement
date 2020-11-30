@@ -176,6 +176,9 @@ public:
     static bool usun_z_dzialu_po_nazwie(string id_pracownika, string nazwa_dzial);
     static QStringList pobierz_liste_pracownikow();
     static string czy_admin_po_loginie(string login);
+    static string Fun_ustawienia::imie_nazwisko_po_loginie(string login);
+    static string wyluskaj_login(string text);
+    static bool nadawanie_uprawnien(string login, string czy_adm);
 };
 
 class Fun_wiadomosci

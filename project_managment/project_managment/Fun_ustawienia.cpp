@@ -96,3 +96,48 @@ string Fun_ustawienia::czy_admin_po_loginie(string login)
 		return "blad";
 	}
 }
+
+string Fun_ustawienia::imie_nazwisko_po_loginie(string login)
+{
+	vector<Pracownik> prac = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" +
+		login + "';");
+
+	string imie;
+	string nazwisko;
+
+	if (prac.size() == 1)
+	{
+		imie = prac[0].pobierz_imie();
+		nazwisko = prac[0].pobierz_nazwisko();
+
+		return imie + " " + nazwisko;
+	}
+	else
+	{
+		return "blad";
+	}
+}
+
+string Fun_ustawienia::wyluskaj_login(string text)
+{
+	string login = "";
+
+	for (int i = 0; i < text.size(); i++)
+	{
+		if (text[i] == '(')
+		{
+			for (int j = i + 1; j < text.size() - 1; j++)
+			{
+				login = login + text[j];
+			}
+			break;
+		}
+	}
+
+	return login;
+}
+
+static bool nadawanie_uprawnien(string login, string czy_adm)
+{
+	return true;
+}

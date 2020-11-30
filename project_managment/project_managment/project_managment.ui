@@ -1507,9 +1507,9 @@ Wiadomość</string>
          <property name="geometry">
           <rect>
            <x>270</x>
-           <y>90</y>
+           <y>50</y>
            <width>361</width>
-           <height>161</height>
+           <height>251</height>
           </rect>
          </property>
          <property name="font">
@@ -1590,6 +1590,27 @@ Wiadomość</string>
           </property>
           <property name="text">
            <string>Imię Nazwisko</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_zapisz_prawa">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>170</y>
+            <width>151</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+          <property name="text">
+           <string>zapisz</string>
           </property>
          </widget>
         </widget>
