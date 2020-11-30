@@ -22,7 +22,10 @@ void wiadomosci_okno::ustawTryb(int i, bool czy_wyslana)
 	{
 		vector<string> text = podzial_stringa_na_slowa(messageInfo.toStdString());
 		int n = text.size();
-		//QString tresc = Fun_wiadomosci::pobierz_tresc(seperacja_stringa_od_kropki(text[n-7]), text[n-5], czy_wyslana);
+		QString tresc = Fun_wiadomosci::pobierz_tresc(
+			seperacja_stringa_od_kropki(text[n-7]), 
+			(text[n - 4] + " " + text[n - 3] + " " + text[n - 2] + " " + text[n - 1]), 
+			czy_wyslana);
 		string topic = "";
 		for (int i = 0; i < (n-7); i++)
 		{
@@ -30,7 +33,7 @@ void wiadomosci_okno::ustawTryb(int i, bool czy_wyslana)
 		}
 		ui.topic_label->setText(QString::fromStdString(topic));
 		this->msgTopic = topic;
-		ui.textBrowser->setPlainText("tresc");
+		ui.textBrowser->setPlainText(tresc);
 		ui.date_label->setText(QString::fromStdString(text[n - 4] + text[n - 3] + text[n - 2] + text[n-1]));
 
 		if (czy_wyslana)

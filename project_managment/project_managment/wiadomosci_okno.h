@@ -23,5 +23,5 @@ private:
 	QString messageInfo;
 	string msgTopic;
 	void odswiezListe();
-
+	
 };

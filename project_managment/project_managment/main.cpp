@@ -10,12 +10,13 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    project_managment w;
+
     Projekty_zadania_okno tworzenie_zadan_raportow;
     edycja_zadanie_okno edytowanie_zadan;
     wiadomosci_okno tworzenie_wiadomosci;
     zmien_haslo_okno zmien_haslo;
 
-    project_managment w;
     logowanie_okno login;
 
     login.show();
