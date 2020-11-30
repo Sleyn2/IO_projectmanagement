@@ -22,6 +22,8 @@ private:
 	QStringList users;
 	QString messageInfo;
 	string msgTopic;
+	string answerAdress;
+
 	void odswiezListe();
 	
 };
