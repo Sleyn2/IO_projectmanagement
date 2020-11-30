@@ -142,6 +142,19 @@ public:
    static bool aktualizuj_pracownika(Pracownik* prac);
 };
 
+class Dane_polaczenia
+{
+protected:
+    static string dbname;
+    static string hostaddr;
+    static string password;
+    static string port;
+    static string user;
+public:
+    static bool init();
+    static string Conncet();
+};
+
 class Fun_okno_logowania
 {
 public:

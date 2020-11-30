@@ -10,6 +10,17 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+
+    if (!Dane_polaczenia::init()) {
+        QMessageBox err;
+        err.setWindowTitle("Blad bazy danych");
+        err.setText("Blad odczytu pliku database.conf\nPopraw lub dodaj plik");
+        err.setIcon(QMessageBox::Critical);
+        err.setStandardButtons(QMessageBox::Ok);
+        err.exec();
+        return 0;
+    }
+
     project_managment w;
 
     Projekty_zadania_okno tworzenie_zadan_raportow;

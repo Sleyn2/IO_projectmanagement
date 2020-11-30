@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dane_polaczenia.cpp" />
     <ClCompile Include="zmien_haslo_okno.cpp" />
     <QtRcc Include="project_managment.qrc" />
     <QtUic Include="projekty_zadania_okno.ui" />

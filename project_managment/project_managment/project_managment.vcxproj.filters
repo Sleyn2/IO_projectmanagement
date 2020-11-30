@@ -86,6 +86,9 @@
     <ClCompile Include="zmien_haslo_okno.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Dane_polaczenia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="logowanie_okno.h">

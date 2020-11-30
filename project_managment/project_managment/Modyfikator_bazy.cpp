@@ -10,8 +10,7 @@ using namespace pqxx;
 
 bool Modyfikator_bazy::dodaj_prosbe(Prosba* prosba)
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
     
         try
@@ -38,8 +37,7 @@ bool Modyfikator_bazy::dodaj_prosbe(Prosba* prosba)
 
 bool Modyfikator_bazy::aktualizuj_pracownika(Pracownik* prac)
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
 
         try
@@ -72,8 +70,7 @@ bool Modyfikator_bazy::aktualizuj_pracownika(Pracownik* prac)
 
 bool Modyfikator_bazy::dodaj_projekt(Projekt *projekt)
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -100,8 +97,7 @@ bool Modyfikator_bazy::dodaj_projekt(Projekt *projekt)
 
 bool Modyfikator_bazy::dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie)
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -126,8 +122,7 @@ bool Modyfikator_bazy::dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie
 
 bool Modyfikator_bazy::dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie)
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -155,8 +150,7 @@ bool Modyfikator_bazy::dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie
 
 bool Modyfikator_bazy::usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie)
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -184,8 +178,7 @@ bool Modyfikator_bazy::usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie)
 
 bool Modyfikator_bazy::usun_zadanie(string zadanie)
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -215,8 +208,7 @@ bool Modyfikator_bazy::usun_zadanie(string zadanie)
 
 bool Modyfikator_bazy::zaktualizuj_zadanie(Projekt *zadanie)
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -243,8 +235,7 @@ bool Modyfikator_bazy::zaktualizuj_zadanie(Projekt *zadanie)
 
 bool Modyfikator_bazy::dodaj_wiadomosc(Wiadomosc* wiadomosc) 
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -272,8 +263,7 @@ bool Modyfikator_bazy::dodaj_wiadomosc(Wiadomosc* wiadomosc)
 
 bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_nad)
 {
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
