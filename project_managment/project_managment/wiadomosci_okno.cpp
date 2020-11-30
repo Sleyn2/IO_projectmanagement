@@ -78,7 +78,7 @@ void wiadomosci_okno::on_pushButton_send_clicked()
 	if (Fun_wiadomosci::dodaj_wiadomosc(seperacja_stringa_od_kropki(name[0]), QDateTime::currentDateTime().toString().toStdString(), wiadomosc.toStdString(), tytul.toStdString())){}
 	else
 		QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
-	
+	this->close();
 }
 void wiadomosci_okno::on_pushButton_cancel_clicked()
 {

@@ -477,10 +477,18 @@ void project_managment::on_listWidget_wiadomosci_itemDoubleClicked(QListWidgetIt
 }
 void project_managment::on_pushButton_usunWiadomosc_clicked()
 {
-    istringstream ss(this->message.toStdString());
-    string tytul, nadawca, data;
-    ss >> tytul >> nadawca >> data;
-    //if(this->wyslane)
-        // if (Fun_wiadomosci::usun_wiadomosc());
+    vector<string> msg = podzial_stringa_na_slowa(message.toStdString());
+    string date = "";
+    for (int i = (msg.size() - 5); i < msg.size(); i++)
+    {
+        date += msg[i] + " ";
+    }
+
+    if (this->wyslane)
+    {
+        QString opis = Fun_wiadomosci::usun_wiadomosc(msg[msg.size() - 7], msg[msg.size() - 6], date);
+        if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+            QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    }
 }
 
