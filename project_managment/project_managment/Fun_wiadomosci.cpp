@@ -70,6 +70,7 @@ vector<string> podzial_stringa_na_slowa(string str)
 			slowo = slowo + x;
 		}
 	}
+	slowa.push_back(slowo);
 	return slowa;
 }
 
