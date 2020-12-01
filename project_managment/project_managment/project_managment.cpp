@@ -490,9 +490,18 @@ void project_managment::on_pushButton_usunWiadomosc_clicked()
 
     if (this->wyslane)
     {
-        QString opis = Fun_wiadomosci::usun_wiadomosc(msg[msg.size() - 7], msg[msg.size() - 6], date);
-        if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+        if (Fun_wiadomosci::usun_wiadomosc(seperacja_stringa_od_kropki(msg[msg.size() - 8]), date, this->wyslane))
+        { }
+        else
             QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     }
+    else
+    {
+        if (Fun_wiadomosci::usun_wiadomosc(seperacja_stringa_od_kropki(msg[msg.size() - 8]), date, this->wyslane))
+        { }
+        else
+            QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    }
+    this->odswiezWiadomosci();
 }
 
