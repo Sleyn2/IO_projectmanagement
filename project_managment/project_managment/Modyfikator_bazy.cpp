@@ -268,7 +268,7 @@ bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_
         try
         {
             work W{ C };
-            W.exec0("delete from Wiadomosci where Id_odbiorcy = " + id_odb + " and Data_wyslania = '" + data_wys + "' and Id_nadawacy = " + id_nad + ";");
+            W.exec0("delete from Wiadomosci where Id_odbiorcy = " + id_odb + " and Data_wyslania = '" + data_wys + "' and Id_nadawcy = " + id_nad + ";");
             W.commit();
         }
         catch (exception e)
