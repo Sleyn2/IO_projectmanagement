@@ -61,12 +61,13 @@ private:
     edycja_zadanie_okno* edytowanie_zadan;
     wiadomosci_okno* tworzenie_wiadomosci;
     zmien_haslo_okno* zmien_haslo;
-    QStringList availableProjectList, availableTaskList, messageList, availableUsersList;
+    QStringList availableProjectList, availableTaskList, messageList, availableUsersList, teamList;
     QString message;
     void odswiezZadania();
     void odswiezWiadomosci();
     void odswiezUstawienia_przeglad();
     void odswiezUstawienia_edycja();
+    void odswiezListeZespolu(string id);
     void odswiezUstawienia_admin();
     void odswiezListeUzytkownikow();
     bool wyslane;

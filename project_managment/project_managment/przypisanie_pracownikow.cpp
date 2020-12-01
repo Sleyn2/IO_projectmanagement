@@ -1,4 +1,5 @@
 #include "przypisanie_pracownikow.h"
+#include <qmessagebox.h>
 
 Przypisanie_pracownikow::Przypisanie_pracownikow(QWidget *parent)
 	: QWidget(parent)
@@ -76,9 +77,14 @@ void Przypisanie_pracownikow::odswiezListy(bool add)
 }
 void Przypisanie_pracownikow::on_pushButton_zatwierdz_clicked()
 {
+	vector<string> name;
 	for (int i = 0; i < currentUsers.length(); i++)
 	{
-		//Fun_projekty::dodaj_przypisanie_do_projektu()
+		name = podzial_stringa_na_slowa(ui.listWidget_current->currentItem()->text().toStdString());
+		Fun_projekty::dodaj_przypisanie_do_projektu(seperacja_stringa_od_kropki(name[0]), "false");
+		if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+			QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+		name.clear();
 	}
 }
 void Przypisanie_pracownikow::on_pushButton_anuluj_clicked()

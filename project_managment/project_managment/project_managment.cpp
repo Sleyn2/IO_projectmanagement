@@ -4,21 +4,15 @@
 #include <QListWidgetItem>
 #include <Qstring>
 #include <qmessagebox.h>
-#include "klasy.h"
 
 project_managment::project_managment(QWidget *parent)
     : QWidget(parent)
 {
-
     ui.setupUi(this);
     ui.Opcje_projektu->setCurrentIndex(2);
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("");
 
     ui.label->setText("Ustawienia");
-
-    
-
-    
 }
 // Zmiana miêdzy widokami w StackedWidget
 void project_managment::on_pushButton_1_clicked()
@@ -26,6 +20,18 @@ void project_managment::on_pushButton_1_clicked()
     ui.stackedWidget->setCurrentIndex(0);
 
     ui.label->setText("Twoje projekty i zadania");
+}
+
+void project_managment::odswiezListeZespolu(string id)
+{
+    ui.listWidget_taskUsers->clear();
+    teamList.clear();
+    //teamList = Fun_projekty::pobierz_liste_pracownikow_w_projekcie();
+    teamList.sort();
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+        QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    else
+        ui.listWidget_taskUsers->addItems(teamList);
 }
 
 void project_managment::on_pushButton_2_clicked()
@@ -295,9 +301,7 @@ void project_managment::on_pushButton_zapisz_prawa_clicked()
 
 
 }
-
-
-
+//Projekty
 void project_managment::on_pushButton_utworzProjekt_clicked()
 {
     this->tworzenie_zadan_projektow->ustaw_tryb(true);
