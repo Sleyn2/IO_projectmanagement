@@ -199,7 +199,7 @@ class Fun_wiadomosci
 {
 public:
     static bool dodaj_wiadomosc(string id_odb, string data_wys, string tresc, string temat);
-    static bool usun_wiadomosc(string imie, string nazwisko, string data_wys);
+    static bool usun_wiadomosc(string id_prac, string data_wys, bool wysylanie);
     static QStringList pobierz_wiadomosci(bool wysylanie);
     static QString pobierz_tresc(string id_pracownika, string data_wyslania, bool czy_wyslana_wiadomosc);
 };
