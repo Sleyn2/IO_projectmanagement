@@ -11,7 +11,7 @@ QStringList Fun_projekty::pobierz_liste_projektow()
 
 	for (auto i = projekty.begin(); i != projekty.end(); ++i)
 	{
-		lista.append(QString::fromStdString(i->pobierz_nazwa()));
+		lista.append(QString::fromStdString(i->pobierz_id_projektu()) + " " + QString::fromStdString(i->pobierz_nazwa()));
 	}
 	return lista;
 }
@@ -31,7 +31,7 @@ QStringList Fun_projekty::pobierz_liste_zadan()
 
 	for (auto i = projekty.begin(); i != projekty.end(); ++i)
 	{
-		lista.append(QString::fromStdString(i->pobierz_nazwa()));
+		lista.append(QString::fromStdString(i->pobierz_id_projektu()) + " " + QString::fromStdString(i->pobierz_nazwa()));
 	}
 	return lista;
 }
