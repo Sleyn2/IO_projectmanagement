@@ -289,7 +289,7 @@ p, li { white-space: pre-wrap; }
            <string>Generuj raport</string>
           </property>
          </widget>
-         <widget class="QListWidget" name="listWidget">
+         <widget class="QListWidget" name="listWidget_taskUsers2">
           <property name="geometry">
            <rect>
             <x>30</x>
@@ -328,7 +328,7 @@ p, li { white-space: pre-wrap; }
            <string>członkowie zespołu:</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_6">
+         <widget class="QPushButton" name="pushButton_sendMsg2">
           <property name="geometry">
            <rect>
             <x>30</x>
@@ -492,7 +492,7 @@ p, li { white-space: pre-wrap; }
            <string>Generuj raport</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_9">
+         <widget class="QPushButton" name="pushButton_sendMsg">
           <property name="geometry">
            <rect>
             <x>30</x>

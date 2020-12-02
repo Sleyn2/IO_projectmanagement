@@ -22,16 +22,21 @@ void project_managment::on_pushButton_1_clicked()
     ui.label->setText("Twoje projekty i zadania");
 }
 
-void project_managment::odswiezListeZespolu(string id)
+void project_managment::odswiezListeZespolu(bool admin)
 {
     ui.listWidget_taskUsers->clear();
     teamList.clear();
-    //teamList = Fun_projekty::pobierz_liste_pracownikow_w_projekcie();
+    teamList = Fun_projekty::pobierz_liste_pracownikow_w_projekcie();
     teamList.sort();
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
-        ui.listWidget_taskUsers->addItems(teamList);
+    {
+        if (admin)
+            ui.listWidget_taskUsers->addItems(teamList);
+        else
+            ui.listWidget_taskUsers2->addItems(teamList);
+    }
 }
 
 void project_managment::on_pushButton_2_clicked()
@@ -321,6 +326,17 @@ void project_managment::on_pushButton_edytuj_zadanie_clicked()
         this->edytowanie_zadan->show();
         this->edytowanie_zadan->wczytaj_dane();
     }
+
+}
+
+void project_managment::on_pushButton_sendMsg2_clicked()
+{
+
+}
+
+void project_managment::on_pushButton_sendMsg_clicked()
+{
+
 }
 
 void project_managment::odswiezProjekty()
@@ -443,12 +459,15 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
     if (Fun_projekty::czy_kierownik())
     {
         ustaw_admin();
+        this->odswiezListeZespolu(true);
     }
     else
     {
         ustaw_user();
+        this->odswiezListeZespolu(false);
     }
     this->odswiezZadania();
+    
 }
 void project_managment::on_listWidget_zadania_itemClicked(QListWidgetItem* item)
 {

@@ -43,6 +43,8 @@ private slots:
     //Projekty i zadania
     void on_pushButton_edytuj_zadanie_clicked();
     void on_pushButton_utworzProjekt_clicked();
+    void on_pushButton_sendMsg2_clicked();
+    void on_pushButton_sendMsg_clicked();
     void on_pushButton_utworz_zadanie_clicked();
     void on_lineEdit_search_textChanged(const QString &arg1);
     void on_lineEdit_search_task_textChanged(const QString& arg1);
@@ -61,13 +63,14 @@ private:
     edycja_zadanie_okno* edytowanie_zadan;
     wiadomosci_okno* tworzenie_wiadomosci;
     zmien_haslo_okno* zmien_haslo;
-    QStringList availableProjectList, availableTaskList, messageList, availableUsersList, teamList;
+    QStringList availableProjectList, availableTaskList, messageList, 
+        availableUsersList, teamList;
     QString message;
     void odswiezZadania();
     void odswiezWiadomosci();
     void odswiezUstawienia_przeglad();
     void odswiezUstawienia_edycja();
-    void odswiezListeZespolu(string id);
+    void odswiezListeZespolu(bool admin);
     void odswiezUstawienia_admin();
     void odswiezListeUzytkownikow();
     bool wyslane;
