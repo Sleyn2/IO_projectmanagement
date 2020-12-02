@@ -25,6 +25,7 @@ void project_managment::on_pushButton_1_clicked()
 void project_managment::odswiezListeZespolu(bool admin)
 {
     ui.listWidget_taskUsers->clear();
+    ui.listWidget_taskUsers2->clear();
     teamList.clear();
     teamList = Fun_projekty::pobierz_liste_pracownikow_w_projekcie();
     teamList.sort();
@@ -331,12 +332,28 @@ void project_managment::on_pushButton_edytuj_zadanie_clicked()
 
 void project_managment::on_pushButton_sendMsg2_clicked()
 {
+    if (wybranyUzytkownik == "")
+        return;
+    else
+    {
+        this->tworzenie_wiadomosci->ustawTryb(0, false);
+        this->tworzenie_wiadomosci->findMatch(this->wybranyUzytkownik);
+        this->tworzenie_wiadomosci->show();
 
+    }
 }
 
 void project_managment::on_pushButton_sendMsg_clicked()
 {
-
+    if (wybranyUzytkownik == "")
+        return;
+    else
+    {
+        this->tworzenie_wiadomosci->ustawTryb(0, false);
+        this->tworzenie_wiadomosci->findMatch(this->wybranyUzytkownik);
+        this->tworzenie_wiadomosci->show();
+        
+    }
 }
 
 void project_managment::odswiezProjekty()
@@ -390,8 +407,39 @@ void project_managment::odswiezWiadomosci()
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
+    {   
+        /*
+        QStringList date, person, title;
+        vector<string> temp;
+        string singleDate, singlePerson, singleTitle;
+        int n;
+        for (int i = 0; i < messageList.size(); i++)
+        {
+            temp = podzial_stringa_na_slowa(messageList[i].toStdString());
+            n = temp.size();
+            singleDate = messageList[n - 5].toStdString() + " " + 
+                messageList[n - 4].toStdString() + " " +
+                messageList[n - 3].toStdString() + " " + 
+                messageList[n - 2].toStdString() + " " + 
+                messageList[n - 1].toStdString();
+            singlePerson = messageList[n - 8].toStdString() + " " +
+                messageList[n - 7].toStdString() + " " +
+                messageList[n - 6].toStdString();
+            for (int j = 0; j < n - 7; j++) { singleTitle += messageList[j].toStdString() + " "; }
+            if (singleTitle.size() > 30)
+                singleTitle = singleTitle.substr(0, 29);
+            else
+            {
+                for (int x = 0; x < 31; x++)
+                {
+                    char* var;
+                    var = singleTitle.c_str();
+                }
+            }
+        }
+        */
         ui.listWidget_wiadomosci->addItems(messageList);
-
+    }
 }
 
 //Wyszukiwanie przy zmianie tekstu 
@@ -467,7 +515,7 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
         this->odswiezListeZespolu(false);
     }
     this->odswiezZadania();
-    
+    this->wybranyUzytkownik = "";
 }
 void project_managment::on_listWidget_zadania_itemClicked(QListWidgetItem* item)
 {
@@ -482,6 +530,16 @@ void project_managment::on_listWidget_zadania_itemClicked(QListWidgetItem* item)
     Dane_zalogowanego_pracownika::instancja()->ustaw_id_zadania(id);
 }
 
+void project_managment::on_listWidget_taskUsers_itemClicked(QListWidgetItem* item)
+{
+    this->wybranyUzytkownik = item->text().toStdString();
+}
+
+void project_managment::on_listWidget_taskUsers2_itemClicked(QListWidgetItem* item)
+{
+    this->wybranyUzytkownik = item->text().toStdString();
+}
+
 //Wiadomosci
 
 void project_managment::on_pushButton_odebrane_clicked()
@@ -490,33 +548,41 @@ void project_managment::on_pushButton_odebrane_clicked()
     this->odswiezWiadomosci();
     
 }
+
 void project_managment::on_pushButton_wyslane_clicked()
 {
     this->wyslane = true;
     this->odswiezWiadomosci();
 }
+
 void project_managment::on_pushButton_nowaWiadomosc_clicked()
 {
     this->tworzenie_wiadomosci->ustawTryb(0, false);
     this->tworzenie_wiadomosci->show();
 }
+
 void project_managment::on_listWidget_wiadomosci_itemClicked(QListWidgetItem* item)
 {
     this->message = item->text();
 }
+
 void project_managment::on_listWidget_wiadomosci_itemDoubleClicked(QListWidgetItem* item)
 {
     this->tworzenie_wiadomosci->ustawWiadomosc(item->text());
     this->tworzenie_wiadomosci->ustawTryb(1, this->wyslane);
     this->tworzenie_wiadomosci->show();
 }
+
 void project_managment::on_pushButton_usunWiadomosc_clicked()
 {
     vector<string> msg = podzial_stringa_na_slowa(message.toStdString());
     string date = "";
     for (int i = (msg.size() - 5); i < msg.size(); i++)
     {
-        date += msg[i] + " ";
+        if (i == (msg.size() - 5))
+            date += msg[i];
+        else
+            date += " " + msg[i];
     }
 
     if (this->wyslane)

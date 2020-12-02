@@ -12,6 +12,7 @@ public:
 	~wiadomosci_okno();
 	void ustawTryb(int i, bool czy_wyslana);
 	void ustawWiadomosc(QString temp);
+	void findMatch(string temp);
 private slots:
 	void on_pushButton_send_clicked();
 	void on_pushButton_cancel_clicked();

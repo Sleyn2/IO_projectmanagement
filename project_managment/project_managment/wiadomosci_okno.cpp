@@ -102,6 +102,15 @@ void wiadomosci_okno::on_pushButton_answer_clicked()
 	}
 	ui.lineEdit_Title->setText(QString::fromStdString("Re: " + this->msgTopic));
 }
+void wiadomosci_okno::findMatch(string temp)
+{
+	this->odswiezListe();
+	for (int i = 0; i < 10; i++)
+	{
+		if (this->users[i].toStdString() == temp)
+			ui.comboBox->setCurrentIndex(i);
+	}
+}
 void wiadomosci_okno::odswiezListe()
 {
 	users.clear();

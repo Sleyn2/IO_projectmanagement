@@ -50,6 +50,9 @@ private slots:
     void on_lineEdit_search_task_textChanged(const QString& arg1);
     void on_ProjectList_itemClicked(QListWidgetItem* item);
     void on_listWidget_zadania_itemClicked(QListWidgetItem* item);
+    void on_listWidget_taskUsers_itemClicked(QListWidgetItem* item);
+    void on_listWidget_taskUsers2_itemClicked(QListWidgetItem* item);
+
     //Wiadomosci
     void on_pushButton_odebrane_clicked();
     void on_pushButton_wyslane_clicked();
@@ -66,6 +69,7 @@ private:
     QStringList availableProjectList, availableTaskList, messageList, 
         availableUsersList, teamList;
     QString message;
+    string wybranyUzytkownik = "";
     void odswiezZadania();
     void odswiezWiadomosci();
     void odswiezUstawienia_przeglad();
