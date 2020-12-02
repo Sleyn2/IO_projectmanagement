@@ -61,6 +61,8 @@ string Dane_zalogowanego_pracownika::pobierz_czy_administator() { return this->c
 string Dane_zalogowanego_pracownika::pobierz_nazwe_projektu() { return this->nazwa_projektu; }
 string Dane_zalogowanego_pracownika::pobierz_nazwe_zadania() { return this->nazwa_zadania; }
 string Dane_zalogowanego_pracownika::pobierz_wyjatek() { return this->wyjatek; }
+string Dane_zalogowanego_pracownika::pobierz_id_zadania() { return this->id_zadania; }
+string Dane_zalogowanego_pracownika::pobierz_id_projektu() { return this->id_projektu; }
 
 std::vector<Dzial> Dane_zalogowanego_pracownika::pobierz_dzialy()
 {
@@ -81,6 +83,8 @@ void Dane_zalogowanego_pracownika::ustaw_wyjatek(string wyjatek) { this->wyjatek
 void Dane_zalogowanego_pracownika::ustaw_nazwe_projektu(string id_proj) { this->nazwa_projektu = id_proj; }
 void Dane_zalogowanego_pracownika::ustaw_nazwe_zadania(string id_zad) { this->nazwa_zadania = id_zad; }
 void Dane_zalogowanego_pracownika::ustaw_czy_blad(bool blad) { this->czy_blad = blad; }
+void Dane_zalogowanego_pracownika::ustaw_id_zadania(string id_zad) { this->id_zadania = id_zad; }
+void Dane_zalogowanego_pracownika::ustaw_id_projektu(string id_proj) { this->id_projektu = id_proj; }
 void Dane_zalogowanego_pracownika::ustaw_dane_logowanie(string im, string na, string lo, string ha, string czy_ad, string id_pr)
 {
     this->imie = im;

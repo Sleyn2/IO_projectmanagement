@@ -208,7 +208,7 @@ class Dane_zalogowanego_pracownika
 {
 private:
     string imie, nazwisko, login, haslo, czy_administator, id_pracownika;
-    string nazwa_projektu, nazwa_zadania, wyjatek;
+    string nazwa_projektu, id_projektu, nazwa_zadania, id_zadania, wyjatek;
     bool czy_blad;
     static Dane_zalogowanego_pracownika* w_instancja;
     Dane_zalogowanego_pracownika();
@@ -222,6 +222,8 @@ public:
     string pobierz_nazwe_projektu();
     string pobierz_nazwe_zadania();
     string pobierz_wyjatek();
+    string pobierz_id_zadania();
+    string pobierz_id_projektu();
     std::vector<Dzial> pobierz_dzialy();
     bool pobierz_czy_blad();
     void ustaw_nazwe_projektu(string id_proj);
@@ -229,5 +231,7 @@ public:
     void ustaw_wyjatek(string wyjatek);
     void ustaw_dane_logowanie(string im, string na, string lo, string ha, string czy_ad, string id_pr);
     void ustaw_czy_blad(bool blad);
+    void ustaw_id_zadania(string id_zad);
+    void ustaw_id_projektu(string id_proj);
     static Dane_zalogowanego_pracownika* instancja();
 };
