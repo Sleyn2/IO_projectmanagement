@@ -41,7 +41,7 @@ void Przypisanie_pracownikow::wczytajUzytkownikow()
 	systemUsers = Fun_projekty::pobierz_liste_pracownikow();
 	if (this->if_id)
 	{
-		currentUsers = Fun_projekty::pobierz_liste_pracownikow_w_projekcie(std::to_string(this->id));
+		currentUsers = Fun_projekty::pobierz_liste_pracownikow_w_projekcie();
 		for (int i = 0; i < currentUsers.length(); i++)
 		{
 			systemUsers.removeAll(currentUsers[i]);

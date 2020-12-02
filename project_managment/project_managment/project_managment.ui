@@ -385,7 +385,7 @@ p, li { white-space: pre-wrap; }
            </font>
           </property>
           <property name="text">
-           <string>członkowie zespołu:</string>
+           <string>Opis projektu</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_11">
@@ -403,7 +403,7 @@ p, li { white-space: pre-wrap; }
            </font>
           </property>
           <property name="text">
-           <string>członkowie zespołu:</string>
+           <string>Opis zadania </string>
           </property>
          </widget>
         </widget>

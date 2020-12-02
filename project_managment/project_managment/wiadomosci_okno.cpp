@@ -79,6 +79,9 @@ void wiadomosci_okno::on_pushButton_send_clicked()
 	else
 		QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
 	this->close();
+	ui.lineEdit_Title->clear();
+	ui.textEdit->clear();
+	ui.comboBox->setCurrentIndex(0);
 }
 void wiadomosci_okno::on_pushButton_cancel_clicked()
 {

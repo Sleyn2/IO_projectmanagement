@@ -23,7 +23,7 @@ QStringList Fun_projekty::pobierz_liste_zadan()
 	vector<Projekt> projekt;
 
 	projekt = Pobieranie_bazy::pobierz_projekt("select * from Projekt where Id_projektu = " +
-	Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + ";");
+	Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + ";");
 	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
 
 	projekty = Pobieranie_bazy::pobierz_projekt("select * from Projekt where Id_projektu_nadrzednego = " 

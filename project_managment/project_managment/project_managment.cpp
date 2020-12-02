@@ -404,7 +404,7 @@ void project_managment::ustaw_user()
 {
     string nazwa = Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu();
     ui.Opcje_projektu->setCurrentIndex(0);
-    QString opis = Fun_projekty::pobierz_opis_projektu(Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu());
+    QString opis = Fun_projekty::pobierz_opis_projektu();
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
@@ -417,15 +417,14 @@ void project_managment::ustaw_user()
 
 void project_managment::ustaw_admin()
 {
-    string nazwa = Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu();
     ui.Opcje_projektu->setCurrentIndex(1);
-    QString opis = Fun_projekty::pobierz_opis_projektu(nazwa);
+    QString opis = Fun_projekty::pobierz_opis_projektu();
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) 
     QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
     {
         ui.textBrowserOpisProjektu_2->setText(opis);
-        QString nazwaQT = QString::fromStdString(nazwa);
+        QString nazwaQT = QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu());
         ui.label_6->setText(nazwaQT);
     }
 }
@@ -433,7 +432,13 @@ void project_managment::ustaw_admin()
 void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
 {
     QString nazwa = item->text();
-    Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_projektu(nazwa.toStdString());
+    int n = nazwa.toStdString().find(" ", 0);
+    string temp = nazwa.toStdString();
+    string id = temp.substr(0, n);
+    string text = temp.substr(n + 1, nazwa.size());
+
+    Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_projektu(text);
+    Dane_zalogowanego_pracownika::instancja()->ustaw_id_projektu(id);
 
     if (Fun_projekty::czy_kierownik())
     {
@@ -448,7 +453,14 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
 void project_managment::on_listWidget_zadania_itemClicked(QListWidgetItem* item)
 {
     QString nazwa = item->text();
-    Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania(nazwa.toStdString());
+
+    int n = nazwa.toStdString().find(" ", 0);
+    string temp = nazwa.toStdString();
+    string id = temp.substr(0, n);
+    string text = temp.substr(n + 1, nazwa.size());
+
+    Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania(text);
+    Dane_zalogowanego_pracownika::instancja()->ustaw_id_zadania(id);
 }
 
 //Wiadomosci
