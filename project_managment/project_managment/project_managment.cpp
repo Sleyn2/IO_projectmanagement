@@ -425,8 +425,9 @@ void project_managment::odswiezWiadomosci()
 {
     ui.listWidget_wiadomosci->clear();
     messageList.clear();
-
-    messageList = Fun_wiadomosci::pobierz_wiadomosci(this->wyslane);
+    auto data = Fun_wiadomosci::pobierz_wiadomosci(this->wyslane);
+    messageList = std::get<0>(data);
+    vector<int> typy = std::get<1>(data);
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
@@ -462,6 +463,12 @@ void project_managment::odswiezWiadomosci()
         }
         */
         ui.listWidget_wiadomosci->addItems(messageList);
+        for (auto iter = typy.begin(); iter < typy.end(); iter++) {
+            if (*iter == 1)
+                ui.listWidget_wiadomosci->item(iter - typy.begin())->setBackgroundColor(QColor(0, 255, 0, 255));
+            else if (*iter == 2)
+                ui.listWidget_wiadomosci->item(iter - typy.begin())->setBackgroundColor(QColor(255, 0, 0, 255));
+        }
     }
 }
 
@@ -526,17 +533,21 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
 
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_projektu(text);
     Dane_zalogowanego_pracownika::instancja()->ustaw_id_projektu(id);
-
     if (Fun_projekty::czy_kierownik())
     {
         ustaw_admin();
         this->odswiezListeZespolu(true);
         this->odswiezListeRaportow();
+        if (Fun_raport::sprawdzCzyJestKorzeniem())
+            ui.pushButtonTworzRaportAdm->hide();
+        else
+            ui.pushButtonTworzRaportAdm->show();
     }
     else
     {
         ustaw_user();
         this->odswiezListeZespolu(false);
+        if (Fun_raport::sprawdzCzyJestKorzeniem())
     }
     this->odswiezZadania();
     this->wybranyUzytkownik = "";
@@ -569,7 +580,7 @@ void project_managment::on_pushButtonTworzRaport_clicked()
 {
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
         return;
-    if (Fun_raport::sprawdŸRaport())
+    if (Fun_raport::sprawdzRaport())
         tworzenie_raportu->ustawWyswietlRaport();
     else 
         tworzenie_raportu->ustawNapiszRaport();
@@ -578,6 +589,7 @@ void project_managment::on_pushButtonTworzRaport_clicked()
 
 void project_managment::on_listWidgetRaporty_itemDoubleClicked(QListWidgetItem* item)
 {
+    odbieranie_raportu->ustawPierwszaStrone();
     odbieranie_raportu->ustawIndex(ui.listWidgetRaporty->currentRow());
     odbieranie_raportu->wczytajDane();
     odbieranie_raportu->show();
@@ -587,7 +599,7 @@ void project_managment::on_pushButtonTworzRaportAdm_clicked()
 {
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
         return;
-    if (Fun_raport::sprawdŸRaport())
+    if (Fun_raport::sprawdzRaport())
         tworzenie_raportu->ustawWyswietlRaport();
     else
         tworzenie_raportu->ustawNapiszRaport();

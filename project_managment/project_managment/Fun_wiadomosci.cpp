@@ -6,6 +6,12 @@ bool Fun_wiadomosci::dodaj_wiadomosc(string id_odb, string data_wys, string tres
 	if (Modyfikator_bazy::dodaj_wiadomosc(&wiadomosc)) return true;
 	else return false;
 }
+bool Fun_wiadomosci::dodaj_wiadomosc(string id_odb, string data_wys, string tresc, string temat, string typ)
+{
+	Wiadomosc wiadomosc(id_odb, data_wys, tresc, temat, Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika(), typ);
+	if (Modyfikator_bazy::dodaj_wiadomosc_raportu(&wiadomosc)) return true;
+	else return false;
+}
 
 bool Fun_wiadomosci::usun_wiadomosc(string id_prac, string data_wys, bool wysylanie)
 {
@@ -21,42 +27,48 @@ bool Fun_wiadomosci::usun_wiadomosc(string id_prac, string data_wys, bool wysyla
 	}
 }
 
-QStringList Fun_wiadomosci::pobierz_wiadomosci(bool wysylanie)
+tuple<QStringList, vector<int>> Fun_wiadomosci::pobierz_wiadomosci(bool wysylanie)
 {
 	if (wysylanie)
 	{
 		vector<Wiadomosc>wiadomosci = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Id_nadawcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");	
+		vector<int>typWiadomosci;
 		QStringList lista;
-		if ( Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
+		if ( Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return std::make_tuple(lista, typWiadomosci);
 	
 		for (auto i = wiadomosci.begin(); i != wiadomosci.end(); ++i)
 		{
 			vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + i->pobierz_id_odbiorcy() + "");
 			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_id_pracownika() + ". " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
+			typWiadomosci.push_back(stoi(i->pobierz_typ()));
 		}
 		if (lista.empty())
 		{
 			lista.append(QString::fromStdString("Brak wiadomosci"));
-			return lista;
+			typWiadomosci.push_back(0);
+			return std::make_tuple(lista, typWiadomosci);
 		}
-		else return lista;
+		else return std::make_tuple(lista, typWiadomosci);
 	}
 	else
 	{
 		vector<Wiadomosc>wiadomosci = Pobieranie_bazy::pobierz_wiadomosc("select * from Wiadomosci where Id_odbiorcy = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "");
 		QStringList lista;
-		if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
+		vector<int>typWiadomosci;
+		if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return std::make_tuple(lista, typWiadomosci);;
 		for (auto i = wiadomosci.begin(); i != wiadomosci.end(); ++i)
 		{
 			vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + i->pobierz_id_nadawcy() + "");
 			lista.append(QString::fromStdString(i->pobierz_temat() + " " + pracownik[0].pobierz_id_pracownika() + ". " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko() + " " + i->pobierz_data_wyslania()));
+			typWiadomosci.push_back(stoi(i->pobierz_typ()));
 		}
 		if (lista.empty())
 		{
 			lista.append(QString::fromStdString("Brak wiadomosci"));
-			return lista;
+			typWiadomosci.push_back(0);
+			return std::make_tuple(lista, typWiadomosci);;
 		}
-		else return lista;
+		else return std::make_tuple(lista, typWiadomosci);;
 	}
 		
 }

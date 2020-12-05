@@ -156,8 +156,8 @@ bool Modyfikator_bazy::dodaj_raport(Raport* raport)
         {
             work W{ C };
             W.exec0("insert into raporty (is_nadawcy, tytul, opis, status, id_projektu) values (" +
-                raport->pobierz_id_nadawcy() +
-                raport->pobierz_tytul() +", '" + raport->pobierz_opis() + "', '" +
+                raport->pobierz_id_nadawcy() + ", '" +
+                raport->pobierz_tytul() +"', '" + raport->pobierz_opis() + "', '" +
                 raport->pobierz_status() + "', " + raport->pobierz_id_projektu() + ");");
             W.commit();
         }
@@ -289,6 +289,35 @@ bool Modyfikator_bazy::dodaj_wiadomosc(Wiadomosc* wiadomosc)
     }
 }
 
+bool Modyfikator_bazy::dodaj_wiadomosc_raportu(Wiadomosc* wiadomosc)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            string s = wiadomosc->pobierz_id_nadawcy();
+            work W{ C };
+            W.exec0("insert into Wiadomosci (Id_odbiorcy, Data_wyslania, Tresc, Temat, Id_nadawcy, Typ) values (" +
+                wiadomosc->pobierz_id_odbiorcy() + ", '" + wiadomosc->pobierz_data_wyslania() + "', '" +
+                wiadomosc->pobierz_tresc() + "', '" + wiadomosc->pobierz_temat() + "', " + wiadomosc->pobierz_id_nadawcy() +
+                ", " + wiadomosc->pobierz_typ() + ");");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
 bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_nad)
 {
     connection C(Dane_polaczenia::Conncet());
@@ -313,3 +342,4 @@ bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_
         return false;
     }
 }
+

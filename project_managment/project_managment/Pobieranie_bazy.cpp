@@ -262,7 +262,7 @@ vector<Wiadomosc> Pobieranie_bazy::pobierz_wiadomosc(string zapytanie)
 
             for (auto wiersz : R)
             {
-                Wiadomosc wiadomosc(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]));
+                Wiadomosc wiadomosc(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]), to_string(wiersz[5]));
                 wiadomosci.push_back(wiadomosc);
             }
         }

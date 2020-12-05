@@ -59,12 +59,16 @@ Wiadomosc::Wiadomosc(string id_od, string data_wy, string tr, string t, string i
     id_odbiorcy(id_od), data_wyslania(data_wy), tresc(tr), id_nadawcy(id_nad), temat(t)
 {}
 
+Wiadomosc::Wiadomosc(string id_od, string data_wy, string tr, string t, string id_nad, string typ) :
+    id_odbiorcy(id_od), data_wyslania(data_wy), tresc(tr), id_nadawcy(id_nad), temat(t), typ(typ)
+{}
+
 string Wiadomosc::pobierz_id_odbiorcy() { return this->id_odbiorcy; }
 string Wiadomosc::pobierz_tresc() { return this->tresc; }
 string Wiadomosc::pobierz_data_wyslania() { return this->data_wyslania; }
 string Wiadomosc::pobierz_id_nadawcy() { return this->id_nadawcy; }
 string Wiadomosc::pobierz_temat() { return this->temat; }
-
+string Wiadomosc::pobierz_typ() { return this->typ; }
 
 Raport::Raport(string t, string o, string s, string id_p):
     id_projektu(id_p), tytul(t), status(s), opis(o)

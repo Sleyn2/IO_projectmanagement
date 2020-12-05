@@ -25,14 +25,25 @@ QStringList Fun_raport::vectorRaportowNaQStringList(vector<Raport> raporty)
 	return lista;
 }
 
-bool Fun_raport::sprawdŸRaport()
+bool Fun_raport::sprawdzRaport()
 {
 	vector<Raport> raporty = Pobieranie_bazy::pobierz_jeden_raport(string("select * from raporty where id_nadawcy = '" +
 		Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "' and id_projektu = '" +
-		Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + "'"));
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + "';"));
 	for (auto elem : raporty)
 		if (elem.pobierz_status() == "nowy")
 			return true;
 		else
 			return false;
+}
+
+bool Fun_raport::sprawdzCzyJestKorzeniem() {
+	vector<Projekt> projekty = Pobieranie_bazy::pobierz_projekt(string("select * from projekt where id_projektu = " +
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + " ;"));
+	if (projekty.size())
+		if (projekty[0].pobierz_id_projektu_nadrzednego() != "")
+			return false;
+		else
+			return true;
+	return true;
 }

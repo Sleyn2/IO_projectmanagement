@@ -3,6 +3,7 @@
 #include <pqxx/pqxx>
 #include <vector>
 #include <QtWidgets/QWidget>
+#include <tuple>
 
 using namespace std;
 using namespace pqxx;
@@ -69,14 +70,16 @@ public:
 class Wiadomosc
 {
 private:
-    string id_odbiorcy, data_wyslania, tresc, id_nadawcy, temat;
+    string id_odbiorcy, data_wyslania, tresc, id_nadawcy, temat, typ = "0";
 public:
     Wiadomosc(string id_od, string data_wy, string tr, string id_nad, string t);
+    Wiadomosc(string id_od, string data_wy, string tr, string id_nad, string t, string typ);
     string pobierz_id_odbiorcy();
     string pobierz_tresc();
     string pobierz_data_wyslania();
     string pobierz_id_nadawcy();
     string pobierz_temat();
+    string pobierz_typ();
 };
 
 class Raport
@@ -147,6 +150,7 @@ public:
     static bool dodaj_raport(Raport* raport);
     static bool usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
     static bool dodaj_wiadomosc(Wiadomosc* wiadomosc);
+    static bool dodaj_wiadomosc_raportu(Wiadomosc* wiadomosc);
     static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad);
     static bool usun_zadanie(string zadanie);
     static bool zaktualizuj_zadanie(Projekt* zadanie);
@@ -210,8 +214,9 @@ class Fun_wiadomosci
 {
 public:
     static bool dodaj_wiadomosc(string id_odb, string data_wys, string tresc, string temat);
+    static bool dodaj_wiadomosc(string id_odb, string data_wys, string tresc, string temat, string typ);
     static bool usun_wiadomosc(string id_prac, string data_wys, bool wysylanie);
-    static QStringList pobierz_wiadomosci(bool wysylanie);
+    static tuple<QStringList, vector<int>> pobierz_wiadomosci(bool wysylanie);
     static QString pobierz_tresc(string id_pracownika, string data_wyslania, bool czy_wyslana_wiadomosc);
 };
 
@@ -219,7 +224,7 @@ class Dane_zalogowanego_pracownika
 {
 private:
     string imie, nazwisko, login, haslo, czy_administator, id_pracownika;
-    string nazwa_projektu, id_projektu, nazwa_zadania, id_zadania, wyjatek;
+    string nazwa_projektu, id_projektu, nazwa_zadania, id_zadania, wyjatek, id_projektu_nadrzednego;
     bool czy_blad;
     static Dane_zalogowanego_pracownika* w_instancja;
     Dane_zalogowanego_pracownika();
@@ -254,5 +259,6 @@ public:
     static vector<Raport> pobierz_vector_raportow();
     //static QStringList pobierz_liste_raportow();
     static QStringList vectorRaportowNaQStringList(vector<Raport> raporty);
-    static bool sprawdŸRaport();
+    static bool sprawdzRaport();
+    static bool sprawdzCzyJestKorzeniem();
 };

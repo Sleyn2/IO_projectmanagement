@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QLabel" name="label_3">
@@ -56,7 +56,7 @@
         <string>Nadawca</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButtonZaakceptuj">
+      <widget class="QPushButton" name="pushButtonRaportZaakceptuj">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -69,7 +69,7 @@
         <string>Zaakceptuj</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButtonZwroc">
+      <widget class="QPushButton" name="pushButtonRaportZwroc">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -95,7 +95,7 @@
         <string>Nazwa Nadawcy</string>
        </property>
       </widget>
-      <widget class="QTextBrowser" name="textTresc">
+      <widget class="QTextBrowser" name="textRaportTresc">
        <property name="geometry">
         <rect>
          <x>130</x>
@@ -176,7 +176,7 @@ p, li { white-space: pre-wrap; }
       </widget>
      </widget>
      <widget class="QWidget" name="page_2">
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>7</x>
@@ -199,19 +199,19 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="textEditTresc"/>
+         <widget class="QTextEdit" name="textEditOdpowiedzTresc"/>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QPushButton" name="pushButtonWyslij">
+           <widget class="QPushButton" name="pushButtonOdpowiedzRaport">
             <property name="text">
              <string>Wyślij</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButtonAnuluj">
+           <widget class="QPushButton" name="pushButtonOdpowiedzAnuluj">
             <property name="text">
              <string>Anuluj</string>
             </property>
