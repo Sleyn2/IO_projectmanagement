@@ -60,12 +60,14 @@ void project_managment::on_pushButton_3_clicked()
 // Ustawianie okien do wyœwietlenia
 void project_managment::ustaw_okna(Projekty_zadania_okno* temp,
                                              edycja_zadanie_okno* temp2,
-                                             wiadomosci_okno* temp3, zmien_haslo_okno* temp4)
+                                             wiadomosci_okno* temp3, zmien_haslo_okno* temp4,
+                                             raport_tworz_okno* temp5)
 {
     this->edytowanie_zadan = temp2;
     this->tworzenie_wiadomosci = temp3;
     this->tworzenie_zadan_projektow = temp;
     this->zmien_haslo = temp4;
+    this->tworzenie_raportu = temp5;
 }
 //ustawienia
 void project_managment::odswiezUstawienia_przeglad()
@@ -398,6 +400,28 @@ void project_managment::odswiezListeUzytkownikow()
     }
 }
 
+void project_managment::odswiezListeRaportow()
+{
+    //ui.listWidget_3->clear(); //listWidgetRaporty
+    ui.listWidgetRaporty->clear();
+
+    //*******************dodaæ temat do bazy
+    //*******************usunac id_raportu
+    //*******************dodaæ wpisywanie do bazy tematu raportu w przycisku
+    //*******************:)
+    availableRaportsVector = Pobieranie_bazy::pobierz_raporty();
+
+    QStringList raporty = Fun_raport::vectorRaportowNaQStringList(availableRaportsVector);
+
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+        QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+    else
+    {
+        availableUsersList.sort();
+        ui.listWidgetRaporty->addItems(availableUsersList); //listWidgetRaporty
+    }
+}
+
 void project_managment::odswiezWiadomosci()
 {
     ui.listWidget_wiadomosci->clear();
@@ -508,6 +532,7 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
     {
         ustaw_admin();
         this->odswiezListeZespolu(true);
+        //this->odswiezListeRaportow();
     }
     else
     {
@@ -537,7 +562,22 @@ void project_managment::on_listWidget_taskUsers_itemClicked(QListWidgetItem* ite
 
 void project_managment::on_listWidget_taskUsers2_itemClicked(QListWidgetItem* item)
 {
+
     this->wybranyUzytkownik = item->text().toStdString();
+}
+
+void project_managment::on_pushButtonTworzRaport_clicked()
+{
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
+        return;
+    this->tworzenie_raportu->show();
+}
+
+void project_managment::os_pushButtonTworzRaportAdm_clicked()
+{
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
+        return;
+    this->tworzenie_raportu->show();
 }
 
 //Wiadomosci

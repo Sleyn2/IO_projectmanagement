@@ -70,6 +70,10 @@ Raport::Raport(string id_r, string o, string s, string id_p):
     id_projektu(id_p), id_raportu(id_r), status(s), opis(o)
 {}
 
+Raport::Raport(string opis, string status, string id_projektu) :
+    opis(opis), status(status), id_projektu(id_projektu)
+{}
+
 string Raport::pobierz_id_raportu() { return this->id_raportu; }
 string Raport::pobierz_opis() { return this->opis; }
 string Raport::pobierz_status() { return this->status; }

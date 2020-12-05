@@ -283,4 +283,38 @@ vector<Wiadomosc> Pobieranie_bazy::pobierz_wiadomosc(string zapytanie)
     }
 }
 
+vector<Raport> Pobieranie_bazy::pobierz_raporty()
+{
+    vector<Raport> raporty;
+    connection C("dbname = test user = postgres password = postgres \
+      hostaddr = 127.0.0.1 port = 5432");
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            result R{ W.exec(string("")) };
+
+            for (auto wiersz : R)
+            {
+                Raport raport(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]));
+                raporty.push_back(raport);
+            }
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+            return raporty;
+        }
+        Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(false);
+        return raporty;
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        Dane_zalogowanego_pracownika::instancja()->ustaw_czy_blad(true);
+        return raporty;
+    }
+}
+
 

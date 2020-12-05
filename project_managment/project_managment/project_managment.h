@@ -9,6 +9,7 @@
 #include "edycja_zadanie_okno.h"
 #include "wiadomosci_okno.h"
 #include "zmien_haslo_okno.h"
+#include "raport_tworz_okno.h"
 
 
 class project_managment : public QWidget
@@ -22,7 +23,8 @@ public:
     void ustaw_user();
     void ustaw_okna(Projekty_zadania_okno* temp, 
                               edycja_zadanie_okno* temp2, 
-                              wiadomosci_okno* temp3, zmien_haslo_okno* temp4);
+                              wiadomosci_okno* temp3, zmien_haslo_okno* temp4,
+                              raport_tworz_okno* temp5);
 private slots:
     void on_pushButton_1_clicked();
     void on_pushButton_2_clicked();
@@ -52,6 +54,8 @@ private slots:
     void on_listWidget_zadania_itemClicked(QListWidgetItem* item);
     void on_listWidget_taskUsers_itemClicked(QListWidgetItem* item);
     void on_listWidget_taskUsers2_itemClicked(QListWidgetItem* item);
+    void on_pushButtonTworzRaport_clicked();
+    void os_pushButtonTworzRaportAdm_clicked();
 
     //Wiadomosci
     void on_pushButton_odebrane_clicked();
@@ -66,8 +70,10 @@ private:
     edycja_zadanie_okno* edytowanie_zadan;
     wiadomosci_okno* tworzenie_wiadomosci;
     zmien_haslo_okno* zmien_haslo;
+    raport_tworz_okno* tworzenie_raportu;
     QStringList availableProjectList, availableTaskList, messageList, 
         availableUsersList, teamList;
+    vector<Raport> availableRaportsVector;
     QString message;
     string wybranyUzytkownik = "";
     void odswiezZadania();
@@ -77,5 +83,6 @@ private:
     void odswiezListeZespolu(bool admin);
     void odswiezUstawienia_admin();
     void odswiezListeUzytkownikow();
+    void odswiezListeRaportow();
     bool wyslane;
 };

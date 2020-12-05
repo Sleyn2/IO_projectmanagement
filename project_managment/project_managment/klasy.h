@@ -85,6 +85,7 @@ private:
     string id_raportu, opis, status, id_projektu;
 public:
     Raport(string id_r, string o, string s, string id_p);
+    Raport(string opis, string status, string id_projektu);
     string pobierz_id_raportu();
     string pobierz_opis();
     string pobierz_status();
@@ -125,6 +126,7 @@ public:
    static vector<Przypisanie_do_dzialow> pobierz_przypisanie_do_dzialow(string zapytanie);
    static vector<Raport> pobierz_raport(string zapytanie);
    static vector<Wiadomosc> pobierz_wiadomosc(string zapytanie);
+   static vector<Raport> pobierz_raporty();
 };
 
 class Modyfikator_bazy
@@ -134,6 +136,7 @@ public:
    static bool dodaj_projekt(Projekt *Projekt);
    static bool dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie);
    static bool dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
+   static bool dodaj_raport(Raport* raport);
    static bool usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
    static bool dodaj_wiadomosc(Wiadomosc* wiadomosc);
    static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad);
@@ -234,4 +237,13 @@ public:
     void ustaw_id_zadania(string id_zad);
     void ustaw_id_projektu(string id_proj);
     static Dane_zalogowanego_pracownika* instancja();
+};
+
+class Fun_raport {
+public:
+    //Metoda wysy³a nowo utworzony raport do bazy danych
+    static bool dodaj_raport(string tresc);
+    static vector<Raport> pobierz_vector_raportow();
+    //static QStringList pobierz_liste_raportow();
+    static QStringList vectorRaportowNaQStringList(vector<Raport> raporty);
 };

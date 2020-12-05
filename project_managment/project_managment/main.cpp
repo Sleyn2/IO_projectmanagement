@@ -4,6 +4,7 @@
 #include "edycja_zadanie_okno.h"
 #include "wiadomosci_okno.h"
 #include "zmien_haslo_okno.h"
+#include "raport_tworz_okno.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
@@ -27,12 +28,13 @@ int main(int argc, char *argv[])
     edycja_zadanie_okno edytowanie_zadan;
     wiadomosci_okno tworzenie_wiadomosci;
     zmien_haslo_okno zmien_haslo;
+    raport_tworz_okno tworzenie_raportu;
 
     logowanie_okno login;
 
     login.show();
     login.setwindow(&w);
-    w.ustaw_okna(&tworzenie_zadan_raportow, &edytowanie_zadan, &tworzenie_wiadomosci, &zmien_haslo);
+    w.ustaw_okna(&tworzenie_zadan_raportow, &edytowanie_zadan, &tworzenie_wiadomosci, &zmien_haslo, &tworzenie_raportu);
 
     return a.exec();
 }

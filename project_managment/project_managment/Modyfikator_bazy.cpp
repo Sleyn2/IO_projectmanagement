@@ -148,6 +148,33 @@ bool Modyfikator_bazy::dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie
     }
 }
 
+bool Modyfikator_bazy::dodaj_raport(Raport* raport)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("insert into raport (id_raportu, opis, status, id_projektu) values (" +
+                raport->pobierz_id_raportu() + ", '" + raport->pobierz_opis() + "', '" +
+                raport->pobierz_status() + "', " + raport->pobierz_id_projektu() + ");");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
 bool Modyfikator_bazy::usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie)
 {
     connection C(Dane_polaczenia::Conncet());
