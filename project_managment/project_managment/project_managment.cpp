@@ -569,6 +569,10 @@ void project_managment::on_pushButtonTworzRaport_clicked()
 {
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
         return;
+    if (Fun_raport::sprawdŸRaport())
+        tworzenie_raportu->ustawWyswietlRaport();
+    else 
+        tworzenie_raportu->ustawNapiszRaport();
     this->tworzenie_raportu->show();
 }
 
@@ -583,6 +587,10 @@ void project_managment::on_pushButtonTworzRaportAdm_clicked()
 {
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
         return;
+    if (Fun_raport::sprawdŸRaport())
+        tworzenie_raportu->ustawWyswietlRaport();
+    else
+        tworzenie_raportu->ustawNapiszRaport();
     this->tworzenie_raportu->show();
 }
 

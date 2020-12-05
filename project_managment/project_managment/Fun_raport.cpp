@@ -24,3 +24,15 @@ QStringList Fun_raport::vectorRaportowNaQStringList(vector<Raport> raporty)
 		lista.append(QString::fromStdString(elem.pobierz_tytul()));
 	return lista;
 }
+
+bool Fun_raport::sprawdŸRaport()
+{
+	vector<Raport> raporty = Pobieranie_bazy::pobierz_jeden_raport(string("select * from raporty where id_nadawcy = '" +
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "' and id_projektu = '" +
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + "'"));
+	for (auto elem : raporty)
+		if (elem.pobierz_status() == "nowy")
+			return true;
+		else
+			return false;
+}

@@ -10,6 +10,8 @@ class raport_tworz_okno : public QWidget
 public:
 	raport_tworz_okno(QWidget *parent = Q_NULLPTR);
 	~raport_tworz_okno();
+	void ustawWyswietlRaport();
+	void ustawNapiszRaport();
 
 private slots:
 	void on_pushButtonAnuluj_clicked();

@@ -13,6 +13,16 @@ raport_tworz_okno::~raport_tworz_okno()
 {
 }
 
+void raport_tworz_okno::ustawWyswietlRaport()
+{
+	ui.stackedWidget->setCurrentIndex(0);
+}
+
+void raport_tworz_okno::ustawNapiszRaport()
+{
+	ui.stackedWidget->setCurrentIndex(1);
+}
+
 void raport_tworz_okno::on_pushButtonAnuluj_clicked() {
 	this->close();
 }

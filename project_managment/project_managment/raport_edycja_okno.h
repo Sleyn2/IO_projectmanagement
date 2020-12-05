@@ -14,9 +14,14 @@ public:
 	void ustawVectorRaportow(vector<Raport>* pRaporty);
 	void ustawIndex(int idx);
 	void wczytajDane();
+	void on_pushButtonZaakceptuj_clicked();
+	void on_pushButtonZwroc_clicked();
+	void on_pushButtonOdpowiedzRaport_clicked();
+	void on_pushButtonOdpowiedzAnuluj_clicked();
 
 private:
 	Ui::raport_edycja_okno ui;
 	vector<Raport>* pRaporty;
+	bool zwrot;
 	int index;
 };

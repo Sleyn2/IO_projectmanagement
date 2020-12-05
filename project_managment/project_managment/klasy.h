@@ -134,6 +134,7 @@ public:
     static vector<Raport> pobierz_raport(string zapytanie);
     static vector<Wiadomosc> pobierz_wiadomosc(string zapytanie);
     static vector<Raport> pobierz_raporty();
+    static vector<Raport> pobierz_jeden_raport(string zapytanie);
 };
 
 class Modyfikator_bazy
@@ -253,4 +254,5 @@ public:
     static vector<Raport> pobierz_vector_raportow();
     //static QStringList pobierz_liste_raportow();
     static QStringList vectorRaportowNaQStringList(vector<Raport> raporty);
+    static bool sprawdŸRaport();
 };
