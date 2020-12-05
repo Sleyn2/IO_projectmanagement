@@ -155,8 +155,9 @@ bool Modyfikator_bazy::dodaj_raport(Raport* raport)
         try
         {
             work W{ C };
-            W.exec0("insert into raport (id_raportu, opis, status, id_projektu) values (" +
-                raport->pobierz_id_raportu() + ", '" + raport->pobierz_opis() + "', '" +
+            W.exec0("insert into raporty (is_nadawcy, tytul, opis, status, id_projektu) values (" +
+                raport->pobierz_id_nadawcy() +
+                raport->pobierz_tytul() +", '" + raport->pobierz_opis() + "', '" +
                 raport->pobierz_status() + "', " + raport->pobierz_id_projektu() + ");");
             W.commit();
         }

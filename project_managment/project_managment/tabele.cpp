@@ -66,18 +66,24 @@ string Wiadomosc::pobierz_id_nadawcy() { return this->id_nadawcy; }
 string Wiadomosc::pobierz_temat() { return this->temat; }
 
 
-Raport::Raport(string id_r, string o, string s, string id_p):
-    id_projektu(id_p), id_raportu(id_r), status(s), opis(o)
+Raport::Raport(string t, string o, string s, string id_p):
+    id_projektu(id_p), tytul(t), status(s), opis(o)
 {}
 
-Raport::Raport(string opis, string status, string id_projektu) :
-    opis(opis), status(status), id_projektu(id_projektu)
+Raport::Raport(string id_nadawcy, string tytul, string opis, string status, string id_projektu) :
+    id_nadawcy(id_nadawcy), tytul(tytul), opis(opis), status(status), id_projektu(id_projektu)
+{}
+
+Raport::Raport(string id_raportu, string id_nadawcy, string tytul, string opis, string status, string id_projektu) :
+    id_raportu(id_raportu), id_nadawcy(id_nadawcy), tytul(tytul), opis(opis), status(status), id_projektu(id_projektu)
 {}
 
 string Raport::pobierz_id_raportu() { return this->id_raportu; }
 string Raport::pobierz_opis() { return this->opis; }
 string Raport::pobierz_status() { return this->status; }
 string Raport::pobierz_id_projektu() { return this->id_projektu; }
+string Raport::pobierz_tytul() { return this->tytul; }
+string Raport::pobierz_id_nadawcy() { return this->id_nadawcy; }
 
 Przypisanie_do_dzialow::Przypisanie_do_dzialow(string id_p, string id_d):
     id_pracownika(id_p), id_dzialu(id_d)

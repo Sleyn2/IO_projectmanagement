@@ -292,11 +292,13 @@ vector<Raport> Pobieranie_bazy::pobierz_raporty()
         try
         {
             work W{ C };
-            result R{ W.exec(string("")) };
+            result R{ W.exec(string("select * from raporty where id_projektu in (select id_projektu from przypisanie_do_projektow where id_pracownika = '" + 
+                Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() +
+                "'and kierownik = true) and status = 'nowy'")) };
 
             for (auto wiersz : R)
             {
-                Raport raport(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]));
+                Raport raport(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]), to_string(wiersz[5]));
                 raporty.push_back(raport);
             }
         }
@@ -316,5 +318,3 @@ vector<Raport> Pobieranie_bazy::pobierz_raporty()
         return raporty;
     }
 }
-
-

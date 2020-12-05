@@ -20,12 +20,18 @@ void raport_tworz_okno::on_pushButtonAnuluj_clicked() {
 void raport_tworz_okno::on_pushButtonWyslij_clicked()
 {
 	QString wiadomosc = ui.textEdit->toPlainText();
+	QString tytul = ui.lineEdit->text();
+	if (tytul == "")
+	{
+		QMessageBox::information(this, "Error", "Prosze podac tytul");
+		return;
+	}
 	if (wiadomosc == "")
 	{
 		QMessageBox::information(this, "Error", "Tresc wiadomosci jest pusta");
 		return;
 	}
-	if (Fun_raport::dodaj_raport(wiadomosc.toStdString())) {}
+	if (Fun_raport::dodaj_raport(wiadomosc.toStdString(), tytul.toStdString())) {}
 	else
 		QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
 	this->close();

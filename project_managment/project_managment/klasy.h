@@ -13,7 +13,7 @@ string seperacja_stringa_od_kropki(string str);
 class Pracownik
 {
 private:
-    string imie, nazwisko, login, haslo, czy_administator,  id_pracownika;
+    string imie, nazwisko, login, haslo, czy_administator, id_pracownika;
 
 public:
     Pracownik(string id_p, string i, string n, string l, string h, string czy_a);
@@ -82,14 +82,21 @@ public:
 class Raport
 {
 private:
-    string id_raportu, opis, status, id_projektu;
+    string id_raportu, id_nadawcy, tytul, opis, status, id_projektu;
 public:
-    Raport(string id_r, string o, string s, string id_p);
-    Raport(string opis, string status, string id_projektu);
+    Raport(string t, string o, string s, string id_p);
+    Raport(string id_nadawcy, string tytul, string opis, string status, string id_projektu);
+    Raport(string id_rapotru, string id_nadawcy, string tytul, string opis, string status, string id_projektu);
     string pobierz_id_raportu();
     string pobierz_opis();
     string pobierz_status();
     string pobierz_id_projektu();
+    string pobierz_tytul();
+    string pobierz_id_nadawcy();
+    bool operator < (const Raport& rap) const
+    {
+        return (tytul < rap.tytul);
+    }
 };
 
 class Przypisanie_do_dzialow
@@ -118,31 +125,31 @@ public:
 class Pobieranie_bazy
 {
 public:
-   static vector<Pracownik> pobierz_pracownik(string zapytanie);
-   static vector<Projekt> pobierz_projekt(string zapytanie);
-   static vector<Przypisanie_do_projektow> pobierz_Przypisanie_do_projektow(string zapytanie);
-   static vector<Prosba> pobierz_prosby(string zapytanie);
-   static vector<Dzial> pobierz_dzial(string zapytanie);
-   static vector<Przypisanie_do_dzialow> pobierz_przypisanie_do_dzialow(string zapytanie);
-   static vector<Raport> pobierz_raport(string zapytanie);
-   static vector<Wiadomosc> pobierz_wiadomosc(string zapytanie);
-   static vector<Raport> pobierz_raporty();
+    static vector<Pracownik> pobierz_pracownik(string zapytanie);
+    static vector<Projekt> pobierz_projekt(string zapytanie);
+    static vector<Przypisanie_do_projektow> pobierz_Przypisanie_do_projektow(string zapytanie);
+    static vector<Prosba> pobierz_prosby(string zapytanie);
+    static vector<Dzial> pobierz_dzial(string zapytanie);
+    static vector<Przypisanie_do_dzialow> pobierz_przypisanie_do_dzialow(string zapytanie);
+    static vector<Raport> pobierz_raport(string zapytanie);
+    static vector<Wiadomosc> pobierz_wiadomosc(string zapytanie);
+    static vector<Raport> pobierz_raporty();
 };
 
 class Modyfikator_bazy
 {
 public:
-   static bool dodaj_prosbe(Prosba *prosba);
-   static bool dodaj_projekt(Projekt *Projekt);
-   static bool dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie);
-   static bool dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
-   static bool dodaj_raport(Raport* raport);
-   static bool usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
-   static bool dodaj_wiadomosc(Wiadomosc* wiadomosc);
-   static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad);
-   static bool usun_zadanie(string zadanie);
-   static bool zaktualizuj_zadanie (Projekt* zadanie);
-   static bool aktualizuj_pracownika(Pracownik* prac);
+    static bool dodaj_prosbe(Prosba* prosba);
+    static bool dodaj_projekt(Projekt* Projekt);
+    static bool dodaj_przyp_do_proj(Przypisanie_do_projektow* przypisanie);
+    static bool dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
+    static bool dodaj_raport(Raport* raport);
+    static bool usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
+    static bool dodaj_wiadomosc(Wiadomosc* wiadomosc);
+    static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad);
+    static bool usun_zadanie(string zadanie);
+    static bool zaktualizuj_zadanie(Projekt* zadanie);
+    static bool aktualizuj_pracownika(Pracownik* prac);
 };
 
 class Dane_polaczenia
@@ -172,7 +179,7 @@ class Fun_projekty
 public:
     static QStringList pobierz_liste_projektow();
     static QString pobierz_opis_projektu();
-    static bool czy_kierownik ();
+    static bool czy_kierownik();
     static QStringList pobierz_liste_zadan();
     static bool utworz_projekt(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
     static bool utworz_zadanie(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
@@ -242,7 +249,7 @@ public:
 class Fun_raport {
 public:
     //Metoda wysy³a nowo utworzony raport do bazy danych
-    static bool dodaj_raport(string tresc);
+    static bool dodaj_raport(string tytul, string tresc);
     static vector<Raport> pobierz_vector_raportow();
     //static QStringList pobierz_liste_raportow();
     static QStringList vectorRaportowNaQStringList(vector<Raport> raporty);

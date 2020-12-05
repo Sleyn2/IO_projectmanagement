@@ -29,12 +29,13 @@ int main(int argc, char *argv[])
     wiadomosci_okno tworzenie_wiadomosci;
     zmien_haslo_okno zmien_haslo;
     raport_tworz_okno tworzenie_raportu;
-
+    raport_edycja_okno odbieranie_raportu;
     logowanie_okno login;
 
     login.show();
     login.setwindow(&w);
-    w.ustaw_okna(&tworzenie_zadan_raportow, &edytowanie_zadan, &tworzenie_wiadomosci, &zmien_haslo, &tworzenie_raportu);
+    w.ustaw_okna(&tworzenie_zadan_raportow, &edytowanie_zadan, &tworzenie_wiadomosci,
+        &zmien_haslo, &tworzenie_raportu, &odbieranie_raportu);
 
     return a.exec();
 }

@@ -61,13 +61,14 @@ void project_managment::on_pushButton_3_clicked()
 void project_managment::ustaw_okna(Projekty_zadania_okno* temp,
                                              edycja_zadanie_okno* temp2,
                                              wiadomosci_okno* temp3, zmien_haslo_okno* temp4,
-                                             raport_tworz_okno* temp5)
+                                             raport_tworz_okno* temp5, raport_edycja_okno* temp6)
 {
     this->edytowanie_zadan = temp2;
     this->tworzenie_wiadomosci = temp3;
     this->tworzenie_zadan_projektow = temp;
     this->zmien_haslo = temp4;
     this->tworzenie_raportu = temp5;
+    this->odbieranie_raportu = temp6;
 }
 //ustawienia
 void project_managment::odswiezUstawienia_przeglad()
@@ -382,6 +383,7 @@ void project_managment::odswiezZadania()
     else
     {
         availableTaskList.sort();
+        odbieranie_raportu->ustawVectorRaportow(&availableReportsVector);
         ui.listWidget_zadania->addItems(availableTaskList);
     }
 }
@@ -402,25 +404,22 @@ void project_managment::odswiezListeUzytkownikow()
 
 void project_managment::odswiezListeRaportow()
 {
-    //ui.listWidget_3->clear(); //listWidgetRaporty
     ui.listWidgetRaporty->clear();
+    availableReportsVector.clear();
+    availableReportsVector = Pobieranie_bazy::pobierz_raporty();
+    std::sort(availableReportsVector.begin(), availableReportsVector.end());
 
-    //*******************dodaæ temat do bazy
-    //*******************usunac id_raportu
-    //*******************dodaæ wpisywanie do bazy tematu raportu w przycisku
-    //*******************:)
-    availableRaportsVector = Pobieranie_bazy::pobierz_raporty();
-
-    QStringList raporty = Fun_raport::vectorRaportowNaQStringList(availableRaportsVector);
+    QStringList raporty = Fun_raport::vectorRaportowNaQStringList(availableReportsVector);
 
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
-    else
-    {
-        availableUsersList.sort();
-        ui.listWidgetRaporty->addItems(availableUsersList); //listWidgetRaporty
+    else {
+        std::sort(availableReportsVector.begin(), availableReportsVector.end());
+        odbieranie_raportu->ustawVectorRaportow(&availableReportsVector);
+        QStringList raporty = Fun_raport::vectorRaportowNaQStringList(availableReportsVector);
+        ui.listWidgetRaporty->addItems(raporty);
     }
-}
+   }
 
 void project_managment::odswiezWiadomosci()
 {
@@ -532,7 +531,7 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
     {
         ustaw_admin();
         this->odswiezListeZespolu(true);
-        //this->odswiezListeRaportow();
+        this->odswiezListeRaportow();
     }
     else
     {
@@ -573,7 +572,14 @@ void project_managment::on_pushButtonTworzRaport_clicked()
     this->tworzenie_raportu->show();
 }
 
-void project_managment::os_pushButtonTworzRaportAdm_clicked()
+void project_managment::on_listWidgetRaporty_itemDoubleClicked(QListWidgetItem* item)
+{
+    odbieranie_raportu->ustawIndex(ui.listWidgetRaporty->currentRow());
+    odbieranie_raportu->wczytajDane();
+    odbieranie_raportu->show();
+}
+
+void project_managment::on_pushButtonTworzRaportAdm_clicked()
 {
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
         return;
