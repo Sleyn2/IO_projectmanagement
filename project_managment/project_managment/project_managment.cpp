@@ -465,9 +465,9 @@ void project_managment::odswiezWiadomosci()
         ui.listWidget_wiadomosci->addItems(messageList);
         for (auto iter = typy.begin(); iter < typy.end(); iter++) {
             if (*iter == 1)
-                ui.listWidget_wiadomosci->item(iter - typy.begin())->setBackgroundColor(QColor(148, 236, 154, 255));
+                ui.listWidget_wiadomosci->item(iter - typy.begin())->setBackgroundColor(REPORT_ACCEPTED_QCOLOUR);
             else if (*iter == 2)
-                ui.listWidget_wiadomosci->item(iter - typy.begin())->setBackgroundColor(QColor(236, 148, 154, 255));
+                ui.listWidget_wiadomosci->item(iter - typy.begin())->setBackgroundColor(REPORT_RETURNED_QCOLOUR);
         }
     }
 }

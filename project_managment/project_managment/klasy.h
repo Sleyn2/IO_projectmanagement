@@ -11,6 +11,9 @@ using namespace pqxx;
 vector<string> podzial_stringa_na_slowa(string str);
 string seperacja_stringa_od_kropki(string str);
 
+constexpr QColor REPORT_ACCEPTED_QCOLOUR(148, 236, 154, 255);
+constexpr QColor REPORT_RETURNED_QCOLOUR(236, 148, 154, 255);
+
 class Pracownik
 {
 private:
