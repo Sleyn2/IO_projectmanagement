@@ -13,10 +13,15 @@ raport_tworz_okno::~raport_tworz_okno()
 {
 }
 
-void raport_tworz_okno::ustawWyswietlRaport()
+void raport_tworz_okno::ustawWyswietlRaport(Raport raport)
 {
+	ui.labelTytul->setText(QString::fromStdString(raport.pobierz_tytul()));
+	ui.labelStatus->setText(QString::fromStdString(raport.pobierz_status()));
+	ui.textTresc->setPlainText(QString::fromStdString(raport.pobierz_opis()));
 	ui.stackedWidget->setCurrentIndex(0);
 }
+
+
 
 void raport_tworz_okno::ustawNapiszRaport()
 {

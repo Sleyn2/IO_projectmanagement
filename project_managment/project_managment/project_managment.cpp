@@ -547,7 +547,7 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
     {
         ustaw_user();
         this->odswiezListeZespolu(false);
-        if (Fun_raport::sprawdzCzyJestKorzeniem())
+        if (Fun_raport::sprawdzCzyJestKorzeniem());
     }
     this->odswiezZadania();
     this->wybranyUzytkownik = "";
@@ -580,10 +580,12 @@ void project_managment::on_pushButtonTworzRaport_clicked()
 {
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
         return;
-    if (Fun_raport::sprawdzRaport())
-        tworzenie_raportu->ustawWyswietlRaport();
-    else 
+    vector<Raport> raport = Fun_raport::sprawdzRaport();
+    if(raport.size() == 0 || raport[0].pobierz_status() == "zwrocony")
         tworzenie_raportu->ustawNapiszRaport();
+    else
+        tworzenie_raportu->ustawWyswietlRaport(raport[0]);
+        
     this->tworzenie_raportu->show();
 }
 
@@ -599,10 +601,12 @@ void project_managment::on_pushButtonTworzRaportAdm_clicked()
 {
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
         return;
-    if (Fun_raport::sprawdzRaport())
-        tworzenie_raportu->ustawWyswietlRaport();
-    else
+    vector<Raport> raport = Fun_raport::sprawdzRaport();
+    if (raport.size() == 0 || raport[0].pobierz_status() == "zwrocony")
         tworzenie_raportu->ustawNapiszRaport();
+    else
+        tworzenie_raportu->ustawWyswietlRaport(raport[0]);
+
     this->tworzenie_raportu->show();
 }
 

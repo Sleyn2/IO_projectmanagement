@@ -68,6 +68,31 @@ bool Modyfikator_bazy::aktualizuj_pracownika(Pracownik* prac)
     }
 }
 
+bool Modyfikator_bazy::zaktualizuj_raport(string status, string id_projektu)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("update raporty set status = '" + status + "' where id_raportu = " + id_projektu + " ;");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
 bool Modyfikator_bazy::dodaj_projekt(Projekt *projekt)
 {
     connection C(Dane_polaczenia::Conncet());
@@ -155,7 +180,7 @@ bool Modyfikator_bazy::dodaj_raport(Raport* raport)
         try
         {
             work W{ C };
-            W.exec0("insert into raporty (is_nadawcy, tytul, opis, status, id_projektu) values (" +
+            W.exec0("insert into raporty (id_nadawcy, tytul, opis, status, id_projektu) values (" +
                 raport->pobierz_id_nadawcy() + ", '" +
                 raport->pobierz_tytul() +"', '" + raport->pobierz_opis() + "', '" +
                 raport->pobierz_status() + "', " + raport->pobierz_id_projektu() + ");");

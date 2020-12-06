@@ -2,7 +2,8 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
-bool Fun_raport::dodaj_raport(string tytul, string tresc) {
+bool Fun_raport::dodaj_raport(string tytul, string tresc) 
+{
 	///* initialize random seed: */
 	//srand(time(NULL));
 
@@ -25,16 +26,12 @@ QStringList Fun_raport::vectorRaportowNaQStringList(vector<Raport> raporty)
 	return lista;
 }
 
-bool Fun_raport::sprawdzRaport()
+vector<Raport> Fun_raport::sprawdzRaport()
 {
 	vector<Raport> raporty = Pobieranie_bazy::pobierz_jeden_raport(string("select * from raporty where id_nadawcy = '" +
 		Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "' and id_projektu = '" +
 		Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + "';"));
-	for (auto elem : raporty)
-		if (elem.pobierz_status() == "nowy")
-			return true;
-		else
-			return false;
+	return raporty;
 }
 
 bool Fun_raport::sprawdzCzyJestKorzeniem() {
@@ -46,4 +43,12 @@ bool Fun_raport::sprawdzCzyJestKorzeniem() {
 		else
 			return true;
 	return true;
+}
+
+void Fun_raport::zmienStanRaportu(int stan, string id_raportu)
+{
+	if (stan == 2)
+		Modyfikator_bazy::zaktualizuj_raport("zwrocony", id_raportu);
+	else if (stan == 1)
+		Modyfikator_bazy::zaktualizuj_raport("zaakceptowany", id_raportu);
 }

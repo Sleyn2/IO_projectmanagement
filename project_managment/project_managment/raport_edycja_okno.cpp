@@ -72,6 +72,7 @@ void raport_edycja_okno::on_pushButtonOdpowiedzRaport_clicked()
 		QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
 	this->close();
 	ui.textEditOdpowiedzTresc->clear();
+	Fun_raport::zmienStanRaportu(zwrot, (*pRaporty)[index].pobierz_id_raportu());
 }
 
 void raport_edycja_okno::on_pushButtonOdpowiedzAnuluj_clicked()

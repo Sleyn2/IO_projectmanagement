@@ -155,6 +155,7 @@ public:
     static bool usun_zadanie(string zadanie);
     static bool zaktualizuj_zadanie(Projekt* zadanie);
     static bool aktualizuj_pracownika(Pracownik* prac);
+    static bool zaktualizuj_raport(string status, string id_projektu);
 };
 
 class Dane_polaczenia
@@ -259,6 +260,7 @@ public:
     static vector<Raport> pobierz_vector_raportow();
     //static QStringList pobierz_liste_raportow();
     static QStringList vectorRaportowNaQStringList(vector<Raport> raporty);
-    static bool sprawdzRaport();
+    static vector<Raport> sprawdzRaport();
     static bool sprawdzCzyJestKorzeniem();
+    static void zmienStanRaportu(int stan, string id_raportu);
 };

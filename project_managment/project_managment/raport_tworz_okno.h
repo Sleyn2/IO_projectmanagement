@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include "ui_raport_tworz_okno.h"
+#include "klasy.h"
 
 class raport_tworz_okno : public QWidget
 {
@@ -10,7 +11,7 @@ class raport_tworz_okno : public QWidget
 public:
 	raport_tworz_okno(QWidget *parent = Q_NULLPTR);
 	~raport_tworz_okno();
-	void ustawWyswietlRaport();
+	void ustawWyswietlRaport(Raport raport);
 	void ustawNapiszRaport();
 
 private slots:
