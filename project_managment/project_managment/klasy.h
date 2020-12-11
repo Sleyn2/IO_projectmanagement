@@ -146,6 +146,7 @@ public:
 class Modyfikator_bazy
 {
 public:
+    static bool sprawdz_polaczenie();
     static bool dodaj_prosbe(Prosba* prosba);
     static bool dodaj_projekt(Projekt* Projekt);
     static bool dodaj_przyp_do_proj(Przypisanie_do_projektow* przypisanie);

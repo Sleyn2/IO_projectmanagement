@@ -21,6 +21,16 @@ int main(int argc, char *argv[])
         err.exec();
         return 0;
     }
+    if (!Modyfikator_bazy::sprawdz_polaczenie()) {
+        QMessageBox err;
+        err.setWindowTitle("Blad bazy danych");
+        err.setText("Blad polaczenia z baza danych\nSprawdz poprwanosc pliku database.conf");
+        err.setIcon(QMessageBox::Critical);
+        err.setStandardButtons(QMessageBox::Ok);
+        err.exec();
+        return 0;
+    }
+
 
     project_managment w;
 

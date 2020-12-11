@@ -367,4 +367,23 @@ bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_
         return false;
     }
 }
-
+bool Modyfikator_bazy::sprawdz_polaczenie()
+{
+    try
+    {
+        connection C(Dane_polaczenia::Conncet());
+        if (C.is_open()) {
+            return true;
+        }
+        else
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+            return false;
+        }
+    }
+    catch (exception e)
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+        return false;
+    }
+}
