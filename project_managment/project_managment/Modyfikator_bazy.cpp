@@ -280,7 +280,7 @@ bool Modyfikator_bazy::usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie)
     }
 }
 
-bool Modyfikator_bazy::usun_zadanie(string zadanie)
+bool Modyfikator_bazy::usun_zadanie(string Id_zadania)
 {
     connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
@@ -289,10 +289,7 @@ bool Modyfikator_bazy::usun_zadanie(string zadanie)
             work W{ C };
 
             vector<Projekt> id_zadania;
-            id_zadania = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
-                Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() + "';");
-            W.exec0("delete from Projekt where id_projektu = " + id_zadania[0].pobierz_id_projektu() + ";");
-            W.exec0("delete from Przypisanie_do_projektu where id_projektu = " + id_zadania[0].pobierz_id_projektu() + ";");
+            W.exec0("delete from Projekt where id_projektu = " + Id_zadania + ";");
             W.commit();
         }
         catch (exception e)

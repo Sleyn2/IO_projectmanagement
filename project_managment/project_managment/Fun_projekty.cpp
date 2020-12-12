@@ -120,9 +120,9 @@ bool Fun_projekty::usun_przypisanie_do_zadania(string id_pracownika)
 	else return false;
 }
 
-bool Fun_projekty::usun_zadanie(string nazwa_zadania)
+bool Fun_projekty::usun_zadanie(string Id_zadania)
 {
-	if (Modyfikator_bazy::usun_zadanie(nazwa_zadania)) return true;
+	if (Modyfikator_bazy::usun_zadanie(Id_zadania)) return true;
 	return false;
 }
 
