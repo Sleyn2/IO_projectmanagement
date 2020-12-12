@@ -66,20 +66,18 @@ bool Fun_projekty::utworz_projekt(string nazwa, string opis, string data_rozpocz
 	if (!czy_sa_projekty.empty()) return false;
 	else
 	{
-		Projekt* projekt = new Projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "false", "null", status);
-		if (Modyfikator_bazy::dodaj_projekt(projekt))
+		Projekt projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "false", "null", status);
+		if (Modyfikator_bazy::dodaj_projekt(&projekt))
 		{
 			/* na pewno ten co robi projekt bedzie jego kierownikiem */
 			Przypisanie_do_projektow przypisanie(Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika(),
-				Pobieranie_bazy::pobierz_projekt("SELECT * from projekt where nazwa = '" + projekt->pobierz_nazwa() + "';").begin()->pobierz_id_projektu(),
+				Pobieranie_bazy::pobierz_projekt("SELECT * from projekt where nazwa = '" + projekt.pobierz_nazwa() + "';").begin()->pobierz_id_projektu(),
 				"true");
 			Modyfikator_bazy::dodaj_przyp_do_proj(&przypisanie);
-			delete projekt;
 			return true;
 		}
 		else
 		{
-			delete projekt;
 			return false;;
 		}
 	}

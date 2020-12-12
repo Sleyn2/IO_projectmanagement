@@ -441,3 +441,23 @@ bool Modyfikator_bazy::wykonaj_zapytanie(std::string zapytanie)
     }
 }
 
+bool Modyfikator_bazy::sprawdz_polaczenie()
+{
+    try
+    {
+        connection C(Dane_polaczenia::Conncet());
+        if (C.is_open()) {
+            return true;
+        }
+        else
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+            return false;
+        }
+    }
+    catch (exception e)
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+        return false;
+    }
+}
