@@ -159,6 +159,8 @@ public:
     static bool zaktualizuj_zadanie(Projekt* zadanie);
     static bool aktualizuj_pracownika(Pracownik* prac);
     static bool zaktualizuj_raport(string status, string id_projektu);
+    static bool dodaj_dzial(Dzial* dzial);
+    static bool wykonaj_zapytanie(std::string zapytanie);
 };
 
 class Dane_polaczenia
@@ -212,6 +214,9 @@ public:
     static string wyluskaj_login(string text);
     static bool nadawanie_uprawnien(string login, string czy_adm);
     static void odswiez_zalogowanego();
+    static bool dodaj_dzial(std::string adres, std::string nazwa);
+    static bool usun_dzial(std::string nazwa);
+    static std::vector<QString> pobierz_liste_dzialow();
 };
 
 class Fun_wiadomosci
@@ -244,7 +249,7 @@ public:
     string pobierz_wyjatek();
     string pobierz_id_zadania();
     string pobierz_id_projektu();
-    std::vector<Dzial> pobierz_dzialy();
+    std::vector<QString> pobierz_dzialy();
     bool pobierz_czy_blad();
     void ustaw_nazwe_projektu(string id_proj);
     void ustaw_nazwe_zadania(string id_zad);

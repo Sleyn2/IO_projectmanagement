@@ -124,7 +124,7 @@
        <string notr="true">background-color: rgb(170, 170, 255);</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Twoje_projekty">
        <widget class="QWidget" name="widget" native="true">
@@ -883,9 +883,9 @@ Wiadomość</string>
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>30</y>
+          <y>10</y>
           <width>931</width>
-          <height>281</height>
+          <height>251</height>
          </rect>
         </property>
         <property name="currentIndex">
@@ -896,7 +896,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>280</x>
-            <y>140</y>
+            <y>120</y>
             <width>251</width>
             <height>31</height>
            </rect>
@@ -914,7 +914,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>70</x>
-            <y>130</y>
+            <y>110</y>
             <width>201</width>
             <height>51</height>
            </rect>
@@ -935,7 +935,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>280</x>
-            <y>40</y>
+            <y>20</y>
             <width>261</width>
             <height>51</height>
            </rect>
@@ -953,7 +953,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>70</x>
-            <y>80</y>
+            <y>60</y>
             <width>201</width>
             <height>51</height>
            </rect>
@@ -974,7 +974,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>70</x>
-            <y>40</y>
+            <y>20</y>
             <width>201</width>
             <height>51</height>
            </rect>
@@ -995,7 +995,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>280</x>
-            <y>80</y>
+            <y>60</y>
             <width>211</width>
             <height>51</height>
            </rect>
@@ -1013,7 +1013,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>570</x>
-            <y>180</y>
+            <y>160</y>
             <width>191</width>
             <height>41</height>
            </rect>
@@ -1034,7 +1034,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>180</y>
+            <y>160</y>
             <width>271</width>
             <height>41</height>
            </rect>
@@ -1055,7 +1055,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>280</x>
-            <y>180</y>
+            <y>160</y>
             <width>91</width>
             <height>41</height>
            </rect>
@@ -1076,7 +1076,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>570</x>
-            <y>110</y>
+            <y>90</y>
             <width>191</width>
             <height>41</height>
            </rect>
@@ -1097,7 +1097,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>550</x>
-            <y>40</y>
+            <y>20</y>
             <width>91</width>
             <height>51</height>
            </rect>
@@ -1118,7 +1118,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>650</x>
-            <y>40</y>
+            <y>20</y>
             <width>251</width>
             <height>51</height>
            </rect>
@@ -1139,7 +1139,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>220</y>
+            <y>200</y>
             <width>271</width>
             <height>41</height>
            </rect>
@@ -1160,7 +1160,7 @@ Wiadomość</string>
           <property name="geometry">
            <rect>
             <x>280</x>
-            <y>220</y>
+            <y>200</y>
             <width>91</width>
             <height>41</height>
            </rect>
@@ -1464,9 +1464,9 @@ Wiadomość</string>
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>320</y>
+          <y>260</y>
           <width>911</width>
-          <height>331</height>
+          <height>391</height>
          </rect>
         </property>
         <property name="font">
@@ -1496,7 +1496,7 @@ Wiadomość</string>
            <x>10</x>
            <y>140</y>
            <width>229</width>
-           <height>181</height>
+           <height>141</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -1530,10 +1530,10 @@ Wiadomość</string>
         <widget class="QGroupBox" name="groupBox_2">
          <property name="geometry">
           <rect>
-           <x>270</x>
-           <y>50</y>
-           <width>361</width>
-           <height>251</height>
+           <x>280</x>
+           <y>40</y>
+           <width>321</width>
+           <height>321</height>
           </rect>
          </property>
          <property name="font">
@@ -1565,7 +1565,7 @@ Wiadomość</string>
          <widget class="QCheckBox" name="checkBox_tworzenie_proj">
           <property name="geometry">
            <rect>
-            <x>60</x>
+            <x>20</x>
             <y>80</y>
             <width>291</width>
             <height>20</height>
@@ -1583,7 +1583,7 @@ Wiadomość</string>
          <widget class="QCheckBox" name="checkBox_admin">
           <property name="geometry">
            <rect>
-            <x>60</x>
+            <x>20</x>
             <y>120</y>
             <width>281</width>
             <height>20</height>
@@ -1603,7 +1603,7 @@ Wiadomość</string>
            <rect>
             <x>120</x>
             <y>40</y>
-            <width>221</width>
+            <width>171</width>
             <height>21</height>
            </rect>
           </property>
@@ -1619,9 +1619,9 @@ Wiadomość</string>
          <widget class="QPushButton" name="pushButton_zapisz_prawa">
           <property name="geometry">
            <rect>
-            <x>110</x>
+            <x>80</x>
             <y>170</y>
-            <width>151</width>
+            <width>171</width>
             <height>41</height>
            </rect>
           </property>
@@ -1637,13 +1637,34 @@ Wiadomość</string>
            <string>zapisz</string>
           </property>
          </widget>
+         <widget class="QPushButton" name="pushButton_usunPracownika">
+          <property name="geometry">
+           <rect>
+            <x>80</x>
+            <y>240</y>
+            <width>171</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+          <property name="text">
+           <string>usuń pracownika</string>
+          </property>
+         </widget>
         </widget>
         <widget class="QLabel" name="dodaj_dzial_label">
          <property name="geometry">
           <rect>
-           <x>660</x>
-           <y>50</y>
-           <width>211</width>
+           <x>640</x>
+           <y>20</y>
+           <width>251</width>
            <height>31</height>
           </rect>
          </property>
@@ -1663,7 +1684,7 @@ Wiadomość</string>
          <property name="geometry">
           <rect>
            <x>660</x>
-           <y>130</y>
+           <y>90</y>
            <width>229</width>
            <height>31</height>
           </rect>
@@ -1676,7 +1697,7 @@ Wiadomość</string>
          <property name="geometry">
           <rect>
            <x>660</x>
-           <y>100</y>
+           <y>60</y>
            <width>71</width>
            <height>21</height>
           </rect>
@@ -1694,7 +1715,7 @@ Wiadomość</string>
          <property name="geometry">
           <rect>
            <x>660</x>
-           <y>180</y>
+           <y>130</y>
            <width>71</width>
            <height>21</height>
           </rect>
@@ -1712,7 +1733,7 @@ Wiadomość</string>
          <property name="geometry">
           <rect>
            <x>660</x>
-           <y>210</y>
+           <y>160</y>
            <width>229</width>
            <height>31</height>
           </rect>
@@ -1721,11 +1742,11 @@ Wiadomość</string>
           <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="pushButton_ustaw2_2">
+        <widget class="QPushButton" name="pushButton_dodajDzial">
          <property name="geometry">
           <rect>
            <x>720</x>
-           <y>260</y>
+           <y>210</y>
            <width>111</width>
            <height>41</height>
           </rect>
@@ -1740,6 +1761,87 @@ Wiadomość</string>
          </property>
          <property name="text">
           <string>dodaj</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="usun_dzial_label">
+         <property name="geometry">
+          <rect>
+           <x>650</x>
+           <y>260</y>
+           <width>221</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>usuń dział z firmy</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="comboBox_usunDzial">
+         <property name="geometry">
+          <rect>
+           <x>660</x>
+           <y>290</y>
+           <width>231</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_usunDzial">
+         <property name="geometry">
+          <rect>
+           <x>720</x>
+           <y>340</y>
+           <width>111</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>usuń</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_prosby">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>310</y>
+           <width>201</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>przeglądaj prośby</string>
          </property>
         </widget>
        </widget>

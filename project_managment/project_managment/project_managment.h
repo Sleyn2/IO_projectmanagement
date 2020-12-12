@@ -42,6 +42,8 @@ private slots:
     void on_lineEdit_search_settings_textChanged(const QString& arg1);
     void on_userList_itemClicked(QListWidgetItem* item);
     void on_pushButton_zapisz_prawa_clicked();
+    void on_pushButton_dodajDzial_clicked();
+    void on_pushButton_usunDzial_clicked();
     
     //Projekty i zadania
     void on_pushButton_edytuj_zadanie_clicked();
@@ -87,5 +89,6 @@ private:
     void odswiezUstawienia_admin();
     void odswiezListeUzytkownikow();
     void odswiezListeRaportow();
+    void odswiezListeDzialow();
     bool wyslane;
 };

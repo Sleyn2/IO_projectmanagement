@@ -120,6 +120,32 @@ bool Modyfikator_bazy::dodaj_projekt(Projekt *projekt)
     }
 }
 
+bool Modyfikator_bazy::dodaj_dzial(Dzial* dzial)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("insert into dzialy_w_firmie (nazwa, adres) values ('" + dzial->pobierz_nazwa() + "', '" + dzial->pobierz_adres() + "');");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            cerr << e.what();
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
 bool Modyfikator_bazy::dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie)
 {
     connection C(Dane_polaczenia::Conncet());
@@ -351,6 +377,31 @@ bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_
         {
             work W{ C };
             W.exec0("delete from Wiadomosci where Id_odbiorcy = " + id_odb + " and Data_wyslania = '" + data_wys + "' and Id_nadawcy = " + id_nad + ";");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
+bool Modyfikator_bazy::wykonaj_zapytanie(std::string zapytanie)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0(zapytanie);
             W.commit();
         }
         catch (exception e)
