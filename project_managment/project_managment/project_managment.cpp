@@ -20,6 +20,8 @@ void project_managment::on_pushButton_1_clicked()
     ui.stackedWidget->setCurrentIndex(0);
 
     ui.label->setText("Twoje projekty i zadania");
+
+    this->odswiezProjekty();
 }
 
 void project_managment::odswiezListeZespolu(bool admin)
