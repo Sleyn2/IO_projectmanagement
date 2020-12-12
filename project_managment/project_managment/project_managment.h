@@ -11,6 +11,7 @@
 #include "zmien_haslo_okno.h"
 #include "raport_tworz_okno.h"
 #include "raport_edycja_okno.h"
+#include "dodawanie_pracownikow_okno.h"
 
 
 class project_managment : public QWidget
@@ -25,7 +26,7 @@ public:
     void ustaw_okna(Projekty_zadania_okno* temp, 
                               edycja_zadanie_okno* temp2, 
                               wiadomosci_okno* temp3, zmien_haslo_okno* temp4,
-                              raport_tworz_okno* temp5, raport_edycja_okno* temp6);
+                              raport_tworz_okno* temp5, raport_edycja_okno* temp6, dodawanie_pracownikow_okno* temp7);
 private slots:
     void on_pushButton_1_clicked();
     void on_pushButton_2_clicked();
@@ -44,6 +45,7 @@ private slots:
     void on_pushButton_zapisz_prawa_clicked();
     void on_pushButton_dodajDzial_clicked();
     void on_pushButton_usunDzial_clicked();
+    void on_pushButton_prosby_clicked();
     
     //Projekty i zadania
     void on_pushButton_edytuj_zadanie_clicked();
@@ -76,6 +78,7 @@ private:
     zmien_haslo_okno* zmien_haslo;
     raport_tworz_okno* tworzenie_raportu;
     raport_edycja_okno* odbieranie_raportu;
+    dodawanie_pracownikow_okno* dodawanie_pracownikow;
     QStringList availableProjectList, availableTaskList, messageList, 
         availableUsersList, teamList;
     vector<Raport> availableReportsVector;

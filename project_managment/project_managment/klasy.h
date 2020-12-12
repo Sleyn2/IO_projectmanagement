@@ -120,7 +120,7 @@ class Dzial
 private:
     string id_dzialu, nazwa, adres;
 public:
-    Dzial(string id_d, string adr, string naz);
+    Dzial(string id_d, string naz, string adr);
     string pobierz_id_dzialu();
     string pobierz_adres();
     string pobierz_nazwa();
@@ -215,13 +215,14 @@ public:
     static bool usun_z_dzialu_po_nazwie(string id_pracownika, string nazwa_dzial);
     static QStringList pobierz_liste_pracownikow();
     static string czy_admin_po_loginie(string login);
-    static string Fun_ustawienia::imie_nazwisko_po_loginie(string login);
+    static vector<string> imie_nazwisko_po_loginie(string login, string zrodlo);
     static string wyluskaj_login(string text);
     static bool nadawanie_uprawnien(string login, string czy_adm);
     static void odswiez_zalogowanego();
     static bool dodaj_dzial(std::string adres, std::string nazwa);
     static bool usun_dzial(std::string nazwa);
     static std::vector<QString> pobierz_liste_dzialow();
+    static std::vector<QString> pobierz_liste_prosb();
 };
 
 class Fun_wiadomosci

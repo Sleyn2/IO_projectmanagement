@@ -63,7 +63,7 @@ void project_managment::on_pushButton_3_clicked()
 void project_managment::ustaw_okna(Projekty_zadania_okno* temp,
                                              edycja_zadanie_okno* temp2,
                                              wiadomosci_okno* temp3, zmien_haslo_okno* temp4,
-                                             raport_tworz_okno* temp5, raport_edycja_okno* temp6)
+                                             raport_tworz_okno* temp5, raport_edycja_okno* temp6, dodawanie_pracownikow_okno* temp7)
 {
     this->edytowanie_zadan = temp2;
     this->tworzenie_wiadomosci = temp3;
@@ -71,6 +71,7 @@ void project_managment::ustaw_okna(Projekty_zadania_okno* temp,
     this->zmien_haslo = temp4;
     this->tworzenie_raportu = temp5;
     this->odbieranie_raportu = temp6;
+    this->dodawanie_pracownikow = temp7;
 }
 //ustawienia
 void project_managment::odswiezUstawienia_przeglad()
@@ -261,7 +262,12 @@ void project_managment::on_userList_itemClicked(QListWidgetItem* item)
         ui.checkBox_admin->setChecked(true);
     }
 
-    string imie_nazw = Fun_ustawienia::imie_nazwisko_po_loginie(login);
+    string imie_nazw;
+    vector<string> imie_i_nazw = Fun_ustawienia::imie_nazwisko_po_loginie(login, "pracownicy");
+    if (imie_i_nazw.size() == 2)
+    {
+        imie_nazw = imie_i_nazw[0] + imie_i_nazw[1];
+    }
 
     ui.label_prawa->setText(QString::fromStdString(imie_nazw));
 }
@@ -371,6 +377,11 @@ void project_managment::odswiezListeDzialow()
     }
 }
 
+void project_managment::on_pushButton_prosby_clicked()
+{
+    this->dodawanie_pracownikow->show();
+}
+
 //Projekty
 void project_managment::on_pushButton_utworzProjekt_clicked()
 {
@@ -431,6 +442,11 @@ void project_managment::odswiezProjekty()
     {
         availableProjectList.sort();
         ui.ProjectList->addItems(availableProjectList);
+    }
+
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator() == "0")
+    {
+        ui.pushButton_utworzProjekt->setDisabled(true);
     }
 }
 

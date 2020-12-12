@@ -92,6 +92,9 @@
     <ClCompile Include="Fun_raport.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dodawanie_pracownikow_okno.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="logowanie_okno.h">
@@ -118,6 +121,9 @@
     <QtMoc Include="zmien_haslo_okno.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="dodawanie_pracownikow_okno.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="logowanie_okno.ui">
@@ -142,6 +148,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="zmien_haslo_okno.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="dodawanie_pracownikow_okno.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

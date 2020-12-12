@@ -99,25 +99,41 @@ string Fun_ustawienia::czy_admin_po_loginie(string login)
 	}
 }
 
-string Fun_ustawienia::imie_nazwisko_po_loginie(string login)
+vector<string> Fun_ustawienia::imie_nazwisko_po_loginie(string login, string zrodlo)
 {
-	vector<Pracownik> prac = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" +
-		login + "';");
+	vector<Pracownik> prac;
+	vector<string>imie_i_nazw;
+
+	if (zrodlo == "pracownicy")
+	{
+		prac = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" +
+			login + "';");
+	}
+	else if (zrodlo == "prosby")
+	{
+		prac = Pobieranie_bazy::pobierz_pracownik("select * from prosby_o_dodanie where login = '" +
+			login + "';");
+	}
+	else
+	{
+		return imie_i_nazw;
+	}
 
 	string imie;
 	string nazwisko;
 
-	if (prac.size() == 1)
+	if (!prac.empty())
 	{
 		imie = prac[0].pobierz_imie();
 		nazwisko = prac[0].pobierz_nazwisko();
+	}
 
-		return imie + " " + nazwisko;
-	}
-	else
-	{
-		return "blad";
-	}
+	
+	imie_i_nazw.push_back(imie);
+	imie_i_nazw.push_back(nazwisko);
+
+	return imie_i_nazw;
+
 }
 
 string Fun_ustawienia::wyluskaj_login(string text)
@@ -176,7 +192,7 @@ void Fun_ustawienia::odswiez_zalogowanego()
 bool Fun_ustawienia::dodaj_dzial(std::string adres, std::string nazwa)
 {
 
-	Dzial d("0", adres, nazwa);
+	Dzial d("0", nazwa, adres);
 
 	if (!nazwa.empty() && !adres.empty() && Modyfikator_bazy::dodaj_dzial(&d))
 	{
@@ -214,4 +230,18 @@ vector<QString> Fun_ustawienia::pobierz_liste_dzialow()
 	}
 
 	return dzialy_nazwy;
+}
+
+std::vector<QString> Fun_ustawienia::pobierz_liste_prosb()
+{
+	vector<Prosba> prosby = Pobieranie_bazy::pobierz_prosby("select * from prosby_o_dodanie;");
+
+	vector<QString> imieNazwLogin;
+
+	for (int i = 0; i < prosby.size(); i++)
+	{
+		imieNazwLogin.push_back(QString::fromStdString(prosby[i].pobierz_imie() + " " + prosby[i].pobierz_nazwisko() + " (" + prosby[i].pobierz_login() + ")"));
+	}
+
+	return imieNazwLogin;
 }

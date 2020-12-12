@@ -89,9 +89,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Dane_polaczenia.cpp" />
+    <ClCompile Include="dodawanie_pracownikow_okno.cpp" />
     <ClCompile Include="Fun_raport.cpp" />
     <ClCompile Include="zmien_haslo_okno.cpp" />
     <QtRcc Include="project_managment.qrc" />
+    <QtUic Include="dodawanie_pracownikow_okno.ui" />
     <QtUic Include="projekty_zadania_okno.ui" />
     <QtUic Include="przypisanie_pracownikow.ui" />
     <QtUic Include="raport_edycja_okno.ui" />
@@ -135,6 +137,7 @@
     <QtMoc Include="wiadomosci_okno.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="dodawanie_pracownikow_okno.h" />
     <ClInclude Include="klasy.h" />
     <QtMoc Include="zmien_haslo_okno.h" />
     <QtMoc Include="przypisanie_pracownikow.h" />

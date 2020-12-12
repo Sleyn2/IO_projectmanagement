@@ -118,7 +118,7 @@ vector<Prosba> Pobieranie_bazy::pobierz_prosby(string zapytanie)
 
             for (auto wiersz : R)
             {
-                Prosba prosba(to_string(wiersz[0]), to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]));
+                Prosba prosba(to_string(wiersz[1]), to_string(wiersz[2]), to_string(wiersz[3]), to_string(wiersz[4]), to_string(wiersz[0]));
                 prosby.push_back(prosba);
             }
         }

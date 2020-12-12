@@ -41,11 +41,12 @@ int main(int argc, char *argv[])
     raport_tworz_okno tworzenie_raportu;
     raport_edycja_okno odbieranie_raportu;
     logowanie_okno login;
+    dodawanie_pracownikow_okno dodawanie_pracownikow;
 
     login.show();
     login.setwindow(&w);
     w.ustaw_okna(&tworzenie_zadan_raportow, &edytowanie_zadan, &tworzenie_wiadomosci,
-        &zmien_haslo, &tworzenie_raportu, &odbieranie_raportu);
+        &zmien_haslo, &tworzenie_raportu, &odbieranie_raportu, &dodawanie_pracownikow);
 
     return a.exec();
 }
