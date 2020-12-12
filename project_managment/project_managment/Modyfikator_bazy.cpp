@@ -171,6 +171,31 @@ bool Modyfikator_bazy::dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie
     }
 }
 
+bool Modyfikator_bazy::usun_przyp_do_projektu(Przypisanie_do_projektow* przypisanie)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("delete from przypisanie_do_projektow where Id_pracownika = " +
+                przypisanie->pobierz_id_pracownika() + " and Id_projektu = " + przypisanie->pobierz_id_projektu() + ";");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
 bool Modyfikator_bazy::dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie)
 {
     connection C(Dane_polaczenia::Conncet());

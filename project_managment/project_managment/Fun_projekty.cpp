@@ -66,17 +66,9 @@ bool Fun_projekty::utworz_projekt(string nazwa, string opis, string data_rozpocz
 	if (!czy_sa_projekty.empty()) return false;
 	else
 	{
-		Projekt* projekt = new Projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "false", "null", status);
-		if (Modyfikator_bazy::dodaj_projekt(projekt))
-		{
-			delete projekt;
-			return true;
-		}
-		else
-		{
-			delete projekt;
-			return false;;
-		}
+		Projekt projekt ("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "false", "null", status);
+		if (Modyfikator_bazy::dodaj_projekt(&projekt)) return true;
+		else return false;
 	}
 }
 
@@ -91,27 +83,41 @@ bool Fun_projekty::utworz_zadanie(string nazwa, string opis, string data_rozpocz
 		projekt = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
 			Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu() + "';");
 
-		Projekt* zadanie = new Projekt("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "true", projekt[0].pobierz_id_projektu(), status);
-		if (Modyfikator_bazy::dodaj_projekt(zadanie)) return true;
+		Projekt zadanie ("1", nazwa, opis, data_rozpoczecia, data_zakonczenia, "true", projekt[0].pobierz_id_projektu(), status);
+		if (Modyfikator_bazy::dodaj_projekt(&zadanie)) return true;
 		return false;
-		delete zadanie;
 	}
 }
 
 bool Fun_projekty::dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik)
 {
 
-	Przypisanie_do_projektow* przypisanie = new Przypisanie_do_projektow(id_pracownika, Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu(), kierownik);
-	if (Modyfikator_bazy::dodaj_przyp_do_proj(przypisanie))
-	{
-		delete przypisanie;
-		return true;
-	}
-	else
-	{
-		delete przypisanie;
-		return true;
-	}
+	Przypisanie_do_projektow przypisanie(id_pracownika, Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu(), kierownik);
+	if (Modyfikator_bazy::dodaj_przyp_do_proj(&przypisanie)) return true;
+	else return true;
+}
+
+bool Fun_projekty::dodaj_przypisanie_do_zadania(string id_pracownika, string kierownik)
+{
+
+	Przypisanie_do_projektow przypisanie (id_pracownika, Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania(), kierownik);
+	if (Modyfikator_bazy::dodaj_przyp_do_proj(&przypisanie)) return true;
+	else return true;
+	
+}
+
+bool Fun_projekty::usun_przypisanie_do_projektu(string id_pracownika)
+{
+	Przypisanie_do_projektow przypisanie(id_pracownika, Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu(), "false");
+	if (Modyfikator_bazy::usun_przyp_do_projektu(&przypisanie)) return true;
+	else return false;
+}
+
+bool Fun_projekty::usun_przypisanie_do_zadania(string id_pracownika)
+{
+	Przypisanie_do_projektow przypisanie(id_pracownika, Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania(), "false");
+	if (Modyfikator_bazy::usun_przyp_do_projektu(&przypisanie)) return true;
+	else return false;
 }
 
 bool Fun_projekty::usun_zadanie(string nazwa_zadania)
