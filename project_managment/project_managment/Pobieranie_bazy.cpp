@@ -9,8 +9,7 @@ using namespace pqxx;
 vector<Pracownik> Pobieranie_bazy::pobierz_pracownik(string zapytanie)
 {
     vector<Pracownik> pracownicy;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -42,8 +41,7 @@ vector<Pracownik> Pobieranie_bazy::pobierz_pracownik(string zapytanie)
 vector<Projekt> Pobieranie_bazy::pobierz_projekt(string zapytanie)
 {
     vector<Projekt> projekty;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -77,8 +75,7 @@ vector<Projekt> Pobieranie_bazy::pobierz_projekt(string zapytanie)
 vector<Przypisanie_do_projektow> Pobieranie_bazy::pobierz_Przypisanie_do_projektow(string zapytanie)
 {
     vector<Przypisanie_do_projektow> przypisanie_do_projektow;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -112,8 +109,7 @@ vector<Przypisanie_do_projektow> Pobieranie_bazy::pobierz_Przypisanie_do_projekt
 vector<Prosba> Pobieranie_bazy::pobierz_prosby(string zapytanie)
 {
     vector<Prosba> prosby;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -147,8 +143,7 @@ vector<Prosba> Pobieranie_bazy::pobierz_prosby(string zapytanie)
 vector<Dzial> Pobieranie_bazy::pobierz_dzial(string zapytanie)
 {
     vector<Dzial> dzialy;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -182,8 +177,7 @@ vector<Dzial> Pobieranie_bazy::pobierz_dzial(string zapytanie)
 vector<Przypisanie_do_dzialow> Pobieranie_bazy::pobierz_przypisanie_do_dzialow(string zapytanie)
 {
     vector<Przypisanie_do_dzialow> przypisania;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -217,8 +211,7 @@ vector<Przypisanie_do_dzialow> Pobieranie_bazy::pobierz_przypisanie_do_dzialow(s
 vector<Raport> Pobieranie_bazy::pobierz_raport(string zapytanie)
 {
     vector<Raport> raporty;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -252,8 +245,7 @@ vector<Raport> Pobieranie_bazy::pobierz_raport(string zapytanie)
 vector<Wiadomosc> Pobieranie_bazy::pobierz_wiadomosc(string zapytanie)
 {
     vector<Wiadomosc> wiadomosci;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -286,8 +278,7 @@ vector<Wiadomosc> Pobieranie_bazy::pobierz_wiadomosc(string zapytanie)
 vector<Raport> Pobieranie_bazy::pobierz_raporty()
 {
     vector<Raport> raporty;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
@@ -322,8 +313,7 @@ vector<Raport> Pobieranie_bazy::pobierz_raporty()
 vector<Raport> Pobieranie_bazy::pobierz_jeden_raport(string zapytanie)
 {
     vector<Raport> raporty;
-    connection C("dbname = test user = postgres password = postgres \
-      hostaddr = 127.0.0.1 port = 5432");
+    connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
         try
         {
