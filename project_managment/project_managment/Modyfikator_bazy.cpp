@@ -120,6 +120,32 @@ bool Modyfikator_bazy::dodaj_projekt(Projekt *projekt)
     }
 }
 
+bool Modyfikator_bazy::dodaj_dzial(Dzial* dzial)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("insert into dzialy_w_firmie (nazwa, adres) values ('" + dzial->pobierz_nazwa() + "', '" + dzial->pobierz_adres() + "');");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            cerr << e.what();
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
 bool Modyfikator_bazy::dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie)
 {
     connection C(Dane_polaczenia::Conncet());
@@ -129,6 +155,31 @@ bool Modyfikator_bazy::dodaj_przyp_do_proj(Przypisanie_do_projektow *przypisanie
             work W{ C };
             W.exec0("insert into Przypisanie_do_projektow values (" + przypisanie->pobierz_id_pracownika() + ", "
                 + przypisanie->pobierz_id_projektu() + ", " + przypisanie->pobierz_kierownik() + ");");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
+bool Modyfikator_bazy::usun_przyp_do_projektu(Przypisanie_do_projektow* przypisanie)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("delete from przypisanie_do_projektow where Id_pracownika = " +
+                przypisanie->pobierz_id_pracownika() + " and Id_projektu = " + przypisanie->pobierz_id_projektu() + ";");
             W.commit();
         }
         catch (exception e)
@@ -229,7 +280,7 @@ bool Modyfikator_bazy::usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie)
     }
 }
 
-bool Modyfikator_bazy::usun_zadanie(string zadanie)
+bool Modyfikator_bazy::usun_zadanie(string Id_zadania)
 {
     connection C(Dane_polaczenia::Conncet());
     if (C.is_open()) {
@@ -238,10 +289,7 @@ bool Modyfikator_bazy::usun_zadanie(string zadanie)
             work W{ C };
 
             vector<Projekt> id_zadania;
-            id_zadania = Pobieranie_bazy::pobierz_projekt("select * from Projekt where nazwa= '" +
-                Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() + "';");
-            W.exec0("delete from Projekt where id_projektu = " + id_zadania[0].pobierz_id_projektu() + ";");
-            W.exec0("delete from Przypisanie_do_projektu where id_projektu = " + id_zadania[0].pobierz_id_projektu() + ";");
+            W.exec0("delete from Projekt where id_projektu = " + Id_zadania + ";");
             W.commit();
         }
         catch (exception e)
@@ -367,23 +415,29 @@ bool Modyfikator_bazy::usun_wiadomosc(string id_odb, string data_wys, string id_
         return false;
     }
 }
-bool Modyfikator_bazy::sprawdz_polaczenie()
+
+bool Modyfikator_bazy::wykonaj_zapytanie(std::string zapytanie)
 {
-    try
-    {
-        connection C(Dane_polaczenia::Conncet());
-        if (C.is_open()) {
-            return true;
-        }
-        else
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
         {
-            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+            work W{ C };
+            W.exec0(zapytanie);
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
             return false;
         }
+        return true;
+
     }
-    catch (exception e)
+    else
     {
-        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
         return false;
     }
 }
+

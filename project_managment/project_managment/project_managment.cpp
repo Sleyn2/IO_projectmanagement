@@ -114,11 +114,11 @@ void project_managment::odswiezUstawienia_przeglad()
 
     ui.comboBox->clear();
 
-    std::vector<Dzial> dzialy = Dane_zalogowanego_pracownika::instancja()->pobierz_dzialy();
+    std::vector<QString> dzialy = Dane_zalogowanego_pracownika::instancja()->pobierz_dzialy();
 
     for (int i = 0; i < dzialy.size(); i++)
     {
-        ui.comboBox->addItem(QString::fromStdString(dzialy[i].pobierz_nazwa()));
+        ui.comboBox->addItem(dzialy[i]);
     }
 
 }
@@ -129,13 +129,13 @@ void project_managment::odswiezUstawienia_edycja()
     ui.lineEdit_nazw->setText(QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_nazwisko()));
     ui.lineEdit_login->setText(QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_login()));
 
-    std::vector<Dzial> dzialy = Pobieranie_bazy::pobierz_dzial("select * from dzialy_w_firmie");
+    std::vector<QString> dzialy = Fun_ustawienia::pobierz_liste_dzialow();
 
     ui.comboBox_dzialy->clear();
 
     for (int i = 0; i < dzialy.size(); i++)
     {
-        ui.comboBox_dzialy->addItem(QString::fromStdString(dzialy[i].pobierz_nazwa()));
+        ui.comboBox_dzialy->addItem(dzialy[i]);
     }
 }
 
@@ -156,6 +156,15 @@ void project_managment::odswiezUstawienia_admin()
         ui.lineEdit_nazwa_dzialu->clear();
         ui.lineEdit_adres_dzialu->clear();
         ui.label_prawa->clear();
+
+        ui.comboBox_usunDzial->clear();
+
+        std::vector<QString> dzialy = Fun_ustawienia::pobierz_liste_dzialow();
+
+        for (int i = 0; i < dzialy.size(); i++)
+        {
+            ui.comboBox_usunDzial->addItem(dzialy[i]);
+        }
     }
 
 }
@@ -312,6 +321,56 @@ void project_managment::on_pushButton_zapisz_prawa_clicked()
 
 
 }
+
+void project_managment::on_pushButton_dodajDzial_clicked()
+{
+
+    string nazwa = ui.lineEdit_nazwa_dzialu->text().toUtf8().constData();
+    string adres = ui.lineEdit_adres_dzialu->text().toUtf8().constData();
+
+    bool good = Fun_ustawienia::dodaj_dzial(adres, nazwa);
+
+    if (!good)
+    {
+        QMessageBox msg;
+        msg.setWindowTitle("Blad");
+        msg.setText("Wystapil blad. Nie dodano dzialu.");
+        msg.exec();
+    }
+
+    odswiezListeDzialow();
+
+}
+
+void project_managment::on_pushButton_usunDzial_clicked()
+{
+    QString dzial_nazwa = ui.comboBox_usunDzial->currentText();
+
+    if (!Fun_ustawienia::usun_dzial(dzial_nazwa.toUtf8().constData()))
+    {
+        QMessageBox msg;
+        msg.setWindowTitle("Blad");
+        msg.setText("Wystapil blad. Nie usunieto dzialu.");
+        msg.exec();
+    }
+
+    odswiezListeDzialow();
+    odswiezUstawienia_przeglad();
+}
+
+
+void project_managment::odswiezListeDzialow()
+{
+    ui.comboBox_usunDzial->clear();
+
+    std::vector<QString> dzialy = Fun_ustawienia::pobierz_liste_dzialow();
+
+    for (int i = 0; i < dzialy.size(); i++)
+    {
+        ui.comboBox_usunDzial->addItem(dzialy[i]);
+    }
+}
+
 //Projekty
 void project_managment::on_pushButton_utworzProjekt_clicked()
 {

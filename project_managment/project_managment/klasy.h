@@ -153,6 +153,7 @@ public:
     static bool dodaj_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
     static bool dodaj_raport(Raport* raport);
     static bool usun_przyp_do_dzialu(Przypisanie_do_dzialow* przypisanie);
+    static bool usun_przyp_do_projektu(Przypisanie_do_projektow* przypisanie);
     static bool dodaj_wiadomosc(Wiadomosc* wiadomosc);
     static bool dodaj_wiadomosc_raportu(Wiadomosc* wiadomosc);
     static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad);
@@ -160,6 +161,8 @@ public:
     static bool zaktualizuj_zadanie(Projekt* zadanie);
     static bool aktualizuj_pracownika(Pracownik* prac);
     static bool zaktualizuj_raport(string status, string id_projektu);
+    static bool dodaj_dzial(Dzial* dzial);
+    static bool wykonaj_zapytanie(std::string zapytanie);
 };
 
 class Dane_polaczenia
@@ -194,6 +197,9 @@ public:
     static bool utworz_projekt(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
     static bool utworz_zadanie(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
     static bool dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik);
+    static bool dodaj_przypisanie_do_zadania(string id_pracownika, string kierownik);
+    static bool usun_przypisanie_do_projektu(string id_pracownika);
+    static bool usun_przypisanie_do_zadania(string id_pracownika);
     static QStringList pobierz_liste_pracownikow();
     static QStringList pobierz_liste_pracownikow_w_projekcie();
     static bool usun_zadanie(string nazwa_zadania);
@@ -213,6 +219,9 @@ public:
     static string wyluskaj_login(string text);
     static bool nadawanie_uprawnien(string login, string czy_adm);
     static void odswiez_zalogowanego();
+    static bool dodaj_dzial(std::string adres, std::string nazwa);
+    static bool usun_dzial(std::string nazwa);
+    static std::vector<QString> pobierz_liste_dzialow();
 };
 
 class Fun_wiadomosci
@@ -245,7 +254,7 @@ public:
     string pobierz_wyjatek();
     string pobierz_id_zadania();
     string pobierz_id_projektu();
-    std::vector<Dzial> pobierz_dzialy();
+    std::vector<QString> pobierz_dzialy();
     bool pobierz_czy_blad();
     void ustaw_nazwe_projektu(string id_proj);
     void ustaw_nazwe_zadania(string id_zad);

@@ -172,3 +172,46 @@ void Fun_ustawienia::odswiez_zalogowanego()
 			prac[0].pobierz_login(), prac[0].pobierz_haslo(), prac[0].pobierz_czy_administator(), prac[0].pobierz_id_pracownika());
 	}
 }
+
+bool Fun_ustawienia::dodaj_dzial(std::string adres, std::string nazwa)
+{
+
+	Dzial d("0", adres, nazwa);
+
+	if (!nazwa.empty() && !adres.empty() && Modyfikator_bazy::dodaj_dzial(&d))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Fun_ustawienia::usun_dzial(string nazwa)
+{
+	if (Modyfikator_bazy::wykonaj_zapytanie("delete from dzialy_w_firmie where nazwa = '" + nazwa + "';"))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+vector<QString> Fun_ustawienia::pobierz_liste_dzialow()
+{
+	vector<Dzial> dzialy = Pobieranie_bazy::pobierz_dzial("select * from dzialy_w_firmie;");
+	vector<QString> dzialy_nazwy;
+
+	if (!dzialy.empty())
+	{
+		for (int i = 0; i < dzialy.size(); i++)
+		{
+			dzialy_nazwy.push_back(QString::fromStdString(dzialy[i].pobierz_nazwa()));
+		}
+	}
+
+	return dzialy_nazwy;
+}

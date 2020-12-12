@@ -64,7 +64,7 @@ string Dane_zalogowanego_pracownika::pobierz_wyjatek() { return this->wyjatek; }
 string Dane_zalogowanego_pracownika::pobierz_id_zadania() { return this->id_zadania; }
 string Dane_zalogowanego_pracownika::pobierz_id_projektu() { return this->id_projektu; }
 
-std::vector<Dzial> Dane_zalogowanego_pracownika::pobierz_dzialy()
+std::vector<QString> Dane_zalogowanego_pracownika::pobierz_dzialy()
 {
     string zapytanie = "select d.id_dzialu_firmy, d.nazwa, d.adres from dzialy_w_firmie as d\
                        join przypisanie_do_dzialow as p\
@@ -73,7 +73,14 @@ std::vector<Dzial> Dane_zalogowanego_pracownika::pobierz_dzialy()
 
     std::vector<Dzial>dzialy = Pobieranie_bazy::pobierz_dzial(zapytanie);
 
-    return dzialy;
+    std::vector<QString>dzialy_nazwy;
+
+    for (int i = 0; i < dzialy.size(); i++)
+    {
+        dzialy_nazwy.push_back(QString::fromStdString(dzialy[i].pobierz_nazwa()));
+    }
+
+    return dzialy_nazwy;
 
 }
 
