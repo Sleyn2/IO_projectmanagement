@@ -641,11 +641,13 @@ void project_managment::ustaw_user()
     string nazwa = Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_projektu();
     ui.Opcje_projektu->setCurrentIndex(0);
     QString opis = Fun_projekty::pobierz_opis_projektu();
+    QString opisNadrzedneg = Fun_projekty::pobierz_opis_projektu_nadrzednego();
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
     {
-        ui.textBrowserOpisProjektu_1->setText(opis);
+        ui.textBrowserOpisProjektu_1->setText(opisNadrzedneg);
+        ui.textBrowser_2->setText(opis);
         QString nazwaQT = QString::fromStdString(nazwa);
         ui.label_4->setText(nazwaQT);
     }
@@ -675,7 +677,12 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
 
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_projektu(text);
     Dane_zalogowanego_pracownika::instancja()->ustaw_id_projektu(id);
-    if (Fun_projekty::czy_kierownik())
+
+
+    /* czy zadanie czy projekt */
+
+
+    if (!Fun_projekty::czy_Zadanie())
     {
         ustaw_admin();
         this->odswiezListeZespolu(true);
@@ -688,6 +695,7 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
     else
     {
         ustaw_user();
+
         this->odswiezListeZespolu(false);
         if (Fun_raport::sprawdzCzyJestKorzeniem());
     }
