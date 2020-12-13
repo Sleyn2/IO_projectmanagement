@@ -39,14 +39,13 @@ void Przypisanie_pracownikow::wczytajUzytkownikow()
 	ui.listWidget_current->clear();
 
 	systemUsers = Fun_projekty::pobierz_liste_pracownikow();
-	if (this->if_id)
-	{
+	/* tu by³ if (this->id_id) ale nie wiem po co ?*/
 		currentUsers = Fun_projekty::pobierz_liste_pracownikow_w_projekcie();
 		for (int i = 0; i < currentUsers.length(); i++)
 		{
 			systemUsers.removeAll(currentUsers[i]);
 		}
-	}
+	
 	currentUsers.sort();
 	systemUsers.sort();
 	ui.listWidget_all->addItems(systemUsers);
@@ -74,9 +73,35 @@ void Przypisanie_pracownikow::odswiezListy(bool add)
 	systemUsers.sort();
 	ui.listWidget_all->addItems(systemUsers);
 	ui.listWidget_current->addItems(currentUsers);
+
+	/* Dezaktywacaja przyciskow, moze byæ tylko jeden pracownik w zadaniu*/
+	if (this->currentUsers.length() >= 1)
+		ui.pushButton_dodaj->setEnabled(false);
+	else if(this->currentUsers.length() < 1)
+		ui.pushButton_dodaj->setEnabled(true);
 }
+/**
+ * Metoda obs³uguj¹ca przycisk zawtwierdzaj¹y pracownika
+ * Dodaje pracownika do zadania lub zmienia go z innym 
+ */
 void Przypisanie_pracownikow::on_pushButton_zatwierdz_clicked()
 {
+	/* wpisaæ mo¿na tylko jedna osobe ale niech zostanie for */
+	for (QString i : this->currentUsers) {
+
+		string numerPracownik = i.toStdString();
+		Fun_projekty::dodaj_przypisanie_do_zadania(seperacja_stringa_od_kropki(numerPracownik), "false");
+		if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
+			QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+	}
+
+	/*  Zamkniecie okna po zatwierdzeniu zmian 
+		TODO	aktualizacja g³ownego okna
+	*/
+	this->close();
+
+	/*STARA WERSJA METODY*/
+	/*
 	vector<string> name;
 	for (int i = 0; i < currentUsers.length(); i++)
 	{
@@ -86,6 +111,7 @@ void Przypisanie_pracownikow::on_pushButton_zatwierdz_clicked()
 			QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
 		name.clear();
 	}
+	*/
 }
 void Przypisanie_pracownikow::on_pushButton_anuluj_clicked()
 {
