@@ -186,6 +186,7 @@ public:
     static bool logowanie(string login, string haslo);
     static bool rejestracja(string imie, string nazwisko, string login, string haslo);
     static void zapisz_dane_logowania(Pracownik pracownik);
+    static bool czy_zajety_login(string login);
 
 };
 

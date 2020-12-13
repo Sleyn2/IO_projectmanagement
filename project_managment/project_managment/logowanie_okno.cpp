@@ -48,6 +48,8 @@ void logowanie_okno::on_pushButton_register_2_clicked()
     QString powtorz_haslo = ui.lineEdit_5_powtorz_haslo->text();
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("fd");
 
+    if ()
+
     if (haslo == powtorz_haslo)
     {
        if (Fun_okno_logowania::rejestracja(imie.toStdString(), nazwisko.toStdString(), login.toStdString(), haslo.toStdString()))

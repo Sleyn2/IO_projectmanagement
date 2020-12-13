@@ -38,6 +38,11 @@ bool Fun_okno_logowania::rejestracja(string imie, string nazwisko, string login,
     return false;
 }
 
+bool Fun_okno_logowania::czy_zajety_login(string login)
+{
+
+}
+
 Dane_zalogowanego_pracownika* Dane_zalogowanego_pracownika::w_instancja = nullptr;
 
 Dane_zalogowanego_pracownika::Dane_zalogowanego_pracownika() {}
