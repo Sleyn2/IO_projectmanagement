@@ -86,6 +86,19 @@ string Dane_zalogowanego_pracownika::pobierz_nazwe_zadania() { return this->nazw
 string Dane_zalogowanego_pracownika::pobierz_wyjatek() { return this->wyjatek; }
 string Dane_zalogowanego_pracownika::pobierz_id_zadania() { return this->id_zadania; }
 string Dane_zalogowanego_pracownika::pobierz_id_projektu() { return this->id_projektu; }
+string Dane_zalogowanego_pracownika::pobierz_id_projektu_nadrzednego()
+{
+    string id = pobierz_id_projektu();
+
+    string Query = "select p.id_projektu, p.nazwa, p.opis, p.status, p.data_rozpoczecia, p.data_zakonczenia, p.id_projektu_nadrzednego, p.zadanie from projekt p join projekt p2 on p.id_projektu = p2.id_projektu_nadrzednego \
+						where p2.id_projektu = " + id + "; ";
+    vector<Projekt> projekt = Pobieranie_bazy::pobierz_projekt(Query);
+    if (projekt.size() == 1) 
+    {
+        return projekt.begin()->pobierz_id_projektu();
+    }    
+    return string("");
+}
 
 std::vector<QString> Dane_zalogowanego_pracownika::pobierz_dzialy()
 {
