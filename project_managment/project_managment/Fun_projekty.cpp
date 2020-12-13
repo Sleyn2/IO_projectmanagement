@@ -191,14 +191,36 @@ QStringList Fun_projekty::pobierz_liste_pracownikow()
 
 QStringList Fun_projekty::pobierz_liste_pracownikow_w_projekcie() 
 {
-	vector<Przypisanie_do_projektow>przypisania = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from Przypisanie_do_projektow where Id_projektu = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + "");
+
+	/* TODO - ta sama osoba odpowiedzialna za rozne zadania zostaje wypisana wielokrotnie */
+
+	/* pobiera projekty podrzedne i dodaje do listy przypisan osoby z podrzednych projektow */
+	vector<Projekt> projPodrzedne = Pobieranie_bazy::pobierz_projekt("select * from projekt where id_projektu_nadrzednego = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() +"';");
+	vector<Przypisanie_do_projektow>przypisania;
+	vector<Przypisanie_do_projektow> temp;
+	for (Projekt i : projPodrzedne) {
+		temp = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from Przypisanie_do_projektow where Id_projektu = " + i.pobierz_id_projektu() + "");
+		przypisania.insert(przypisania.end(), temp.begin(), temp.end());
+	}
+
+	temp = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from Przypisanie_do_projektow where Id_projektu = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + "");
+	/* wyszukanie w³asciciela projeów w liscie zadañ (jesli jest to go nie dodajemy 2 raz) */
+	bool bylKierownik = false;
+	for (Przypisanie_do_projektow i : przypisania) {
+		if (i.pobierz_id_pracownika() == temp.begin()->pobierz_id_pracownika()) {
+			bylKierownik = true;
+			break;
+		}
+	}
+	if(!bylKierownik)
+		przypisania.insert(przypisania.end(), temp.begin(), temp.end());
+	
 	QStringList lista;
 	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
 
 	for (auto i = przypisania.begin(); i != przypisania.end(); ++i)
 	{
 	vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + i->pobierz_id_pracownika() + "");
-
 	lista.append(QString::fromStdString(pracownik[0].pobierz_id_pracownika() + ". " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko()));
 	}
 	if (lista.empty())
