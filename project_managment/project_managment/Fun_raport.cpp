@@ -30,7 +30,7 @@ vector<Raport> Fun_raport::sprawdzRaport()
 {
 	vector<Raport> raporty = Pobieranie_bazy::pobierz_jeden_raport(string("select * from raporty where id_nadawcy = '" +
 		Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + "' and id_projektu = '" +
-		Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + "';"));
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu_nadrzednego() + "';"));
 	return raporty;
 }
 
