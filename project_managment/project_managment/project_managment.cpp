@@ -379,6 +379,7 @@ void project_managment::odswiezListeDzialow()
 
 void project_managment::on_pushButton_prosby_clicked()
 {
+    this->dodawanie_pracownikow->odswiezProsby();
     this->dodawanie_pracownikow->show();
 }
 

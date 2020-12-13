@@ -461,3 +461,33 @@ bool Modyfikator_bazy::sprawdz_polaczenie()
         return false;
     }
 }
+
+bool Modyfikator_bazy::dodaj_pracownika(Pracownik* pracownik)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("insert into pracownicy (imie, nazwisko, login, haslo, administrator) values ('" +
+                pracownik->pobierz_imie() + "', '" +
+                pracownik->pobierz_nazwisko() + "', '" +
+                pracownik->pobierz_login() + "', '" +
+                pracownik->pobierz_haslo() + "', '" +
+                pracownik->pobierz_czy_administator() + "');");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
