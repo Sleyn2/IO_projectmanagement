@@ -46,6 +46,7 @@ private slots:
     void on_pushButton_dodajDzial_clicked();
     void on_pushButton_usunDzial_clicked();
     void on_pushButton_prosby_clicked();
+    void on_pushButton_usunPracownika_clicked();
     
     //Projekty i zadania
     void on_pushButton_edytuj_zadanie_clicked();

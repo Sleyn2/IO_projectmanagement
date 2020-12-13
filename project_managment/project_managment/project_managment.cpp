@@ -330,38 +330,58 @@ void project_managment::on_pushButton_zapisz_prawa_clicked()
 
 void project_managment::on_pushButton_dodajDzial_clicked()
 {
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator() == "2")
+    {
+        string nazwa = ui.lineEdit_nazwa_dzialu->text().toUtf8().constData();
+        string adres = ui.lineEdit_adres_dzialu->text().toUtf8().constData();
 
-    string nazwa = ui.lineEdit_nazwa_dzialu->text().toUtf8().constData();
-    string adres = ui.lineEdit_adres_dzialu->text().toUtf8().constData();
+        bool good = Fun_ustawienia::dodaj_dzial(adres, nazwa);
 
-    bool good = Fun_ustawienia::dodaj_dzial(adres, nazwa);
+        if (!good)
+        {
+            QMessageBox msg;
+            msg.setWindowTitle("Blad");
+            msg.setText("Wystapil blad. Nie dodano dzialu.");
+            msg.exec();
+        }
 
-    if (!good)
+        odswiezListeDzialow();
+    }
+    else
     {
         QMessageBox msg;
         msg.setWindowTitle("Blad");
-        msg.setText("Wystapil blad. Nie dodano dzialu.");
+        msg.setText("Nie masz uprawnien administratora.");
         msg.exec();
     }
-
-    odswiezListeDzialow();
-
 }
 
 void project_managment::on_pushButton_usunDzial_clicked()
 {
-    QString dzial_nazwa = ui.comboBox_usunDzial->currentText();
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator() == "2")
+    {
+        QString dzial_nazwa = ui.comboBox_usunDzial->currentText();
 
-    if (!Fun_ustawienia::usun_dzial(dzial_nazwa.toUtf8().constData()))
+        if (!Fun_ustawienia::usun_dzial(dzial_nazwa.toUtf8().constData()))
+        {
+            QMessageBox msg;
+            msg.setWindowTitle("Blad");
+            msg.setText("Wystapil blad. Nie usunieto dzialu.");
+            msg.exec();
+        }
+
+        odswiezListeDzialow();
+        odswiezUstawienia_przeglad();
+    }
+    else
     {
         QMessageBox msg;
         msg.setWindowTitle("Blad");
-        msg.setText("Wystapil blad. Nie usunieto dzialu.");
+        msg.setText("Nie masz uprawnien administratora.");
         msg.exec();
     }
-
-    odswiezListeDzialow();
-    odswiezUstawienia_przeglad();
+    
+    
 }
 
 
@@ -379,8 +399,51 @@ void project_managment::odswiezListeDzialow()
 
 void project_managment::on_pushButton_prosby_clicked()
 {
-    this->dodawanie_pracownikow->odswiezProsby();
-    this->dodawanie_pracownikow->show();
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator() == "2")
+    {
+        this->dodawanie_pracownikow->odswiezProsby();
+        this->dodawanie_pracownikow->show();
+    }
+    else
+    {
+        QMessageBox msg;
+        msg.setWindowTitle("Blad");
+        msg.setText("Nie masz uprawnien administratora.");
+        msg.exec();
+    }
+    
+}
+
+void project_managment::on_pushButton_usunPracownika_clicked()
+{
+    string currentText = ui.userList->currentItem()->text().toUtf8().constData();
+    string login = Fun_ustawienia::wyluskaj_login(currentText);
+    QMessageBox msg;
+
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator() == "2" && login != Dane_zalogowanego_pracownika::instancja()->pobierz_login())
+    {
+        if (Fun_ustawienia::usun_pracownika(login))
+        {
+            msg.setWindowTitle("Sukces");
+            msg.setText("Pomyslnie usunieto pracownika z bazy.");
+            msg.exec();
+            odswiezUstawienia_admin();
+        }
+        else
+        {
+            msg.setWindowTitle("Blad");
+            msg.setText("Wystapil blad. Nie usunieto pracownika.");
+            msg.exec();
+        }
+    }
+    else
+    {
+        msg.setWindowTitle("Blad");
+        msg.setText("Wystapil blad. Probujesz usunac siebie lub nie masz praw administratora.");
+        msg.exec();
+    }
+
+    
 }
 
 //Projekty

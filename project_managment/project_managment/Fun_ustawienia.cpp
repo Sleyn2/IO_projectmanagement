@@ -285,3 +285,15 @@ bool Fun_ustawienia::usun_prosbe(string login)
 		return false;
 	}
 }
+
+bool Fun_ustawienia::usun_pracownika(string login)
+{
+	if (Modyfikator_bazy::wykonaj_zapytanie("delete from pracownicy where login = '" + login + "';"))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

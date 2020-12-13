@@ -228,6 +228,7 @@ public:
     static std::vector<QString> pobierz_liste_prosb();
     static bool zatwierdz_pracownika(string login, string adm);
     static bool usun_prosbe(string login);
+    static bool usun_pracownika(string login);
 };
 
 class Fun_wiadomosci
