@@ -117,6 +117,31 @@ bool Fun_projekty::dodaj_przypisanie_do_projektu(string id_pracownika, string ki
 	}
 }
 
+
+bool  Fun_projekty::dodaj_przypisanie_do_zadania(string id_pracownika, string kierownik)
+{
+/*
+*	Mo¿e byæ tylko jedno przypisanie pracownika do zadania
+*
+*	pobieranie bie¿¹cego przypisania i usuniecie go 
+*	dodanie nowego przypisania 
+*/
+
+	vector<Przypisanie_do_projektow> przypisanie = Pobieranie_bazy::pobierz_Przypisanie_do_projektow(
+		"select * from przypisanie_do_projektow where id_projektu = '" +
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania() +
+		"';");
+	if (!przypisanie.empty()) {
+		Modyfikator_bazy::usun_przyp_do_projektu(&przypisanie[0]);
+	}
+	Przypisanie_do_projektow  przyp(id_pracownika, Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania(), kierownik);
+	if (Modyfikator_bazy::dodaj_przyp_do_proj(&przyp))
+		return true;
+	else
+		return true;
+}
+
+
 bool Fun_projekty::usun_zadanie(string nazwa_zadania)
 {
 	if (Modyfikator_bazy::usun_zadanie(nazwa_zadania)) return true;

@@ -400,6 +400,7 @@ void project_managment::on_pushButton_edytuj_zadanie_clicked()
 {
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() != "")
     {
+        this->edytowanie_zadan->odswiezWykonawcow();
         this->edytowanie_zadan->show();
         this->edytowanie_zadan->wczytaj_dane();
     }
