@@ -11,7 +11,7 @@ bool Fun_raport::dodaj_raport(string tytul, string tresc)
 	//string id_raportu = std::to_string(rand());
 
 	Raport raport(Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika(), tytul, tresc, string("nowy"),
-		Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu());
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu_nadrzednego());
 	if(Modyfikator_bazy::dodaj_raport(&raport))
 		return true;
 	else

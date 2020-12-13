@@ -263,6 +263,7 @@ public:
     string pobierz_wyjatek();
     string pobierz_id_zadania();
     string pobierz_id_projektu();
+    string pobierz_id_projektu_nadrzednego();
     std::vector<QString> pobierz_dzialy();
     bool pobierz_czy_blad();
     void ustaw_nazwe_projektu(string id_proj);

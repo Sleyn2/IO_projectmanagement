@@ -284,9 +284,9 @@ vector<Raport> Pobieranie_bazy::pobierz_raporty()
         try
         {
             work W{ C };
-            result R{ W.exec(string("select * from raporty where id_projektu in (select id_projektu from przypisanie_do_projektow where id_pracownika = '" + 
-                Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() +
-                "'and kierownik = true) and status = 'nowy'")) };
+            result R{ W.exec(string("select * from raporty where id_projektu = " +
+                Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() +
+                ";")) };
 
             for (auto wiersz : R)
             {
