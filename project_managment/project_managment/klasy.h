@@ -203,11 +203,11 @@ public:
     static bool utworz_zadanie(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
     static bool dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik);
     static bool dodaj_przypisanie_do_zadania(string id_pracownika, string kierownik);
-    static bool usun_przypisanie_do_projektu(string id_pracownika);
-    static bool usun_przypisanie_do_zadania(string id_pracownika);
+    static bool usun_przypisanie_do_projektu();
+    static bool usun_przypisanie_do_zadania();
     static QStringList pobierz_liste_pracownikow();
     static QStringList pobierz_liste_pracownikow_w_projekcie();
-    static bool usun_zadanie(string nazwa_zadania);
+    static bool usun_zadanie();
     static Projekt pobierz_dane_zadania();
     static bool zaktualizuj_zadanie(string nazwa, string opis, string data_r, string data_z, string status);
 };

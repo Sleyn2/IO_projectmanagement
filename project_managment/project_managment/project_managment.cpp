@@ -461,7 +461,7 @@ void project_managment::on_pushButton_utworz_zadanie_clicked()
 
 void project_managment::on_pushButton_edytuj_zadanie_clicked()
 {
-    if (Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() != "")
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania() != "")
     {
         this->edytowanie_zadan->odswiezWykonawcow();
         this->edytowanie_zadan->show();
@@ -716,15 +716,15 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
 }
 void project_managment::on_listWidget_zadania_itemClicked(QListWidgetItem* item)
 {
-    QString nazwa = item->text();
+        QString nazwa = item->text();
 
-    int n = nazwa.toStdString().find(" ", 0);
-    string temp = nazwa.toStdString();
-    string id = temp.substr(0, n);
-    string text = temp.substr(n + 1, nazwa.size());
+        int n = nazwa.toStdString().find(" ", 0);
+        string temp = nazwa.toStdString();
+        string id = temp.substr(0, n);
+        string text = temp.substr(n + 1, nazwa.size());
 
-    Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania(text);
-    Dane_zalogowanego_pracownika::instancja()->ustaw_id_zadania(id);
+        Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania(text);
+        Dane_zalogowanego_pracownika::instancja()->ustaw_id_zadania(id);
 }
 
 void project_managment::on_listWidget_taskUsers_itemClicked(QListWidgetItem* item)
