@@ -19,6 +19,12 @@ string Pracownik::pobierz_haslo() { return this->haslo; }
 string Pracownik::pobierz_id_pracownika() { return this->id_pracownika; }
 string Pracownik::pobierz_czy_administator() { return this->czy_administator;  }
 
+void Pracownik::ustaw_admin(string adm)
+{
+    if (adm == "0" || adm == "1" || adm == "2")
+        this->czy_administator = adm;
+}
+
 
 Prosba::Prosba(string i, string n, string l, string h, string id_pr) :
     imie(i), nazwisko(n), login(l), haslo(h), id_pracownika(id_pr)

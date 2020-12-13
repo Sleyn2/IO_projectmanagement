@@ -27,6 +27,7 @@ public:
     string pobierz_haslo();
     string pobierz_id_pracownika();
     string pobierz_czy_administator();
+    void ustaw_admin(string adm);
 };
 
 class Prosba
@@ -163,6 +164,7 @@ public:
     static bool zaktualizuj_raport(string status, string id_projektu);
     static bool dodaj_dzial(Dzial* dzial);
     static bool wykonaj_zapytanie(std::string zapytanie);
+    static bool dodaj_pracownika(Pracownik* pracownik);
 };
 
 class Dane_polaczenia
@@ -223,6 +225,8 @@ public:
     static bool usun_dzial(std::string nazwa);
     static std::vector<QString> pobierz_liste_dzialow();
     static std::vector<QString> pobierz_liste_prosb();
+    static bool zatwierdz_pracownika(string login, string adm);
+    static bool usun_prosbe(string login);
 };
 
 class Fun_wiadomosci

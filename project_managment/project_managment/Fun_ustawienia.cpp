@@ -245,3 +245,43 @@ std::vector<QString> Fun_ustawienia::pobierz_liste_prosb()
 
 	return imieNazwLogin;
 }
+
+bool Fun_ustawienia::zatwierdz_pracownika(string login, string adm)
+{
+	vector<Pracownik> pracownicy = Pobieranie_bazy::pobierz_pracownik("select * from prosby_o_dodanie where login = '" + login + "';");
+	if (adm != "0" && adm != "1" && adm != "2")
+	{
+		adm = "0";
+	}
+
+	if (pracownicy.size() == 1)
+	{
+		pracownicy[0].ustaw_admin(adm);
+
+		if (Modyfikator_bazy::dodaj_pracownika(&pracownicy[0]))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+
+}
+
+bool Fun_ustawienia::usun_prosbe(string login)
+{
+	if (Modyfikator_bazy::wykonaj_zapytanie("delete from prosby_o_dodanie where login = '" + login + "';"))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
