@@ -105,7 +105,7 @@ void wiadomosci_okno::on_pushButton_answer_clicked()
 void wiadomosci_okno::findMatch(string temp)
 {
 	this->odswiezListe();
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < this->users.size(); i++)
 	{
 		if (this->users[i].toStdString() == temp)
 			ui.comboBox->setCurrentIndex(i);
@@ -116,5 +116,6 @@ void wiadomosci_okno::odswiezListe()
 	users.clear();
 	users = Fun_projekty::pobierz_liste_pracownikow();
 	users.sort();
+	ui.comboBox->clear();
 	ui.comboBox->addItems(users);
 }
