@@ -48,7 +48,15 @@ void logowanie_okno::on_pushButton_register_2_clicked()
     QString powtorz_haslo = ui.lineEdit_5_powtorz_haslo->text();
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("fd");
 
-    if (haslo == powtorz_haslo)
+    if (Fun_okno_logowania::czy_zajety_login(login.toUtf8().constData()))
+    {
+        QMessageBox msg;
+        msg.setWindowTitle("Blad");
+        msg.setText("Podany login jest juz wykorzystany. Wybierz inny.");
+        msg.exec();
+    }
+
+    else if (haslo == powtorz_haslo)
     {
        if (Fun_okno_logowania::rejestracja(imie.toStdString(), nazwisko.toStdString(), login.toStdString(), haslo.toStdString()))
         ui.stackedWidget->setCurrentIndex(0);

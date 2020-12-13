@@ -38,6 +38,29 @@ bool Fun_okno_logowania::rejestracja(string imie, string nazwisko, string login,
     return false;
 }
 
+bool Fun_okno_logowania::czy_zajety_login(string login)
+{
+    bool czy_zajety = false;
+
+    vector<Pracownik> prac = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" + login + "';");
+
+    if (!prac.empty())
+    {
+        czy_zajety = true;
+    }
+
+    prac.clear();
+
+    prac = Pobieranie_bazy::pobierz_pracownik("select * from prosby_o_dodanie where login = '" + login + "';");
+
+    if (!prac.empty())
+    {
+        czy_zajety = true;
+    }
+
+    return czy_zajety;
+}
+
 Dane_zalogowanego_pracownika* Dane_zalogowanego_pracownika::w_instancja = nullptr;
 
 Dane_zalogowanego_pracownika::Dane_zalogowanego_pracownika() {}
