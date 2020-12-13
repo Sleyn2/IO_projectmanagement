@@ -761,15 +761,10 @@ void project_managment::on_listWidgetRaporty_itemDoubleClicked(QListWidgetItem* 
 
 void project_managment::on_pushButtonTworzRaportAdm_clicked()
 {
-    if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
-        return;
-    vector<Raport> raport = Fun_raport::sprawdzRaport();
-    if (raport.size() == 0 || raport[0].pobierz_status() == "zwrocony")
-        tworzenie_raportu->ustawNapiszRaport();
-    else
-        tworzenie_raportu->ustawWyswietlRaport(raport[0]);
-
-    this->tworzenie_raportu->show();
+    /*
+        zakonczenie projektu   
+        wys³anie wiadmosæci do wszystkich o zakoñczeniu projektu
+    */
 }
 
 //Wiadomosci
