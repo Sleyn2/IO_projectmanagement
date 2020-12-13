@@ -79,8 +79,8 @@ bool Fun_projekty::czy_kierownik()
 	if (przypisania[0].pobierz_kierownik() == "t") return true;
 	else return false;
 }
-bool Fun_projekty::czy_Zadanie() {
-	string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+bool Fun_projekty::czy_Zadanie(string id) {
+
 
 	string Query = "select * from projekt where id_projektu = "+id+";";
 

@@ -505,8 +505,20 @@ void project_managment::odswiezProjekty()
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
     {
+        for (QString i : availableProjectList) {
+            ui.ProjectList->addItem(i);
+            stringstream s(i.toStdString());
+            string idProj;
+            s >> idProj;
+            /* dostosowanie wygladu listy <-------------------------------------------------------------------------------------------------------------------------------------------- */
+            if (Fun_projekty::czy_Zadanie(idProj)) {
+                ui.ProjectList->item(ui.ProjectList->count()-1)->setBackgroundColor(QColor(0xC8C1E5));
+            }
+            else {
+                ui.ProjectList->item(ui.ProjectList->count() - 1)->setBackgroundColor(QColor(0xC0D4F3));
+            }
+        }
         availableProjectList.sort();
-        ui.ProjectList->addItems(availableProjectList);
     }
 
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_administator() == "0")
@@ -682,7 +694,7 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
     /* czy zadanie czy projekt */
 
 
-    if (!Fun_projekty::czy_Zadanie())
+    if (!Fun_projekty::czy_Zadanie(Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu()))
     {
         ustaw_admin();
         this->odswiezListeZespolu(true);

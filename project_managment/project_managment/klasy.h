@@ -197,7 +197,7 @@ public:
     static QString pobierz_opis_projektu();
     static QString pobierz_opis_projektu_nadrzednego();
     static bool czy_kierownik();
-    static bool czy_Zadanie();
+    static bool czy_Zadanie(string id);
     static QStringList pobierz_liste_zadan();
     static bool utworz_projekt(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
     static bool utworz_zadanie(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
