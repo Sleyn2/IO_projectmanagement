@@ -124,7 +124,7 @@
        <string notr="true">background-color: rgb(170, 170, 255);</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Twoje_projekty">
        <widget class="QWidget" name="widget" native="true">
@@ -161,7 +161,11 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
+             <string notr="true">QWidget#ProjectList
+{
+	background-color: rgb(216, 216, 216);
+}
+</string>
             </property>
             <property name="selectionRectVisible">
              <bool>false</bool>

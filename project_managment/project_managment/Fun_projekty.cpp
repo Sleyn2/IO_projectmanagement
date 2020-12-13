@@ -6,12 +6,18 @@ QStringList Fun_projekty::pobierz_liste_projektow()
 	vector<Projekt>projekty;
 	QStringList lista;
 	string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika();
-	projekty = Pobieranie_bazy::pobierz_projekt("select * from projekt where Zadanie = false and Id_projektu in ( select Id_projektu from Przypisanie_do_projektow where Id_pracownika= "+ id +")");
-	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
 
-	for (auto i = projekty.begin(); i != projekty.end(); ++i)
+	string Query = "select proj.id_projektu, proj.nazwa, proj.opis, proj.status, proj.data_rozpoczecia, proj.data_zakonczenia, proj.id_projektu_nadrzednego, proj.zadanie from projekt proj \
+					join przypisanie_do_projektow przyps on przyps.id_projektu = proj.id_projektu\
+					where(przyps.id_pracownika = "+ id + ")";
+
+	projekty = Pobieranie_bazy::pobierz_projekt(Query);
+	
+	
+	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
+	for (Projekt i : projekty)
 	{
-		lista.append(QString::fromStdString(i->pobierz_id_projektu()) + " " + QString::fromStdString(i->pobierz_nazwa()));
+		lista.append(QString::fromStdString(i.pobierz_id_projektu()) + " " + QString::fromStdString(i.pobierz_nazwa()));
 	}
 	return lista;
 }
@@ -48,6 +54,21 @@ QString Fun_projekty::pobierz_opis_projektu()
 	else return QString::fromStdString("Nie wybrano projektu");
 }
 
+QString Fun_projekty::pobierz_opis_projektu_nadrzednego()
+{
+	if (!Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu().empty())
+	{
+		vector<Projekt>projekt;
+		string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+		string Query = "select p.id_projektu, p.nazwa, p.opis, p.status, p.data_rozpoczecia, p.data_zakonczenia, p.id_projektu_nadrzednego, p.zadanie from projekt p join projekt p2 on p.id_projektu = p2.id_projektu_nadrzednego \
+						where p2.id_projektu = "+id+"; ";
+		projekt = Pobieranie_bazy::pobierz_projekt(Query);
+		if (!projekt.empty()) return QString::fromStdString(projekt.begin()->pobierz_opis());
+		else return QString::fromStdString("Nie wybrano projektu");
+	}
+	else return QString::fromStdString("Nie wybrano projektu");
+}
+
 bool Fun_projekty::czy_kierownik()
 {
 	vector<Przypisanie_do_projektow> przypisania;
@@ -58,6 +79,19 @@ bool Fun_projekty::czy_kierownik()
 	if (przypisania[0].pobierz_kierownik() == "t") return true;
 	else return false;
 }
+bool Fun_projekty::czy_Zadanie(string id) {
+
+
+	string Query = "select * from projekt where id_projektu = "+id+";";
+
+	vector<Projekt> projekt = Pobieranie_bazy::pobierz_projekt(Query);
+	/* baza danych mo¿e zwracaæ bool jako "t" "f" <- do sprawdzenia */
+	if (!projekt.empty() && projekt.begin()->pobierz_zadanie() == "t")
+		return true;
+	return false;
+}
+
+
 
 bool Fun_projekty::utworz_projekt(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status)
 {
@@ -189,39 +223,36 @@ QStringList Fun_projekty::pobierz_liste_pracownikow()
 	else return lista;
 }
 
+
+/**
+* 
+* Metoda pobiera liste pracownikow bior¹cych udzia³ w tworzeniu projektu
+* pracownicy wykonyj¹ zadanie albo projekt nalezy do nich
+* 
+*/
 QStringList Fun_projekty::pobierz_liste_pracownikow_w_projekcie() 
 {
 
-	/* TODO - ta sama osoba odpowiedzialna za rozne zadania zostaje wypisana wielokrotnie */
+	/* kierownik projektu oraz osoby z projektem nardzednym */
 
-	/* pobiera projekty podrzedne i dodaje do listy przypisan osoby z podrzednych projektow */
-	vector<Projekt> projPodrzedne = Pobieranie_bazy::pobierz_projekt("select * from projekt where id_projektu_nadrzednego = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() +"';");
-	vector<Przypisanie_do_projektow>przypisania;
-	vector<Przypisanie_do_projektow> temp;
-	for (Projekt i : projPodrzedne) {
-		temp = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from Przypisanie_do_projektow where Id_projektu = " + i.pobierz_id_projektu() + "");
-		przypisania.insert(przypisania.end(), temp.begin(), temp.end());
-	}
-
-	temp = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from Przypisanie_do_projektow where Id_projektu = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + "");
-	/* wyszukanie w³asciciela projeów w liscie zadañ (jesli jest to go nie dodajemy 2 raz) */
-	bool bylKierownik = false;
-	for (Przypisanie_do_projektow i : przypisania) {
-		if (i.pobierz_id_pracownika() == temp.begin()->pobierz_id_pracownika()) {
-			bylKierownik = true;
-			break;
-		}
-	}
-	if(!bylKierownik)
-		przypisania.insert(przypisania.end(), temp.begin(), temp.end());
 	
 	QStringList lista;
 	if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad()) return lista;
 
-	for (auto i = przypisania.begin(); i != przypisania.end(); ++i)
+
+	string nr_proj = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+	string Query = "select distinct p.id_pracownika, p.imie, p.nazwisko, p.login, p.haslo, p.administrator   from pracownicy p \
+				join przypisanie_do_projektow przyps on  p.id_pracownika = przyps.id_pracownika \
+				join projekt proj on(przyps.id_projektu = proj.id_projektu_nadrzednego) or (przyps.id_projektu = proj.id_projektu) \
+				where proj.id_projektu = " + nr_proj + " or proj.id_projektu_nadrzednego =  " + nr_proj;
+
+
+	vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik(Query);
+
+
+	for (Pracownik i : pracownik)
 	{
-	vector<Pracownik>pracownik = Pobieranie_bazy::pobierz_pracownik("select * from Pracownicy where Id_pracownika = " + i->pobierz_id_pracownika() + "");
-	lista.append(QString::fromStdString(pracownik[0].pobierz_id_pracownika() + ". " + pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko()));
+		lista.append(QString::fromStdString(i.pobierz_id_pracownika() + ". " + i.pobierz_imie() + " " + i.pobierz_nazwisko()));
 	}
 	if (lista.empty())
 	{
