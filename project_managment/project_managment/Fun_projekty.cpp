@@ -209,17 +209,27 @@ Projekt Fun_projekty::pobierz_dane_zadania()
 
 bool Fun_projekty::zaktualizuj_zadanie(string nazwa, string opis, string data_r, string data_z, string status)
 {
-	Projekt* zadanie = new Projekt("1", nazwa, opis, data_r, data_z, "true", "null", status);
-	if (Modyfikator_bazy::zaktualizuj_zadanie(zadanie))
+	vector<Projekt> czy_jest_zadanie = Pobieranie_bazy::pobierz_projekt("select * from projekt where nazwa = '" + nazwa + "';");
+	if (czy_jest_zadanie.size() == 1)
 	{
-		delete zadanie;
-		return true;
+		Projekt* zadanie = new Projekt("1", nazwa, opis, data_r, data_z, "true", "null", status);
+		if (Modyfikator_bazy::zaktualizuj_zadanie(zadanie))
+		{
+			delete zadanie;
+			return true;
+		}
+		else
+		{
+			delete zadanie;
+			return false;
+		}
 	}
 	else
 	{
-		delete zadanie;
 		return false;
 	}
+
+	
 }
 bool Fun_projekty::czy_mozna_przeksztalcic_w_projekt()
 {
