@@ -207,6 +207,7 @@ public:
     static bool utworz_zadanie(string nazwa, string opis, string data_rozpoczecia, string data_zakonczenia, string status);
     static bool dodaj_przypisanie_do_projektu(string id_pracownika, string kierownik);
     static bool dodaj_przypisanie_do_zadania(string id_pracownika, string kierownik);
+    static bool dodaj_przypisanie_do_zadania_login (string login, string trufalse);
     static bool usun_przypisanie_do_projektu();
     static bool usun_przypisanie_do_zadania();
     static QStringList pobierz_liste_pracownikow();
@@ -219,6 +220,8 @@ public:
     static QString pobierz_id_kierownika();
     static QString pobierz_id_kierownika_nadrzednego();
 
+    static QString pobierz_aktualnego_pracownika();
+    static bool pobierz_zadanie_w_podprojekt();
 };
 
 class Fun_ustawienia

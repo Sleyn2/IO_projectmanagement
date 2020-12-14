@@ -76,7 +76,7 @@ bool Fun_projekty::czy_kierownik()
 
 	przypisania = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from Przypisanie_do_projektow where Id_pracownika = " 
 		+ Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika() + " and Id_projektu = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + ";" );
-	if (przypisania[0].pobierz_kierownik() == "t") return true;
+	if (przypisania.size() == 1 &&  przypisania.begin()->pobierz_kierownik() == "t") return true;
 	else return false;
 }
 bool Fun_projekty::czy_Zadanie(string id) {
@@ -284,6 +284,43 @@ QString Fun_projekty::pobierz_id_kierownika_nadrzednego()
 	return QString("");
 }
 
+QString Fun_projekty::pobierz_aktualnego_pracownika()
+{
+	vector<Przypisanie_do_projektow> przyps = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from przypisanie_do_projektow where id_projektu = " +
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania() +
+		";");
+	vector<Pracownik> prac;
+	string element;
+	if (przyps.empty()) {
+		return QString("");
+	}
+	else {
+		prac = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where id_pracownika = " +
+			przyps[0].pobierz_id_pracownika() +
+			";");
+		element = prac.begin()->pobierz_imie() + " " + prac.begin()->pobierz_nazwisko() + " (" + prac.begin()->pobierz_login() + ")";
+		return QString::fromStdString(element);
+	}
+}
+
+bool Fun_projekty::pobierz_zadanie_w_podprojekt()
+{
+	vector<Przypisanie_do_projektow> przyps = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from przypisanie_do_projektow where id_projektu = " +
+		Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania() +
+		";");
+	if (przyps.size() == 1)
+		return (przyps.begin()->pobierz_kierownik() == "t") ? true : false;
+	else
+		return false;
+}
+
+
+bool Fun_projekty::dodaj_przypisanie_do_zadania_login(string login, string trufalse)
+{
+	vector<Pracownik> pracownik = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" + login + "';");
+
+	return Fun_projekty::dodaj_przypisanie_do_zadania(pracownik.begin()->pobierz_id_pracownika(), trufalse);
+}
 
 
 QStringList Fun_projekty::pobierz_liste_pracownikow() 

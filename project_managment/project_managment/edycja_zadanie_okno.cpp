@@ -18,22 +18,10 @@ void edycja_zadanie_okno::odswiezWykonawcow()
 	}
 
 	/* ustawienie w comboboxie jako wybrany element bierz¹cego pracownika zajmuj¹cego siê zadaniem */
-	vector<Przypisanie_do_projektow> przyps = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from przypisanie_do_projektow where id_projektu = " +
-		Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania() +
-		";");
-	vector<Pracownik> prac;
-	string element;
-	if (przyps.empty()) {
 
-	}
-	else {
-		prac = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where id_pracownika = " +
-			przyps[0].pobierz_id_pracownika() +
-			";");
-		element = prac.begin()->pobierz_imie() + " " + prac.begin()->pobierz_nazwisko() + " (" + prac.begin()->pobierz_login() + ")";
-		ui.comboBox_Wykonawcy->setCurrentText(QString::fromStdString(element));
-		ui.checkBox_kierownik->setChecked((przyps.begin()->pobierz_kierownik() == "t") ? true : false);
-	}	
+	ui.comboBox_Wykonawcy->setCurrentText(Fun_projekty::pobierz_aktualnego_pracownika());
+	ui.checkBox_kierownik->setChecked(Fun_projekty::pobierz_zadanie_w_podprojekt());
+
 }
 
 edycja_zadanie_okno::~edycja_zadanie_okno()
@@ -52,10 +40,9 @@ void edycja_zadanie_okno::wczytaj_dane()
 		QString	opis = QString::fromStdString(Fun_projekty::pobierz_dane_zadania().pobierz_opis());
 
 		ui.textEdit_opis->setText(opis);
-		ui.lineEdit_nazwa->setText(nazwa);
-		//TODO naprawic import daty
-		ui.dateEdit_start->setDate(QDate::fromString(data_roz, "yyy-MM-dd"));
-		ui.dateEdit_finish->setDate(QDate::fromString(data_zak, "yyy-MM-dd"));
+		ui.lineEdit_nazwa->setText(nazwa);	
+		ui.dateEdit_start->setDate(QDate::fromString(data_roz, "yyyy-MM-dd")); //4 igreki zamiast 3
+		ui.dateEdit_finish->setDate(QDate::fromString(data_zak, "yyyy-MM-dd"));
 		if (status == "Rozpoczety")
 			ui.comboBox_status->setCurrentIndex(0);
 		else if (status == "Zawieszony")
@@ -63,9 +50,6 @@ void edycja_zadanie_okno::wczytaj_dane()
 		else if (status == "Zamkniêty")
 			ui.comboBox_status->setCurrentIndex(2);
 	}
-
-
-	
 }
 
 void edycja_zadanie_okno::on_pushButton_users_clicked()
@@ -108,9 +92,7 @@ void edycja_zadanie_okno::on_pushButton_potwierdz_clicked()
 
 	string login = Fun_ustawienia::wyluskaj_login(ui.comboBox_Wykonawcy->currentText().toStdString());
 
-	vector<Pracownik> pracownik = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" + login + "';");
-
-	Fun_projekty::dodaj_przypisanie_do_zadania(pracownik.begin()->pobierz_id_pracownika(), ui.checkBox_kierownik->isChecked()?"true":"false");
+	Fun_projekty::dodaj_przypisanie_do_zadania_login(login, ui.checkBox_kierownik->isChecked() ? "true" : "false");
 
 	Dane_zalogowanego_pracownika::instancja()->ustaw_id_zadania("");
 	this->close();
