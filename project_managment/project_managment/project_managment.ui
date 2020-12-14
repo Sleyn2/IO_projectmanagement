@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>720</height>
+    <width>1279</width>
+    <height>718</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,22 +26,27 @@
     <item>
      <widget class="QWidget" name="wyborOpcji" native="true">
       <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0852273 rgba(0, 158, 255, 255), stop:1 rgba(0, 77, 171, 255));</string>
+       <string notr="true">
+
+background-color: qlineargradient(spread:pad, x1:0.924781, y1:0.495, x2:1, y2:0.494, stop:0 rgba(40, 40, 40, 255), stop:1 rgba(70, 70, 70, 255));</string>
       </property>
       <widget class="QPushButton" name="pushButton_4">
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>630</y>
-         <width>241</width>
+         <y>300</y>
+         <width>251</width>
          <height>61</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>16</pointsize>
+         <pointsize>13</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(72, 72, 72);</string>
        </property>
        <property name="text">
         <string>Zamknij</string>
@@ -59,8 +64,11 @@
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>16</pointsize>
+         <pointsize>13</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(72, 72, 72);</string>
        </property>
        <property name="text">
         <string>Wiadomości</string>
@@ -78,8 +86,11 @@
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>16</pointsize>
+         <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(72, 72, 72);</string>
        </property>
        <property name="text">
         <string>Twoje Projekty i zadania</string>
@@ -97,8 +108,11 @@
        <property name="font">
         <font>
          <family>Arial</family>
-         <pointsize>16</pointsize>
+         <pointsize>13</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(72, 72, 72);</string>
        </property>
        <property name="text">
         <string>Ustawienia</string>
@@ -121,10 +135,10 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 170, 255);</string>
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0.517, x2:0.995025, y2:0.006, stop:0 rgba(70, 70, 70, 255), stop:1 rgba(45, 6, 104, 255));</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Twoje_projekty">
        <widget class="QWidget" name="widget" native="true">
@@ -135,6 +149,15 @@
           <width>251</width>
           <height>721</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget#widget
+{
+	
+	background-color: rgba(255, 255, 255, 0);
+
+}
+</string>
         </property>
         <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
@@ -173,6 +196,82 @@
            </widget>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QLineEdit" name="legendaZadania">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QWidget#legendaZadania
+{
+background-color: rgb(200, 193, 229);
+}
+
+</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="legendaProjekty">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QWidget#legendaProjekty
+{
+	background-color: rgb(192, 212, 243);
+}</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <widget class="QLabel" name="label_3">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                </property>
+                <property name="text">
+                 <string>zadania</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_14">
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                </property>
+                <property name="text">
+                 <string>projekty</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
            <widget class="QPushButton" name="pushButton_utworzProjekt">
             <property name="font">
              <font>
@@ -198,6 +297,11 @@
           <width>721</width>
           <height>671</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/*background-color: qlineargradient(spread:pad, x1:0, y1:0.517, x2:0.995025, y2:0.006, stop:0 rgba(70, 70, 70, 255), stop:1 rgba(45, 6, 104, 255));*/
+
+background-color: rgba(255, 255, 255, 0);</string>
         </property>
         <widget class="QWidget" name="User_page">
          <widget class="QTextBrowser" name="textBrowserOpisProjektu_1">
@@ -238,6 +342,9 @@ p, li { white-space: pre-wrap; }
            <font>
             <pointsize>16</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="text">
            <string>Nazwa projektu</string>
@@ -328,6 +435,9 @@ p, li { white-space: pre-wrap; }
             <pointsize>14</pointsize>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
           <property name="text">
            <string>członkowie zespołu:</string>
           </property>
@@ -388,6 +498,9 @@ p, li { white-space: pre-wrap; }
             <pointsize>14</pointsize>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
           <property name="text">
            <string>Opis projektu</string>
           </property>
@@ -405,6 +518,9 @@ p, li { white-space: pre-wrap; }
            <font>
             <pointsize>14</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="text">
            <string>Opis zadania </string>
@@ -692,8 +808,7 @@ p, li { white-space: pre-wrap; }
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);
-border-color: rgb(0, 0, 0);
+         <string notr="true">background-color: rgba(255, 255, 255, 0);
 </string>
         </property>
         <property name="frameShape">
@@ -716,6 +831,9 @@ border-color: rgb(0, 0, 0);
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(206, 202, 255);</string>
+         </property>
          <property name="text">
           <string>Tytuł</string>
          </property>
@@ -733,6 +851,9 @@ border-color: rgb(0, 0, 0);
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>Nadawca</string>
@@ -752,6 +873,9 @@ border-color: rgb(0, 0, 0);
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(206, 202, 255);</string>
+         </property>
          <property name="text">
           <string>Data wysłania </string>
          </property>
@@ -767,21 +891,25 @@ border-color: rgb(0, 0, 0);
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
         </property>
         <widget class="QPushButton" name="pushButton_odebrane">
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>20</y>
+           <y>50</y>
            <width>161</width>
-           <height>111</height>
+           <height>71</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <pointsize>20</pointsize>
+           <pointsize>15</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(40, 40, 40);
+color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>Odebrane</string>
@@ -791,15 +919,19 @@ border-color: rgb(0, 0, 0);
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>150</y>
+           <y>180</y>
            <width>161</width>
-           <height>111</height>
+           <height>81</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <pointsize>20</pointsize>
+           <pointsize>15</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(40, 40, 40);
+color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>Wysłane</string>
@@ -809,14 +941,14 @@ border-color: rgb(0, 0, 0);
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>280</y>
+           <y>320</y>
            <width>161</width>
-           <height>111</height>
+           <height>91</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <pointsize>20</pointsize>
+           <pointsize>15</pointsize>
           </font>
          </property>
          <property name="acceptDrops">
@@ -824,6 +956,10 @@ border-color: rgb(0, 0, 0);
          </property>
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(40, 40, 40);
+color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>Nowa 
@@ -840,14 +976,14 @@ Wiadomość</string>
          <property name="geometry">
           <rect>
            <x>20</x>
-           <y>410</y>
+           <y>470</y>
            <width>161</width>
            <height>111</height>
           </rect>
          </property>
          <property name="font">
           <font>
-           <pointsize>20</pointsize>
+           <pointsize>15</pointsize>
           </font>
          </property>
          <property name="acceptDrops">
@@ -855,6 +991,10 @@ Wiadomość</string>
          </property>
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(40, 40, 40);
+color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>Usuń 
@@ -878,589 +1018,14 @@ Wiadomość</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">background-color: rgb(40, 40, 40);</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
         </property>
        </widget>
       </widget>
       <widget class="QWidget" name="Ustawienia">
-       <widget class="QStackedWidget" name="stackedWidget_ustawienia">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>10</y>
-          <width>931</width>
-          <height>251</height>
-         </rect>
-        </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="page_przeglad">
-         <widget class="QComboBox" name="comboBox">
-          <property name="geometry">
-           <rect>
-            <x>280</x>
-            <y>120</y>
-            <width>251</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_30">
-          <property name="geometry">
-           <rect>
-            <x>70</x>
-            <y>110</y>
-            <width>201</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>moje działy:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_27">
-          <property name="geometry">
-           <rect>
-            <x>280</x>
-            <y>20</y>
-            <width>261</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Imię Nazwisko</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_28">
-          <property name="geometry">
-           <rect>
-            <x>70</x>
-            <y>60</y>
-            <width>201</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>ID pracownika:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_26">
-          <property name="geometry">
-           <rect>
-            <x>70</x>
-            <y>20</y>
-            <width>201</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>imię i nazwisko:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_29">
-          <property name="geometry">
-           <rect>
-            <x>280</x>
-            <y>60</y>
-            <width>211</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>1234</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_ustaw1">
-          <property name="geometry">
-           <rect>
-            <x>570</x>
-            <y>160</y>
-            <width>191</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-          <property name="text">
-           <string>edytuj informacje</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_31">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>160</y>
-            <width>271</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>tworzenie projektów:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_32">
-          <property name="geometry">
-           <rect>
-            <x>280</x>
-            <y>160</y>
-            <width>91</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>tak/nie</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_ustaw2">
-          <property name="geometry">
-           <rect>
-            <x>570</x>
-            <y>90</y>
-            <width>191</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-          <property name="text">
-           <string>zmień hasło</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_33">
-          <property name="geometry">
-           <rect>
-            <x>550</x>
-            <y>20</y>
-            <width>91</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>login:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_35">
-          <property name="geometry">
-           <rect>
-            <x>650</x>
-            <y>20</y>
-            <width>251</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>jakis_login</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_39">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>200</y>
-            <width>271</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>administrator:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_42">
-          <property name="geometry">
-           <rect>
-            <x>280</x>
-            <y>200</y>
-            <width>91</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>tak/nie</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="page_edycja">
-         <widget class="QLabel" name="label_34">
-          <property name="geometry">
-           <rect>
-            <x>500</x>
-            <y>30</y>
-            <width>231</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>dodaj/usuń dział:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QComboBox" name="comboBox_dzialy">
-          <property name="geometry">
-           <rect>
-            <x>520</x>
-            <y>90</y>
-            <width>211</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_nazw">
-          <property name="geometry">
-           <rect>
-            <x>60</x>
-            <y>90</y>
-            <width>201</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>nazwisko:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_imie">
-          <property name="geometry">
-           <rect>
-            <x>60</x>
-            <y>50</y>
-            <width>201</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>imię:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="lineEdit_imie">
-          <property name="geometry">
-           <rect>
-            <x>270</x>
-            <y>60</y>
-            <width>141</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="lineEdit_nazw">
-          <property name="geometry">
-           <rect>
-            <x>270</x>
-            <y>100</y>
-            <width>141</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_38">
-          <property name="geometry">
-           <rect>
-            <x>60</x>
-            <y>130</y>
-            <width>201</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>login:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="lineEdit_login">
-          <property name="geometry">
-           <rect>
-            <x>270</x>
-            <y>140</y>
-            <width>141</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_zapisz">
-          <property name="geometry">
-           <rect>
-            <x>310</x>
-            <y>200</y>
-            <width>101</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);
-</string>
-          </property>
-          <property name="text">
-           <string>zapisz</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_anuluj">
-          <property name="geometry">
-           <rect>
-            <x>200</x>
-            <y>200</y>
-            <width>101</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-          <property name="text">
-           <string>anuluj</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_dodaj">
-          <property name="geometry">
-           <rect>
-            <x>540</x>
-            <y>150</y>
-            <width>81</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-          <property name="text">
-           <string>dodaj</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_usun">
-          <property name="geometry">
-           <rect>
-            <x>640</x>
-            <y>150</y>
-            <width>81</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-          <property name="text">
-           <string>usuń</string>
-          </property>
-         </widget>
-         <widget class="Line" name="line">
-          <property name="geometry">
-           <rect>
-            <x>460</x>
-            <y>10</y>
-            <width>20</width>
-            <height>271</height>
-           </rect>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_zapisz_2">
-          <property name="geometry">
-           <rect>
-            <x>540</x>
-            <y>210</y>
-            <width>181</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);
-</string>
-          </property>
-          <property name="text">
-           <string>zapisz</string>
-          </property>
-         </widget>
-        </widget>
-       </widget>
        <widget class="QGroupBox" name="groupBox">
         <property name="enabled">
          <bool>true</bool>
@@ -1475,8 +1040,12 @@ Wiadomość</string>
         </property>
         <property name="font">
          <font>
-          <pointsize>12</pointsize>
+          <pointsize>10</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(0, 0, 0);</string>
         </property>
         <property name="title">
          <string>Ustawienia administratora systemu</string>
@@ -1491,7 +1060,7 @@ Wiadomość</string>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">color: rgb(255, 255, 230);</string>
          </property>
         </widget>
         <widget class="QListWidget" name="userList">
@@ -1504,7 +1073,14 @@ Wiadomość</string>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">background-color: rgb(40, 40, 40);
+color: rgb(206, 202, 255);</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
          </property>
          <property name="selectionRectVisible">
           <bool>false</bool>
@@ -1523,6 +1099,9 @@ Wiadomość</string>
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>szukaj użytkownika po imieniu i nazwisku:</string>
@@ -1562,6 +1141,9 @@ Wiadomość</string>
             <pointsize>12</pointsize>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(206, 202, 255);</string>
+          </property>
           <property name="text">
            <string>użytkownik:</string>
           </property>
@@ -1579,6 +1161,9 @@ Wiadomość</string>
            <font>
             <pointsize>12</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(206, 202, 255);</string>
           </property>
           <property name="text">
            <string>tworzenie nowych projektów</string>
@@ -1598,6 +1183,9 @@ Wiadomość</string>
             <pointsize>12</pointsize>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(206, 202, 255);</string>
+          </property>
           <property name="text">
            <string>administrator</string>
           </property>
@@ -1615,6 +1203,9 @@ Wiadomość</string>
            <font>
             <pointsize>12</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(206, 202, 255);</string>
           </property>
           <property name="text">
            <string>Imię Nazwisko</string>
@@ -1635,7 +1226,8 @@ Wiadomość</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
+           <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
           </property>
           <property name="text">
            <string>zapisz</string>
@@ -1656,7 +1248,8 @@ Wiadomość</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
+           <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
           </property>
           <property name="text">
            <string>usuń pracownika</string>
@@ -1677,6 +1270,9 @@ Wiadomość</string>
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(206, 202, 255);</string>
+         </property>
          <property name="text">
           <string>dodaj dział do firmy</string>
          </property>
@@ -1694,7 +1290,7 @@ Wiadomość</string>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">color: rgb(255, 255, 230);</string>
          </property>
         </widget>
         <widget class="QLabel" name="label_40">
@@ -1710,6 +1306,9 @@ Wiadomość</string>
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>nazwa:</string>
@@ -1729,6 +1328,9 @@ Wiadomość</string>
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(206, 202, 255);</string>
+         </property>
          <property name="text">
           <string>adres:</string>
          </property>
@@ -1743,7 +1345,7 @@ Wiadomość</string>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">color: rgb(255, 255, 230);</string>
          </property>
         </widget>
         <widget class="QPushButton" name="pushButton_dodajDzial">
@@ -1761,7 +1363,8 @@ Wiadomość</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>dodaj</string>
@@ -1780,6 +1383,9 @@ Wiadomość</string>
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>usuń dział z firmy</string>
@@ -1803,7 +1409,9 @@ Wiadomość</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">color: rgb(206, 202, 255);
+border-color: rgb(255, 255, 255);
+background-color: rgba(40, 40, 40, 255);</string>
          </property>
         </widget>
         <widget class="QPushButton" name="pushButton_usunDzial">
@@ -1821,7 +1429,8 @@ Wiadomość</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>usuń</string>
@@ -1842,11 +1451,686 @@ Wiadomość</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
          </property>
          <property name="text">
           <string>przeglądaj prośby</string>
          </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>10</y>
+          <width>911</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="title">
+         <string>Twoje dane</string>
+        </property>
+        <widget class="QStackedWidget" name="stackedWidget_ustawienia">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>10</y>
+           <width>831</width>
+           <height>221</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="page_przeglad">
+          <widget class="QComboBox" name="comboBox">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>100</y>
+             <width>251</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(206, 202, 255);
+border-color: rgb(255, 255, 255);
+background-color: rgba(40, 40, 40, 255);</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_30">
+           <property name="geometry">
+            <rect>
+             <x>70</x>
+             <y>90</y>
+             <width>201</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>moje działy:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_27">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>10</y>
+             <width>261</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 230);</string>
+           </property>
+           <property name="text">
+            <string>Imię Nazwisko</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_28">
+           <property name="geometry">
+            <rect>
+             <x>70</x>
+             <y>40</y>
+             <width>201</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>ID pracownika:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_26">
+           <property name="geometry">
+            <rect>
+             <x>70</x>
+             <y>10</y>
+             <width>201</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>imię i nazwisko:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_29">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>40</y>
+             <width>211</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 230);</string>
+           </property>
+           <property name="text">
+            <string>1234</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_ustaw1">
+           <property name="geometry">
+            <rect>
+             <x>570</x>
+             <y>160</y>
+             <width>191</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>edytuj informacje</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_31">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>140</y>
+             <width>271</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>tworzenie projektów:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_32">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>140</y>
+             <width>91</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 230);</string>
+           </property>
+           <property name="text">
+            <string>tak/nie</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_ustaw2">
+           <property name="geometry">
+            <rect>
+             <x>570</x>
+             <y>90</y>
+             <width>191</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>zmień hasło</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_33">
+           <property name="geometry">
+            <rect>
+             <x>550</x>
+             <y>20</y>
+             <width>91</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>login:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_35">
+           <property name="geometry">
+            <rect>
+             <x>650</x>
+             <y>20</y>
+             <width>251</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 230);</string>
+           </property>
+           <property name="text">
+            <string>jakis_login</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_39">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>180</y>
+             <width>271</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>administrator:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_42">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>180</y>
+             <width>91</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 230);</string>
+           </property>
+           <property name="text">
+            <string>tak/nie</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="page_edycja">
+          <widget class="QLabel" name="label_34">
+           <property name="geometry">
+            <rect>
+             <x>400</x>
+             <y>10</y>
+             <width>231</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>dodaj/usuń dział:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_dzialy">
+           <property name="geometry">
+            <rect>
+             <x>440</x>
+             <y>50</y>
+             <width>211</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(206, 202, 255);
+border-color: rgb(255, 255, 255);
+background-color: rgba(40, 40, 40, 255);</string>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_nazw">
+           <property name="geometry">
+            <rect>
+             <x>-30</x>
+             <y>70</y>
+             <width>201</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>nazwisko:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_imie">
+           <property name="geometry">
+            <rect>
+             <x>-30</x>
+             <y>30</y>
+             <width>201</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>imię:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_imie">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>40</y>
+             <width>141</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 230);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_nazw">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>80</y>
+             <width>141</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 230);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_38">
+           <property name="geometry">
+            <rect>
+             <x>-30</x>
+             <y>110</y>
+             <width>201</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>login:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="lineEdit_login">
+           <property name="geometry">
+            <rect>
+             <x>180</x>
+             <y>120</y>
+             <width>141</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 230);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_zapisz">
+           <property name="geometry">
+            <rect>
+             <x>220</x>
+             <y>160</y>
+             <width>101</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);
+</string>
+           </property>
+           <property name="text">
+            <string>zapisz</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_anuluj">
+           <property name="geometry">
+            <rect>
+             <x>110</x>
+             <y>160</y>
+             <width>101</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>anuluj</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_dodaj">
+           <property name="geometry">
+            <rect>
+             <x>460</x>
+             <y>90</y>
+             <width>81</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>dodaj</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_usun">
+           <property name="geometry">
+            <rect>
+             <x>560</x>
+             <y>90</y>
+             <width>81</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);</string>
+           </property>
+           <property name="text">
+            <string>usuń</string>
+           </property>
+          </widget>
+          <widget class="Line" name="line">
+           <property name="geometry">
+            <rect>
+             <x>460</x>
+             <y>10</y>
+             <width>20</width>
+             <height>271</height>
+            </rect>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_zapisz_2">
+           <property name="geometry">
+            <rect>
+             <x>460</x>
+             <y>150</y>
+             <width>181</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(72, 72, 72);
+color: rgb(206, 202, 255);
+</string>
+           </property>
+           <property name="text">
+            <string>zapisz</string>
+           </property>
+          </widget>
+         </widget>
         </widget>
        </widget>
       </widget>
@@ -1872,7 +2156,9 @@ Wiadomość</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0.0852273 rgba(0, 244, 255, 255), stop:1 rgba(0, 106, 171, 255));
+       <string notr="true">color: rgb(206, 202, 255);
+
+background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:0.517, stop:0 rgba(45, 6, 104, 255), stop:1 rgba(70, 70, 70, 255));
 </string>
       </property>
       <property name="text">
