@@ -171,10 +171,44 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.477, x2:0.935323, y2:0.
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <widget class="QLineEdit" name="lineEdit_search">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgba(255, 255, 255, 0);
 color: rgb(206, 202, 255);</string>
             </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_filtr">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(206, 202, 255);
+border-color: rgb(255, 255, 255);
+background-color: rgba(40, 40, 40, 255);</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>Rozpoczety</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Zawieszony</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Zamknięty</string>
+             </property>
+            </item>
            </widget>
           </item>
           <item>
