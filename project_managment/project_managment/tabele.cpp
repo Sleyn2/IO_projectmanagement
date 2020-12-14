@@ -50,6 +50,7 @@ string Projekt::pobierz_data_zakonczenia() { return this->data_zakonczenia; }
 string Projekt::pobierz_status() { return this->status; }
 string Projekt::pobierz_zadanie() { return this->zadanie; }
 void Projekt::ustaw_zadanie(string zad) { this->zadanie = zad; }
+void Projekt::ustaw_staus(string stat) { this->status = stat; }
 
 Przypisanie_do_projektow::Przypisanie_do_projektow(string id_prac, string id_proj, string kier) :
     id_pracownika(id_prac), id_projektu(id_proj), kierownik(kier)

@@ -520,7 +520,7 @@ void project_managment::odswiezProjekty()
 {
     ui.ProjectList->clear();
     availableProjectList.clear();
-    availableProjectList = Fun_projekty::pobierz_liste_projektow();
+    availableProjectList = Fun_projekty::pobierz_liste_projektow(ui.comboBox_filtr->currentText());
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_czy_blad())
         QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
     else
@@ -816,6 +816,11 @@ void project_managment::on_pushButton_StworzPodprojekt_clicked() {
 
 }
 
+void  project_managment::on_comboBox_filtr_currentTextChanged()
+{
+    this->odswiezProjekty();
+}
+
 
 
 void project_managment::on_pushButtonTworzRaportAdm_clicked()
@@ -831,6 +836,8 @@ void project_managment::on_pushButtonTworzRaportAdm_clicked()
             To do
             Zakoñczenie projektu
         */
+        Fun_projekty::zakoncz_projekt();
+        this->odswiezProjekty();
     }
     else {
         //je¿eli raport nie istnieje b¹dŸ zosta³ zwrócony to mo¿na wys³aæ kolejny

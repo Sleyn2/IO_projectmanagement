@@ -61,6 +61,7 @@ public:
     string pobierz_status();
     string pobierz_zadanie();
     void ustaw_zadanie(string zad);
+    void ustaw_staus(string stat);
 };
 
 class Przypisanie_do_projektow
@@ -197,7 +198,7 @@ public:
 class Fun_projekty
 {
 public:
-    static QStringList pobierz_liste_projektow();
+    static QStringList pobierz_liste_projektow(QString stat);
     static QString pobierz_opis_projektu();
     static QString pobierz_opis_projektu_nadrzednego();
     static bool czy_kierownik();
@@ -222,6 +223,7 @@ public:
 
     static QString pobierz_aktualnego_pracownika();
     static bool pobierz_zadanie_w_podprojekt();
+    static bool zakoncz_projekt();
 };
 
 class Fun_ustawienia

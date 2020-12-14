@@ -1,7 +1,7 @@
 #include <vector>
 #include "klasy.h"
 
-QStringList Fun_projekty::pobierz_liste_projektow()
+QStringList Fun_projekty::pobierz_liste_projektow(QString status)
 {
 	vector<Projekt>projekty;
 	QStringList lista;
@@ -9,7 +9,7 @@ QStringList Fun_projekty::pobierz_liste_projektow()
 
 	string Query = "select proj.id_projektu, proj.nazwa, proj.opis, proj.status, proj.data_rozpoczecia, proj.data_zakonczenia, proj.id_projektu_nadrzednego, proj.zadanie from projekt proj \
 					join przypisanie_do_projektow przyps on przyps.id_projektu = proj.id_projektu\
-					where(przyps.id_pracownika = "+ id + ")";
+					where przyps.id_pracownika = "+ id + "and proj.status = '" + status.toStdString() + "';";
 
 	projekty = Pobieranie_bazy::pobierz_projekt(Query);
 	
@@ -314,6 +314,20 @@ bool Fun_projekty::pobierz_zadanie_w_podprojekt()
 		return false;
 }
 
+
+bool Fun_projekty::zakoncz_projekt()
+{
+	// projekt zmienia status na zakonczony
+	string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+	string Query = "select * from projekt where id_projektu ="+ id +"; ";
+	vector<Projekt> zadanie = Pobieranie_bazy::pobierz_projekt(Query);
+	if (zadanie.size() == 1)
+	{
+		zadanie.begin()->ustaw_staus("Zamkniety");
+		return Modyfikator_bazy::zaktualizuj_projekt(&zadanie[0]);
+	}
+	return false;
+}
 
 bool Fun_projekty::dodaj_przypisanie_do_zadania_login(string login, string trufalse)
 {
