@@ -206,7 +206,7 @@ background-color: rgba(40, 40, 40, 255);</string>
             </item>
             <item>
              <property name="text">
-              <string>Zamknięty</string>
+              <string>Zamkniety</string>
              </property>
             </item>
            </widget>
