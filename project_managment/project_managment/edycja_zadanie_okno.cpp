@@ -64,6 +64,7 @@ void edycja_zadanie_okno::wczytaj_dane()
 			ui.comboBox_status->setCurrentIndex(2);
 	}
 
+
 	
 }
 
@@ -87,7 +88,23 @@ void edycja_zadanie_okno::on_pushButton_potwierdz_clicked()
 	QString finish_date = ui.dateEdit_finish->text();
 	QString opis = ui.textEdit_opis->toPlainText();
 	
-	Fun_projekty::zaktualizuj_zadanie(nazwa.toStdString(), opis.toStdString(), start_date.toStdString(), finish_date.toStdString(), status.toStdString());
+
+	if (Fun_projekty::zaktualizuj_zadanie(nazwa.toStdString(), opis.toStdString(), start_date.toStdString(), finish_date.toStdString(), status.toStdString()))
+	{
+		// udalo sie 
+		QMessageBox msg;
+		msg.setWindowTitle("Sukces");
+		msg.setText("Zatwierdzono.");
+		msg.exec();
+	}
+	else
+	{
+		//nie udalo sie
+		QMessageBox msg;
+		msg.setWindowTitle("Blad");
+		msg.setText("Wystapil blad. Nie udalo sie zatwierdzic zmian.");
+		msg.exec();
+	}
 
 	string login = Fun_ustawienia::wyluskaj_login(ui.comboBox_Wykonawcy->currentText().toStdString());
 

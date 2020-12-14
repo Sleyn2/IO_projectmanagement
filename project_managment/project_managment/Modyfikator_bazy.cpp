@@ -314,8 +314,8 @@ bool Modyfikator_bazy::zaktualizuj_zadanie(Projekt *zadanie)
         {
             work W{ C };
             W.exec0("update Projekt set Nazwa = '" + zadanie->pobierz_nazwa() + "', Opis = '" + zadanie->pobierz_opis() + "', Data_rozpoczecia = '" +
-                zadanie->pobierz_data_rozpoczecia() + "', Data_zakonczenia = '" + zadanie->pobierz_data_zakonczenia() + "', status= '"
-                + zadanie->pobierz_status() + ", zadanie = " + zadanie->pobierz_zadanie() + "' where Nazwa = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() + "';");
+                zadanie->pobierz_data_rozpoczecia() + "', Data_zakonczenia = '" + zadanie->pobierz_data_zakonczenia() + "', status = '"
+                + zadanie->pobierz_status() + "' where Nazwa = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() + "';");
             W.commit();
         }
         catch (exception e)
