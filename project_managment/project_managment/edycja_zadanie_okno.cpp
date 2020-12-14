@@ -51,6 +51,8 @@ void edycja_zadanie_okno::wczytaj_dane()
 	ui.textEdit_opis->setText(opis);
 	ui.lineEdit_nazwa->setText(nazwa);
 	//TODO naprawic import daty
+	ui.dateEdit_start->clear();
+	ui.dateEdit_finish->clear();
 	ui.dateEdit_start->setDate(QDate::fromString(data_roz, "yyy-MM-dd"));
 	ui.dateEdit_finish->setDate(QDate::fromString(data_zak, "yyy-MM-dd"));
 	if (status == "Rozpoczety")
@@ -81,7 +83,14 @@ void edycja_zadanie_okno::on_pushButton_potwierdz_clicked()
 	QString finish_date = ui.dateEdit_finish->text();
 	QString opis = ui.textEdit_opis->toPlainText();
 	
-	Fun_projekty::zaktualizuj_zadanie(nazwa.toStdString(), opis.toStdString(), start_date.toStdString(), finish_date.toStdString(), status.toStdString());
+	if (Fun_projekty::zaktualizuj_zadanie(nazwa.toStdString(), opis.toStdString(), start_date.toStdString(), finish_date.toStdString(), status.toStdString())) 
+	{
+		// udalo sie 
+	}
+	else
+	{
+		//nie udalo sie
+	}
 
 	string login = Fun_ustawienia::wyluskaj_login(ui.comboBox_Wykonawcy->currentText().toStdString());
 
