@@ -42,7 +42,7 @@ void project_managment::odswiezListeZespolu(bool admin)
             {
                 ui.listWidget_taskUsers->addItem(i);
                 if (adm.toStdString() == seperacja_stringa_od_kropki(i.toStdString())) {
-                    ui.listWidget_taskUsers->item(ui.listWidget_taskUsers->count() - 1)->setBackgroundColor(QColor(0xC8C1E5));
+                    ui.listWidget_taskUsers->item(ui.listWidget_taskUsers->count() - 1)->setBackgroundColor(QColor(39, 31, 81));
                 }
             }
         }
@@ -53,7 +53,7 @@ void project_managment::odswiezListeZespolu(bool admin)
             {
                 ui.listWidget_taskUsers2->addItem(i);
                 if (adm.toStdString() == seperacja_stringa_od_kropki(i.toStdString())) {
-                    ui.listWidget_taskUsers2->item(ui.listWidget_taskUsers2->count() - 1)->setBackgroundColor(QColor(0xC8C1E5));
+                    ui.listWidget_taskUsers2->item(ui.listWidget_taskUsers2->count() - 1)->setBackgroundColor(QColor(39, 31, 81));
                 }
             }
         }
@@ -530,10 +530,10 @@ void project_managment::odswiezProjekty()
             s >> idProj;
             /* dostosowanie wygladu listy <-------------------------------------------------------------------------------------------------------------------------------------------- */
             if (Fun_projekty::czy_Zadanie(idProj)) {
-                ui.ProjectList->item(ui.ProjectList->count()-1)->setBackgroundColor(QColor(0xC8C1E5));
+                ui.ProjectList->item(ui.ProjectList->count()-1)->setBackgroundColor(QColor(39, 31, 81));
             }
             else {
-                ui.ProjectList->item(ui.ProjectList->count() - 1)->setBackgroundColor(QColor(0xC0D4F3));
+                ui.ProjectList->item(ui.ProjectList->count() - 1)->setBackgroundColor(QColor(82, 66, 173));
             }
         }
         availableProjectList.sort();
