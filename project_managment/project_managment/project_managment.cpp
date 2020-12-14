@@ -22,6 +22,7 @@ void project_managment::on_pushButton_1_clicked()
     ui.label->setText("Twoje projekty i zadania");
 
     this->odswiezProjekty();
+    this->odswiezListeRaportow();
 }
 
 void project_managment::odswiezListeZespolu(bool admin)
@@ -582,6 +583,8 @@ void project_managment::odswiezListeRaportow()
 {
     ui.listWidgetRaporty->clear();
     availableReportsVector.clear();
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
+        return;
     availableReportsVector = Pobieranie_bazy::pobierz_raporty();
     std::sort(availableReportsVector.begin(), availableReportsVector.end());
 
