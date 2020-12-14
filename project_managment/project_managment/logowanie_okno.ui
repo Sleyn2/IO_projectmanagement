@@ -114,7 +114,11 @@
         </widget>
        </item>
        <item row="6" column="1" colspan="3">
-        <widget class="QLineEdit" name="lineEdit_5_powtorz_haslo"/>
+        <widget class="QLineEdit" name="lineEdit_5_powtorz_haslo">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
        </item>
        <item row="0" column="1" colspan="3">
         <widget class="QLineEdit" name="lineEdit_1_imie"/>
@@ -147,7 +151,11 @@
         </widget>
        </item>
        <item row="4" column="1" colspan="3">
-        <widget class="QLineEdit" name="lineEdit_4_haslo"/>
+        <widget class="QLineEdit" name="lineEdit_4_haslo">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
        </item>
        <item row="7" column="0" colspan="2">
         <widget class="QPushButton" name="pushButton_register_2">
