@@ -218,14 +218,29 @@ bool Fun_projekty::zaktualizuj_zadanie(string nazwa, string opis, string data_r,
 		return false;
 	}
 }
-
+bool Fun_projekty::czy_mozna_przeksztalcic_w_projekt()
+{
+	string idProj = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+	string idPrac = Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika();
+	vector<Przypisanie_do_projektow> przyps = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from przypisanie_do_projektow\
+														where id_pracownika = " + idPrac + " and id_projektu = " + idProj + "; ");
+	if (przyps.size() == 1 && przyps.begin()->pobierz_kierownik() == "t")
+	{
+		return true;
+	}
+	return false;
+}
 bool Fun_projekty::przeksztalc_w_podprojek()
 {
-	vector<Projekt> zadanie = Pobieranie_bazy::pobierz_projekt("select * from projekt where id_projektu = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + ";");
-	if (zadanie.size() == 1)
+	string idProj = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+	if (czy_mozna_przeksztalcic_w_projekt())
 	{
-		zadanie.begin()->ustaw_zadanie("false");
-		return 	Modyfikator_bazy::zaktualizuj_projekt(&zadanie[0]);
+		vector<Projekt> zadanie = Pobieranie_bazy::pobierz_projekt("select * from projekt where id_projektu = " + idProj + ";");
+		if (zadanie.size() == 1)
+		{
+			zadanie.begin()->ustaw_zadanie("false");
+			return 	Modyfikator_bazy::zaktualizuj_projekt(&zadanie[0]);
+		}
 	}
 	return false;
 }
@@ -255,6 +270,8 @@ QString Fun_projekty::pobierz_id_kierownika_nadrzednego()
 	}
 	return QString("");
 }
+
+
 
 QStringList Fun_projekty::pobierz_liste_pracownikow() 
 {

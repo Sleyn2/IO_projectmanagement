@@ -32,6 +32,7 @@ void edycja_zadanie_okno::odswiezWykonawcow()
 			";");
 		element = prac.begin()->pobierz_imie() + " " + prac.begin()->pobierz_nazwisko() + " (" + prac.begin()->pobierz_login() + ")";
 		ui.comboBox_Wykonawcy->setCurrentText(QString::fromStdString(element));
+		ui.checkBox_kierownik->setChecked((przyps.begin()->pobierz_kierownik() == "t") ? true : false);
 	}	
 }
 
@@ -86,7 +87,8 @@ void edycja_zadanie_okno::on_pushButton_potwierdz_clicked()
 
 	vector<Pracownik> pracownik = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" + login + "';");
 
-	Fun_projekty::dodaj_przypisanie_do_zadania(pracownik.begin()->pobierz_id_pracownika(), "false");
+	Fun_projekty::dodaj_przypisanie_do_zadania(pracownik.begin()->pobierz_id_pracownika(), ui.checkBox_kierownik->isChecked()?"true":"false");
+
 	Dane_zalogowanego_pracownika::instancja()->ustaw_id_zadania("");
 	this->close();
 }

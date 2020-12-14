@@ -547,6 +547,10 @@ void project_managment::odswiezProjekty()
 
 void project_managment::odswiezZadania()
 {
+    /* ustawienie mo¿liwoœci dzia³ania przycisku stworz podprojekt */
+    ui.pushButton_StworzPodprojekt->setEnabled(Fun_projekty::czy_mozna_przeksztalcic_w_projekt());
+ 
+
     ui.listWidget_zadania->clear();
     availableTaskList.clear();
     availableTaskList = Fun_projekty::pobierz_liste_zadan();
