@@ -32,7 +32,7 @@ void raport_edycja_okno::wczytajDane()
 			ui.labelTematCzego->setText(QString::fromStdString("Zadanie"));
 		ui.labelNadawca->setText(QString::fromStdString(pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko()));
 		ui.labelTemat->setText(QString::fromStdString(projekt[0].pobierz_nazwa()));
-		ui.labelTytul->setText(QString::fromStdString((*pRaporty)[0].pobierz_tytul()));
+		ui.labelTytul->setText(QString::fromStdString((*pRaporty)[index].pobierz_tytul()));
 		ui.textRaportTresc->setPlainText(QString::fromStdString((*pRaporty)[index].pobierz_opis()));
 	}
 	else {
@@ -42,7 +42,7 @@ void raport_edycja_okno::wczytajDane()
 			ui.labelTematCzego_2->setText(QString::fromStdString("Zadanie"));
 		ui.labelNadawca_2->setText(QString::fromStdString(pracownik[0].pobierz_imie() + " " + pracownik[0].pobierz_nazwisko()));
 		ui.labelTemat_2->setText(QString::fromStdString(projekt[0].pobierz_nazwa()));
-		ui.labelTytul_2->setText(QString::fromStdString((*pRaporty)[0].pobierz_tytul()));
+		ui.labelTytul_2->setText(QString::fromStdString((*pRaporty)[index].pobierz_tytul()));
 		ui.textRaportTresc_2->setPlainText(QString::fromStdString((*pRaporty)[index].pobierz_opis()));
 	}
 }
