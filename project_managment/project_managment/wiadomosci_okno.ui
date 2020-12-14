@@ -21,7 +21,7 @@ background-color: rgb(79, 79, 79);</string>
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="write">
       <layout class="QGridLayout" name="gridLayout_3">
@@ -131,16 +131,25 @@ background-color: rgb(65, 51, 93);</string>
        </item>
        <item row="2" column="0" colspan="2">
         <widget class="QTextEdit" name="textEdit">
+         <property name="cursor" stdset="0">
+          <cursorShape>IBeamCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">color: rgb(255, 255, 226);
 background-color: rgb(126, 126, 126);</string>
          </property>
          <property name="frameShape">
-          <enum>QFrame::Box</enum>
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
          </property>
         </widget>
        </item>
       </layout>
+      <zorder>textEdit</zorder>
+      <zorder>pushButton_cancel</zorder>
+      <zorder>pushButton_send</zorder>
      </widget>
      <widget class="QWidget" name="read">
       <layout class="QGridLayout" name="gridLayout_4">
@@ -270,7 +279,7 @@ background-color: rgb(126, 126, 126);</string>
 background-color: rgb(126, 126, 126);</string>
            </property>
            <property name="frameShape">
-            <enum>QFrame::Box</enum>
+            <enum>QFrame::StyledPanel</enum>
            </property>
           </widget>
          </item>
