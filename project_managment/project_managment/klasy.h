@@ -213,6 +213,8 @@ public:
     static Projekt pobierz_dane_zadania();
     static bool zaktualizuj_zadanie(string nazwa, string opis, string data_r, string data_z, string status);
     static bool przeksztalc_w_podprojek();
+    static QString pobierz_id_kierownika();
+    static QString pobierz_id_kierownika_nadrzednego();
 };
 
 class Fun_ustawienia

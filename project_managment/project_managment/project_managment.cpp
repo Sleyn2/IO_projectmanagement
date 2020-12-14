@@ -36,9 +36,27 @@ void project_managment::odswiezListeZespolu(bool admin)
     else
     {
         if (admin)
-            ui.listWidget_taskUsers->addItems(teamList);
+        {
+            QString adm = Fun_projekty::pobierz_id_kierownika_nadrzednego();
+            for (QString i : teamList)
+            {
+                ui.listWidget_taskUsers->addItem(i);
+                if (adm.toStdString() == seperacja_stringa_od_kropki(i.toStdString())) {
+                    ui.listWidget_taskUsers->item(ui.listWidget_taskUsers->count() - 1)->setBackgroundColor(QColor(0xC8C1E5));
+                }
+            }
+        }
         else
-            ui.listWidget_taskUsers2->addItems(teamList);
+        {
+            QString adm = Fun_projekty::pobierz_id_kierownika_nadrzednego();
+            for (QString i : teamList)
+            {
+                ui.listWidget_taskUsers2->addItem(i);
+                if (adm.toStdString() == seperacja_stringa_od_kropki(i.toStdString())) {
+                    ui.listWidget_taskUsers2->item(ui.listWidget_taskUsers2->count() - 1)->setBackgroundColor(QColor(0xC8C1E5));
+                }
+            }
+        }
     }
 }
 
@@ -768,6 +786,7 @@ void project_managment::on_pushButton_StworzPodprojekt_clicked() {
         msg.setText("Pomyslnie przeksztalcono zadanie w projekt.");
         msg.exec();
         this->ustaw_admin();
+        this->odswiezListeUzytkownikow();
     }
     else
     {
@@ -778,6 +797,7 @@ void project_managment::on_pushButton_StworzPodprojekt_clicked() {
     }
     /* update wygladu */
     this->odswiezProjekty();
+
 }
 
 
