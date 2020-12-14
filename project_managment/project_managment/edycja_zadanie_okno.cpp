@@ -40,10 +40,9 @@ void edycja_zadanie_okno::wczytaj_dane()
 		QString	opis = QString::fromStdString(Fun_projekty::pobierz_dane_zadania().pobierz_opis());
 
 		ui.textEdit_opis->setText(opis);
-		ui.lineEdit_nazwa->setText(nazwa);
-		//TODO naprawic import daty
-		ui.dateEdit_start->setDate(QDate::fromString(data_roz, "yyy-MM-dd"));
-		ui.dateEdit_finish->setDate(QDate::fromString(data_zak, "yyy-MM-dd"));
+		ui.lineEdit_nazwa->setText(nazwa);	
+		ui.dateEdit_start->setDate(QDate::fromString(data_roz, "yyyy-MM-dd")); //4 igreki zamiast 3
+		ui.dateEdit_finish->setDate(QDate::fromString(data_zak, "yyyy-MM-dd"));
 		if (status == "Rozpoczety")
 			ui.comboBox_status->setCurrentIndex(0);
 		else if (status == "Zawieszony")
@@ -51,9 +50,6 @@ void edycja_zadanie_okno::wczytaj_dane()
 		else if (status == "Zamkniêty")
 			ui.comboBox_status->setCurrentIndex(2);
 	}
-
-
-	
 }
 
 void edycja_zadanie_okno::on_pushButton_users_clicked()
