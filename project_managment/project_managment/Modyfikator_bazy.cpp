@@ -178,8 +178,7 @@ bool Modyfikator_bazy::usun_przyp_do_projektu(Przypisanie_do_projektow* przypisa
         try
         {
             work W{ C };
-            W.exec0("delete from przypisanie_do_projektow where Id_pracownika = " +
-                przypisanie->pobierz_id_pracownika() + " and Id_projektu = " + przypisanie->pobierz_id_projektu() + ";");
+            W.exec0("delete from przypisanie_do_projektow where Id_projektu = " + przypisanie->pobierz_id_projektu() + ";");
             W.commit();
         }
         catch (exception e)

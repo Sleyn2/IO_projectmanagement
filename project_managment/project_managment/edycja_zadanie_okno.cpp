@@ -1,4 +1,5 @@
 #include "edycja_zadanie_okno.h"
+#include <qmessagebox.h>
 
 edycja_zadanie_okno::edycja_zadanie_okno(QWidget *parent)
 	: QWidget(parent)
@@ -67,6 +68,7 @@ void edycja_zadanie_okno::on_pushButton_users_clicked()
 
 void edycja_zadanie_okno::on_pushButton_anuluj_clicked()
 {
+	Dane_zalogowanego_pracownika::instancja()->ustaw_id_zadania("");
 	this->close();
 }
 
@@ -85,11 +87,15 @@ void edycja_zadanie_okno::on_pushButton_potwierdz_clicked()
 	vector<Pracownik> pracownik = Pobieranie_bazy::pobierz_pracownik("select * from pracownicy where login = '" + login + "';");
 
 	Fun_projekty::dodaj_przypisanie_do_zadania(pracownik.begin()->pobierz_id_pracownika(), "false");
-
+	Dane_zalogowanego_pracownika::instancja()->ustaw_id_zadania("");
 	this->close();
 }
 
 void edycja_zadanie_okno::on_pushButton_usun_clicked()
 {
-	//Fun_projekty::usun_zadanie();
+	//usuwanie zadania i jego przypisania
+	if (Fun_projekty::usun_zadanie() && Fun_projekty::usun_przypisanie_do_zadania())
+		QMessageBox::information(this, "Usuwanie zadania", "Usunieto zadanie");
+	else QMessageBox::information(this, "Error", QString::fromStdString(Dane_zalogowanego_pracownika::instancja()->pobierz_wyjatek()));
+	Dane_zalogowanego_pracownika::instancja()->ustaw_id_zadania("");
 }
