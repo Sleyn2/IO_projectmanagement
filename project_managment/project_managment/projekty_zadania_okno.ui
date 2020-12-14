@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Projekty_zadania_okno</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(79, 79, 79);</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -20,6 +23,14 @@
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>Nazwa</string>
          </property>
@@ -27,6 +38,14 @@
        </item>
        <item>
         <widget class="QLabel" name="label_7">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>Status</string>
          </property>
@@ -34,6 +53,14 @@
        </item>
        <item>
         <widget class="QLabel" name="label_5">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>Data rozpoczęcia</string>
          </property>
@@ -41,6 +68,14 @@
        </item>
        <item>
         <widget class="QLabel" name="label_6">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>Data zakończenia</string>
          </property>
@@ -51,12 +86,29 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLineEdit" name="lineEdit_nazwa"/>
+        <widget class="QLineEdit" name="lineEdit_nazwa">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QComboBox" name="comboBox_status">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 226);</string>
+           </property>
            <item>
             <property name="text">
              <string>Rozpoczety</string>
@@ -93,6 +145,14 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QDateEdit" name="dateEdit_start">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 226);</string>
+           </property>
            <property name="maximumDate">
             <date>
              <year>9999</year>
@@ -120,7 +180,16 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QDateEdit" name="dateEdit_finish"/>
+          <widget class="QDateEdit" name="dateEdit_finish">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 226);</string>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_3">
@@ -147,6 +216,14 @@
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>Opis</string>
          </property>
@@ -168,12 +245,29 @@
       </layout>
      </item>
      <item>
-      <widget class="QTextEdit" name="textEdit_opis"/>
+      <widget class="QTextEdit" name="textEdit_opis">
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
    <item row="2" column="0">
     <widget class="QPushButton" name="pushButton_add">
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(139, 139, 139);</string>
+     </property>
      <property name="text">
       <string>Dodaj projekt</string>
      </property>
@@ -181,6 +275,14 @@
    </item>
    <item row="2" column="1">
     <widget class="QPushButton" name="pushButton_cancel">
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(139, 139, 139);</string>
+     </property>
      <property name="text">
       <string>Anuluj</string>
      </property>

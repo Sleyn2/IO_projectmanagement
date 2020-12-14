@@ -18,11 +18,22 @@
   <property name="windowTitle">
    <string>dodawanie_pracownikow_okno</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(79, 79, 79);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label_tytul">
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
+       </property>
        <property name="text">
         <string>Przeglądaj prośby o dodanie</string>
        </property>
@@ -35,8 +46,11 @@
       <widget class="QLabel" name="label_wybierz_prac">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
        </property>
        <property name="text">
         <string>wybierz pracownika:</string>
@@ -53,11 +67,12 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 255, 255);</string>
+        <string notr="true">background-color: rgb(65, 51, 93);
+color: rgb(255, 255, 226);</string>
        </property>
       </widget>
      </item>
@@ -69,6 +84,14 @@
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QLabel" name="label_imie">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>imie:</string>
          </property>
@@ -79,6 +102,14 @@
        </item>
        <item>
         <widget class="QLabel" name="label_nazwisko">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>nazwisko:</string>
          </property>
@@ -89,6 +120,14 @@
        </item>
        <item>
         <widget class="QLabel" name="label_login">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>login:</string>
          </property>
@@ -104,6 +143,9 @@
            <pointsize>10</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(139, 139, 139);</string>
+         </property>
          <property name="text">
           <string>dodaj pracownika</string>
          </property>
@@ -117,8 +159,11 @@
         <widget class="QLabel" name="label_imie_wart">
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
+           <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
          </property>
          <property name="text">
           <string>imie</string>
@@ -129,8 +174,11 @@
         <widget class="QLabel" name="label_nazwisko_wart">
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
+           <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
          </property>
          <property name="text">
           <string>nazwisko</string>
@@ -141,8 +189,11 @@
         <widget class="QLabel" name="label_login_wart">
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
+           <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
          </property>
          <property name="text">
           <string>login</string>
@@ -155,6 +206,9 @@
           <font>
            <pointsize>10</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(139, 139, 139);</string>
          </property>
          <property name="text">
           <string>odrzuć</string>

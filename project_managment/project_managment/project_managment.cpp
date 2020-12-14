@@ -66,7 +66,7 @@ void project_managment::on_pushButton_2_clicked()
     this->wyslane = false;
     this->odswiezWiadomosci();
 
-    ui.label->setText("Wiadomoœci");
+    ui.label->setText("Wiadomosci");
 }
 
 void project_managment::on_pushButton_3_clicked()

@@ -144,7 +144,7 @@ color: rgb(206, 202, 255);</string>
 background-color: qlineargradient(spread:pad, x1:0, y1:0.477, x2:0.935323, y2:0.387, stop:0.129353 rgba(70, 70, 70, 255), stop:1 rgba(39, 31, 81, 255));</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Twoje_projekty">
        <widget class="QWidget" name="widget" native="true">
@@ -220,6 +220,9 @@ color: rgb(206, 202, 255);</string>
 
 </string>
                 </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item>
@@ -235,6 +238,9 @@ color: rgb(206, 202, 255);</string>
 {
 	background-color: rgb(82, 66, 173);
 }</string>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -344,10 +350,10 @@ p, li { white-space: pre-wrap; }
          <widget class="QLabel" name="label_4">
           <property name="geometry">
            <rect>
-            <x>80</x>
+            <x>9</x>
             <y>10</y>
-            <width>550</width>
-            <height>30</height>
+            <width>681</width>
+            <height>41</height>
            </rect>
           </property>
           <property name="font">
@@ -1110,7 +1116,8 @@ Wiadomość</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(40, 40, 40);
-color: rgb(206, 202, 255);</string>
+color: rgb(135, 135, 135);
+</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Box</enum>
@@ -1213,7 +1220,7 @@ color: rgb(206, 202, 255);</string>
          </property>
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>10</pointsize>
           </font>
          </property>
          <property name="title">
