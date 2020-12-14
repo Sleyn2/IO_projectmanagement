@@ -175,10 +175,25 @@ bool  Fun_projekty::dodaj_przypisanie_do_zadania(string id_pracownika, string ki
 		return true;
 }
 
-
-bool Fun_projekty::usun_zadanie(string nazwa_zadania)
+bool Fun_projekty::usun_przypisanie_do_projektu()
 {
-	if (Modyfikator_bazy::usun_zadanie(nazwa_zadania)) return true;
+	Przypisanie_do_projektow przypisanie("0", Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu(), "false");
+	if (Modyfikator_bazy::usun_przyp_do_projektu(&przypisanie)) return true;
+	else return false;
+}
+
+bool Fun_projekty::usun_przypisanie_do_zadania()
+{
+	//usuwanie przypisania dla wybranego zadania
+	Przypisanie_do_projektow przypisanie("0", Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania(), "false");
+	if (Modyfikator_bazy::usun_przyp_do_projektu(&przypisanie)) return true;
+	else return false;
+}
+
+
+bool Fun_projekty::usun_zadanie()
+{
+	if (Modyfikator_bazy::usun_zadanie(Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania())) return true;
 	return false;
 }
 
@@ -204,6 +219,16 @@ bool Fun_projekty::zaktualizuj_zadanie(string nazwa, string opis, string data_r,
 	}
 }
 
+bool Fun_projekty::przeksztalc_w_podprojek()
+{
+	vector<Projekt> zadanie = Pobieranie_bazy::pobierz_projekt("select * from projekt where id_projektu = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + ";");
+	if (zadanie.size() == 1)
+	{
+		zadanie.begin()->ustaw_zadanie("false");
+		return 	Modyfikator_bazy::zaktualizuj_projekt(&zadanie[0]);
+	}
+	return false;
+}
 
 QStringList Fun_projekty::pobierz_liste_pracownikow() 
 {

@@ -178,8 +178,7 @@ bool Modyfikator_bazy::usun_przyp_do_projektu(Przypisanie_do_projektow* przypisa
         try
         {
             work W{ C };
-            W.exec0("delete from przypisanie_do_projektow where Id_pracownika = " +
-                przypisanie->pobierz_id_pracownika() + " and Id_projektu = " + przypisanie->pobierz_id_projektu() + ";");
+            W.exec0("delete from przypisanie_do_projektow where Id_projektu = " + przypisanie->pobierz_id_projektu() + ";");
             W.commit();
         }
         catch (exception e)
@@ -316,7 +315,7 @@ bool Modyfikator_bazy::zaktualizuj_zadanie(Projekt *zadanie)
             work W{ C };
             W.exec0("update Projekt set Nazwa = '" + zadanie->pobierz_nazwa() + "', Opis = '" + zadanie->pobierz_opis() + "', Data_rozpoczecia = '" +
                 zadanie->pobierz_data_rozpoczecia() + "', Data_zakonczenia = '" + zadanie->pobierz_data_zakonczenia() + "', status= '"
-                + zadanie->pobierz_status() + "' where Nazwa = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() + "';");
+                + zadanie->pobierz_status() + ", zadanie = " + zadanie->pobierz_zadanie() + "' where Nazwa = '" + Dane_zalogowanego_pracownika::instancja()->pobierz_nazwe_zadania() + "';");
             W.commit();
         }
         catch (exception e)
@@ -333,6 +332,40 @@ bool Modyfikator_bazy::zaktualizuj_zadanie(Projekt *zadanie)
         return false;
     }
 }
+
+/**
+* 
+* Metoda modyfikuje istniejacy projekt, nie mozna modyfikowaæ tylko nazwy projektu
+* @param zadanie obiekt ktory istnieje w bazie danych 
+* 
+*/
+bool Modyfikator_bazy::zaktualizuj_projekt(Projekt* zadanie)
+{
+    connection C(Dane_polaczenia::Conncet());
+    if (C.is_open()) {
+        try
+        {
+            work W{ C };
+            W.exec0("update Projekt set Opis = '" + zadanie->pobierz_opis() + "', Data_rozpoczecia = '" +
+                zadanie->pobierz_data_rozpoczecia() + "', Data_zakonczenia = '" + zadanie->pobierz_data_zakonczenia() + "', status= '"
+                + zadanie->pobierz_status() + "', zadanie = '" + zadanie->pobierz_zadanie() + "' where Nazwa = '" + zadanie->pobierz_nazwa() + "';");
+            W.commit();
+        }
+        catch (exception e)
+        {
+            Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek(e.what());
+            return false;
+        }
+        return true;
+
+    }
+    else
+    {
+        Dane_zalogowanego_pracownika::instancja()->ustaw_wyjatek("Brak po³¹czenia z baz¹");
+        return false;
+    }
+}
+
 
 bool Modyfikator_bazy::dodaj_wiadomosc(Wiadomosc* wiadomosc) 
 {
