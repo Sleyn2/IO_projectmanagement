@@ -286,7 +286,7 @@ vector<Raport> Pobieranie_bazy::pobierz_raporty()
             work W{ C };
             result R{ W.exec(string("select * from raporty where id_projektu = " +
                 Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() +
-                ";")) };
+                " and status!='zwrocony';")) };
 
             for (auto wiersz : R)
             {

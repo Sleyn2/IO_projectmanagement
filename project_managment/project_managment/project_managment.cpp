@@ -582,7 +582,7 @@ void project_managment::odswiezListeRaportow()
 {
     ui.listWidgetRaporty->clear();
     availableReportsVector.clear();
-    availableReportsVector = Pobieranie_bazy::pobierz_raporty();
+    availableReportsVector = Pobieranie_bazy::pobierz_raporty();            
     std::sort(availableReportsVector.begin(), availableReportsVector.end());
 
     QStringList raporty = Fun_raport::vectorRaportowNaQStringList(availableReportsVector);
@@ -721,10 +721,12 @@ void project_managment::on_ProjectList_itemClicked(QListWidgetItem* item)
         ustaw_admin();
         this->odswiezListeZespolu(true);
         this->odswiezListeRaportow();
-        if (Fun_raport::sprawdzCzyJestKorzeniem())
-            ui.pushButtonTworzRaportAdm->hide();
+        //je¿eli jest korzeniem to nie ma komu wys³aæ raportu
+        if (Fun_raport::sprawdzCzyJestKorzeniem()) {
+            ui.pushButtonTworzRaportAdm->setText(QString::fromStdString("Koniec projektu"));
+        }
         else
-            ui.pushButtonTworzRaportAdm->show();
+            ui.pushButtonTworzRaportAdm->setText(QString::fromStdString("Generuj raport"));
     }
     else
     {
@@ -765,7 +767,7 @@ void project_managment::on_pushButtonTworzRaport_clicked()
     if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
         return;
     vector<Raport> raport = Fun_raport::sprawdzRaport();
-    if(raport.size() == 0 || raport[0].pobierz_status() == "zwrocony")
+    if(raport.size() == 0)
         tworzenie_raportu->ustawNapiszRaport();
     else
         tworzenie_raportu->ustawWyswietlRaport(raport[0]);
@@ -808,10 +810,29 @@ void project_managment::on_pushButton_StworzPodprojekt_clicked() {
 
 void project_managment::on_pushButtonTworzRaportAdm_clicked()
 {
-    /*
-        zakonczenie projektu   
-        wys³anie wiadmosæci do wszystkich o zakoñczeniu projektu
-    */
+    //Je¿eli ¿aden projekt b¹dŸ zadanie nie jest wybrany to przycisk nie dzia³a
+    if (Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() == "")
+        return;
+
+    //Je¿eli projekt jest korzeniem to przycisk obs³uguje zakoñczenie projektu
+    //w przeciwnym razie tworzy raport
+    if (Fun_raport::sprawdzCzyJestKorzeniem()) {
+        /*
+            To do
+            Zakoñczenie projektu
+        */
+    }
+    else {
+        //je¿eli raport nie istnieje b¹dŸ zosta³ zwrócony to mo¿na wys³aæ kolejny
+        //w przeciwnym wypadku wyœwietl ten raport
+        vector<Raport> raport = Fun_raport::sprawdzRaport();
+        if (raport.size() == 0 || raport[0].pobierz_status() == "zwrocony")
+            tworzenie_raportu->ustawNapiszRaport();
+        else
+            tworzenie_raportu->ustawWyswietlRaport(raport[0]);
+
+        this->tworzenie_raportu->show();
+    }
 }
 
 //Wiadomosci
