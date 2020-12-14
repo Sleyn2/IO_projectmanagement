@@ -33,6 +33,8 @@ void wiadomosci_okno::ustawTryb(int i, bool czy_wyslana)
 		string topic = "";
 		for (int i = 0; i < (n-8); i++)
 		{
+			if (i != 0)
+				topic += " ";
 			topic += text[i];
 		}
 		ui.topic_label->setText(QString::fromStdString(topic));
