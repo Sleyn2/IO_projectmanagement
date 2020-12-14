@@ -23,6 +23,7 @@ void project_managment::on_pushButton_1_clicked()
 
     this->odswiezProjekty();
     this->odswiezListeRaportow();
+
 }
 
 void project_managment::odswiezListeZespolu(bool admin)
