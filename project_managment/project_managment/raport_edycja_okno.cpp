@@ -76,7 +76,8 @@ void raport_edycja_okno::on_pushButtonOdpowiedzRaport_clicked()
 		tytul = QString("Raport zostal zatwierdzony");
 	else
 		return;
-	QString wiadomosc = ui.textEditOdpowiedzTresc->toPlainText();
+	//QString wiadomosc = ui.textEditOdpowiedzTresc->toPlainText();
+	QString wiadomosc = QString::fromStdString("Raport: " + (*pRaporty)[index].pobierz_tytul() + "\n\n") + ui.textEditOdpowiedzTresc->toPlainText();
 	if (wiadomosc == "")
 	{
 		QMessageBox::information(this, "Error", "Tresc wiadomosci jest pusta");
