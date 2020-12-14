@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>594</width>
-    <height>264</height>
+    <height>267</height>
    </rect>
   </property>
   <property name="font">
@@ -19,16 +19,25 @@
   <property name="windowTitle">
    <string>LoginWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(79, 79, 79);</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Loginpage">
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <widget class="QGroupBox" name="groupBox">
+         <property name="font">
+          <font>
+           <family>MS Shell Dlg 2</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
          <property name="title">
           <string>Logowanie</string>
          </property>
@@ -39,13 +48,29 @@
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
                <widget class="QLabel" name="label">
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Login</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_username"/>
+               <widget class="QLineEdit" name="lineEdit_username">
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(255, 255, 226);</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -53,6 +78,12 @@
              <layout class="QHBoxLayout" name="horizontalLayout_2">
               <item>
                <widget class="QLabel" name="label_2">
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Hasło</string>
                 </property>
@@ -60,6 +91,15 @@
               </item>
               <item>
                <widget class="QLineEdit" name="lineEdit_password">
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(255, 255, 226);</string>
+                </property>
                 <property name="echoMode">
                  <enum>QLineEdit::Password</enum>
                 </property>
@@ -69,6 +109,15 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_login">
+              <property name="font">
+               <font>
+                <family>MS Shell Dlg 2</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(139, 139, 139);</string>
+              </property>
               <property name="text">
                <string>Zaloguj się</string>
               </property>
@@ -76,6 +125,15 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_register">
+              <property name="font">
+               <font>
+                <family>MS Shell Dlg 2</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(139, 139, 139);</string>
+              </property>
               <property name="text">
                <string>Zarejestruj się</string>
               </property>
@@ -92,6 +150,11 @@
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
         <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Imię</string>
          </property>
@@ -101,10 +164,24 @@
         </widget>
        </item>
        <item row="1" column="1" colspan="3">
-        <widget class="QLineEdit" name="lineEdit_2_nazwisko"/>
+        <widget class="QLineEdit" name="lineEdit_2_nazwisko">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
+        </widget>
        </item>
        <item row="3" column="0" rowspan="2">
         <widget class="QLabel" name="label_6">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Hasło</string>
          </property>
@@ -115,16 +192,38 @@
        </item>
        <item row="6" column="1" colspan="3">
         <widget class="QLineEdit" name="lineEdit_5_powtorz_haslo">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
          </property>
         </widget>
        </item>
        <item row="0" column="1" colspan="3">
-        <widget class="QLineEdit" name="lineEdit_1_imie"/>
+        <widget class="QLineEdit" name="lineEdit_1_imie">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
+        </widget>
        </item>
        <item row="5" column="0" rowspan="2">
         <widget class="QLabel" name="label_7">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Powtórz hasło</string>
          </property>
@@ -135,6 +234,11 @@
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Nazwisko</string>
          </property>
@@ -145,6 +249,14 @@
        </item>
        <item row="7" column="2" colspan="2">
         <widget class="QPushButton" name="pushButton_cancel">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(139, 139, 139);</string>
+         </property>
          <property name="text">
           <string>Anuluj</string>
          </property>
@@ -152,6 +264,14 @@
        </item>
        <item row="4" column="1" colspan="3">
         <widget class="QLineEdit" name="lineEdit_4_haslo">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
          </property>
@@ -159,6 +279,14 @@
        </item>
        <item row="7" column="0" colspan="2">
         <widget class="QPushButton" name="pushButton_register_2">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(139, 139, 139);</string>
+         </property>
          <property name="text">
           <string>Zarejestruj się</string>
          </property>
@@ -166,6 +294,11 @@
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_5">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Login</string>
          </property>
@@ -175,7 +308,16 @@
         </widget>
        </item>
        <item row="2" column="1" rowspan="2" colspan="3">
-        <widget class="QLineEdit" name="lineEdit_3_login"/>
+        <widget class="QLineEdit" name="lineEdit_3_login">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

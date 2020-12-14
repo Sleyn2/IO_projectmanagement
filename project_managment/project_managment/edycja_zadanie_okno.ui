@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>EdycjaZadan</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(79, 79, 79);</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -24,6 +27,9 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
          </property>
          <property name="text">
           <string>Termin:</string>
@@ -60,6 +66,9 @@
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>Od</string>
          </property>
@@ -69,7 +78,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QDateEdit" name="dateEdit_start"/>
+        <widget class="QDateEdit" name="dateEdit_start">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -85,6 +98,9 @@
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
          <property name="text">
           <string>Do</string>
          </property>
@@ -94,7 +110,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QDateEdit" name="dateEdit_finish"/>
+        <widget class="QDateEdit" name="dateEdit_finish">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -113,6 +133,9 @@
          </property>
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
          </property>
          <property name="text">
           <string>Opis:</string>
@@ -139,8 +162,11 @@
         <widget class="QPushButton" name="pushButton_potwierdz">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(139, 139, 139);</string>
          </property>
          <property name="text">
           <string>Zatwierdź</string>
@@ -151,8 +177,11 @@
         <widget class="QPushButton" name="pushButton_usun">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(139, 139, 139);</string>
          </property>
          <property name="text">
           <string>Usuń</string>
@@ -163,8 +192,11 @@
         <widget class="QPushButton" name="pushButton_anuluj">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>11</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(139, 139, 139);</string>
          </property>
          <property name="text">
           <string>Anuluj</string>
@@ -174,7 +206,11 @@
       </layout>
      </item>
      <item>
-      <widget class="QTextEdit" name="textEdit_opis"/>
+      <widget class="QTextEdit" name="textEdit_opis">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -182,6 +218,10 @@
     <layout class="QGridLayout" name="gridLayout">
      <item row="2" column="1">
       <widget class="QComboBox" name="comboBox_status">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);
+background-color: rgb(65, 51, 93);</string>
+       </property>
        <item>
         <property name="text">
          <string>Rozpoczety</string>
@@ -200,7 +240,11 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit_nazwa"/>
+      <widget class="QLineEdit" name="lineEdit_nazwa">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_5">
@@ -208,6 +252,9 @@
         <font>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
        </property>
        <property name="text">
         <string>Wykonawca:</string>
@@ -224,6 +271,9 @@
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
+       </property>
        <property name="text">
         <string>Status</string>
        </property>
@@ -239,6 +289,9 @@
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
+       </property>
        <property name="text">
         <string>Zadanie:</string>
        </property>
@@ -250,7 +303,12 @@
      <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QComboBox" name="comboBox_Wykonawcy"/>
+        <widget class="QComboBox" name="comboBox_Wykonawcy">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);
+background-color: rgb(65, 51, 93);</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="checkBox">
@@ -259,6 +317,9 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 226);</string>
          </property>
          <property name="text">
           <string>tworzenie podprojektu</string>
