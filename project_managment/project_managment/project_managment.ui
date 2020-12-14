@@ -157,15 +157,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0.477, x2:0.935323, y2:0.
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">QWidget#widget
-{
-	
-	background-color: rgba(255, 255, 255, 0);
-
-}
-</string>
+         <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
         </property>
-        <widget class="QWidget" name="layoutWidget">
+        <widget class="QWidget" name="widget" native="true">
          <property name="geometry">
           <rect>
            <x>11</x>
@@ -1115,7 +1109,8 @@ Wiadomość</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(40, 40, 40);</string>
+         <string notr="true">background-color: rgb(40, 40, 40);
+color: rgb(206, 202, 255);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Box</enum>
