@@ -63,6 +63,7 @@ private slots:
     void on_pushButtonTworzRaport_clicked();
     void on_pushButtonTworzRaportAdm_clicked();
     void on_listWidgetRaporty_itemDoubleClicked(QListWidgetItem* item);
+    void on_pushButton_StworzPodprojekt_clicked();
 
     //Wiadomosci
     void on_pushButton_odebrane_clicked();

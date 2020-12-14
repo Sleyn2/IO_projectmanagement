@@ -353,7 +353,7 @@ p, li { white-space: pre-wrap; }
            <string>Wyślij wiadomość</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_7">
+         <widget class="QPushButton" name="pushButton_StworzPodprojekt">
           <property name="geometry">
            <rect>
             <x>380</x>

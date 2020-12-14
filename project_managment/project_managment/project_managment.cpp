@@ -759,6 +759,29 @@ void project_managment::on_listWidgetRaporty_itemDoubleClicked(QListWidgetItem* 
     odbieranie_raportu->show();
 }
 
+void project_managment::on_pushButton_StworzPodprojekt_clicked() {
+ 
+    if (Fun_projekty::przeksztalc_w_podprojek()) 
+    {
+        QMessageBox msg;
+        msg.setWindowTitle("Sukces");
+        msg.setText("Pomyslnie przeksztalcono zadanie w projekt.");
+        msg.exec();
+        this->ustaw_admin();
+    }
+    else
+    {
+        QMessageBox msg;
+        msg.setWindowTitle("Blad");
+        msg.setText("Wystapil blad. Nie stworzono projektu.");
+        msg.exec();
+    }
+    /* update wygladu */
+    this->odswiezProjekty();
+}
+
+
+
 void project_managment::on_pushButtonTworzRaportAdm_clicked()
 {
     /*

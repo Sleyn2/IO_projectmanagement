@@ -58,6 +58,7 @@ public:
     string pobierz_data_zakonczenia();
     string pobierz_status();
     string pobierz_zadanie();
+    void ustaw_zadanie(string zad);
 };
 
 class Przypisanie_do_projektow
@@ -160,6 +161,7 @@ public:
     static bool usun_wiadomosc(string id_odb, string data_wys, string id_nad);
     static bool usun_zadanie(string zadanie);
     static bool zaktualizuj_zadanie(Projekt* zadanie);
+    static bool zaktualizuj_projekt(Projekt* zadanie);
     static bool aktualizuj_pracownika(Pracownik* prac);
     static bool zaktualizuj_raport(string status, string id_projektu);
     static bool dodaj_dzial(Dzial* dzial);
@@ -210,6 +212,7 @@ public:
     static bool usun_zadanie(string nazwa_zadania);
     static Projekt pobierz_dane_zadania();
     static bool zaktualizuj_zadanie(string nazwa, string opis, string data_r, string data_z, string status);
+    static bool przeksztalc_w_podprojek();
 };
 
 class Fun_ustawienia

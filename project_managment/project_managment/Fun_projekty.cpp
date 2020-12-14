@@ -204,6 +204,16 @@ bool Fun_projekty::zaktualizuj_zadanie(string nazwa, string opis, string data_r,
 	}
 }
 
+bool Fun_projekty::przeksztalc_w_podprojek()
+{
+	vector<Projekt> zadanie = Pobieranie_bazy::pobierz_projekt("select * from projekt where id_projektu = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + ";");
+	if (zadanie.size() == 1)
+	{
+		zadanie.begin()->ustaw_zadanie("false");
+		return 	Modyfikator_bazy::zaktualizuj_projekt(&zadanie[0]);
+	}
+	return false;
+}
 
 QStringList Fun_projekty::pobierz_liste_pracownikow() 
 {
