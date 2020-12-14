@@ -295,5 +295,5 @@ public:
     static vector<Raport> sprawdzRaport();
     static bool sprawdzCzyJestKorzeniem();
     static void zmienStanRaportu(int stan, string id_raportu);
-    static bool sprawdzStanRaportow(vector<Raport>& raporty);
+    //static bool sprawdzStanRaportow(vector<Raport>& raporty);
 };
