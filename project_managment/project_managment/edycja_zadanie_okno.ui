@@ -213,7 +213,8 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 226);</string>
+        <string notr="true">color: rgb(255, 255, 226);
+background-color: rgb(134, 134, 134);</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::Box</enum>
@@ -232,8 +233,9 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 226);
-background-color: rgb(65, 51, 93);</string>
+        <string notr="true">
+background-color: rgb(65, 51, 93);
+color: rgb(255, 255, 226);</string>
        </property>
        <item>
         <property name="text">
@@ -328,8 +330,9 @@ background-color: rgb(65, 51, 93);</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 226);
-background-color: rgb(65, 51, 93);</string>
+          <string notr="true">
+background-color: rgb(65, 51, 93);
+color: rgb(255, 255, 226);</string>
          </property>
         </widget>
        </item>

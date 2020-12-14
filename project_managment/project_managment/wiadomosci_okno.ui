@@ -25,6 +25,52 @@ background-color: rgb(79, 79, 79);</string>
      </property>
      <widget class="QWidget" name="write">
       <layout class="QGridLayout" name="gridLayout_3">
+       <item row="1" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="font">
+            <font>
+             <family>MS Shell Dlg 2</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 226);</string>
+           </property>
+           <property name="text">
+            <string>Treść</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>273</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pushButton_cancel">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(139, 139, 139);</string>
+         </property>
+         <property name="text">
+          <string>Anuluj</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0" colspan="2">
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
@@ -73,53 +119,6 @@ background-color: rgb(65, 51, 93);</string>
          </item>
         </layout>
        </item>
-       <item row="1" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLabel" name="label_5">
-           <property name="font">
-            <font>
-             <family>MS Shell Dlg 2</family>
-             <pointsize>12</pointsize>
-             <weight>50</weight>
-             <italic>false</italic>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 226);</string>
-           </property>
-           <property name="text">
-            <string>Treść</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>273</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QTextEdit" name="textEdit">
-         <property name="styleSheet">
-          <string notr="true">color: rgb(255, 255, 226);
-background-color: rgb(126, 126, 126);</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-        </widget>
-       </item>
        <item row="3" column="0">
         <widget class="QPushButton" name="pushButton_send">
          <property name="styleSheet">
@@ -130,13 +129,14 @@ background-color: rgb(126, 126, 126);</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
-        <widget class="QPushButton" name="pushButton_cancel">
+       <item row="2" column="0" colspan="2">
+        <widget class="QTextEdit" name="textEdit">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(139, 139, 139);</string>
+          <string notr="true">color: rgb(255, 255, 226);
+background-color: rgb(126, 126, 126);</string>
          </property>
-         <property name="text">
-          <string>Anuluj</string>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
          </property>
         </widget>
        </item>

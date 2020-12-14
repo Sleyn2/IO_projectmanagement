@@ -95,7 +95,7 @@ void wiadomosci_okno::on_pushButton_answer_clicked()
 {
 	ui.stackedWidget->setCurrentIndex(0);
 	this->odswiezListe();
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < users.size(); i++)
 	{
 		if (this->users[i].toStdString() == answerAdress)
 			ui.comboBox->setCurrentIndex(i);
