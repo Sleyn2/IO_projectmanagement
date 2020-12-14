@@ -201,7 +201,10 @@ Projekt Fun_projekty::pobierz_dane_zadania()
 {
 	vector<Projekt> projekt = Pobieranie_bazy::pobierz_projekt("select * from Projekt where Id_projektu = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_zadania() +";");
 
-	return projekt[0];
+	if (!projekt.empty())
+		return projekt[0];
+	else
+		return Projekt("", "", "", "", "", "", "", "");
 }
 
 bool Fun_projekty::zaktualizuj_zadanie(string nazwa, string opis, string data_r, string data_z, string status)
