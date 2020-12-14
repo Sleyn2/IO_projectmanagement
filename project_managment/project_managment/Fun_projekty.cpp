@@ -218,17 +218,60 @@ bool Fun_projekty::zaktualizuj_zadanie(string nazwa, string opis, string data_r,
 		return false;
 	}
 }
-
-bool Fun_projekty::przeksztalc_w_podprojek()
+bool Fun_projekty::czy_mozna_przeksztalcic_w_projekt()
 {
-	vector<Projekt> zadanie = Pobieranie_bazy::pobierz_projekt("select * from projekt where id_projektu = " + Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu() + ";");
-	if (zadanie.size() == 1)
+	string idProj = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+	string idPrac = Dane_zalogowanego_pracownika::instancja()->pobierz_id_pracownika();
+	vector<Przypisanie_do_projektow> przyps = Pobieranie_bazy::pobierz_Przypisanie_do_projektow("select * from przypisanie_do_projektow\
+														where id_pracownika = " + idPrac + " and id_projektu = " + idProj + "; ");
+	if (przyps.size() == 1 && przyps.begin()->pobierz_kierownik() == "t")
 	{
-		zadanie.begin()->ustaw_zadanie("false");
-		return 	Modyfikator_bazy::zaktualizuj_projekt(&zadanie[0]);
+		return true;
 	}
 	return false;
 }
+bool Fun_projekty::przeksztalc_w_podprojek()
+{
+	string idProj = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+	if (czy_mozna_przeksztalcic_w_projekt())
+	{
+		vector<Projekt> zadanie = Pobieranie_bazy::pobierz_projekt("select * from projekt where id_projektu = " + idProj + ";");
+		if (zadanie.size() == 1)
+		{
+			zadanie.begin()->ustaw_zadanie("false");
+			return 	Modyfikator_bazy::zaktualizuj_projekt(&zadanie[0]);
+		}
+	}
+	return false;
+}
+
+QString Fun_projekty::pobierz_id_kierownika()
+{
+	string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+	string Query = "select * from pracownicy p \
+					join przypisanie_do_projektow przyps on przyps.id_pracownika = p.id_pracownika \
+					join projekt proj on przyps.id_projektu = proj.id_projektu \
+					where proj.id_projektu = "+id+" and kierownik = 'true'";
+	vector<Pracownik> kierownik = Pobieranie_bazy::pobierz_pracownik(Query);
+	if (kierownik.size() == 1) {
+		return QString::fromStdString(kierownik.begin()->pobierz_id_pracownika());
+	}
+	return QString("");
+}
+QString Fun_projekty::pobierz_id_kierownika_nadrzednego()
+{
+	string id = Dane_zalogowanego_pracownika::instancja()->pobierz_id_projektu();
+	string Query = "select prac.id_pracownika, prac.imie, prac.nazwisko, prac.login, prac.haslo, prac.administrator from projekt p1 join projekt p2 on p1.id_projektu = p2.id_projektu_nadrzednego and p2.id_projektu = "+id+
+					"join przypisanie_do_projektow przyps on przyps.id_projektu = p1.id_projektu and przyps.kierownik = 'true' \
+					join pracownicy prac on prac.id_pracownika = przyps.id_pracownika";
+	vector<Pracownik> kierownik = Pobieranie_bazy::pobierz_pracownik(Query);
+	if (kierownik.size() == 1) {
+		return QString::fromStdString(kierownik.begin()->pobierz_id_pracownika());
+	}
+	return QString("");
+}
+
+
 
 QStringList Fun_projekty::pobierz_liste_pracownikow() 
 {

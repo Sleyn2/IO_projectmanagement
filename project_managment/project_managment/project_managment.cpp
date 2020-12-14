@@ -36,9 +36,27 @@ void project_managment::odswiezListeZespolu(bool admin)
     else
     {
         if (admin)
-            ui.listWidget_taskUsers->addItems(teamList);
+        {
+            QString adm = Fun_projekty::pobierz_id_kierownika_nadrzednego();
+            for (QString i : teamList)
+            {
+                ui.listWidget_taskUsers->addItem(i);
+                if (adm.toStdString() == seperacja_stringa_od_kropki(i.toStdString())) {
+                    ui.listWidget_taskUsers->item(ui.listWidget_taskUsers->count() - 1)->setBackgroundColor(QColor(39, 31, 81));
+                }
+            }
+        }
         else
-            ui.listWidget_taskUsers2->addItems(teamList);
+        {
+            QString adm = Fun_projekty::pobierz_id_kierownika_nadrzednego();
+            for (QString i : teamList)
+            {
+                ui.listWidget_taskUsers2->addItem(i);
+                if (adm.toStdString() == seperacja_stringa_od_kropki(i.toStdString())) {
+                    ui.listWidget_taskUsers2->item(ui.listWidget_taskUsers2->count() - 1)->setBackgroundColor(QColor(39, 31, 81));
+                }
+            }
+        }
     }
 }
 
@@ -512,10 +530,10 @@ void project_managment::odswiezProjekty()
             s >> idProj;
             /* dostosowanie wygladu listy <-------------------------------------------------------------------------------------------------------------------------------------------- */
             if (Fun_projekty::czy_Zadanie(idProj)) {
-                ui.ProjectList->item(ui.ProjectList->count()-1)->setBackgroundColor(QColor(0xC8C1E5));
+                ui.ProjectList->item(ui.ProjectList->count()-1)->setBackgroundColor(QColor(39, 31, 81));
             }
             else {
-                ui.ProjectList->item(ui.ProjectList->count() - 1)->setBackgroundColor(QColor(0xC0D4F3));
+                ui.ProjectList->item(ui.ProjectList->count() - 1)->setBackgroundColor(QColor(82, 66, 173));
             }
         }
         availableProjectList.sort();
@@ -529,6 +547,10 @@ void project_managment::odswiezProjekty()
 
 void project_managment::odswiezZadania()
 {
+    /* ustawienie mo¿liwoœci dzia³ania przycisku stworz podprojekt */
+    ui.pushButton_StworzPodprojekt->setEnabled(Fun_projekty::czy_mozna_przeksztalcic_w_projekt());
+ 
+
     ui.listWidget_zadania->clear();
     availableTaskList.clear();
     availableTaskList = Fun_projekty::pobierz_liste_zadan();
@@ -768,6 +790,7 @@ void project_managment::on_pushButton_StworzPodprojekt_clicked() {
         msg.setText("Pomyslnie przeksztalcono zadanie w projekt.");
         msg.exec();
         this->ustaw_admin();
+        this->odswiezListeUzytkownikow();
     }
     else
     {
@@ -778,6 +801,7 @@ void project_managment::on_pushButton_StworzPodprojekt_clicked() {
     }
     /* update wygladu */
     this->odswiezProjekty();
+
 }
 
 
