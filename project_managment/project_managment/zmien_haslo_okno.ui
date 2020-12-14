@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>zmien_haslo_okno</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(79, 79, 79);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -22,6 +25,9 @@
         <font>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
        </property>
        <property name="text">
         <string>stare hasło</string>
@@ -36,6 +42,14 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
+       </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
@@ -47,6 +61,9 @@
         <font>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
        </property>
        <property name="text">
         <string>nowe hasło</string>
@@ -61,6 +78,14 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
+       </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
@@ -72,6 +97,9 @@
         <font>
          <pointsize>12</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
        </property>
        <property name="text">
         <string>powtórz nowe hasło</string>
@@ -86,6 +114,14 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 226);</string>
+       </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
@@ -97,6 +133,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="pushButton_zapisz">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(139, 139, 139);</string>
+       </property>
        <property name="text">
         <string>zapisz</string>
        </property>
@@ -104,6 +143,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_anuluj">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(139, 139, 139);</string>
+       </property>
        <property name="text">
         <string>anuluj</string>
        </property>

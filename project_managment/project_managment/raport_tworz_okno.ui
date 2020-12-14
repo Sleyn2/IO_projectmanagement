@@ -6,18 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>528</width>
-    <height>455</height>
+    <width>513</width>
+    <height>440</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>GenerujRaport</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(79, 79, 79);</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="przeglad_wyslanego_raportu">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -44,6 +47,9 @@
                <pointsize>12</pointsize>
               </font>
              </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
+             </property>
              <property name="text">
               <string>Tytuł: </string>
              </property>
@@ -61,6 +67,9 @@
               <font>
                <pointsize>12</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
              </property>
              <property name="text">
               <string>Treść tytułu</string>
@@ -84,6 +93,9 @@
                <pointsize>12</pointsize>
               </font>
              </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
+             </property>
              <property name="text">
               <string>Status:</string>
              </property>
@@ -95,6 +107,9 @@
               <font>
                <pointsize>12</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
              </property>
              <property name="text">
               <string>Aktualny status</string>
@@ -112,13 +127,23 @@
                <pointsize>12</pointsize>
               </font>
              </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
+             </property>
              <property name="text">
               <string>Treść:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QTextBrowser" name="textTresc"/>
+            <widget class="QTextBrowser" name="textTresc">
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Box</enum>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -142,6 +167,9 @@
                <pointsize>12</pointsize>
               </font>
              </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
+             </property>
              <property name="text">
               <string>Tytuł:</string>
              </property>
@@ -153,6 +181,9 @@
               <font>
                <pointsize>12</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
              </property>
             </widget>
            </item>
@@ -167,13 +198,23 @@
                <pointsize>12</pointsize>
               </font>
              </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
+             </property>
              <property name="text">
               <string>Treść:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QTextEdit" name="textEdit"/>
+            <widget class="QTextEdit" name="textEdit">
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 226);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Box</enum>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -181,6 +222,9 @@
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QPushButton" name="pushButtonWyslij">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(139, 139, 139);</string>
+             </property>
              <property name="text">
               <string>Wyślij</string>
              </property>
@@ -188,6 +232,9 @@
            </item>
            <item>
             <widget class="QPushButton" name="pushButtonAnuluj">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(139, 139, 139);</string>
+             </property>
              <property name="text">
               <string>Anuluj</string>
              </property>
