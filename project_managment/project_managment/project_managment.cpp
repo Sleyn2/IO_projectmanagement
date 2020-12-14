@@ -582,7 +582,7 @@ void project_managment::odswiezListeRaportow()
 {
     ui.listWidgetRaporty->clear();
     availableReportsVector.clear();
-    availableReportsVector = Pobieranie_bazy::pobierz_raporty();            
+    availableReportsVector = Pobieranie_bazy::pobierz_raporty();
     std::sort(availableReportsVector.begin(), availableReportsVector.end());
 
     QStringList raporty = Fun_raport::vectorRaportowNaQStringList(availableReportsVector);
@@ -594,6 +594,12 @@ void project_managment::odswiezListeRaportow()
         odbieranie_raportu->ustawVectorRaportow(&availableReportsVector);
         QStringList raporty = Fun_raport::vectorRaportowNaQStringList(availableReportsVector);
         ui.listWidgetRaporty->addItems(raporty);
+        for (auto iter = availableReportsVector.begin(); iter < availableReportsVector.end(); iter++) {
+            if (iter->pobierz_status() == "zaakceptowany")
+                ui.listWidgetRaporty->item(iter - availableReportsVector.begin())->setBackgroundColor(REPORT_ACCEPTED_QCOLOUR);
+            else if (iter->pobierz_status() == "zwrocony")
+                ui.listWidgetRaporty->item(iter - availableReportsVector.begin())->setBackgroundColor(REPORT_RETURNED_QCOLOUR);
+        }
     }
    }
 
@@ -777,8 +783,8 @@ void project_managment::on_pushButtonTworzRaport_clicked()
 
 void project_managment::on_listWidgetRaporty_itemDoubleClicked(QListWidgetItem* item)
 {
-    odbieranie_raportu->ustawPierwszaStrone();
     odbieranie_raportu->ustawIndex(ui.listWidgetRaporty->currentRow());
+    odbieranie_raportu->ustawPierwszaStrone();
     odbieranie_raportu->wczytajDane();
     odbieranie_raportu->show();
 }

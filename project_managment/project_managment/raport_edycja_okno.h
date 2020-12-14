@@ -15,6 +15,7 @@ public:
 	void ustawIndex(int idx);
 	void wczytajDane();
 	void ustawPierwszaStrone();
+	void ustawTrzeciaStrone();
 private slots:
 	void on_pushButtonRaportZaakceptuj_clicked();
 	void on_pushButtonRaportZwroc_clicked();
