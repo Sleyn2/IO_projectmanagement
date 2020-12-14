@@ -1,6 +1,7 @@
 #include "klasy.h"
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include <set>
 
 bool Fun_raport::dodaj_raport(string tytul, string tresc) 
 {

@@ -144,7 +144,7 @@ color: rgb(206, 202, 255);</string>
 background-color: qlineargradient(spread:pad, x1:0, y1:0.477, x2:0.935323, y2:0.387, stop:0.129353 rgba(70, 70, 70, 255), stop:1 rgba(39, 31, 81, 255));</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Twoje_projekty">
        <widget class="QWidget" name="widget" native="true">
@@ -889,6 +889,32 @@ color: rgb(206, 202, 255);</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_nie_wybrano">
+         <widget class="QLabel" name="label_16">
+          <property name="geometry">
+           <rect>
+            <x>-10</x>
+            <y>30</y>
+            <width>711</width>
+            <height>601</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(206, 202, 255);</string>
+          </property>
+          <property name="text">
+           <string>Nie wybrano projektu</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </widget>
