@@ -47,7 +47,7 @@ void edycja_zadanie_okno::wczytaj_dane()
 			ui.comboBox_status->setCurrentIndex(0);
 		else if (status == "Zawieszony")
 			ui.comboBox_status->setCurrentIndex(1);
-		else if (status == "Zamkniêty")
+		else if (status == "Zamkniety")
 			ui.comboBox_status->setCurrentIndex(2);
 	}
 }

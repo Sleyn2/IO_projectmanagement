@@ -348,7 +348,7 @@ bool Modyfikator_bazy::zaktualizuj_projekt(Projekt* zadanie)
             work W{ C };
             W.exec0("update Projekt set Opis = '" + zadanie->pobierz_opis() + "', Data_rozpoczecia = '" +
                 zadanie->pobierz_data_rozpoczecia() + "', Data_zakonczenia = '" + zadanie->pobierz_data_zakonczenia() + "', status= '"
-                + zadanie->pobierz_status() + "' where Nazwa = '" + zadanie->pobierz_nazwa() + "';");
+                + zadanie->pobierz_status() + "', zadanie = '" + zadanie->pobierz_zadanie() +  "' where Nazwa = '" + zadanie->pobierz_nazwa() + "';");
             W.commit();
         }
         catch (exception e)
