@@ -12,7 +12,7 @@ project_managment::project_managment(QWidget *parent)
     ui.Opcje_projektu->setCurrentIndex(2);
     Dane_zalogowanego_pracownika::instancja()->ustaw_nazwe_zadania("");
 
-    ui.label->setText("Ustawienia");
+    ui.label->setText("Twoje projekty i zadania");
 }
 // Zmiana miêdzy widokami w StackedWidget
 void project_managment::on_pushButton_1_clicked()
